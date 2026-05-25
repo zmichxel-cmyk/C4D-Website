@@ -508,63 +508,74 @@ h2 {
 }
 
 /* ==========================================
-   MOBILE RESPONSIVE POLISH (Phones & Tablets)
+   COMPLETE MOBILE FIX (Header & Hero Buttons)
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. Adjust Main Navigation Bar */
+    /* 1. Fix the Overlapping Header Layout */
     .main-nav {
-        padding: 15px 20px;
-        flex-direction: column;
-        gap: 15px;
-        text-align: center;
+        padding: 15px 10px;
+        flex-direction: column; /* Force logo and links to stack vertically instead of crush side-by-side */
+        align-items: center;
+        justify-content: center;
+        gap: 12px;
+    }
+
+    .main-nav .logo img {
+        max-height: 45px; /* Keeps your logo from taking over the screen on mobile */
+        width: auto;
     }
 
     .main-nav nav {
-        gap: 15px;
-        width: 100%;
+        display: flex;
+        flex-direction: row;
+        flex-wrap: wrap; /* Safety valve if links are still too wide */
         justify-content: center;
+        align-items: center;
+        gap: 12px;
+        width: 100%;
+    }
+
+    .main-nav nav a {
+        font-size: 0.9rem;
+        white-space: nowrap; /* Prevents text from splitting onto two lines weirdly */
     }
 
     .nav-cta {
-        padding: 8px 16px;
-        font-size: 0.9rem;
+        padding: 6px 12px;
+        display: inline-block;
     }
 
-    /* 2. Scale Down the Form Container Layout */
+    /* 2. Fix Overlapping Homepage Hero Buttons */
+    /* Note: Adjust these class names if your layout wrapper has a different name */
+    .hero-buttons, 
+    .main-nav + main div:has(.btn-submit) /* Target common CTA button containers */ {
+        display: flex;
+        flex-direction: column; /* Stack Browse Premium and Grab Free vertically */
+        align-items: center;
+        gap: 15px; /* Smooth spacing between buttons so they don't crash */
+        width: 100%;
+        margin-top: 20px;
+    }
+
+    /* Force hero buttons to take full width cleanly on small screens */
+    .hero-buttons a, 
+    .hero-buttons button {
+        display: block;
+        width: 85%; /* Gives breathing room on the left/right sides of the phone */
+        text-align: center;
+        padding: 12px 0;
+        box-sizing: border-box;
+    }
+
+    /* 3. General Form Container Optimizations */
     .form-container {
         width: 92%;
         margin: 20px auto;
-        padding: 25px 20px;
+        padding: 20px;
     }
 
     .form-container h1 {
-        font-size: 1.8rem; /* Keeps the loud graffiti headline from wrapping weirdly */
-        letter-spacing: 1px;
-    }
-
-    .form-intro {
-        font-size: 0.95rem;
-        line-height: 1.5;
-        margin-bottom: 25px;
-    }
-
-    /* 3. Optimize Form Elements for Easy Tapping */
-    .form-group label {
-        font-size: 0.9rem;
-        margin-bottom: 6px;
-    }
-
-    .form-group input, 
-    .form-group select, 
-    .form-group textarea {
-        padding: 12px; /* Marginally bigger tap targets for thumbs */
-        font-size: 1rem; /* Prevents iOS Safari from forcefully zooming in on inputs */
-    }
-
-    /* 4. Full Width Action Button */
-    .btn-submit {
-        width: 100%;
-        padding: 14px;
-        font-size: 1.1rem;
+        font-size: 1.6rem;
+        text-align: center;
     }
 }
