@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Controller Overlays | OBS & Streamlabs</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+
+    <!-- 1. NAVIGATION -->
+    <header class="main-nav">
+    <div class="logo">
+        <img src="assets/images/logo.png" alt="My Brand Logo">
+    </div>
+    <nav>...
+            <a href="#showroom">Showroom</a>
+            <a href="#free">Free Overlays</a>
+            <a href="custom.html" class="nav-cta">Custom Request</a>
+        </nav>
+    </header>
+
+    <!-- 2. HERO SECTION -->
+    <section class="hero">
+        <h1>PRO-GRADE <span>CSS CONTROLLER</span> OVERLAYS</h1>
+        <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
+        <div class="hero-buttons">
+            <a href="#showroom" class="btn-primary">Browse Premium</a>
+            <a href="#free" class="btn-secondary">Grab Free Themes</a>
+        </div>
+    </section>
+
+    <!-- 3. PREMIUM SHOWROOM -->
+    <main id="showroom" class="section-container">
+        <h2>The Premium Showroom</h2>
+        <div class="store-grid">
+            
+            <!-- Controller Item Card -->
+            <div class="store-card">
+                <div class="media-frame">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/previews/cyber-red-ps5.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="card-info">
+                    <h3>Cyber Red (PS5 Layout)</h3>
+                    <div class="card-footer">
+                        <span class="price">$15.00</span>
+                        <a href="#" class="btn-buy">Unlock Code</a>
+                    </div>
+                </div>
+            </div>
+            
+            <!-- Repeat store-card divs for other designs -->
+
+        </div>
+    </main>
+
+    <!-- 4. FREE WATERMARKED TIER -->
+    <section id="free" class="section-container free-tier">
+        <h2>Free Watermarked Layouts</h2>
+        <p class="section-subtitle">Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.</p>
+        
+        <div class="store-grid">
+            <div class="store-card free-card">
+                <div class="media-frame">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/previews/classic-white-free.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="free-card">
+    <h3>Classic White (Xbox Layout)</h3>
+    
+    <div class="link-copier-container">
+        <input type="text" id="xbox-free-url" value="https://yourname.github.io/free-xbox-overlay" readonly>
+        
+        <button onclick="copyOverlayLink('xbox-free-url', this)" class="btn-copy">Copy Link</button>
+    </div>
+</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- 5. CUSTOM CALL-TO-ACTION -->
+    <section class="custom-cta-block">
+        <h2>Need a 1-of-1 Exclusive Design?</h2>
+        <p>Get a completely personalized layout matched exactly to your stream's brand identity, color schemes, and custom channel graphics.</p>
+        <a href="custom.html" class="btn-primary large">Launch the Custom Design Brief</a>
+    </section>
+<script>
+function copyOverlayLink(inputId, buttonElement) {
+    // 1. Target the text input element
+    const copyText = document.getElementById(inputId);
+    
+    // 2. Select the text inside the input field
+    copyText.select();
+    copyText.setSelectionRange(0, 99999); // For mobile devices
+    
+    // 3. Copy the text to the clipboard
+    navigator.clipboard.writeText(copyText.value).then(() => {
+        // 4. Visual Feedback: Change button appearance to confirm success
+        const originalText = buttonElement.innerText;
+        buttonElement.innerText = "Copied!";
+        buttonElement.classList.add("copied-success");
+        
+        // 5. Reset the button back to normal after 2 seconds
+        setTimeout(() => {
+            buttonElement.innerText = originalText;
+            buttonElement.classList.remove("copied-success");
+        }, 2000);
+    }).catch(err => {
+        console.error("Failed to copy link: ", err);
+    });
+}
+</script>
+
+</body>
+</html>
