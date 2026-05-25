@@ -508,74 +508,78 @@ h2 {
 }
 
 /* ==========================================
-   COMPLETE MOBILE FIX (Header & Hero Buttons)
+   FINAL MOBILE RESPONSIVE POLISH
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. Fix the Overlapping Header Layout */
+    /* 1. Perfect the Mobile Header Layout */
     .main-nav {
         padding: 15px 10px;
-        flex-direction: column; /* Force logo and links to stack vertically instead of crush side-by-side */
+        flex-direction: column; /* Stacks logo cleanly over the links */
         align-items: center;
         justify-content: center;
-        gap: 12px;
+        gap: 15px; /* Added spacing between logo and nav row */
     }
 
     .main-nav .logo img {
-        max-height: 45px; /* Keeps your logo from taking over the screen on mobile */
+        max-height: 40px; /* Perfectly scales your logo for phones */
         width: auto;
     }
 
     .main-nav nav {
         display: flex;
         flex-direction: row;
-        flex-wrap: wrap; /* Safety valve if links are still too wide */
         justify-content: center;
         align-items: center;
-        gap: 12px;
+        gap: 20px; /* Generous physical gap between link tap targets */
         width: 100%;
     }
 
     .main-nav nav a {
-        font-size: 0.9rem;
-        white-space: nowrap; /* Prevents text from splitting onto two lines weirdly */
+        font-size: 0.95rem;
+        font-weight: 500;
+        text-decoration: none;
+        white-space: nowrap; /* Forces links to stay cleanly on a single line */
     }
 
+    /* 2. Style the Mobile Custom Request CTA Button */
     .nav-cta {
-        padding: 6px 12px;
+        padding: 8px 14px;
+        font-size: 0.9rem;
         display: inline-block;
+        border-radius: 4px;
     }
 
-    /* 2. Fix Overlapping Homepage Hero Buttons */
-    /* Note: Adjust these class names if your layout wrapper has a different name */
-    .hero-buttons, 
-    .main-nav + main div:has(.btn-submit) /* Target common CTA button containers */ {
+    /* 3. Fix and Space Out the Main Homepage Buttons */
+    .hero-buttons,
+    .main-nav + main div:has(.btn-submit) {
         display: flex;
-        flex-direction: column; /* Stack Browse Premium and Grab Free vertically */
+        flex-direction: column; /* Clean vertical stack for thumb navigation */
         align-items: center;
-        gap: 15px; /* Smooth spacing between buttons so they don't crash */
+        gap: 15px;
         width: 100%;
-        margin-top: 20px;
+        margin-top: 30px;
     }
 
-    /* Force hero buttons to take full width cleanly on small screens */
     .hero-buttons a, 
     .hero-buttons button {
         display: block;
-        width: 85%; /* Gives breathing room on the left/right sides of the phone */
+        width: 88%; /* Perfect margin-free profile width on mobile displays */
         text-align: center;
-        padding: 12px 0;
+        padding: 14px 0;
         box-sizing: border-box;
+        font-size: 1.05rem;
     }
 
-    /* 3. General Form Container Optimizations */
+    /* 4. Form Container Clean Layout */
     .form-container {
-        width: 92%;
-        margin: 20px auto;
+        width: 90%;
+        margin: 25px auto;
         padding: 20px;
     }
 
     .form-container h1 {
         font-size: 1.6rem;
         text-align: center;
+        letter-spacing: 1px;
     }
 }
