@@ -1,0 +1,508 @@
+/* --- Global Variables & Resets --- */
+:root {
+    --bg-dark: #0f0f12;
+    --bg-card: #16161a;
+    --text-main: #ffffff;
+    --text-muted: #a0a0aa;
+    --accent-color: #ff3344; /* Vivid Neon Red */
+    --accent-glow: rgba(255, 51, 68, 0.2);
+}
+
+* {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* --- Layout Wrappers --- */
+.section-container {
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 60px 20px;
+}
+
+h2 {
+    font-size: 2rem;
+    margin-bottom: 30px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+}
+
+/* --- Navigation Bar --- */
+.main-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 40px;
+    background: rgba(15, 15, 18, 0.85);
+    backdrop-filter: blur(10px);
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    border-bottom: 1px solid #24242b;
+}
+
+.logo {
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+}
+
+.logo span {
+    color: var(--accent-color);
+}
+
+.main-nav nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    margin-left: 24px;
+    font-weight: 500;
+    transition: color 0.2s;
+}
+
+.main-nav nav a:hover {
+    color: var(--text-main);
+}
+
+.main-nav nav a.nav-cta {
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 6px 16px;
+    border-radius: 4px;
+}
+
+.main-nav nav a.nav-cta:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+/* --- Hero Section --- */
+.hero {
+    text-align: center;
+    padding: 100px 20px;
+    background: radial-gradient(circle at center, #1b1214 0%, var(--bg-dark) 70%);
+}
+
+.hero h1 {
+    font-size: 3.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 20px;
+}
+
+.hero h1 span {
+    color: var(--accent-color);
+}
+
+.hero p {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 40px auto;
+    font-size: 1.2rem;
+}
+
+/* --- Interactive Store Grid --- */
+.store-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
+    gap: 30px;
+}
+
+.store-card {
+    background: var(--bg-card);
+    border: 1px solid #24242b;
+    border-radius: 8px;
+    overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s;
+}
+
+.store-card:hover {
+    transform: translateY(-4px);
+    border-color: var(--accent-color);
+    box-shadow: 0 12px 24px var(--accent-glow);
+}
+
+.media-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    overflow: hidden;
+}
+
+.media-frame video {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+}
+
+.card-info {
+    padding: 20px;
+}
+
+.card-info h3 {
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+}
+
+.card-footer {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.price {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* --- Buttons & UI Elements --- */
+.btn-primary, .btn-buy {
+    background: var(--accent-color);
+    color: #000;
+    padding: 10px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 700;
+    transition: opacity 0.2s;
+}
+
+.btn-buy {
+    padding: 8px 16px;
+}
+
+.btn-primary:hover, .btn-buy:hover {
+    opacity: 0.9;
+}
+
+.btn-secondary {
+    color: var(--text-main);
+    border: 1px solid #3f3f46;
+    padding: 10px 24px;
+    border-radius: 4px;
+    text-decoration: none;
+    font-weight: 600;
+    margin-left: 15px;
+}
+
+/* --- URL Copy Box (Free Tier) --- */
+.url-copy-box {
+    display: flex;
+    background: #0f0f12;
+    border: 1px solid #24242b;
+    border-radius: 4px;
+    overflow: hidden;
+}
+
+.url-copy-box input {
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    padding: 8px 12px;
+    flex-grow: 1;
+    font-size: 0.85rem;
+    outline: none;
+}
+
+.url-copy-box button {
+    background: #24242b;
+    color: var(--text-main);
+    border: none;
+    padding: 0 16px;
+    cursor: pointer;
+    font-weight: 600;
+    font-size: 0.85rem;
+}
+
+.url-copy-box button:hover {
+    background: #2e2e38;
+}
+
+/* --- Custom CTA Section --- */
+.custom-cta-block {
+    background: #161213;
+    border-top: 1px solid #2b191c;
+    text-align: center;
+    padding: 80px 20px;
+}
+
+.custom-cta-block h2 {
+    margin-bottom: 15px;
+}
+
+.custom-cta-block p {
+    color: var(--text-muted);
+    max-width: 600px;
+    margin: 0 auto 30px auto;
+}
+
+/* 1. Reset the outer box */
+.logo {
+    display: flex;
+    align-items: center;
+    width: 210px;        /* FORCES the outer box to be exactly this wide, no matter what */
+    height: 100px;        /* Adjust to match your navbar height */
+    overflow: hidden;    /* Safety net: cuts off any invisible bleeding space */
+}
+
+/* 2. Control the scale using WIDTH instead of height */
+.logo img {
+    width: 100%;         /* Forces the logo to fit perfectly inside the 180px box */
+    height: auto;        /* Let the height adjust naturally without stretching */
+    display: block;
+    object-fit: contain; /* Keeps it sharp and centered */
+}
+
+/* --- Custom Form Page Styling --- */
+.form-container {
+    max-width: 650px;
+    margin: 60px auto;
+    padding: 0 20px;
+}
+
+.form-container h1 {
+    font-size: 2.2rem;
+    font-weight: 900;
+    letter-spacing: -1px;
+    margin-bottom: 10px;
+    text-align: center;
+}
+
+.form-intro {
+    color: var(--text-muted);
+    text-align: center;
+    margin-bottom: 40px;
+    font-size: 1rem;
+}
+
+.brief-form {
+    background: var(--bg-card);
+    border: 1px solid #24242b;
+    padding: 30px;
+    border-radius: 8px;
+}
+
+.form-group {
+    margin-bottom: 24px;
+}
+
+.form-group label {
+    display: block;
+    font-weight: 600;
+    margin-bottom: 8px;
+    font-size: 0.9rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    color: var(--text-main);
+}
+
+.form-group input,
+.form-group select,
+.form-group textarea {
+    width: 100%;
+    background: var(--bg-dark);
+    border: 1px solid #3f3f46;
+    color: var(--text-main);
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+/* Gives input fields a neon red glow outline when clicked */
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+/* Form Submit Button */
+.btn-submit {
+    display: block;
+    width: 100%;
+    background: var(--accent-color);
+    color: #000;
+    border: none;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+/* --- Link Copier Layout --- */
+.link-copier-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    background: var(--bg-dark);
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #24242b;
+}
+
+/* The URL input box styling */
+.link-copier-container input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: monospace;
+    font-size: 0.85rem;
+    padding: 8px;
+    outline: none;
+}
+
+/* The default Copy Button styling */
+.btn-copy {
+    background: #24242b;
+    color: var(--text-main);
+    border: 1px solid #3f3f46;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.btn-copy:hover {
+    background: #3f3f46;
+    border-color: #52525b;
+}
+
+/* --- The Magic Flash Style --- */
+/* This class is automatically applied by JavaScript on click, then removed */
+.btn-copy.copied-success {
+    background: #b91010 !important; /* Premium Emerald Green success flash */
+    color: #000 !important;
+    border-color: #c21010 !important;
+    box-shadow: 0 0 10px rgba(185, 106, 16, 0.5);
+}
+
+/* --- Success Confirmation Page Styling --- */
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px); /* Centers the card perfectly on screen */
+    padding: 20px;
+}
+
+.success-card {
+    background: var(--bg-card);
+    border: 1px solid #24242b;
+    max-width: 550px;
+    width: 100%;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+/* Neon Green Success Badge */
+.success-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid #10b981;
+    color: #10b981;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 24px auto;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+.success-card h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.success-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+/* Informational Breakdown Container */
+.next-steps-box {
+    background: var(--bg-dark);
+    border: 1px solid #24242b;
+    border-radius: 6px;
+    padding: 20px 25px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.next-steps-box h3 {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.next-steps-box ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.next-steps-box li {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.next-steps-box li:last-child {
+    margin-bottom: 0;
+}
+
+/* Back Button styling */
+.btn-return {
+    display: inline-block;
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid #3f3f46;
+    padding: 12px 28px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.btn-return:hover {
+    background: #24242b;
+    border-color: #52525b;
+}
