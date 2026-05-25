@@ -62,41 +62,40 @@
         </form>
     </main>
 
-    <script>
-    const form = document.getElementById("my-form");
-    
-    async function handleSubmit(event) {
-      event.preventDefault();
-      const status = document.querySelector(".btn-submit");
-      const data = new FormData(event.target);
-      
-      status.innerText = "Sending Brief...";
-      status.disabled = true;
+   <script>
+const form = document.getElementById("my-form");
 
-      fetch(event.target.action, {
-        method: form.method,
-        body: data,
-        headers: { 'Accept': 'application/json' }
-      }).then(response => {
-        if (response.ok) {
-          // This JavaScript line forces the browser to open your custom page for free!
-          window.location.href = "./success.html";
-        } else {
-          response.json().then(data => {
-            alert("Oops! There was a problem submitting your form.");
-            status.innerText = "Submit Design Brief";
-            status.disabled = false;
-          })
-        }
-      }).catch(error => {
-        alert("Oops! There was a connectivity problem.");
+async function handleSubmit(event) {
+  event.preventDefault();
+  const status = document.querySelector(".btn-submit");
+  const data = new FormData(event.target);
+  
+  status.innerText = "Sending Brief...";
+  status.disabled = true;
+
+  fetch(event.target.action, {
+    method: form.method,
+    body: data,
+    headers: { 'Accept': 'application/json' }
+  }).then(response => {
+    if (response.ok) {
+      window.location.href = "./success.html";
+    } else {
+      response.json().then(data => {
+        alert("Oops! There was a problem submitting your form.");
         status.innerText = "Submit Design Brief";
         status.disabled = false;
-      });
+      })
     }
-    
-    form.addEventListener("submit", handleSubmit);
-</script>
+  }).catch(error => {
+    alert("Oops! There was a connectivity problem.");
+    status.innerText = "Submit Design Brief";
+    status.disabled = false;
+  });
+}
 
+form.addEventListener("submit", handleSubmit);
+</script>
+   
 </body>
 </html>
