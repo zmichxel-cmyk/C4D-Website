@@ -4,18 +4,20 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Overlays | Customs4Daez</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="./css/style.css">
+    
+    <!-- Copying your custom responsive styles from Showroom -->
     <style>
-        /* Specific header style to match Premium Showroom */
-        .hero-text { text-align: center; margin-bottom: 40px; }
-        .hero-text h2 { font-size: 3rem; font-weight: 900; color: #ffffff; text-transform: uppercase; }
-        .hero-text h2 span { color: var(--accent-color); }
-        .hero-text p { color: var(--text-muted); margin-top: 10px; font-size: 1rem; }
+    @media screen and (max-width: 768px) {
+        header.main-header { height: auto !important; padding: 0 !important; }
+        .main-nav { display: flex !important; flex-direction: column !important; align-items: center !important; padding: 25px 10px !important; gap: 12px !important; }
+        .main-nav .logo img { width: 85% !important; max-width: 290px !important; }
+        .main-nav nav { flex-direction: row !important; justify-content: center !important; gap: 14px !important; }
+    }
     </style>
 </head>
 <body>
 
-    <!-- Header & Navigation -->
     <header class="main-header">
         <div class="main-nav">
             <div class="logo">
@@ -25,31 +27,34 @@
             </div>
             <nav>
                 <a href="showroom.html">Showroom</a>
-                <a href="free-overlays.html">Free Overlays</a>
+                <a href="free-overlays.html" class="active">Free Overlays</a>
                 <a href="custom.html" class="nav-cta">Custom Request</a>
             </nav>
         </div>
     </header>
 
-    <!-- Page Content -->
-    <main class="section-container">
-        <div class="hero-text">
-            <h2>FREE <span>OVERLAYS</span></h2>
-            <p>Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.</p>
+    <main style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
+        
+        <div class="section-title" style="text-align: center; margin-bottom: 40px;">
+            <h1 style="font-size: 2.5rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">
+                Free <span style="color: #ff0000;">Overlays</span>
+            </h1>
+            <p style="color: #aaa; font-size: 1rem; margin-top: 10px;">
+                Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.
+            </p>
         </div>
 
         <div class="store-grid">
             <!-- Overlay Card -->
             <div class="store-card">
-                <div class="media-frame" style="background: #111;">
+                <div class="media-frame" style="background: #000; aspect-ratio: 16/9;">
                     <!-- Your preview content -->
                 </div>
                 <div class="card-info">
                     <h3>Classic White (Xbox Layout)</h3>
-                    <!-- Updated footer to match Showroom -->
                     <div class="card-footer">
-                        <span class="price">FREE</span>
-                        <button class="btn-buy" onclick="copyLink(this)">Copy Link</button>
+                        <span class="price" style="color: #fff;">FREE</span>
+                        <button class="btn-buy" onclick="copyLink()">Copy Link</button>
                     </div>
                 </div>
             </div>
@@ -57,12 +62,10 @@
     </main>
 
     <script>
-        function copyLink(button) {
+        function copyLink() {
             const link = "https://yourname.github.io/file";
             navigator.clipboard.writeText(link).then(() => {
-                const originalText = button.innerText;
-                button.innerText = "Copied!";
-                setTimeout(() => { button.innerText = originalText; }, 2000);
+                alert("Link copied to clipboard!");
             });
         }
     </script>
