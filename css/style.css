@@ -81,13 +81,9 @@ h2 {
 }
 
 .logo {
-    display: flex;
-    align-items: center;
-}
-
-.logo img {
-    height: 50px;
-    width: auto;
+    font-size: 1.5rem;
+    font-weight: 900;
+    letter-spacing: -1px;
 }
 
 .logo span {
