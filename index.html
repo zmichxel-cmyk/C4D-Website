@@ -5,6 +5,82 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Controller Overlays | OBS & Streamlabs</title>
     <link rel="stylesheet" href="css/style.css">
+    <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Overlay Store | Customs4Daez</title>
+    <link rel="stylesheet" href="css/style.css">
+
+    <style>
+    @media screen and (max-width: 768px) {
+        /* 1. Reset & Expand Header Box */
+        .main-nav {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 20px 10px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+        }
+
+        /* 2. Make Logo Take Massive Top Space */
+        .main-nav .logo {
+            width: 100% !important;
+            display: flex !important;
+            justify-content: center !important;
+            margin: 0 auto 10px auto !important;
+        }
+        .main-nav .logo img {
+            width: auto !important;
+            height: 75px !important;       /* Hard physical pixel footprint height */
+            max-height: 75px !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
+
+        /* 3. Wrap Links Safely So Nothing Cuts Off */
+        .main-nav nav {
+            display: flex !important;
+            flex-direction: row !important;
+            flex-wrap: wrap !important;     /* Drops down automatically if space runs out */
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 12px !important;
+            width: 100% !important;
+        }
+        .main-nav nav a {
+            font-size: 0.9rem !important;
+            white-space: nowrap !important;
+        }
+        .nav-cta {
+            display: inline-block !important;
+            padding: 6px 12px !important;
+        }
+
+        /* 4. Perfectly Align Buttons Down Center Axis */
+        .hero-buttons {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;     /* Hard locks alignment down center line */
+            justify-content: center !important;
+            gap: 15px !important;
+            width: 100% !important;
+            margin: 25px auto 0 auto !important;
+        }
+        .hero-buttons a, 
+        .hero-buttons button {
+            display: block !important;
+            width: 85% !important;             /* Match widths identically */
+            max-width: 280px !important;       /* Balance horizontal footprint shapes */
+            padding: 14px 0 !important;
+            box-sizing: border-box !important; /* Locks calculation boundaries symmetrically */
+            margin: 0 auto !important;         /* Flush center alignment formatting */
+            text-align: center !important;
+        }
+    }
+    </style>
+</head>
 </head>
 <body>
 
