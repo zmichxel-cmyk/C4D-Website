@@ -620,7 +620,8 @@ h2 {
 .step-num {
     font-size: 4.5rem;
     font-weight: 900;
-    font-family: Arial, sans-serif;
+    /* Forces a heavy, geometric font stack so the 1 looks like a true 1 */
+    font-family: 'Impact', 'Arial Black', -apple-system, sans-serif;
     position: absolute;
     top: 20px;
     left: 15px !important;
@@ -628,7 +629,7 @@ h2 {
     line-height: 1;
     z-index: 1;
 
-    /* Matches the extended desktop duration */
+    /* DESKTOP TIMELINE FOR NUMBER GLOWS */
     animation: rapidNumberFade 7.5s infinite ease-in-out;
 }
 
