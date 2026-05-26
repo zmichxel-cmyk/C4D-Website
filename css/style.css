@@ -302,3 +302,402 @@ h2 {
 .form-group textarea {
     width: 100%;
     background: var(--bg-dark);
+    border: 1px solid #3f3f46;
+    color: var(--text-main);
+    padding: 12px;
+    border-radius: 4px;
+    font-size: 1rem;
+    font-family: inherit;
+    outline: none;
+    transition: border-color 0.2s;
+}
+
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+    border-color: var(--accent-color);
+    box-shadow: 0 0 8px var(--accent-glow);
+}
+
+.form-group select {
+    cursor: pointer;
+}
+
+/* Form Submit Button */
+.btn-submit {
+    display: block;
+    width: 100%;
+    background: var(--accent-color);
+    color: #000;
+    border: none;
+    padding: 14px;
+    font-size: 1.1rem;
+    font-weight: 700;
+    border-radius: 4px;
+    cursor: pointer;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    transition: opacity 0.2s;
+    margin-top: 10px;
+}
+
+.btn-submit:hover {
+    opacity: 0.9;
+}
+
+/* --- Link Copier Layout --- */
+.link-copier-container {
+    display: flex;
+    gap: 8px;
+    margin-top: 12px;
+    background: var(--bg-dark);
+    padding: 6px;
+    border-radius: 6px;
+    border: 1px solid #24242b;
+}
+
+.link-copier-container input {
+    flex: 1;
+    background: transparent;
+    border: none;
+    color: var(--text-muted);
+    font-family: monospace;
+    font-size: 0.85rem;
+    padding: 8px;
+    outline: none;
+}
+
+.btn-copy {
+    background: #24242b;
+    color: var(--text-main);
+    border: 1px solid #3f3f46;
+    padding: 8px 16px;
+    border-radius: 4px;
+    font-weight: 700;
+    font-size: 0.85rem;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: all 0.2s ease;
+}
+
+.btn-copy:hover {
+    background: #3f3f46;
+    border-color: #52525b;
+}
+
+.btn-copy.copied-success {
+    background: #b91010 !important; /* Premium success flash */
+    color: #000 !important;
+    border-color: #c21010 !important;
+    box-shadow: 0 0 10px rgba(185, 106, 16, 0.5);
+}
+
+/* --- Success Confirmation Page Styling --- */
+.success-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: calc(100vh - 150px);
+    padding: 20px;
+}
+
+.success-card {
+    background: var(--bg-card);
+    border: 1px solid #24242b;
+    max-width: 550px;
+    width: 100%;
+    padding: 40px 30px;
+    border-radius: 12px;
+    text-align: center;
+}
+
+.success-icon {
+    width: 70px;
+    height: 70px;
+    background: rgba(16, 185, 129, 0.1);
+    border: 2px solid #10b981;
+    color: #10b981;
+    font-size: 2rem;
+    font-weight: bold;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    margin: 0 auto 24px auto;
+    box-shadow: 0 0 15px rgba(16, 185, 129, 0.2);
+}
+
+.success-card h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    letter-spacing: -0.5px;
+    margin-bottom: 12px;
+}
+
+.success-card p {
+    color: var(--text-muted);
+    font-size: 1rem;
+    line-height: 1.5;
+    margin-bottom: 30px;
+}
+
+.next-steps-box {
+    background: var(--bg-dark);
+    border: 1px solid #24242b;
+    border-radius: 6px;
+    padding: 20px 25px;
+    text-align: left;
+    margin-bottom: 30px;
+}
+
+.next-steps-box h3 {
+    font-size: 1rem;
+    color: var(--text-main);
+    margin-bottom: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.next-steps-box ul {
+    margin: 0;
+    padding-left: 20px;
+}
+
+.next-steps-box li {
+    color: var(--text-muted);
+    font-size: 0.9rem;
+    margin-bottom: 10px;
+    line-height: 1.4;
+}
+
+.next-steps-box li:last-child {
+    margin-bottom: 0;
+}
+
+.btn-return {
+    display: inline-block;
+    background: transparent;
+    color: var(--text-main);
+    border: 1px solid #3f3f46;
+    padding: 12px 28px;
+    font-weight: 700;
+    text-decoration: none;
+    border-radius: 4px;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    transition: all 0.2s ease;
+}
+
+.btn-return:hover {
+    background: #24242b;
+    border-color: #52525b;
+}
+
+/* ==========================================
+    RESPONSIVE MOBILE BREAKPOINT (MAX 768PX)
+   ========================================== */
+@media screen and (max-width: 768px) {
+    
+    .main-nav {
+        display: flex !important;
+        flex-direction: column !important; /* Stack menu components vertically */
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 25px 10px 15px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
+        gap: 15px !important;              
+    }
+
+    .main-nav .logo {
+        display: flex !important;
+        justify-content: center !important;
+        align-items: center !important;
+        width: 100% !important;
+        margin: 0 auto !important;
+    }
+
+    .main-nav .logo img {
+        width: 85% !important;        
+        max-width: 290px !important;  
+        height: auto !important;       
+        object-fit: contain !important;
+        display: block !important;
+    }
+
+    .main-nav nav {
+        display: flex !important;
+        flex-direction: row !important;     /* Keep horizontal inline rows links on mobile */
+        justify-content: center !important; 
+        align-items: center !important;
+        gap: 14px !important;               
+        width: 100% !important;
+    }
+
+    .main-nav nav a {
+        font-size: 0.8rem !important;       
+        white-space: nowrap !important;     
+        text-decoration: none !important;
+        padding: 4px 2px !important;
+        margin-left: 0 !important;          /* Overwrite desktop spacer logic */
+    }
+
+    .nav-cta {
+        display: inline-block !important;
+        padding: 5px 10px !important;       
+        border: 1px solid var(--accent-color) !important;
+        border-radius: 4px !important;
+    }
+
+    main h1, 
+    .hero h1 {
+        font-size: 2.1rem !important;
+        line-height: 1.15 !important;
+        letter-spacing: -0.5px !important;
+        text-align: center !important;
+        margin: 30px auto 12px auto !important;
+    }
+
+    main p,
+    .hero p {
+        font-size: 0.88rem !important;      
+        line-height: 1.4 !important;
+        max-width: 90% !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center !important;
+    }
+
+    .hero-buttons {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;     
+        justify-content: center !important;
+        gap: 14px !important;
+        width: 100% !important;
+        margin-top: 20px !important;
+    }
+
+    .hero-buttons a, 
+    .hero-buttons button {
+        display: block !important;
+        width: 85% !important;              
+        max-width: 280px !important;
+        padding: 13px 0 !important;
+        box-sizing: border-box !important;
+        margin: 0 auto !important;
+        text-align: center !important;
+    }
+}
+
+/* ==========================================
+    HOW IT WORKS STEP COMPONENT CORE (DESKTOP DRIVEN)
+   ========================================== */
+.steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    margin-top: 20px;
+}
+
+.step-card {
+    background: #111111;
+    border: 1px solid #222222;
+    border-radius: 6px;
+    padding: 40px 30px 40px 110px !important; 
+    position: relative;
+    transition: transform 0.3s ease;
+    text-align: left;
+    overflow: hidden;
+
+    /* DESKTOP ENGINE BY DEFAULT: 2.1s high-speed tracking loop */
+    animation: rapidCardPulse 2.1s infinite cubic-bezier(0.25, 1, 0.5, 1); 
+}
+
+.step-num {
+    font-size: 4.5rem;
+    font-weight: 900;
+    font-family: Arial, sans-serif;
+    position: absolute;
+    top: 20px;
+    left: 15px !important;
+    right: auto !important;
+    line-height: 1;
+    z-index: 1;
+
+    /* DESKTOP TIMELINE FOR NUMBER GLOWS */
+    animation: rapidNumberFade 2.1s infinite cubic-bezier(0.25, 1, 0.5, 1);
+}
+
+/* Default Desktop 0.7s Sequential Steps Splits */
+.step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s; }
+.step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 0.7s; }
+.step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 1.4s; }
+
+/* Foreground Layer Stack */
+.step-card h3,
+.step-card p {
+    position: relative;
+    z-index: 2;
+}
+
+.step-card h3 {
+    color: #ffffff;
+    font-size: 1.3rem;
+    text-transform: uppercase;
+    margin: 0 0 15px 0;
+    letter-spacing: 0.5px;
+}
+
+.step-card p {
+    color: #aaaaaa;
+    font-size: 0.95rem;
+    line-height: 1.6;
+    margin: 0;
+}
+
+/* Desktop Hover Interaction Profiles */
+@media (hover: hover) {
+    .step-card:hover {
+        transform: translateY(-5px);
+        border-color: var(--accent-color) !important;
+    }
+}
+
+/* ==========================================
+    MOBILE OVERRIDES & STAGGER ADJUSTMENTS (MAX 900PX)
+   ========================================== */
+@media screen and (max-width: 900px) {
+    .steps-grid {
+        grid-template-columns: 1fr;
+        gap: 20px;
+    }
+    
+    .step-card {
+        padding: 35px 25px 35px 110px !important;
+        /* Drops back down to 3.0s tracking layout loop on mobile viewports */
+        animation-duration: 3s !important;
+    }
+
+    .step-num {
+        animation-duration: 3s !important;
+    }
+
+    /* Stretches timing increments back out to clean 1.0s splits for vertical stacks */
+    .step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s !important; }
+    .step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 1s !important; }
+    .step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 2s !important; }
+}
+
+/* ==========================================
+    ANIMATION KEYFRAME MATRICES
+   ========================================== */
+@keyframes rapidCardPulse {
+    0%, 33.3%, 100% { border-color: #222222; }
+    12% { border-color: rgba(255, 51, 68, 0.9); } 
+}
+
+@keyframes rapidNumberFade {
+    0%, 33.3%, 100% { color: rgba(255, 51, 68, 0.04); opacity: 0.3; }
+    12% { color: rgba(255, 51, 68, 0.3); opacity: 1; }
+}
