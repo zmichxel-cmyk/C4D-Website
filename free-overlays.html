@@ -6,13 +6,36 @@
     <title>Free Overlays | Customs4Daez</title>
     <link rel="stylesheet" href="./css/style.css">
     
-    <!-- Copying your custom responsive styles from Showroom -->
     <style>
     @media screen and (max-width: 768px) {
         header.main-header { height: auto !important; padding: 0 !important; }
         .main-nav { display: flex !important; flex-direction: column !important; align-items: center !important; padding: 25px 10px !important; gap: 12px !important; }
         .main-nav .logo img { width: 85% !important; max-width: 290px !important; }
         .main-nav nav { flex-direction: row !important; justify-content: center !important; gap: 14px !important; }
+    }
+    
+    /* Button Styles */
+    .btn-buy {
+        background: #3f3f46 !important;
+        color: #fff !important;
+        border: none;
+        padding: 8px 16px;
+        border-radius: 4px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+    }
+
+    .btn-buy.copied {
+        background: var(--accent-color) !important;
+        color: #000 !important;
+    }
+
+    .checkmark {
+        font-weight: bold;
+        color: #00ff00;
     }
     </style>
 </head>
@@ -45,7 +68,6 @@
         </div>
 
         <div class="store-grid">
-            <!-- Overlay Card -->
             <div class="store-card">
                 <div class="media-frame" style="background: #000; aspect-ratio: 16/9;">
                     <!-- Your preview content -->
@@ -54,7 +76,9 @@
                     <h3>Classic White (Xbox Layout)</h3>
                     <div class="card-footer">
                         <span class="price" style="color: #fff;">FREE</span>
-                        <button class="btn-buy" onclick="copyLink()">Copy Link</button>
+                        <button class="btn-buy" onclick="copyLink(this)">
+                            Copy Link<span class="checkmark" style="display:none;"> ✔</span>
+                        </button>
                     </div>
                 </div>
             </div>
@@ -62,10 +86,21 @@
     </main>
 
     <script>
-        function copyLink() {
+        function copyLink(button) {
             const link = "https://yourname.github.io/file";
+            const checkmark = button.querySelector('.checkmark');
+            
             navigator.clipboard.writeText(link).then(() => {
-                alert("Link copied to clipboard!");
+                button.classList.add('copied');
+                const textNode = button.childNodes[0];
+                textNode.textContent = "Copied ";
+                checkmark.style.display = 'inline';
+                
+                setTimeout(() => {
+                    button.classList.remove('copied');
+                    textNode.textContent = "Copy Link ";
+                    checkmark.style.display = 'none';
+                }, 2000);
             });
         }
     </script>
