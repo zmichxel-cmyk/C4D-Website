@@ -39,12 +39,32 @@ body {
 .main-nav .logo {
     display: flex;
     align-items: center;
-    /* Ensure no fixed dimensions here to allow natural flow */
+    flex-shrink: 0; /* Prevents the logo from shrinking */
 }
 
 .main-nav nav {
     display: flex;
     align-items: center;
+    gap: 24px; /* Creates consistent spacing between all links */
+}
+
+.main-nav nav a {
+    color: var(--text-muted);
+    text-decoration: none;
+    font-weight: 500;
+    white-space: nowrap; /* Forces links to stay on one line */
+    transition: color 0.2s;
+}
+
+.main-nav nav a:hover {
+    color: var(--text-main);
+}
+
+.main-nav nav a.nav-cta {
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 6px 16px;
+    border-radius: 4px;
 }
 
 /* --- Interactive Store Grid --- */
