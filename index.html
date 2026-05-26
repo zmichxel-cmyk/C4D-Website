@@ -13,53 +13,54 @@
 
     <style>
     @media screen and (max-width: 768px) {
-        /* 1. Prevent the container from stretching too tall */
+        /* 1. Smash the massive black empty space footprint */
         header.main-header {
             height: auto !important;
             min-height: unset !important;
             max-height: unset !important;
-            background: #111111 !important;
+            padding: 0 !important;
+            margin: 0 !important;
         }
 
-        /* 2. Dead-Center Alignment Stack */
+        /* 2. Force identical stacked column spacing */
         .main-nav {
             display: flex !important;
-            flex-direction: column !important; /* Stack logo over text links */
-            align-items: center !important;    /* Force cross-axis alignment to dead center */
-            justify-content: center !important;/* Force main-axis alignment to dead center */
+            flex-direction: column !important; 
+            align-items: center !important;    
+            justify-content: center !important;
             text-align: center !important;
-            padding: 25px 10px 15px 10px !important; /* Clean, tight padding spacing */
+            padding: 25px 10px 15px 10px !important; /* Tight header height margins */
             width: 100% !important;
             box-sizing: border-box !important;
             gap: 12px !important;
         }
 
-        /* 3. Force Logo Box Content to Stay Perfectly Centered */
+        /* 3. Hard-Center the Logo Box and Image Assets */
         .main-nav .logo {
             display: flex !important;
-            justify-content: center !important; /* Forces the internal <a> link to center */
+            justify-content: center !important; 
             align-items: center !important;
             width: 100% !important;
-            margin: 0 auto !important;         /* Prevents horizontal drifting */
+            margin: 0 auto !important;         
         }
 
         .main-nav .logo a {
             display: flex !important;
-            justify-content: center !important; /* Forces the internal <img> to center */
+            justify-content: center !important; 
             align-items: center !important;
             width: 100% !important;
         }
 
         .main-nav .logo img {
             width: 85% !important;        
-            max-width: 290px !important;  
+            max-width: 290px !important;  /* Matches the massive custom page size */
             height: auto !important;       
             object-fit: contain !important;
             display: block !important;
-            margin: 0 auto !important;         /* Absolute shield against left-alignment bugs */
+            margin: 0 auto !important;     /* Hard anchor to the dead-center axis */
         }
 
-        /* 4. Text Navigation Links Row Direct Center */
+        /* 4. Keep Links Row Perfectly Centered Underneath */
         .main-nav nav {
             display: flex !important;
             flex-direction: row !important; 
@@ -77,7 +78,6 @@
             padding: 4px 2px !important;
         }
 
-        /* Red Custom Request Button Tracking */
         .nav-cta {
             display: inline-block !important;
             padding: 5px 10px !important;
