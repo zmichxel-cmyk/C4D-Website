@@ -508,64 +508,63 @@ h2 {
 }
 
 /* ==========================================
-   TARGETED MOBILE HEADER FIX
+   EXACT RESPONSIVE MATCH FOR 10028.JPG Layout
    ========================================== */
 @media screen and (max-width: 768px) {
     
-    /* 1. Perfect the Horizontal Header Row */
+    /* 1. Base Horizontal Container Layout */
     .main-nav {
         display: flex !important;
-        flex-direction: row !important;      /* Lock everything side-by-side */
+        flex-direction: row !important;       /* Keeps elements side-by-side exactly like 10028.jpg */
         align-items: center !important;
         justify-content: space-between !important;
-        padding: 15px 10px !important;
+        padding: 15px 8px !important;         /* Dynamic edge margins */
         width: 100% !important;
         box-sizing: border-box !important;
     }
 
-    /* 2. Scale Up Logo Dominance */
+    /* 2. Expand Logo Box Real Estate */
     .main-nav .logo {
         display: flex !important;
         align-items: center !important;
-        justify-content: flex-start !important;
-        flex: 0 0 35% !important;            /* Allocates 35% of the total row width */
+        flex: 0 0 30% !important;             /* Allows the logo container to occupy 30% of screen width */
     }
 
     .main-nav .logo img {
-        width: 100% !important;              /* Forces image to scale up to the full 35% box */
-        max-width: 130px !important;         /* Keeps it from getting obnoxiously huge */
+        width: 100% !important;               /* Forces image to scale up to the new container boundaries */
+        max-width: 110px !important;          /* Hard floor footprint expansion size */
         height: auto !important;
         object-fit: contain !important;
         display: block !important;
     }
 
-    /* 3. Shift and Tighten Navigation Links */
+    /* 3. Tighten Navigation Track Area */
     .main-nav nav {
         display: flex !important;
-        flex-direction: row !important;      /* Keep links traveling horizontally */
+        flex-direction: row !important;       /* Keeps link flow perfectly horizontal */
         align-items: center !important;
         justify-content: flex-end !important;
-        flex: 0 0 65% !important;            /* Allocates the remaining row width */
-        gap: 8px !important;                 /* Tight spacing to fit tiny screens */
+        flex: 0 0 70% !important;             /* Gives the remaining 70% width to the links */
+        gap: 6px !important;                  /* Tightens gaps to pull buttons inward away from screen borders */
     }
 
     .main-nav nav a {
-        font-size: 0.78rem !important;       /* Clean size reduction to prevent overflow */
-        white-space: nowrap !important;      /* Stops text wrapping onto weird mini-rows */
+        font-size: 0.75rem !important;        /* Crisper typography scale to make room for horizontal spacing */
+        white-space: nowrap !important;       /* Hard locks text on single line */
         text-decoration: none !important;
         padding: 4px 2px !important;
     }
 
-    /* 4. Dynamic Custom Request Button Scaling */
+    /* Fix Custom Request Box Overflow */
     .nav-cta {
         display: inline-block !important;
-        padding: 6px 10px !important;        /* Balanced inside padding */
-        font-size: 0.78rem !important;
+        padding: 5px 8px !important;          /* Trimmed side padding so it fits screens completely */
+        font-size: 0.75rem !important;
+        border: 1px solid #ff0000 !important;
         border-radius: 4px !important;
-        flex-shrink: 1 !important;           /* Safely allows button to scale down slightly if screen gets tight */
     }
 
-    /* 5. Keep the exact layout from 10028.jpg for the Hero Section */
+    /* 4. Keep Layout Elements from 10028.jpg for the Hero Block */
     .hero-buttons {
         display: flex !important;
         flex-direction: column !important;
