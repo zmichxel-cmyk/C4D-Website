@@ -508,80 +508,82 @@ h2 {
 }
 
 /* ==========================================
-   FORCE MOBILE RESPONSIVE OVERRIDES
+   TARGETED MOBILE HEADER FIX
    ========================================== */
 @media screen and (max-width: 768px) {
     
-    /* 1. FORCE LOGO TO OVERRIDE ALL CONTROLS */
+    /* 1. Perfect the Horizontal Header Row */
     .main-nav {
         display: flex !important;
-        flex-direction: column !important;
+        flex-direction: row !important;      /* Lock everything side-by-side */
         align-items: center !important;
-        justify-content: center !important;
-        padding: 25px 10px 15px 10px !important;
+        justify-content: space-between !important;
+        padding: 15px 10px !important;
         width: 100% !important;
         box-sizing: border-box !important;
     }
 
+    /* 2. Scale Up Logo Dominance */
     .main-nav .logo {
-        width: 100% !important;
         display: flex !important;
-        justify-content: center !important;
-        margin: 0 auto 10px auto !important;
+        align-items: center !important;
+        justify-content: flex-start !important;
+        flex: 0 0 35% !important;            /* Allocates 35% of the total row width */
     }
 
     .main-nav .logo img {
-        width: auto !important;
-        height: 80px !important;       /* Explicit physical height overwrite */
-        max-height: 80px !important;   /* Hard ceiling limit break */
+        width: 100% !important;              /* Forces image to scale up to the full 35% box */
+        max-width: 130px !important;         /* Keeps it from getting obnoxiously huge */
+        height: auto !important;
         object-fit: contain !important;
         display: block !important;
     }
 
-    /* 2. FORCE NAV LINKS TO STACK / WRAP CLEANLY */
+    /* 3. Shift and Tighten Navigation Links */
     .main-nav nav {
         display: flex !important;
-        flex-direction: row !important;
-        flex-wrap: wrap !important;     /* Forces drop down if links run out of room */
-        justify-content: center !important;
+        flex-direction: row !important;      /* Keep links traveling horizontally */
         align-items: center !important;
-        gap: 10px !important;
-        width: 100% !important;
+        justify-content: flex-end !important;
+        flex: 0 0 65% !important;            /* Allocates the remaining row width */
+        gap: 8px !important;                 /* Tight spacing to fit tiny screens */
     }
 
     .main-nav nav a {
-        font-size: 0.9rem !important;
-        padding: 6px 10px !important;
-        white-space: nowrap !important; /* Blocks text tracking separation */
+        font-size: 0.78rem !important;       /* Clean size reduction to prevent overflow */
+        white-space: nowrap !important;      /* Stops text wrapping onto weird mini-rows */
+        text-decoration: none !important;
+        padding: 4px 2px !important;
     }
 
+    /* 4. Dynamic Custom Request Button Scaling */
     .nav-cta {
         display: inline-block !important;
-        padding: 6px 12px !important;
+        padding: 6px 10px !important;        /* Balanced inside padding */
+        font-size: 0.78rem !important;
+        border-radius: 4px !important;
+        flex-shrink: 1 !important;           /* Safely allows button to scale down slightly if screen gets tight */
     }
 
-    /* 3. FORCE PERFECT CENTER BUTTON ALIGNMENT */
+    /* 5. Keep the exact layout from 10028.jpg for the Hero Section */
     .hero-buttons {
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;    /* Absolute center axis anchor */
+        align-items: center !important;
         justify-content: center !important;
         gap: 15px !important;
         width: 100% !important;
-        padding: 0 !important;
-        margin: 25px auto 0 auto !important;
+        margin-top: 25px !important;
     }
 
-    /* Target both link wrappers and buttons strictly */
     .hero-buttons a, 
-    .hero-buttons button,
-    .hero-buttons .btn {
+    .hero-buttons button {
         display: block !important;
-        width: 85% !important;            /* Hard matches container layout sizes */
-        max-width: 290px !important;      /* Equalizes exact shape limits */
+        width: 85% !important;
+        max-width: 280px !important;
         padding: 14px 0 !important;
-        box-sizing: border-box !important;/* Locks border/padding calculations together */
-        margin: 0 auto !important;        /* Centers element box footprints */
+        box-sizing: border-box !important;
+        margin: 0 auto !important;
         text-align: center !important;
     }
 }
