@@ -1,118 +1,83 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Controller Overlays | Customs4Daez</title>
-    <link rel="stylesheet" href="css/style.css">
+/* --- Global Variables & Resets --- */
+:root {
+    --bg-dark: #0f0f12;
+    --bg-card: #16161a;
+    --text-main: #ffffff;
+    --text-muted: #a0a0aa;
+    --accent-color: #ff3344;
+    --accent-glow: rgba(255, 51, 68, 0.2);
+}
 
-    <style>
-    @media screen and (max-width: 768px) {
-        /* 1. Smash the massive black empty space footprint */
-        header.main-header {
-            height: auto !important;
-            min-height: unset !important;
-            max-height: unset !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
+* { box-sizing: border-box; margin: 0; padding: 0; }
 
-        /* 2. Force identical stacked column spacing */
-        .main-nav {
-            display: flex !important;
-            flex-direction: column !important; 
-            align-items: center !important;    
-            justify-content: center !important;
-            text-align: center !important;
-            padding: 25px 10px 15px 10px !important; /* Tight header height margins */
-            width: 100% !important;
-            box-sizing: border-box !important;
-            gap: 12px !important;
-        }
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
 
-        /* 3. Hard-Center the Logo Box and Image Assets */
-        .main-nav .logo {
-            display: flex !important;
-            justify-content: center !important; 
-            align-items: center !important;
-            width: 100% !important;
-            margin: 0 auto !important;         
-        }
+/* --- Layout Wrappers --- */
+.section-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px; }
+h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; }
 
-        .main-nav .logo a {
-            display: flex !important;
-            justify-content: center !important; 
-            align-items: center !important;
-            width: 100% !important;
-        }
+/* --- Navigation Bar --- */
+.main-nav {
+    display: flex; justify-content: space-between; align-items: center; padding: 20px 40px;
+    background: rgba(15, 15, 18, 0.85); backdrop-filter: blur(10px);
+    position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #24242b;
+}
 
-        .main-nav .logo img {
-            width: 85% !important;        
-            max-width: 290px !important;  /* Matches the massive custom page size */
-            height: auto !important;       
-            object-fit: contain !important;
-            display: block !important;
-            margin: 0 auto !important;     /* Hard anchor to the dead-center axis */
-        }
+.logo { font-size: 1.5rem; font-weight: 900; letter-spacing: -1px; display: flex; align-items: center; width: 210px; height: 100px; overflow: hidden; }
+.logo span { color: var(--accent-color); }
+.logo img { width: 100%; height: auto; display: block; object-fit: contain; }
 
-        /* 4. Keep Links Row Perfectly Centered Underneath */
-        .main-nav nav {
-            display: flex !important;
-            flex-direction: row !important; 
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 14px !important;         
-            width: 100% !important;
-            margin: 0 auto !important;
-        }
+.main-nav nav a { color: var(--text-muted); text-decoration: none; margin-left: 24px; font-weight: 500; transition: color 0.2s; }
+.main-nav nav a:hover { color: var(--text-main); }
+.main-nav nav a.nav-cta { color: var(--accent-color); border: 1px solid var(--accent-color); padding: 6px 16px; border-radius: 4px; }
+.main-nav nav a.nav-cta:hover { background: var(--accent-color); color: #000; }
+.logo a { color: var(--accent-color); text-decoration: none; font-size: 1.3rem; font-weight: 900; text-transform: uppercase; letter-spacing: -0.5px; }
 
-        .main-nav nav a {
-            font-size: 0.8rem !important; 
-            white-space: nowrap !important; 
-            text-decoration: none !important;
-            padding: 4px 2px !important;
-        }
+/* --- Hero Section --- */
+.hero { text-align: center; padding: 100px 20px; background: radial-gradient(circle at center, #1b1214 0%, var(--bg-dark) 70%); }
+.hero h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 20px; }
+.hero h1 span { color: var(--accent-color); }
+.hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 40px auto; font-size: 1.2rem; }
 
-        .nav-cta {
-            display: inline-block !important;
-            padding: 5px 10px !important;
-            border: 1px solid #ff0000 !important;
-            border-radius: 4px !important;
-        }
-    }
-    </style>
-</head>
-<body>
+/* --- Store Grid --- */
+.store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+.store-card { background: var(--bg-card); border: 1px solid #24242b; border-radius: 8px; overflow: hidden; transition: transform 0.2s, border-color 0.2s, box-shadow 0.2s; }
+.store-card:hover { transform: translateY(-4px); border-color: var(--accent-color); box-shadow: 0 12px 24px var(--accent-glow); }
+.media-frame { width: 100%; aspect-ratio: 16 / 9; background: #000; overflow: hidden; }
+.media-frame video { width: 100%; height: 100%; object-fit: cover; }
+.card-info { padding: 20px; }
+.card-info h3 { font-size: 1.1rem; margin-bottom: 15px; }
+.card-footer { display: flex; justify-content: space-between; align-items: center; }
+.price { font-size: 1.3rem; font-weight: 700; }
 
-    <header class="main-header">
-        <div class="main-nav">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="./assets/images/logo.png" alt="Customs4Daez Logo">
-                </a>
-            </div>
-            <nav>
-                <a href="showroom.html">Showroom</a>
-                <a href="free-overlays.html">Free Overlays</a>
-                <a href="custom.html" class="nav-cta">Custom Request</a>
-            </nav>
-        </div>
-    </header>
+/* --- Buttons & UI --- */
+.btn-primary, .btn-buy { background: var(--accent-color); color: #000; padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; transition: opacity 0.2s; }
+.btn-buy { padding: 8px 16px; }
+.btn-primary:hover, .btn-buy:hover { opacity: 0.9; }
+.btn-secondary { color: var(--text-main); border: 1px solid #3f3f46; padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 600; margin-left: 15px; }
 
-    <section class="hero">
-        <h1>PRO-GRADE <span>CSS CONTROLLER</span> OVERLAYS</h1>
-        <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
-        <div class="hero-buttons">
-            <a href="showroom.html" class="btn-primary">Browse Premium</a>
-            <a href="free-overlays.html" class="btn-secondary">Grab Free Themes</a>
-        </div>
-    </section>
+/* --- Form Page --- */
+.form-container { max-width: 650px; margin: 60px auto; padding: 0 20px; }
+.brief-form { background: var(--bg-card); border: 1px solid #24242b; padding: 30px; border-radius: 8px; }
+.form-group { margin-bottom: 24px; }
+.form-group label { display: block; font-weight: 600; margin-bottom: 8px; font-size: 0.9rem; text-transform: uppercase; letter-spacing: 0.5px; color: var(--text-main); }
+.form-group input, .form-group select, .form-group textarea { width: 100%; background: var(--bg-dark); border: 1px solid #3f3f46; color: var(--text-main); padding: 12px; border-radius: 4px; font-size: 1rem; font-family: inherit; outline: none; }
+.form-group input:focus, .form-group select:focus, .form-group textarea:focus { border-color: var(--accent-color); box-shadow: 0 0 8px var(--accent-glow); }
+.btn-submit { display: block; width: 100%; background: var(--accent-color); color: #000; border: none; padding: 14px; font-size: 1.1rem; font-weight: 700; border-radius: 4px; cursor: pointer; text-transform: uppercase; margin-top: 10px; }
+.btn-submit:hover { opacity: 0.9; }
 
-    <section class="custom-cta-block" style="padding: 60px 20px; text-align: center;">
-        <h2>Need a 1-of-1 Exclusive Design?</h2>
-        <p style="margin-bottom: 25px; color: #ccc;">Get a completely personalized layout matched exactly to your stream's brand identity, color schemes, and custom channel graphics.</p>
-        <a href="custom.html" class="btn-primary large">Launch the Custom Design Brief</a>
-    </section>
+/* --- Steps Component --- */
+.steps-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 30px; margin-top: 20px; }
+.step-card { background: #111111; border: 1px solid #222222; border-radius: 6px; padding: 40px 30px 40px 110px !important; position: relative; pointer-events: none; }
+.step-num { font-size: 4.5rem; font-weight: 900; font-family: 'Impact', 'Arial Black', sans-serif; position: absolute; top: 20px; left: 15px !important; line-height: 1; z-index: 1; }
 
-</body>
-</html>
+/* --- Mobile Responsiveness --- */
+@media screen and (max-width: 768px) {
+    .main-nav { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 15px !important; }
+    .hero h1 { font-size: 2.1rem !important; }
+}
