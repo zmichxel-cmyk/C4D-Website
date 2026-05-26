@@ -89,38 +89,30 @@
     </div>
     </header>
 
-    <main class="free-overlays-page-wrapper" style="padding: 40px 20px; max-width: 1200px; margin: 0 auto;">
-        
-        <div class="section-title" style="text-align: center; margin-bottom: 40px;">
-            <h1 style="font-size: 2.5rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">
-                Free <span style="color: #ff0000;">Overlays</span>
-            </h1>
-            <p style="color: #aaa; font-size: 1rem; margin-top: 10px;">
-                Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.
-            </p>
+    <main class="section-container">
+    <h2 style="text-align: center;">FREE OVERLAYS</h2>
+    <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;">
+        Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.
+    </p>
+
+    <div class="store-grid">
+        <!-- Overlay Card Start -->
+        <div class="store-card">
+            <div class="media-frame" style="background: #111;">
+                <!-- Your preview image or video goes here -->
+            </div>
+            <div class="card-info">
+                <h3>Classic White (Xbox Layout)</h3>
+                <!-- Use your existing URL Copy Box inside the card -->
+                <div class="url-copy-box">
+                    <input type="text" value="https://yourname.github.io/file" readonly>
+                    <button onclick="copyToClipboard(this)">Copy</button>
+                </div>
+            </div>
         </div>
-
-        <div class="store-grid">
-            
-            <div class="store-card free-card">
-                <div class="media-frame">
-                    <video autoplay loop muted playsinline>
-                        <source src="assets/previews/classic-white-free.mp4" type="video/mp4">
-                    </video>
-                </div>
-                <div class="card-info free-card-details" style="padding: 15px 0 0 0;">
-                    <h3 style="color: #fff; margin-bottom: 15px;">Classic White (Xbox Layout)</h3>
-                    
-                    <div class="link-copier-container">
-                        <input type="text" id="xbox-free-url" value="https://yourname.github.io/free-xbox-overlay" readonly>
-                        <button onclick="copyOverlayLink('xbox-free-url', this)" class="btn-copy">Copy Link</button>
-                    </div>
-                </div>
-            </div>
-            
-            </div>
-
-    </main>
+        <!-- Overlay Card End -->
+    </div>
+</main>
 
     <script>
     function copyOverlayLink(inputId, buttonElement) {
