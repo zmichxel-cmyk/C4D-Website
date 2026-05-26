@@ -533,8 +533,8 @@ h2 {
             margin: 0 auto !important;
         }
         .main-nav .logo img {
-            width: 65% !important;        /* Scales the image dynamically across the screen width */
-            max-width: 220px !important;  /* Higher ceiling cap so it can actually grow large */
+            width: 85% !important;        /* Scales the image dynamically across the screen width */
+            max-width: 290px !important;  /* Higher ceiling cap so it can actually grow large */
             height: auto !important;       /* Maintains crisp, un-stretched aspect ratio */
             object-fit: contain !important;
             display: block !important;
