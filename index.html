@@ -13,10 +13,10 @@
 
     <style>
     @media screen and (max-width: 768px) {
-        /* 1. Force the container to stack vertically and center */
+        /* Force container stacking */
         .main-nav {
             display: flex !important;
-            flex-direction: column !important; /* Logo on top, links on bottom */
+            flex-direction: column !important;
             align-items: center !important;
             justify-content: center !important;
             padding: 30px 10px 15px 10px !important;
@@ -25,7 +25,7 @@
             gap: 15px !important;
         }
 
-        /* 2. Scale the Logo up cleanly in the center */
+        /* Enforce huge logo tracking */
         .main-nav .logo {
             display: flex !important;
             justify-content: center !important;
@@ -35,67 +35,35 @@
             padding: 10px 0 !important;
         }
         .main-nav .logo img {
-            width: 85% !important;        /* Matches the perfect huge custom page size */
-            max-width: 290px !important;  /* High ceiling cap so it can stretch out */
-            height: auto !important;       /* Maintains crisp aspect ratio */
+            width: 85% !important;        /* Matches custom.html size perfectly */
+            max-width: 290px !important;  /* Completely breaks the old small limit boundaries */
+            height: auto !important;
             object-fit: contain !important;
             display: block !important;
         }
 
-        /* 3. Keep text links horizontal and centered beneath it */
+        /* Keep links row horizontal and centered underneath */
         .main-nav nav {
             display: flex !important;
-            flex-direction: row !important; /* Keeps links traveling side-by-side */
+            flex-direction: row !important;
             justify-content: center !important;
             align-items: center !important;
-            gap: 12px !important; /* Tight spacing so nothing wraps lines */
+            gap: 12px !important;
             width: 100% !important;
         }
         .main-nav nav a {
-            font-size: 0.8rem !important; /* Smaller text scale to cleanly fit screens */
-            white-space: nowrap !important; /* Absolute shield against text breaking down */
+            font-size: 0.8rem !important;
+            white-space: nowrap !important;
             text-decoration: none !important;
             padding: 4px 2px !important;
         }
 
-        /* Secure the custom request border boundary box */
+        /* Red custom link CTA box bounds */
         .nav-cta {
             display: inline-block !important;
             padding: 5px 10px !important;
             border: 1px solid #ff0000 !important;
             border-radius: 4px !important;
-        }
-
-        /* 4. Fix Hero Text Layout & Lower Subtext Scale */
-        main h1, .hero h1 {
-            font-size: 2.1rem !important;
-            line-height: 1.15 !important;
-            text-align: center !important;
-            margin: 30px auto 12px auto !important;
-        }
-        main p, .hero p {
-            font-size: 0.88rem !important; /* Scaled down smaller text layout */
-            line-height: 1.4 !important;
-            max-width: 90% !important;
-            margin: 0 auto 20px auto !important;
-        }
-
-        /* Center both hero buttons down the exact middle line */
-        .hero-buttons {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            gap: 14px !important;
-            width: 100% !important;
-        }
-        .hero-buttons a, .hero-buttons button {
-            display: block !important;
-            width: 85% !important;
-            max-width: 280px !important;
-            padding: 13px 0 !important;
-            margin: 0 auto !important;
-            text-align: center !important;
         }
     }
     </style>
@@ -104,10 +72,10 @@
 <body>
 
     <!-- 1. NAVIGATION -->
-     <header class="main-header">
+   <header class="main-header" style="width: 100% !important; height: auto !important; min-height: unset !important; max-height: unset !important;">
     <div class="main-nav">
-        <div class="logo">
-            <a href="index.html">
+        <div class="logo" style="width: 100% !important; max-height: unset !important; height: auto !important;">
+            <a href="index.html" style="display: block !important; width: 100% !important; height: auto !important;">
                 <img src="./assets/images/logo.png" alt="Customs4Daez Logo">
             </a>
         </div>
