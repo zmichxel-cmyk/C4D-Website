@@ -610,7 +610,7 @@ h2 {
 }
 
 /* ==========================================
-   HOW IT WORKS COMPONENT STYLES (SNAPPY LOOP)
+   HOW IT WORKS COMPONENT STYLES (RAPID LOOP)
    ========================================== */
 .steps-grid {
     display: grid;
@@ -629,14 +629,14 @@ h2 {
     text-align: left;
     overflow: hidden;
 
-    /* SNAPPY LOOP: Total loop is 6 seconds now */
-    animation: fastCardPulse 6s infinite ease-in-out; 
+    /* RAPID LOOP: Total loop window slashed to 3 seconds */
+    animation: rapidCardPulse 3s infinite cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
-/* 2-second staggered entry delays */
+/* Precise 1-second staggered entry delays */
 .step-card:nth-child(1) { animation-delay: 0s; }
-.step-card:nth-child(2) { animation-delay: 2s; }
-.step-card:nth-child(3) { animation-delay: 4s; }
+.step-card:nth-child(2) { animation-delay: 1s; }
+.step-card:nth-child(3) { animation-delay: 2s; }
 
 
 .step-num {
@@ -650,17 +650,17 @@ h2 {
     line-height: 1;
     z-index: 1;
 
-    /* SNAPPY LOOP: Coordinates perfectly with the card frame speed */
-    animation: fastNumberFade 6s infinite ease-in-out;
+    /* RAPID LOOP: Matches card frame acceleration exactly */
+    animation: rapidNumberFade 3s infinite cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Matching 2-second staggered entry delays for numbers */
+/* Matching 1-second staggered entry delays for numbers */
 .step-card:nth-child(1) .step-num { animation-delay: 0s; }
-.step-card:nth-child(2) .step-num { animation-delay: 2s; }
-.step-card:nth-child(3) .step-num { animation-delay: 4s; }
+.step-card:nth-child(2) .step-num { animation-delay: 1s; }
+.step-card:nth-child(3) .step-num { animation-delay: 2s; }
 
 
-/* Layering text elements cleanly on top */
+/* Foreground Text Styles */
 .step-card h3,
 .step-card p {
     position: relative;
@@ -682,7 +682,7 @@ h2 {
     margin: 0;
 }
 
-/* Keep standard desktop hover properties working cleanly */
+/* Desktop Hover States */
 @media (hover: hover) {
     .step-card:hover {
         transform: translateY(-5px);
@@ -690,7 +690,7 @@ h2 {
     }
 }
 
-/* Mobile Layout Continuity */
+/* Mobile Responsiveness */
 @media screen and (max-width: 900px) {
     .steps-grid {
         grid-template-columns: 1fr;
@@ -703,17 +703,17 @@ h2 {
 }
 
 /* ==========================================
-   ANIMATION KEYFRAMES (6S TOTAL WINDOW)
+   ANIMATION KEYFRAMES (3S TOTAL WINDOW)
    ========================================== */
 
-/* Card Frame Highlight: Peaks quickly at the 1/3rd mark, then resets */
-@keyframes fastCardPulse {
+/* Card Frame Highlight: Snaps to peak instantly, then drops back to dark */
+@keyframes rapidCardPulse {
     0%, 33.3%, 100% { border-color: #222222; }
-    16.6% { border-color: rgba(255, 0, 0, 0.8); }
+    12% { border-color: rgba(255, 0, 0, 0.9); } /* Punchy crisp flash peak */
 }
 
-/* Number Fade Highlight: Pumps visibility up bright, then drops back down */
-@keyframes fastNumberFade {
-    0%, 33.3%, 100% { color: rgba(255, 0, 0, 0.05); opacity: 0.4; }
-    16.6% { color: rgba(255, 0, 0, 0.25); opacity: 1; }
+/* Number Fade Highlight: Sharp, clean illumination pop */
+@keyframes rapidNumberFade {
+    0%, 33.3%, 100% { color: rgba(255, 0, 0, 0.04); opacity: 0.3; }
+    12% { color: rgba(255, 0, 0, 0.3); opacity: 1; }
 }
