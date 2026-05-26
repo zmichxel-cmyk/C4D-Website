@@ -643,7 +643,8 @@ h2 {
     font-family: Arial, sans-serif;
     position: absolute;
     top: 10px;
-    left: 15px; /* Moved from right: 20px to left: 15px */
+    left: 15px !important;  /* <--- Make sure this is 'left' and add !important to force it */
+    right: auto !important; /* <--- Add this to completely override the old 'right' setting */
     line-height: 1;
 }
 
