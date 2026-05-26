@@ -610,8 +610,11 @@ h2 {
     text-align: left;
     overflow: hidden;
 
-    /* LOW-GEAR DESKTOP TIMING: 7.5s master loop for a smooth wave effect */
+    /* LOW-GEAR DESKTOP TIMING */
     animation: rapidCardPulse 7.5s infinite ease-in-out; 
+
+    /* NUKES ALL CLICK, TAP, AND HOVER EVENTS ENTIRELY */
+    pointer-events: none;
 }
 
 .step-num {
