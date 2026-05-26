@@ -3,67 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Success | Customs4Daez</title>
+    <title>Submission Received | Customs4Daez</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-    /* 1. The Container Box */
-    .success-box {
-        background: #16161a; /* Matches your form background */
-        border: 1px solid #24242b;
-        border-radius: 8px;
-        padding: 40px;
-        margin: 40px auto;
-        max-width: 600px;
-        text-align: center;
-    }
-
-    .success-box h1 { margin-bottom: 20px; color: #ff3344; }
-    .success-box p { color: #ccc; margin-bottom: 15px; }
-
-    /* 2. The Button Box */
-    .btn-return {
-        display: inline-block;
-        background: #ff3344;
-        color: #000;
-        padding: 12px 24px;
-        border-radius: 4px;
-        text-decoration: none;
-        font-weight: 700;
-        margin-top: 20px;
-        transition: opacity 0.2s;
-    }
-    .btn-return:hover { opacity: 0.9; }
-</style>
 </head>
 <body>
 
-    <header class="main-header">
-        <div class="main-nav">
-            <div class="logo">
-                <a href="index.html">
-                    <img src="./assets/images/logo.png" alt="Customs4Daez Logo">
-                </a>
-            </div>
-            <nav>
-                <a href="showroom.html">Showroom</a>
-                <a href="free-overlays.html">Free Overlays</a>
-                <a href="custom.html" class="nav-cta">Custom Request</a>
-            </nav>
+    <header class="main-nav">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="My Brand Logo">
         </div>
+        <nav>
+            <a href="index.html#showroom">Showroom</a>
+            <a href="index.html#free">Free Overlays</a>
+            <a href="custom.html" class="nav-cta">Custom Request</a>
+        </nav>
     </header>
 
-    <main class="section-container">
-    <div class="success-box">
-        <h1>DESIGN BRIEF RECEIVED</h1>
-        <p>Your details have been successfully transmitted to the ezCrew design dashboard.</p>
-        
-        <h3 style="color: #fff; margin-top: 25px;">What happens next?</h3>
-        <p>I will review your aesthetic preferences and chosen controller layout style.</p>
-        <p>A structured response alongside your 1-of-1 deposit invoice will hit your inbox within 24 hours.</p>
-        <p>Once the deposit clears, your milestone slot is locked onto the production calendar.</p>
-        
-        <a href="index.html" class="btn-return">Return to Storefront</a>
-    </div>
-</main>
+    <main class="success-container">
+        <div class="success-card">
+            <div class="success-icon">✓</div>
+            
+            <h1>DESIGN BRIEF RECEIVED</h1>
+            <p>Your details have been successfully transmitted to the ezCrew design dashboard.</p>
+            
+            <div class="next-steps-box">
+                <h3>What happens next?</h3>
+                <ul>
+                    <li>I will review your aesthetic preferences and chosen controller layout style.</li>
+                    <li>A structured response alongside your 1-of-1 deposit invoice will hit your inbox within 24 hours.</li>
+                    <li>Once the deposit clears, your milestone slot is locked onto the production calendar.</li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="btn-return">Return to Storefront</a>
+        </div>
+    </main>
+
 </body>
 </html>
