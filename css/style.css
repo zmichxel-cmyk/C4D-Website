@@ -610,8 +610,8 @@ h2 {
     text-align: left;
     overflow: hidden;
 
-    /* DESKTOP ENGINE BY DEFAULT: 2.1s high-speed tracking loop */
-    animation: rapidCardPulse 2.1s infinite cubic-bezier(0.25, 1, 0.5, 1); 
+    /* RE-TUNED DESKTOP ENGINE: Slowed down to a smooth 3.6s total loop */
+    animation: rapidCardPulse 3.6s infinite cubic-bezier(0.25, 1, 0.5, 1); 
 }
 
 .step-num {
@@ -625,14 +625,14 @@ h2 {
     line-height: 1;
     z-index: 1;
 
-    /* DESKTOP TIMELINE FOR NUMBER GLOWS */
-    animation: rapidNumberFade 2.1s infinite cubic-bezier(0.25, 1, 0.5, 1);
+    /* RE-TUNED DESKTOP TIMELINE FOR NUMBER GLOWS */
+    animation: rapidNumberFade 3.6s infinite cubic-bezier(0.25, 1, 0.5, 1);
 }
 
-/* Default Desktop 0.7s Sequential Steps Splits */
+/* Stately 1.2s Sequential Step Splits for Desktop Windows */
 .step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s; }
-.step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 0.7s; }
-.step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 1.4s; }
+.step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 1.2s; }
+.step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 2.4s; }
 
 /* Foreground Layer Stack */
 .step-card h3,
@@ -675,18 +675,18 @@ h2 {
     
     .step-card {
         padding: 35px 25px 35px 110px !important;
-        /* Drops back down to 3.0s tracking layout loop on mobile viewports */
-        animation-duration: 3s !important;
+        /* Slowed down to a relaxed 4.5s loop for easy reading while scrolling */
+        animation-duration: 4.5s !important;
     }
 
     .step-num {
-        animation-duration: 3s !important;
+        animation-duration: 4.5s !important;
     }
 
-    /* Stretches timing increments back out to clean 1.0s splits for vertical stacks */
+    /* 1.5s incremental pacing updates for vertical mobile stacks */
     .step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s !important; }
-    .step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 1s !important; }
-    .step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 2s !important; }
+    .step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 1.5s !important; }
+    .step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 3.0s !important; }
 }
 
 /* ==========================================
