@@ -140,5 +140,15 @@
     }
     </script>
 
+    <script>
+function copyToClipboard(button) {
+    const input = button.previousElementSibling;
+    input.select();
+    document.execCommand("copy");
+    button.innerText = "Copied!";
+    setTimeout(() => { button.innerText = "Copy Link"; }, 2000);
+}
+</script>
+
 </body>
 </html>
