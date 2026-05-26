@@ -7,19 +7,39 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
-    <header>
+
+    <header class="main-nav">
+        <div class="logo">Customs4<span>Daez</span></div>
         <nav>
             <a href="index.html">Home</a>
             <a href="showroom.html">Showroom</a>
-            <a href="overlays.html" class="active">Free Overlays</a>
-            <a href="custom.html">Customs</a>
+            <a href="overlays.html">Free Overlays</a>
+            <a href="custom.html" class="nav-cta">Custom Request</a>
         </nav>
     </header>
 
-    <main>
-        <h1>Free Overlays</h1>
-        <p>Download free assets for your streams.</p>
-        <!-- Add your download links here -->
-    </main>
+    <section id="free" class="section-container free-tier">
+        <h2>Free Watermarked Layouts</h2>
+        <div class="store-grid">
+            <!-- Add your store-card items here -->
+        </div>
+    </section>
+
+    <!-- Script for your link copier -->
+    <script>
+    function copyOverlayLink(inputId, buttonElement) {
+        const copyText = document.getElementById(inputId);
+        copyText.select();
+        navigator.clipboard.writeText(copyText.value).then(() => {
+            const originalText = buttonElement.innerText;
+            buttonElement.innerText = "Copied!";
+            buttonElement.classList.add("copied-success");
+            setTimeout(() => {
+                buttonElement.innerText = originalText;
+                buttonElement.classList.remove("copied-success");
+            }, 2000);
+        });
+    }
+    </script>
 </body>
 </html>
