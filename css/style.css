@@ -511,18 +511,25 @@ h2 {
    FINAL MOBILE RESPONSIVE POLISH
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. Perfect the Mobile Header Layout */
+    /* 1. Give the Logo Full Dominance */
     .main-nav {
-        padding: 15px 10px;
-        flex-direction: column; /* Stacks logo cleanly over the links */
+        padding: 20px 10px 10px 10px;
+        flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 15px; /* Added spacing between logo and nav row */
+        gap: 15px;
+    }
+
+    .main-nav .logo {
+        width: 100%;
+        display: flex;
+        justify-content: center;
     }
 
     .main-nav .logo img {
-        max-height: 40px; /* Perfectly scales your logo for phones */
+        max-height: 80px; /* Doubled the size so your branding takes up the whole top space */
         width: auto;
+        object-fit: contain;
     }
 
     .main-nav nav {
@@ -530,56 +537,60 @@ h2 {
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 20px; /* Generous physical gap between link tap targets */
+        gap: 15px;
         width: 100%;
     }
 
     .main-nav nav a {
-        font-size: 0.95rem;
-        font-weight: 500;
-        text-decoration: none;
-        white-space: nowrap; /* Forces links to stay cleanly on a single line */
-    }
-
-    /* 2. Style the Mobile Custom Request CTA Button */
-    .nav-cta {
-        padding: 8px 14px;
         font-size: 0.9rem;
-        display: inline-block;
-        border-radius: 4px;
+        white-space: nowrap;
     }
 
-    /* 3. Fix and Space Out the Main Homepage Buttons */
-    .hero-buttons,
-    .main-nav + main div:has(.btn-submit) {
+    .nav-cta {
+        padding: 6px 12px;
+    }
+
+    /* 2. Tighten & Organize the Hero Headline */
+    /* Target the container holding your massive homepage text */
+    main h1, 
+    .hero h1 {
+        font-size: 2.2rem;       /* Scales down the font size so words don't break onto single lines */
+        line-height: 1.1;        /* Squeezes the spacing between lines tightly together */
+        letter-spacing: -0.5px;  /* Packs the letters together for a clean, aggressive look */
+        text-align: center;
+        max-width: 90%;          /* Keeps the text organized in a structured block */
+        margin: 25px auto 15px auto; /* Knocks down the excessive empty spaces */
+    }
+
+    /* If 'CSS' or specific words are wrapped in tags, keep them tightly bound */
+    main h1 span, 
+    .hero h1 span {
+        display: inline;
+        font-size: inherit;
+    }
+
+    /* Tighten the subtext below the headline */
+    main p, 
+    .hero p {
+        font-size: 0.95rem;
+        line-height: 1.4;
+        max-width: 85%;
+        margin: 0 auto 20px auto;
+    }
+
+    /* 3. Action Buttons */
+    .hero-buttons {
         display: flex;
-        flex-direction: column; /* Clean vertical stack for thumb navigation */
+        flex-direction: column;
         align-items: center;
-        gap: 15px;
+        gap: 12px;
         width: 100%;
-        margin-top: 30px;
     }
 
-    .hero-buttons a, 
-    .hero-buttons button {
+    .hero-buttons a {
         display: block;
-        width: 88%; /* Perfect margin-free profile width on mobile displays */
+        width: 80%;
+        padding: 12px 0;
         text-align: center;
-        padding: 14px 0;
-        box-sizing: border-box;
-        font-size: 1.05rem;
-    }
-
-    /* 4. Form Container Clean Layout */
-    .form-container {
-        width: 90%;
-        margin: 25px auto;
-        padding: 20px;
-    }
-
-    .form-container h1 {
-        font-size: 1.6rem;
-        text-align: center;
-        letter-spacing: 1px;
     }
 }
