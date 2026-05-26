@@ -29,15 +29,13 @@
     color: #00ff00;
 }
 
-/* Add any of your other existing CSS rules here... */
-
 /* --- Global Variables & Resets --- */
 :root {
     --bg-dark: #0f0f12;
     --bg-card: #16161a;
     --text-main: #ffffff;
     --text-muted: #a0a0aa;
-    --accent-color: #ff3344; /* Vivid Neon Red */
+    --accent-color: #ff3344;
     --accent-glow: rgba(255, 51, 68, 0.2);
 }
 
@@ -83,9 +81,13 @@ h2 {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 900;
-    letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+}
+
+.logo img {
+    height: 50px;
+    width: auto;
 }
 
 .logo span {
@@ -273,21 +275,4 @@ h2 {
     color: var(--text-muted);
     max-width: 600px;
     margin: 0 auto 30px auto;
-}
-
-/* 1. Reset the outer box */
-.logo {
-    display: flex;
-    align-items: center;
-    width: 210px;        /* FORCES the outer box to be exactly this wide, no matter what */
-    height: 100px;        /* Adjust to match your navbar height */
-    overflow: hidden;    /* Safety net: cuts off any invisible bleeding space */
-}
-
-/* 2. Control the scale using WIDTH instead of height */
-.logo img {
-    width: 100%;         /* Forces the logo to fit perfectly inside the 180px box */
-    height: auto;        /* Let the height adjust naturally without stretching */
-    display: block;
-    object-fit: contain; /* Keeps it sharp and centered */
 }
