@@ -53,10 +53,22 @@ h2 {
     font-size: 1.5rem;
     font-weight: 900;
     letter-spacing: -1px;
+    display: flex;
+    align-items: center;
+    width: 210px;        /* FORCES the outer box to be exactly this wide */
+    height: 100px;       /* Adjust to match your navbar height */
+    overflow: hidden;    /* Safety net: cuts off any invisible bleeding space */
 }
 
 .logo span {
     color: var(--accent-color);
+}
+
+.logo img {
+    width: 100%;         /* Forces the logo to fit perfectly inside the box */
+    height: auto;        /* Let the height adjust naturally without stretching */
+    display: block;
+    object-fit: contain; /* Keeps it sharp and centered */
 }
 
 .main-nav nav a {
@@ -242,23 +254,6 @@ h2 {
     margin: 0 auto 30px auto;
 }
 
-/* 1. Reset the outer box */
-.logo {
-    display: flex;
-    align-items: center;
-    width: 210px;        /* FORCES the outer box to be exactly this wide, no matter what */
-    height: 100px;        /* Adjust to match your navbar height */
-    overflow: hidden;    /* Safety net: cuts off any invisible bleeding space */
-}
-
-/* 2. Control the scale using WIDTH instead of height */
-.logo img {
-    width: 100%;         /* Forces the logo to fit perfectly inside the 180px box */
-    height: auto;        /* Let the height adjust naturally without stretching */
-    display: block;
-    object-fit: contain; /* Keeps it sharp and centered */
-}
-
 /* --- Custom Form Page Styling --- */
 .form-container {
     max-width: 650px;
@@ -317,7 +312,6 @@ h2 {
     transition: border-color 0.2s;
 }
 
-/* Gives input fields a neon red glow outline when clicked */
 .form-group input:focus,
 .form-group select:focus,
 .form-group textarea:focus {
@@ -362,7 +356,6 @@ h2 {
     border: 1px solid #24242b;
 }
 
-/* The URL input box styling */
 .link-copier-container input {
     flex: 1;
     background: transparent;
@@ -374,7 +367,6 @@ h2 {
     outline: none;
 }
 
-/* The default Copy Button styling */
 .btn-copy {
     background: #24242b;
     color: var(--text-main);
@@ -393,10 +385,8 @@ h2 {
     border-color: #52525b;
 }
 
-/* --- The Magic Flash Style --- */
-/* This class is automatically applied by JavaScript on click, then removed */
 .btn-copy.copied-success {
-    background: #b91010 !important; /* Premium Emerald Green success flash */
+    background: #b91010 !important; /* Premium success flash */
     color: #000 !important;
     border-color: #c21010 !important;
     box-shadow: 0 0 10px rgba(185, 106, 16, 0.5);
@@ -407,7 +397,7 @@ h2 {
     display: flex;
     justify-content: center;
     align-items: center;
-    min-height: calc(100vh - 150px); /* Centers the card perfectly on screen */
+    min-height: calc(100vh - 150px);
     padding: 20px;
 }
 
@@ -421,7 +411,6 @@ h2 {
     text-align: center;
 }
 
-/* Neon Green Success Badge */
 .success-icon {
     width: 70px;
     height: 70px;
@@ -452,7 +441,6 @@ h2 {
     margin-bottom: 30px;
 }
 
-/* Informational Breakdown Container */
 .next-steps-box {
     background: var(--bg-dark);
     border: 1px solid #24242b;
@@ -486,7 +474,6 @@ h2 {
     margin-bottom: 0;
 }
 
-/* Back Button styling */
 .btn-return {
     display: inline-block;
     background: transparent;
@@ -508,212 +495,31 @@ h2 {
 }
 
 /* ==========================================
-   CENTERED LOGO & HORIZONTAL LINKS DECK
+    RESPONSIVE MOBILE BREAKPOINT (MAX 768PX)
    ========================================== */
 @media screen and (max-width: 768px) {
     
-    /* 1. Stack the Main Nav Elements Vertically */
     .main-nav {
         display: flex !important;
-        flex-direction: column !important; /* Forces logo above, links below */
+        flex-direction: column !important; /* Stack menu components vertically */
         align-items: center !important;
         justify-content: center !important;
-        padding: 25px 10px 15px 10px !important; /* Moves layout down from the ceiling */
+        padding: 25px 10px 15px 10px !important;
         width: 100% !important;
         box-sizing: border-box !important;
-        gap: 15px !important;              /* Spacing between the logo and the text links row */
+        gap: 15px !important;              
     }
 
-    /* 2. Scale the Logo up cleanly in the center */
-        .main-nav .logo {
-            display: flex !important;
-            justify-content: center !important;
-            align-items: center !important;
-            width: 100% !important;
-            margin: 0 auto !important;
-        }
-        .main-nav .logo img {
-            width: 85% !important;        /* Scales the image dynamically across the screen width */
-            max-width: 290px !important;  /* Higher ceiling cap so it can actually grow large */
-            height: auto !important;       /* Maintains crisp, un-stretched aspect ratio */
-            object-fit: contain !important;
-            display: block !important;
-        }
-    }
-
-    /* 3. Keep Text Links Side-by-Side Underneath the Logo */
-    .main-nav nav {
+    .main-nav .logo {
         display: flex !important;
-        flex-direction: row !important;     /* Forces the text menu to stay in a flat row */
-        justify-content: center !important; /* Centers the text links under the logo */
-        align-items: center !important;
-        gap: 14px !important;               /* Tight horizontal spacing between links */
-        width: 100% !important;
-    }
-
-    .main-nav nav a {
-        font-size: 0.8rem !important;       /* Clean font size to comfortably fit screens */
-        white-space: nowrap !important;     /* Hard defense against text wrapping bugs */
-        text-decoration: none !important;
-        padding: 4px 2px !important;
-    }
-
-    /* Keep the Custom Request Border Box Contained */
-    .nav-cta {
-        display: inline-block !important;
-        padding: 5px 10px !important;       /* Balanced padding to stay inside screen walls */
-        border: 1px solid #ff0000 !important;
-        border-radius: 4px !important;
-    }
-
-    /* 4. Hero Section & Smaller Subtitle Text Fix */
-    main h1, 
-    .hero h1 {
-        font-size: 2.1rem !important;
-        line-height: 1.15 !important;
-        letter-spacing: -0.5px !important;
-        text-align: center !important;
-        margin: 30px auto 12px auto !important;
-    }
-
-    /* Shrinks the hero paragraph description down smaller */
-    main p,
-    .hero p {
-        font-size: 0.88rem !important;      /* Smaller, tighter text flow */
-        line-height: 1.4 !important;
-        max-width: 90% !important;
-        margin: 0 auto 20px auto !important;
-        text-align: center !important;
-    }
-
-    /* 5. Balanced, Symmetrical Call-to-Action Buttons */
-    .hero-buttons {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;     /* Dead-center horizontal tracking alignment */
         justify-content: center !important;
-        gap: 14px !important;
+        align-items: center !important;
         width: 100% !important;
-        margin-top: 20px !important;
-    }
-
-    .hero-buttons a, 
-    .hero-buttons button {
-        display: block !important;
-        width: 85% !important;             /* Flawless identical matching widths */
-        max-width: 280px !important;
-        padding: 13px 0 !important;
-        box-sizing: border-box !important;
         margin: 0 auto !important;
-        text-align: center !important;
     }
-}
 
-/* ==========================================
-   HOW IT WORKS COMPONENT STYLES (RAPID LOOP)
-   ========================================== */
-.steps-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 30px;
-    margin-top: 20px;
-}
-
-.step-card {
-    background: #111111;
-    border: 1px solid #222222;
-    border-radius: 6px;
-    padding: 40px 30px 40px 110px !important; 
-    position: relative;
-    transition: transform 0.3s ease;
-    text-align: left;
-    overflow: hidden;
-
-    /* RAPID LOOP: Total loop window slashed to 3 seconds */
-    animation: rapidCardPulse 3s infinite cubic-bezier(0.25, 1, 0.5, 1); 
-}
-
-/* Precise 1-second staggered entry delays */
-.step-card:nth-child(1) { animation-delay: 0s; }
-.step-card:nth-child(2) { animation-delay: 1s; }
-.step-card:nth-child(3) { animation-delay: 2s; }
-
-
-.step-num {
-    font-size: 4.5rem;
-    font-weight: 900;
-    font-family: Arial, sans-serif;
-    position: absolute;
-    top: 20px;
-    left: 15px !important;
-    right: auto !important;
-    line-height: 1;
-    z-index: 1;
-
-    /* RAPID LOOP: Matches card frame acceleration exactly */
-    animation: rapidNumberFade 3s infinite cubic-bezier(0.25, 1, 0.5, 1);
-}
-
-/* Matching 1-second staggered entry delays for numbers */
-.step-card:nth-child(1) .step-num { animation-delay: 0s; }
-.step-card:nth-child(2) .step-num { animation-delay: 1s; }
-.step-card:nth-child(3) .step-num { animation-delay: 2s; }
-
-
-/* Foreground Text Styles */
-.step-card h3,
-.step-card p {
-    position: relative;
-    z-index: 2;
-}
-
-.step-card h3 {
-    color: #ffffff;
-    font-size: 1.3rem;
-    text-transform: uppercase;
-    margin: 0 0 15px 0;
-    letter-spacing: 0.5px;
-}
-
-.step-card p {
-    color: #aaaaaa;
-    font-size: 0.95rem;
-    line-height: 1.6;
-    margin: 0;
-}
-
-/* Desktop Hover States */
-@media (hover: hover) {
-    .step-card:hover {
-        transform: translateY(-5px);
-        border-color: #ff0000 !important;
-    }
-}
-
-/* Mobile Responsiveness */
-@media screen and (max-width: 900px) {
-    .steps-grid {
-        grid-template-columns: 1fr;
-        gap: 20px;
-    }
-    
-    .step-card {
-        padding: 35px 25px 35px 110px !important;
-    }
-}
-
-/* ==========================================
-   ANIMATION KEYFRAMES (3S TOTAL WINDOW)
-   ========================================== */
-
-/* Card Frame Highlight: Snaps to peak instantly, then drops back to dark */
-@keyframes rapidCardPulse {
-    0%, 33.3%, 100% { border-color: #222222; }
-    12% { border-color: rgba(255, 0, 0, 0.9); } /* Punchy crisp flash peak */
-}
-
-/* Number Fade Highlight: Sharp, clean illumination pop */
-@keyframes rapidNumberFade {
-    0%, 33.3%, 100% { color: rgba(255, 0, 0, 0.04); opacity: 0.3; }
-    12% { color: rgba(255, 0, 0, 0.3); opacity: 1; }
-}
+    .main-nav .logo img {
+        width: 85% !important;        
+        max-width: 290px !important;  
+        height: auto !important;       
+        object-fit: contain !important
