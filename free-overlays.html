@@ -5,6 +5,13 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Overlays | Customs4Daez</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Specific header style to match Premium Showroom */
+        .hero-text { text-align: center; margin-bottom: 40px; }
+        .hero-text h2 { font-size: 3rem; font-weight: 900; color: #ffffff; text-transform: uppercase; }
+        .hero-text h2 span { color: var(--accent-color); }
+        .hero-text p { color: var(--text-muted); margin-top: 10px; font-size: 1rem; }
+    </style>
 </head>
 <body>
 
@@ -26,10 +33,10 @@
 
     <!-- Page Content -->
     <main class="section-container">
-        <h2 style="text-align: center;">FREE OVERLAYS</h2>
-        <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;">
-            Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.
-        </p>
+        <div class="hero-text">
+            <h2>FREE <span>OVERLAYS</span></h2>
+            <p>Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.</p>
+        </div>
 
         <div class="store-grid">
             <!-- Overlay Card -->
@@ -39,9 +46,10 @@
                 </div>
                 <div class="card-info">
                     <h3>Classic White (Xbox Layout)</h3>
-                    <div class="url-copy-box">
-                        <input type="text" value="https://yourname.github.io/file" readonly>
-                        <button onclick="copyToClipboard(this)">Copy</button>
+                    <!-- Updated footer to match Showroom -->
+                    <div class="card-footer">
+                        <span class="price">FREE</span>
+                        <button class="btn-buy" onclick="copyLink(this)">Copy Link</button>
                     </div>
                 </div>
             </div>
@@ -49,12 +57,13 @@
     </main>
 
     <script>
-        function copyToClipboard(button) {
-            const input = button.previousElementSibling;
-            input.select();
-            document.execCommand("copy");
-            button.innerText = "Copied!";
-            setTimeout(() => { button.innerText = "Copy"; }, 2000);
+        function copyLink(button) {
+            const link = "https://yourname.github.io/file";
+            navigator.clipboard.writeText(link).then(() => {
+                const originalText = button.innerText;
+                button.innerText = "Copied!";
+                setTimeout(() => { button.innerText = originalText; }, 2000);
+            });
         }
     </script>
 </body>
