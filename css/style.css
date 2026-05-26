@@ -524,21 +524,21 @@ h2 {
         gap: 15px !important;              /* Spacing between the logo and the text links row */
     }
 
-    /* 2. Center and Expand the Logo Sizing */
-    .main-nav .logo {
-        display: flex !important;
-        justify-content: center !important;
-        align-items: center !important;
-        width: 100% !important;
-        margin: 0 auto !important;
-    }
-
-    .main-nav .logo img {
-        width: auto !important;
-        height: 50px !important;           /* Noticeably bigger logo footprint */
-        max-height: 50px !important;
-        object-fit: contain !important;
-        display: block !important;
+    /* 2. Scale the Logo up cleanly in the center */
+        .main-nav .logo {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+        }
+        .main-nav .logo img {
+            width: 65% !important;        /* Scales the image dynamically across the screen width */
+            max-width: 220px !important;  /* Higher ceiling cap so it can actually grow large */
+            height: auto !important;       /* Maintains crisp, un-stretched aspect ratio */
+            object-fit: contain !important;
+            display: block !important;
+        }
     }
 
     /* 3. Keep Text Links Side-by-Side Underneath the Logo */
