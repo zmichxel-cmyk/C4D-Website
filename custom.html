@@ -4,29 +4,106 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Custom Overlay Brief | Customs4Daez</title>
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css?v=7">
+
+    <style>
+    @media screen and (max-width: 768px) {
+        /* 1. Smash the massive black empty space footprint */
+        header.main-header {
+            height: auto !important;
+            min-height: unset !important;
+            max-height: unset !important;
+            padding: 0 !important;
+            margin: 0 !important;
+        }
+
+        /* 2. Force identical stacked column spacing */
+        .main-nav {
+            display: flex !important;
+            flex-direction: column !important; 
+            align-items: center !important;    
+            justify-content: center !important;
+            text-align: center !important;
+            padding: 25px 10px 15px 10px !important; /* Matches home perfectly */
+            width: 100% !important;
+            box-sizing: border-box !important;
+            gap: 12px !important;
+        }
+
+        /* 3. Hard-Center the Logo Box and Image Assets */
+        .main-nav .logo {
+            display: flex !important;
+            justify-content: center !important; 
+            align-items: center !important;
+            width: 100% !important;
+            margin: 0 auto !important;         
+        }
+
+        .main-nav .logo a {
+            display: flex !important;
+            justify-content: center !important; 
+            align-items: center !important;
+            width: 100% !important;
+        }
+
+        .main-nav .logo img {
+            width: 85% !important;        
+            max-width: 290px !important;  
+            height: auto !important;       
+            object-fit: contain !important;
+            display: block !important;
+            margin: 0 auto !important;     
+        }
+
+        /* 4. Keep Links Row Perfectly Centered Underneath */
+        .main-nav nav {
+            display: flex !important;
+            flex-direction: row !important; 
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 14px !important;         
+            width: 100% !important;
+            margin: 0 auto !important;
+        }
+
+        .main-nav nav a {
+            font-size: 0.8rem !important; 
+            white-space: nowrap !important; 
+            text-decoration: none !important;
+            padding: 4px 2px !important;
+        }
+
+        .nav-cta {
+            display: inline-block !important;
+            padding: 5px 10px !important;
+            border: 1px solid #ff0000 !important;
+            border-radius: 4px !important;
+        }
+    }
+    </style>
 </head>
 <body>
 
-  <header class="main-nav">
-    <div class="logo">
-        <a href="index.html">
-            <img src="images/logo.png" alt="Logo">
-        </a>
-    </div>
-    <nav>
-        <a href="showroom.html">Showroom</a>
-        <a href="free-overlays.html">Free Overlays</a>
-        <a href="custom-request.html" class="nav-cta">Custom Request</a>
-    </nav>
-</header>
+    <header class="main-header">
+        <div class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="images/logo.png" alt="Logo">
+                </a>
+            </div>
+            <nav>
+                <a href="showroom.html">Showroom</a>
+                <a href="free-overlays.html">Free Overlays</a>
+                <a href="custom.html" class="nav-cta">Custom Request</a>
+            </nav>
+        </div>
+    </header>
 
     <main class="form-container">
         <h1>COMMISSION A CUSTOM DESIGN</h1>
         <p class="form-intro">Fill out the design brief below. Custom assets start at a premium flat rate. Once submitted, I will review your details and send an upfront deposit link to secure your slot.</p>
 
         <form id="my-form" action="https://formspree.io/f/mdajwzky" method="POST" class="brief-form">
-            
             
             <div class="form-group">
                 <label for="streamer-name">Twitch / Kick / YouTube Name</label>
@@ -64,7 +141,7 @@
         </form>
     </main>
 
-   <script>
+<script>
 const form = document.getElementById("my-form");
 
 async function handleSubmit(event) {
