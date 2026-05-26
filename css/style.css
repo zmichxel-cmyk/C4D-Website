@@ -610,7 +610,7 @@ h2 {
 }
 
 /* ==========================================
-   HOW IT WORKS COMPONENT STYLES
+   HOW IT WORKS COMPONENT STYLES (OPTION A)
    ========================================== */
 .steps-grid {
     display: grid;
@@ -623,10 +623,11 @@ h2 {
     background: #111111;
     border: 1px solid #222222;
     border-radius: 6px;
-    padding: 40px 25px;
+    /* Generous 65px left padding creates a clean pocket for the number */
+    padding: 40px 25px 40px 65px !important; 
     position: relative;
     transition: transform 0.3s ease, border-color 0.3s ease;
-    text-align: left; /* Left-align content to match the new number flow */
+    text-align: left;
 }
 
 /* Hover effect for desktop interactivity */
@@ -635,17 +636,18 @@ h2 {
     border-color: #ff0000;
 }
 
-/* Big aggressive background numbers anchored to the LEFT */
+/* Clean background numbers nestled perfectly into the left padding pocket */
 .step-num {
     font-size: 4rem;
     font-weight: 900;
     color: rgba(255, 0, 0, 0.12);
     font-family: Arial, sans-serif;
     position: absolute;
-    top: 10px;
-    left: 15px !important;  /* <--- Make sure this is 'left' and add !important to force it */
-    right: auto !important; /* <--- Add this to completely override the old 'right' setting */
+    top: 26px;              /* Vertically aligns better with your heading text */
+    left: 20px !important;  /* Anchors neatly inside the card edge */
+    right: auto !important;
     line-height: 1;
+    z-index: 1;
 }
 
 .step-card h3 {
@@ -655,7 +657,7 @@ h2 {
     margin-bottom: 15px;
     letter-spacing: 0.5px;
     position: relative;
-    z-index: 2; /* Keeps text layered cleanly above the number footprint */
+    z-index: 2;
 }
 
 .step-card p {
@@ -675,6 +677,7 @@ h2 {
     }
     
     .step-card {
-        padding: 35px 25px;
+        /* Maintains the layout structure when stacked on mobile screens */
+        padding: 35px 25px 35px 65px !important;
     }
 }
