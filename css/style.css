@@ -21,7 +21,7 @@ body {
     line-height: 1.6;
 }
 
-/* --- Navigation Bar --- */
+/* --- Navigation Bar Fix --- */
 .main-nav {
     display: flex;
     justify-content: space-between;
@@ -33,38 +33,18 @@ body {
     top: 0;
     z-index: 100;
     border-bottom: 1px solid #24242b;
+    width: 100%;
 }
 
-.logo {
+.main-nav .logo {
     display: flex;
     align-items: center;
-    width: 210px;
-    height: 100px;
-    overflow: hidden;
+    /* Ensure no fixed dimensions here to allow natural flow */
 }
 
-.logo img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-
-.main-nav nav a {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-left: 24px;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.main-nav nav a:hover { color: var(--text-main); }
-
-.main-nav nav a.nav-cta {
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
-    padding: 6px 16px;
-    border-radius: 4px;
+.main-nav nav {
+    display: flex;
+    align-items: center;
 }
 
 /* --- Interactive Store Grid --- */
