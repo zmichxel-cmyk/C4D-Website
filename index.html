@@ -13,57 +13,73 @@
 
     <style>
     @media screen and (max-width: 768px) {
-        /* Force container stacking */
-        .main-nav {
-            display: flex !important;
-            flex-direction: column !important;
-            align-items: center !important;
-            justify-content: center !important;
-            padding: 30px 10px 15px 10px !important;
-            width: 100% !important;
-            box-sizing: border-box !important;
-            gap: 15px !important;
+        /* 1. Reset any global header limitations on mobile only */
+        header.main-header {
+            height: auto !important;
+            min-height: unset !important;
+            max-height: unset !important;
+            background: #111111 !important; /* Matches your premium dark background */
         }
 
-        /* Enforce huge logo tracking */
+        /* 2. Recreate the 10044.jpg Layout (Stacked & Pushed Down) */
+        .main-nav {
+            display: flex !important;
+            flex-direction: column !important; 
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 40px 10px 20px 10px !important; /* Generous top padding matches image 2 */
+            width: 100% !important;
+            box-sizing: border-box !important;
+            gap: 20px !important;              /* Clean layout separation */
+        }
+
+        /* 3. Aggressive Center Logo Scale */
         .main-nav .logo {
             display: flex !important;
             justify-content: center !important;
             align-items: center !important;
             width: 100% !important;
-            margin: 0 auto !important;
-            padding: 10px 0 !important;
-        }
-        .main-nav .logo img {
-            width: 85% !important;        /* Matches custom.html size perfectly */
-            max-width: 290px !important;  /* Completely breaks the old small limit boundaries */
+            max-height: unset !important;
             height: auto !important;
+            margin: 0 auto !important;
+        }
+
+        .main-nav .logo img {
+            width: 85% !important;        
+            max-width: 290px !important;  
+            height: auto !important;       
             object-fit: contain !important;
             display: block !important;
         }
 
-        /* Keep links row horizontal and centered underneath */
+        /* 4. Navigation Links Deck Sits Underneath Symmetrically */
         .main-nav nav {
             display: flex !important;
-            flex-direction: row !important;
+            flex-direction: row !important; 
             justify-content: center !important;
             align-items: center !important;
-            gap: 12px !important;
+            gap: 15px !important;         
             width: 100% !important;
         }
+
         .main-nav nav a {
-            font-size: 0.8rem !important;
-            white-space: nowrap !important;
+            font-size: 0.8rem !important; 
+            white-space: nowrap !important; 
             text-decoration: none !important;
             padding: 4px 2px !important;
         }
 
-        /* Red custom link CTA box bounds */
+        /* Border box alignment for Custom Request button */
         .nav-cta {
             display: inline-block !important;
             padding: 5px 10px !important;
             border: 1px solid #ff0000 !important;
             border-radius: 4px !important;
+        }
+
+        /* 5. Space out content below the header so it doesn't collide */
+        main, .hero, .wrapper {
+            margin-top: 20px !important;
         }
     }
     </style>
