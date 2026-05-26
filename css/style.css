@@ -95,6 +95,16 @@ h2 {
     color: #000;
 }
 
+/* Safety net for broken images or alt-text links */
+.logo a {
+    color: var(--accent-color);
+    text-decoration: none;
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: -0.5px;
+}
+
 /* --- Hero Section --- */
 .hero {
     text-align: center;
