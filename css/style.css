@@ -623,31 +623,48 @@ h2 {
     background: #111111;
     border: 1px solid #222222;
     border-radius: 6px;
-    /* Generous 65px left padding creates a clean pocket for the number */
     padding: 40px 25px 40px 65px !important; 
     position: relative;
-    transition: transform 0.3s ease, border-color 0.3s ease;
+    transition: transform 0.3s ease;
     text-align: left;
+    overflow: hidden; /* Safety for number fade */
+
+    /* SEQUENTIAL LOOP: Card Border Pulse */
+    animation: slowCardPulse 12s infinite; 
 }
 
-/* Hover effect for desktop interactivity */
-.step-card:hover {
-    transform: translateY(-5px);
-    border-color: #ff0000;
-}
+/* sequential delay for each step card border */
+.step-card:nth-child(1) { animation-delay: 0s; }
+.step-card:nth-child(2) { animation-delay: 4s; }
+.step-card:nth-child(3) { animation-delay: 8s; }
 
-/* Clean background numbers nestled perfectly into the left padding pocket */
+
 .step-num {
-    font-size: 4rem;
+    font-size: 4.5rem;
     font-weight: 900;
-    color: rgba(255, 0, 0, 0.12);
     font-family: Arial, sans-serif;
     position: absolute;
-    top: 26px;              /* Vertically aligns better with your heading text */
-    left: 20px !important;  /* Anchors neatly inside the card edge */
+    top: 26px;
+    left: 20px !important;
     right: auto !important;
     line-height: 1;
     z-index: 1;
+
+    /* SEQUENTIAL LOOP: Number Fade In/Out */
+    animation: slowNumberFade 12s infinite;
+}
+
+/* sequential delay for each step number fade */
+.step-card:nth-child(1) .step-num { animation-delay: 0s; }
+.step-card:nth-child(2) .step-num { animation-delay: 4s; }
+.step-card:nth-child(3) .step-num { animation-delay: 8s; }
+
+
+/* Text layered above the number */
+.step-card h3,
+.step-card p {
+    position: relative;
+    z-index: 2;
 }
 
 .step-card h3 {
@@ -656,8 +673,6 @@ h2 {
     text-transform: uppercase;
     margin-bottom: 15px;
     letter-spacing: 0.5px;
-    position: relative;
-    z-index: 2;
 }
 
 .step-card p {
@@ -665,11 +680,17 @@ h2 {
     font-size: 0.95rem;
     line-height: 1.6;
     margin: 0;
-    position: relative;
-    z-index: 2;
 }
 
-/* Responsive breakpoint for phones and tablets */
+/* Desktop hover effect (stays responsive on desktop) */
+@media (hover: hover) {
+    .step-card:hover {
+        transform: translateY(-5px);
+        border-color: #ff0000 !important;
+    }
+}
+
+/* Mobile responsive breakpoint */
 @media screen and (max-width: 900px) {
     .steps-grid {
         grid-template-columns: 1fr;
@@ -677,7 +698,22 @@ h2 {
     }
     
     .step-card {
-        /* Maintains the layout structure when stacked on mobile screens */
         padding: 35px 25px 35px 65px !important;
     }
+}
+
+/* ==========================================
+   ANIMATION KEYFRAMES
+   ========================================== */
+
+/* 1. Card Border Pulse: Bright highlight then fade back to dark */
+@keyframes slowCardPulse {
+    0%, 33.3%, 100% { border-color: #222222; } /* Dark base border */
+    16.6% { border-color: rgba(255, 0, 0, 0.7); } /* Bright red flash/pulse */
+}
+
+/* 2. Number Fade: Start dark/invisible, fade up, fade back down */
+@keyframes slowNumberFade {
+    0%, 33.3%, 100% { color: rgba(255, 0, 0, 0.05); opacity: 0.5; } /* Dark/faded base color */
+    16.6% { color: rgba(255, 0, 0, 0.2); opacity: 1; } /* Brightest/Active phase */
 }
