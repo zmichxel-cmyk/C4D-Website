@@ -508,89 +508,101 @@ h2 {
 }
 
 /* ==========================================
-   FINAL MOBILE RESPONSIVE POLISH
+   FINAL MOBILE RESPONSIVE REPAIR
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. Give the Logo Full Dominance */
+    /* 1. Force the Logo to Expand to Full Space */
     .main-nav {
-        padding: 20px 10px 10px 10px;
+        padding: 25px 15px 15px 15px;
         flex-direction: column;
         align-items: center;
         justify-content: center;
-        gap: 15px;
+        gap: 20px;
+        width: 100%;
+        box-sizing: border-box;
     }
 
     .main-nav .logo {
         width: 100%;
+        max-width: 280px; /* Gives the logo container a wider footprint to stretch into */
         display: flex;
         justify-content: center;
+        margin: 0 auto;
     }
 
     .main-nav .logo img {
-        max-height: 80px; /* Doubled the size so your branding takes up the whole top space */
-        width: auto;
+        width: 100%;       /* Forces the image to fill the expanded container space */
+        max-height: 120px; /* High ceiling so your brand dominance is clear */
         object-fit: contain;
     }
 
+    /* 2. Un-clip and Dynamic Wrap Nav Links */
     .main-nav nav {
         display: flex;
         flex-direction: row;
         justify-content: center;
         align-items: center;
-        gap: 15px;
+        flex-wrap: wrap; /* CRITICAL: If the screen is ultra-narrow, links drop to a new line instead of cutting off */
+        gap: 12px;
         width: 100%;
+        padding: 0 10px;
+        box-sizing: border-box;
     }
 
     .main-nav nav a {
         font-size: 0.9rem;
-        white-space: nowrap;
+        padding: 6px 10px;
     }
 
+    /* Fix the Custom Request Border Button tracking */
     .nav-cta {
-        padding: 6px 12px;
+        padding: 6px 12px !important;
+        display: inline-block;
+        white-space: nowrap; /* Keeps the text bound cleanly inside its box */
     }
 
-    /* 2. Tighten & Organize the Hero Headline */
-    /* Target the container holding your massive homepage text */
+    /* 3. Tighten Typography Lockup */
     main h1, 
     .hero h1 {
-        font-size: 2.2rem;       /* Scales down the font size so words don't break onto single lines */
-        line-height: 1.1;        /* Squeezes the spacing between lines tightly together */
-        letter-spacing: -0.5px;  /* Packs the letters together for a clean, aggressive look */
+        font-size: 2.1rem;
+        line-height: 1.15;
+        letter-spacing: -0.5px;
         text-align: center;
-        max-width: 90%;          /* Keeps the text organized in a structured block */
-        margin: 25px auto 15px auto; /* Knocks down the excessive empty spaces */
+        max-width: 90%;
+        margin: 30px auto 15px auto;
     }
 
-    /* If 'CSS' or specific words are wrapped in tags, keep them tightly bound */
-    main h1 span, 
-    .hero h1 span {
-        display: inline;
-        font-size: inherit;
-    }
-
-    /* Tighten the subtext below the headline */
     main p, 
     .hero p {
         font-size: 0.95rem;
-        line-height: 1.4;
+        line-height: 1.45;
         max-width: 85%;
-        margin: 0 auto 20px auto;
+        margin: 0 auto 25px auto;
     }
 
-    /* 3. Action Buttons */
+    /* 4. Perfect Center Alignment for Hero CTA Buttons */
     .hero-buttons {
         display: flex;
         flex-direction: column;
-        align-items: center;
-        gap: 12px;
+        align-items: center;     /* Hard locks both buttons exactly down the screen center-line */
+        justify-content: center;
+        gap: 14px;
         width: 100%;
+        padding: 0;
+        margin: 25px auto 0 auto;
     }
 
-    .hero-buttons a {
+    /* Balance both call-to-action shapes symmetrically */
+    .hero-buttons a, 
+    .hero-buttons button {
         display: block;
-        width: 80%;
-        padding: 12px 0;
+        width: 85%;             /* Locks identical horizontal widths for both shapes */
+        max-width: 300px;       /* Keeps them from getting overly stretched on small tablets */
         text-align: center;
+        padding: 14px 0;
+        box-sizing: border-box; /* Includes padding inside the width math to prevent off-center shifts */
+        margin: 0 auto;         /* Centers the element boxes entirely */
+        font-size: 1rem;
+        font-weight: 600;
     }
 }
