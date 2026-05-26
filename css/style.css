@@ -508,63 +508,74 @@ h2 {
 }
 
 /* ==========================================
-   EXACT RESPONSIVE MATCH FOR 10028.JPG Layout
+   PREMIUM MOBILE CENTERED LOGO LAYOUT
    ========================================== */
 @media screen and (max-width: 768px) {
     
-    /* 1. Base Horizontal Container Layout */
+    /* 1. Stack Header Vertically and Move It Down from the Ceiling */
     .main-nav {
         display: flex !important;
-        flex-direction: row !important;       /* Keeps elements side-by-side exactly like 10028.jpg */
+        flex-direction: column !important; /* Stacks logo on top of links */
         align-items: center !important;
-        justify-content: space-between !important;
-        padding: 15px 8px !important;         /* Dynamic edge margins */
+        justify-content: center !important;
+        padding: 25px 15px 15px 15px !important; /* Generous top padding to push text down */
         width: 100% !important;
         box-sizing: border-box !important;
+        gap: 18px !important;              /* Perfect space between your logo and links row */
     }
 
-    /* 2. Expand Logo Box Real Estate */
+    /* 2. Center and Make the Logo Bigger */
     .main-nav .logo {
         display: flex !important;
+        justify-content: center !important;
         align-items: center !important;
-        flex: 0 0 30% !important;             /* Allows the logo container to occupy 30% of screen width */
+        width: 100% !important;
+        margin: 0 auto !important;
     }
 
     .main-nav .logo img {
-        width: 100% !important;               /* Forces image to scale up to the new container boundaries */
-        max-width: 110px !important;          /* Hard floor footprint expansion size */
-        height: auto !important;
+        width: auto !important;
+        height: 55px !important;           /* Noticeably larger height presence on screen */
+        max-height: 55px !important;
         object-fit: contain !important;
         display: block !important;
     }
 
-    /* 3. Tighten Navigation Track Area */
+    /* 3. Perfect Horizontal Row for Links Underneath the Logo */
     .main-nav nav {
         display: flex !important;
-        flex-direction: row !important;       /* Keeps link flow perfectly horizontal */
+        flex-direction: row !important;     /* Forces links to stay side-by-side */
+        justify-content: center !important; /* Centers the whole links row perfectly */
         align-items: center !important;
-        justify-content: flex-end !important;
-        flex: 0 0 70% !important;             /* Gives the remaining 70% width to the links */
-        gap: 6px !important;                  /* Tightens gaps to pull buttons inward away from screen borders */
+        gap: 12px !important;               /* Uniform spacing between text buttons */
+        width: 100% !important;
     }
 
     .main-nav nav a {
-        font-size: 0.75rem !important;        /* Crisper typography scale to make room for horizontal spacing */
-        white-space: nowrap !important;       /* Hard locks text on single line */
+        font-size: 0.85rem !important;      /* Extremely readable typography size */
+        white-space: nowrap !important;     /* Prevents awkward text line-breaking */
         text-decoration: none !important;
-        padding: 4px 2px !important;
+        padding: 6px 4px !important;
     }
 
-    /* Fix Custom Request Box Overflow */
+    /* Clean Alignment for Custom Request Button */
     .nav-cta {
         display: inline-block !important;
-        padding: 5px 8px !important;          /* Trimmed side padding so it fits screens completely */
-        font-size: 0.75rem !important;
+        padding: 6px 12px !important;       /* Tight internal margins so it doesn't clip */
         border: 1px solid #ff0000 !important;
         border-radius: 4px !important;
     }
 
-    /* 4. Keep Layout Elements from 10028.jpg for the Hero Block */
+    /* 4. Lock Down Your Preferred Hero Setup from 10028.jpg */
+    main h1, 
+    .hero h1 {
+        font-size: 2.2rem !important;
+        line-height: 1.1 !important;
+        letter-spacing: -0.5px !important;
+        text-align: center !important;
+        margin: 30px auto 15px auto !important;
+    }
+
     .hero-buttons {
         display: flex !important;
         flex-direction: column !important;
