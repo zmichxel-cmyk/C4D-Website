@@ -656,14 +656,6 @@ h2 {
     margin: 0;
 }
 
-/* Desktop Hover Interaction Profiles */
-@media (hover: hover) {
-    .step-card:hover {
-        transform: translateY(-5px);
-        border-color: var(--accent-color) !important;
-    }
-}
-
 /* ==========================================
     MOBILE OVERRIDES & STAGGER ADJUSTMENTS (MAX 900PX)
    ========================================== */
