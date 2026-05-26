@@ -1,137 +1,29 @@
-/* --- Global Variables & Resets --- */
-:root {
-    --bg-dark: #0f0f12;
-    --bg-card: #16161a;
-    --text-main: #ffffff;
-    --text-muted: #a0a0aa;
-    --accent-color: #ff3344;
-    --accent-glow: rgba(255, 51, 68, 0.2);
-}
-
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
-}
-
-body {
-    background-color: var(--bg-dark);
-    color: var(--text-main);
-    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
-    line-height: 1.6;
-}
-
-/* --- Navigation Bar --- */
-.main-nav {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 20px 40px;
-    background: rgba(15, 15, 18, 0.85);
-    backdrop-filter: blur(10px);
-    position: sticky;
-    top: 0;
-    z-index: 100;
-    border-bottom: 1px solid #24242b;
-}
-
-.logo {
-    display: flex;
-    align-items: center;
-    width: 210px;
-    height: 100px;
-    overflow: hidden;
-}
-
-.logo img {
-    width: 100%;
-    height: auto;
-    display: block;
-    object-fit: contain;
-}
-
-.main-nav nav a {
-    color: var(--text-muted);
-    text-decoration: none;
-    margin-left: 24px;
-    font-weight: 500;
-    transition: color 0.2s;
-}
-
-.main-nav nav a:hover { color: var(--text-main); }
-
-.main-nav nav a.nav-cta {
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
-    padding: 6px 16px;
-    border-radius: 4px;
-}
-
-/* --- Interactive Store Grid --- */
-.store-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
-    gap: 30px;
-}
-
-.store-card {
-    background: var(--bg-card);
-    border: 1px solid #24242b;
-    border-radius: 8px;
-    overflow: hidden;
-    transition: transform 0.2s, border-color 0.2s;
-}
-
-.store-card:hover {
-    border-color: var(--accent-color);
-}
-
-.media-frame {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-}
-
-.card-info { padding: 20px; }
-
-/* Ensure the container holds the items properly */
+/* --- Card Footer Alignment --- */
 .card-footer {
     display: flex;
     justify-content: space-between;
     align-items: center;
     margin-top: 15px;
-    height: 40px; /* Force consistent height */
+    /* Removed fixed height to allow natural flow if text sizes vary */
 }
 
-/* Force the price to stay on the left */
 .price {
     font-size: 1.3rem;
     font-weight: 700;
-    flex: 1;
+    /* Removed flex: 1 to stop the price from pushing the button too far */
 }
 
-/* Force the button to stay on the right and maintain size */
 .btn-buy {
     background: #3f3f46 !important;
     color: #fff !important;
     border: none;
-    padding: 10px 20px;
+    padding: 8px 16px; /* Reverted to your original padding */
     border-radius: 4px;
     cursor: pointer;
     font-weight: 700;
-    flex-shrink: 0; /* Prevents the button from squishing */
-    min-width: 120px;
-    display: flex;
+    flex-shrink: 0;
+    min-width: 110px; /* Standardized width */
+    display: inline-flex;
     justify-content: center;
     align-items: center;
-}
-
-.btn-buy.copied {
-    background: var(--accent-color) !important;
-    color: #000 !important;
-}
-
-.checkmark {
-    font-weight: bold;
-    color: #00ff00;
 }
