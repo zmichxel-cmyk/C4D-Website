@@ -95,11 +95,49 @@
                 Free <span style="color: #ff0000;">Overlays</span>
             </h1>
             <p style="color: #aaa; font-size: 1rem; margin-top: 10px;">
-                Instant-download theme packages to elevate your stream layout layout completely free.
+                Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.
             </p>
         </div>
 
-        </main>
+        <div class="store-grid">
+            
+            <div class="store-card free-card">
+                <div class="media-frame">
+                    <video autoplay loop muted playsinline>
+                        <source src="assets/previews/classic-white-free.mp4" type="video/mp4">
+                    </video>
+                </div>
+                <div class="card-info free-card-details" style="padding: 15px 0 0 0;">
+                    <h3 style="color: #fff; margin-bottom: 15px;">Classic White (Xbox Layout)</h3>
+                    
+                    <div class="link-copier-container">
+                        <input type="text" id="xbox-free-url" value="https://yourname.github.io/free-xbox-overlay" readonly>
+                        <button onclick="copyOverlayLink('xbox-free-url', this)" class="btn-copy">Copy Link</button>
+                    </div>
+                </div>
+            </div>
+            
+            </div>
+
+    </main>
+
+    <script>
+    function copyOverlayLink(inputId, buttonElement) {
+        var copyText = document.getElementById(inputId);
+        copyText.select();
+        copyText.setSelectionRange(0, 99999); // Mobile device safety
+        navigator.clipboard.writeText(copyText.value);
+        
+        // Quick visual button feedback
+        var originalText = buttonElement.innerHTML;
+        buttonElement.innerHTML = "Copied!";
+        buttonElement.style.background = "#ff0000";
+        setTimeout(function() {
+            buttonElement.innerHTML = originalText;
+            buttonElement.style.background = "";
+        }, 2000);
+    }
+    </script>
 
 </body>
 </html>
