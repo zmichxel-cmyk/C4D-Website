@@ -12,79 +12,92 @@
     <link rel="stylesheet" href="css/style.css">
 
     <style>
-@media screen and (max-width: 768px) {
-    /* 1. Keep the Header Content in a Clean Horizontal Row */
-    .main-nav {
-        display: flex !important;
-        flex-direction: row !important;      /* Forces everything to stay side-by-side */
-        align-items: center !important;
-        justify-content: space-between !important; /* Pushes logo left, navigation links right */
-        padding: 15px 12px !important;
-        width: 100% !important;
-        box-sizing: border-box !important;
-    }
+    @media screen and (max-width: 768px) {
+        /* 1. Force the container to stack vertically and center */
+        .main-nav {
+            display: flex !important;
+            flex-direction: column !important; /* Logo on top, links on bottom */
+            align-items: center !important;
+            justify-content: center !important;
+            padding: 30px 10px 15px 10px !important;
+            width: 100% !important;
+            box-sizing: border-box !important;
+            gap: 15px !important;
+        }
 
-    /* 2. Expand Logo Grid Footprint Safely */
-    .main-nav .logo {
-        display: flex !important;
-        justify-content: flex-start !important;
-        max-width: 35% !important;           /* Allocates plenty of baseline row space */
-    }
+        /* 2. Scale the Logo up cleanly in the center */
+        .main-nav .logo {
+            display: flex !important;
+            justify-content: center !important;
+            align-items: center !important;
+            width: 100% !important;
+            margin: 0 auto !important;
+        }
+        .main-nav .logo img {
+            width: auto !important;
+            height: 55px !important; /* Physically scales up the logo size */
+            max-height: 55px !important;
+            object-fit: contain !important;
+            display: block !important;
+        }
 
-    .main-nav .logo img {
-        width: 100% !important;              /* Stretches fluidly to fit the boundary */
-        height: auto !important;
-        max-height: 55px !important;         /* Noticeably bigger footprint without breaking rows */
-        object-fit: contain !important;
-    }
+        /* 3. Keep text links horizontal and centered beneath it */
+        .main-nav nav {
+            display: flex !important;
+            flex-direction: row !important; /* Keeps links traveling side-by-side */
+            justify-content: center !important;
+            align-items: center !important;
+            gap: 12px !important; /* Tight spacing so nothing wraps lines */
+            width: 100% !important;
+        }
+        .main-nav nav a {
+            font-size: 0.8rem !important; /* Smaller text scale to cleanly fit screens */
+            white-space: nowrap !important; /* Absolute shield against text breaking down */
+            text-decoration: none !important;
+            padding: 4px 2px !important;
+        }
 
-    /* 3. Organize Right-Side Links Side-by-Side */
-    .main-nav nav {
-        display: flex !important;
-        flex-direction: row !important;      /* Horizontal links row flow */
-        align-items: center !important;
-        justify-content: flex-end !important;
-        gap: 10px !important;                /* Tight, clean space targets */
-        max-width: 65% !important;
-    }
+        /* Secure the custom request border boundary box */
+        .nav-cta {
+            display: inline-block !important;
+            padding: 5px 10px !important;
+            border: 1px solid #ff0000 !important;
+            border-radius: 4px !important;
+        }
 
-    .main-nav nav a {
-        font-size: 0.8rem !important;        /* Crisp sizing to fit mobile viewports safely */
-        white-space: nowrap !important;      /* Prevents line-wrapping tracking bugs */
-        text-decoration: none !important;
-        padding: 4px 2px !important;
-    }
+        /* 4. Fix Hero Text Layout & Lower Subtext Scale */
+        main h1, .hero h1 {
+            font-size: 2.1rem !important;
+            line-height: 1.15 !important;
+            text-align: center !important;
+            margin: 30px auto 12px auto !important;
+        }
+        main p, .hero p {
+            font-size: 0.88rem !important; /* Scaled down smaller text layout */
+            line-height: 1.4 !important;
+            max-width: 90% !important;
+            margin: 0 auto 20px auto !important;
+        }
 
-    /* Clear Custom Request Action Tag Layout */
-    .nav-cta {
-        display: inline-block !important;
-        padding: 6px 10px !important;        /* Clean micro padding */
-        font-size: 0.8rem !important;
+        /* Center both hero buttons down the exact middle line */
+        .hero-buttons {
+            display: flex !important;
+            flex-direction: column !important;
+            align-items: center !important;
+            justify-content: center !important;
+            gap: 14px !important;
+            width: 100% !important;
+        }
+        .hero-buttons a, .hero-buttons button {
+            display: block !important;
+            width: 85% !important;
+            max-width: 280px !important;
+            padding: 13px 0 !important;
+            margin: 0 auto !important;
+            text-align: center !important;
+        }
     }
-
-    /* 4. Perfect Center Alignment for Homepage CTA Buttons */
-    .hero-buttons {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;     /* Hard locks alignment down center line */
-        justify-content: center !important;
-        gap: 15px !important;
-        width: 100% !important;
-        margin: 25px auto 0 auto !important;
-    }
-
-    .hero-buttons a, 
-    .hero-buttons button {
-        display: block !important;
-        width: 85% !important;             /* Match widths identically */
-        max-width: 280px !important;       /* Balance horizontal footprint shapes */
-        padding: 14px 0 !important;
-        box-sizing: border-box !important; /* Locks calculation boundaries symmetrically */
-        margin: 0 auto !important;         /* Flush center alignment formatting */
-        text-align: center !important;
-    }
-}
-</style>
+    </style>
 </head>
 </head>
 <body>
