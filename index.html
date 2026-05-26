@@ -1,152 +1,65 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Custom Controller Overlays | Customs4Daez</title>
-    <link rel="stylesheet" href="css/style.css?v=2">
-
-    <style>
-    @media screen and (max-width: 768px) {
-        /* 1. Smash the massive black empty space footprint */
-        header.main-header {
-            height: auto !important;
-            min-height: unset !important;
-            max-height: unset !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-
-        /* 2. Force identical stacked column spacing */
-        .main-nav {
-            display: flex !important;
-            flex-direction: column !important; 
-            align-items: center !important;    
-            justify-content: center !important;
-            text-align: center !important;
-            padding: 25px 10px 15px 10px !important; /* Tight header height margins */
-            width: 100% !important;
-            box-sizing: border-box !important;
-            gap: 12px !important;
-        }
-
-        /* 3. Hard-Center the Logo Box and Image Assets */
-        .main-nav .logo {
-            display: flex !important;
-            justify-content: center !important; 
-            align-items: center !important;
-            width: 100% !important;
-            margin: 0 auto !important;         
-        }
-
-        .main-nav .logo a {
-            display: flex !important;
-            justify-content: center !important; 
-            align-items: center !important;
-            width: 100% !important;
-        }
-
-        .main-nav .logo img {
-            width: 85% !important;        
-            max-width: 290px !important;  /* Matches the massive custom page size */
-            height: auto !important;       
-            object-fit: contain !important;
-            display: block !important;
-            margin: 0 auto !important;     /* Hard anchor to the dead-center axis */
-        }
-
-        /* 4. Keep Links Row Perfectly Centered Underneath */
-        .main-nav nav {
-            display: flex !important;
-            flex-direction: row !important; 
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 14px !important;         
-            width: 100% !important;
-            margin: 0 auto !important;
-        }
-
-        .main-nav nav a {
-            font-size: 0.8rem !important; 
-            white-space: nowrap !important; 
-            text-decoration: none !important;
-            padding: 4px 2px !important;
-        }
-
-        .nav-cta {
-            display: inline-block !important;
-            padding: 5px 10px !important;
-            border: 1px solid #ff0000 !important;
-            border-radius: 4px !important;
-        }
-    }
-    </style>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Custom Controller Overlays | Customs4Daez</title>
+    <link rel="stylesheet" href="css/style.css?v=3">
 </head>
 <body>
 
-    <header class="main-header">
-    <div class="main-nav">
-        <div class="logo">
-            <a href="index.html">
-                <img src="assets/images/logo.png" alt="Customs4Daez Logo">
-            </a>
+    <header class="main-header">
+        <div class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="assets/images/logo.png" alt="Customs4Daez Logo">
+                </a>
+            </div>
+            <nav>
+                <a href="showroom.html">Showroom</a>
+                <a href="free-overlays.html">Free Overlays</a>
+                <a href="custom.html" class="nav-cta">Custom Request</a>
+            </nav>
         </div>
-        <nav>
-            <a href="showroom.html">Showroom</a>
-            <a href="free-overlays.html">Free Overlays</a>
-            <a href="custom.html" class="nav-cta">Custom Request</a>
-        </nav>
-    </div>
-</header>
+    </header>
 
-    <section class="hero">
-        <h1>PRO-GRADE <span>CSS CONTROLLER</span> OVERLAYS</h1>
-        <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
-        <div class="hero-buttons">
-            <a href="showroom.html" class="btn-primary">Browse Premium</a>
-            <a href="free-overlays.html" class="btn-secondary">Grab Free Themes</a>
-        </div>
-    </section>
-
-    <section class="how-it-works" style="padding: 80px 20px; background: #0b0b0b; border-top: 1px solid #1a1a1a; border-bottom: 1px solid #1a1a1a; text-align: center;">
-    <div class="container" style="max-width: 1200px; margin: 0 auto;">
-        
-        <div class="section-title" style="margin-bottom: 50px;">
-            <h2 style="font-size: 2.2rem; color: #fff; text-transform: uppercase; letter-spacing: 1px;">
-                Level Up Your Stream In <span style="color: #ff3344;">3 Steps</span>
-            </h2>
-            <p style="color: #888; font-size: 1rem; margin-top: 10px;">No complicated software. No heavy video files. Just pure performance.</p>
+    <section class="hero">
+        <h1>PRO-GRADE <span>CSS CONTROLLER</span> OVERLAYS</h1>
+        <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
+        <div class="hero-buttons">
+            <a href="showroom.html" class="btn-primary">Browse Premium</a>
+            <a href="free-overlays.html" class="btn-secondary">Grab Free Themes</a>
         </div>
+    </section>
 
-        <div class="steps-grid">
-            
-            <div class="step-card">
-                <div class="step-num">1</div>
-                <h3>Choose Your Style</h3>
-                <p>Pick a ready-to-roll theme from our Premium Showroom or launch a 1-of-1 Custom Request tailored to your stream's brand identity.</p>
+    <section class="how-it-works">
+        <div class="container">
+            <div class="section-title">
+                <h2>Level Up Your Stream In <span>3 Steps</span></h2>
+                <p>No complicated software. No heavy video files. Just pure performance.</p>
             </div>
 
-            <div class="step-card">
-                <div class="step-num">2</div>
-                <h3>Get Your Asset Link</h3>
-                <p>Instantly unlock your dedicated overlay code or receive your custom design package built exactly to your specs.</p>
-            </div>
+            <div class="steps-grid">
+                <div class="step-card">
+                    <div class="step-num">1</div>
+                    <h3>Choose Your Style</h3>
+                    <p>Pick a ready-to-roll theme from our Premium Showroom or launch a 1-of-1 Custom Request tailored to your stream's brand identity.</p>
+                </div>
 
-            <div class="step-card">
-                <div class="step-num">3</div>
-                <h3>Paste Into OBS</h3>
-                <p>Add a new Browser Source in OBS or Streamlabs, paste your URL, and watch your controller actions light up live on stream.</p>
-            </div>
+                <div class="step-card">
+                    <div class="step-num">2</div>
+                    <h3>Get Your Asset Link</h3>
+                    <p>Instantly unlock your dedicated overlay code or receive your custom design package built exactly to your specs.</p>
+                </div>
 
+                <div class="step-card">
+                    <div class="step-num">3</div>
+                    <h3>Paste Into OBS</h3>
+                    <p>Add a new Browser Source in OBS or Streamlabs, paste your URL, and watch your controller actions light up live on stream.</p>
+                </div>
+            </div>
         </div>
-    </div>
-</section>
-
-    <section class="custom-cta-block" style="padding: 60px 20px; text-align: center;">
-        <h2>Need a 1-of-1 Exclusive Design?</h2>
-        <p style="margin-bottom: 25px; color: #ccc;">Get a completely personalized layout matched exactly to your stream's brand identity, color schemes, and custom channel graphics.</p>
-        <a href="custom.html" class="btn-primary large">Launch the Custom Design Brief</a>
-    </section>
+    </section>
 
 </body>
 </html>
