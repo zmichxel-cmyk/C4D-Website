@@ -81,3 +81,38 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
     .main-nav { display: flex !important; flex-direction: column !important; align-items: center !important; gap: 15px !important; }
     .hero h1 { font-size: 2.1rem !important; }
 }
+
+/* --- HOW IT WORKS: RESTORED GLOW ANIMATIONS --- */
+
+.step-card {
+    /* Ensures the pulse runs infinitely */
+    animation: rapidCardPulse 7.5s infinite ease-in-out;
+}
+
+.step-num {
+    /* Ensures the number fade runs infinitely */
+    animation: rapidNumberFade 7.5s infinite ease-in-out;
+}
+
+/* Sequential timing for the three columns */
+.step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s; }
+.step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 2.5s; }
+.step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 5.0s; }
+
+@keyframes rapidCardPulse {
+    0%, 40%, 100% { border-color: #222222; }
+    15%, 25% { border-color: rgba(255, 51, 68, 0.9); }
+}
+
+@keyframes rapidNumberFade {
+    0%, 40%, 100% { color: rgba(255, 51, 68, 0.04); opacity: 0.3; }
+    15%, 25% { color: rgba(255, 51, 68, 0.25); opacity: 1; }
+}
+
+/* Mobile adjustments to keep the sequence clean */
+@media screen and (max-width: 900px) {
+    .step-card, .step-num { animation-duration: 9s !important; }
+    .step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s !important; }
+    .step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 3s !important; }
+    .step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 6s !important; }
+}
