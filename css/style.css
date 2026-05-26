@@ -508,23 +508,23 @@ h2 {
 }
 
 /* ==========================================
-   PREMIUM MOBILE CENTERED LOGO LAYOUT
+   CENTERED LOGO & HORIZONTAL LINKS DECK
    ========================================== */
 @media screen and (max-width: 768px) {
     
-    /* 1. Stack Header Vertically and Move It Down from the Ceiling */
+    /* 1. Stack the Main Nav Elements Vertically */
     .main-nav {
         display: flex !important;
-        flex-direction: column !important; /* Stacks logo on top of links */
+        flex-direction: column !important; /* Forces logo above, links below */
         align-items: center !important;
         justify-content: center !important;
-        padding: 25px 15px 15px 15px !important; /* Generous top padding to push text down */
+        padding: 25px 10px 15px 10px !important; /* Moves layout down from the ceiling */
         width: 100% !important;
         box-sizing: border-box !important;
-        gap: 18px !important;              /* Perfect space between your logo and links row */
+        gap: 15px !important;              /* Spacing between the logo and the text links row */
     }
 
-    /* 2. Center and Make the Logo Bigger */
+    /* 2. Center and Expand the Logo Sizing */
     .main-nav .logo {
         display: flex !important;
         justify-content: center !important;
@@ -535,63 +535,74 @@ h2 {
 
     .main-nav .logo img {
         width: auto !important;
-        height: 55px !important;           /* Noticeably larger height presence on screen */
-        max-height: 55px !important;
+        height: 50px !important;           /* Noticeably bigger logo footprint */
+        max-height: 50px !important;
         object-fit: contain !important;
         display: block !important;
     }
 
-    /* 3. Perfect Horizontal Row for Links Underneath the Logo */
+    /* 3. Keep Text Links Side-by-Side Underneath the Logo */
     .main-nav nav {
         display: flex !important;
-        flex-direction: row !important;     /* Forces links to stay side-by-side */
-        justify-content: center !important; /* Centers the whole links row perfectly */
+        flex-direction: row !important;     /* Forces the text menu to stay in a flat row */
+        justify-content: center !important; /* Centers the text links under the logo */
         align-items: center !important;
-        gap: 12px !important;               /* Uniform spacing between text buttons */
+        gap: 14px !important;               /* Tight horizontal spacing between links */
         width: 100% !important;
     }
 
     .main-nav nav a {
-        font-size: 0.85rem !important;      /* Extremely readable typography size */
-        white-space: nowrap !important;     /* Prevents awkward text line-breaking */
+        font-size: 0.8rem !important;       /* Clean font size to comfortably fit screens */
+        white-space: nowrap !important;     /* Hard defense against text wrapping bugs */
         text-decoration: none !important;
-        padding: 6px 4px !important;
+        padding: 4px 2px !important;
     }
 
-    /* Clean Alignment for Custom Request Button */
+    /* Keep the Custom Request Border Box Contained */
     .nav-cta {
         display: inline-block !important;
-        padding: 6px 12px !important;       /* Tight internal margins so it doesn't clip */
+        padding: 5px 10px !important;       /* Balanced padding to stay inside screen walls */
         border: 1px solid #ff0000 !important;
         border-radius: 4px !important;
     }
 
-    /* 4. Lock Down Your Preferred Hero Setup from 10028.jpg */
+    /* 4. Hero Section & Smaller Subtitle Text Fix */
     main h1, 
     .hero h1 {
-        font-size: 2.2rem !important;
-        line-height: 1.1 !important;
+        font-size: 2.1rem !important;
+        line-height: 1.15 !important;
         letter-spacing: -0.5px !important;
         text-align: center !important;
-        margin: 30px auto 15px auto !important;
+        margin: 30px auto 12px auto !important;
     }
 
+    /* Shrinks the hero paragraph description down smaller */
+    main p,
+    .hero p {
+        font-size: 0.88rem !important;      /* Smaller, tighter text flow */
+        line-height: 1.4 !important;
+        max-width: 90% !important;
+        margin: 0 auto 20px auto !important;
+        text-align: center !important;
+    }
+
+    /* 5. Balanced, Symmetrical Call-to-Action Buttons */
     .hero-buttons {
         display: flex !important;
         flex-direction: column !important;
-        align-items: center !important;
+        align-items: center !important;     /* Dead-center horizontal tracking alignment */
         justify-content: center !important;
-        gap: 15px !important;
+        gap: 14px !important;
         width: 100% !important;
-        margin-top: 25px !important;
+        margin-top: 20px !important;
     }
 
     .hero-buttons a, 
     .hero-buttons button {
         display: block !important;
-        width: 85% !important;
+        width: 85% !important;             /* Flawless identical matching widths */
         max-width: 280px !important;
-        padding: 14px 0 !important;
+        padding: 13px 0 !important;
         box-sizing: border-box !important;
         margin: 0 auto !important;
         text-align: center !important;
