@@ -610,7 +610,7 @@ h2 {
 }
 
 /* ==========================================
-   HOW IT WORKS COMPONENT STYLES (OPTION A)
+   HOW IT WORKS COMPONENT STYLES (SNAPPY LOOP)
    ========================================== */
 .steps-grid {
     display: grid;
@@ -623,20 +623,20 @@ h2 {
     background: #111111;
     border: 1px solid #222222;
     border-radius: 6px;
-    padding: 40px 25px 40px 65px !important; 
+    padding: 40px 30px 40px 110px !important; 
     position: relative;
     transition: transform 0.3s ease;
     text-align: left;
-    overflow: hidden; /* Safety for number fade */
+    overflow: hidden;
 
-    /* SEQUENTIAL LOOP: Card Border Pulse */
-    animation: slowCardPulse 12s infinite; 
+    /* SNAPPY LOOP: Total loop is 6 seconds now */
+    animation: fastCardPulse 6s infinite ease-in-out; 
 }
 
-/* sequential delay for each step card border */
+/* 2-second staggered entry delays */
 .step-card:nth-child(1) { animation-delay: 0s; }
-.step-card:nth-child(2) { animation-delay: 4s; }
-.step-card:nth-child(3) { animation-delay: 8s; }
+.step-card:nth-child(2) { animation-delay: 2s; }
+.step-card:nth-child(3) { animation-delay: 4s; }
 
 
 .step-num {
@@ -644,23 +644,23 @@ h2 {
     font-weight: 900;
     font-family: Arial, sans-serif;
     position: absolute;
-    top: 26px;
-    left: 20px !important;
+    top: 20px;
+    left: 15px !important;
     right: auto !important;
     line-height: 1;
     z-index: 1;
 
-    /* SEQUENTIAL LOOP: Number Fade In/Out */
-    animation: slowNumberFade 12s infinite;
+    /* SNAPPY LOOP: Coordinates perfectly with the card frame speed */
+    animation: fastNumberFade 6s infinite ease-in-out;
 }
 
-/* sequential delay for each step number fade */
+/* Matching 2-second staggered entry delays for numbers */
 .step-card:nth-child(1) .step-num { animation-delay: 0s; }
-.step-card:nth-child(2) .step-num { animation-delay: 4s; }
-.step-card:nth-child(3) .step-num { animation-delay: 8s; }
+.step-card:nth-child(2) .step-num { animation-delay: 2s; }
+.step-card:nth-child(3) .step-num { animation-delay: 4s; }
 
 
-/* Text layered above the number */
+/* Layering text elements cleanly on top */
 .step-card h3,
 .step-card p {
     position: relative;
@@ -671,7 +671,7 @@ h2 {
     color: #ffffff;
     font-size: 1.3rem;
     text-transform: uppercase;
-    margin-bottom: 15px;
+    margin: 0 0 15px 0;
     letter-spacing: 0.5px;
 }
 
@@ -682,7 +682,7 @@ h2 {
     margin: 0;
 }
 
-/* Desktop hover effect (stays responsive on desktop) */
+/* Keep standard desktop hover properties working cleanly */
 @media (hover: hover) {
     .step-card:hover {
         transform: translateY(-5px);
@@ -690,7 +690,7 @@ h2 {
     }
 }
 
-/* Mobile responsive breakpoint */
+/* Mobile Layout Continuity */
 @media screen and (max-width: 900px) {
     .steps-grid {
         grid-template-columns: 1fr;
@@ -698,22 +698,22 @@ h2 {
     }
     
     .step-card {
-        padding: 35px 25px 35px 65px !important;
+        padding: 35px 25px 35px 110px !important;
     }
 }
 
 /* ==========================================
-   ANIMATION KEYFRAMES
+   ANIMATION KEYFRAMES (6S TOTAL WINDOW)
    ========================================== */
 
-/* 1. Card Border Pulse: Bright highlight then fade back to dark */
-@keyframes slowCardPulse {
-    0%, 33.3%, 100% { border-color: #222222; } /* Dark base border */
-    16.6% { border-color: rgba(255, 0, 0, 0.7); } /* Bright red flash/pulse */
+/* Card Frame Highlight: Peaks quickly at the 1/3rd mark, then resets */
+@keyframes fastCardPulse {
+    0%, 33.3%, 100% { border-color: #222222; }
+    16.6% { border-color: rgba(255, 0, 0, 0.8); }
 }
 
-/* 2. Number Fade: Start dark/invisible, fade up, fade back down */
-@keyframes slowNumberFade {
-    0%, 33.3%, 100% { color: rgba(255, 0, 0, 0.05); opacity: 0.5; } /* Dark/faded base color */
-    16.6% { color: rgba(255, 0, 0, 0.2); opacity: 1; } /* Brightest/Active phase */
+/* Number Fade Highlight: Pumps visibility up bright, then drops back down */
+@keyframes fastNumberFade {
+    0%, 33.3%, 100% { color: rgba(255, 0, 0, 0.05); opacity: 0.4; }
+    16.6% { color: rgba(255, 0, 0, 0.25); opacity: 1; }
 }
