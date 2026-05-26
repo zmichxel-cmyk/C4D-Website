@@ -36,20 +36,18 @@ body {
 }
 
 .logo {
-    font-size: 1.5rem;
-    font-weight: 900;
-    letter-spacing: -1px;
     display: flex;
     align-items: center;
+    width: 210px;
+    height: 100px;
+    overflow: hidden;
 }
 
 .logo img {
-    height: 40px; /* Adjust to match your original logo size */
-    width: auto;
-}
-
-.logo span {
-    color: var(--accent-color);
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
 }
 
 .main-nav nav a {
@@ -60,9 +58,7 @@ body {
     transition: color 0.2s;
 }
 
-.main-nav nav a:hover {
-    color: var(--text-main);
-}
+.main-nav nav a:hover { color: var(--text-main); }
 
 .main-nav nav a.nav-cta {
     color: var(--accent-color);
@@ -71,24 +67,7 @@ body {
     border-radius: 4px;
 }
 
-.main-nav nav a.nav-cta:hover {
-    background: var(--accent-color);
-    color: #000;
-}
-
-/* --- Layout Wrappers & Sections --- */
-.section-container {
-    max-width: 1200px;
-    margin: 0 auto;
-    padding: 60px 20px;
-}
-
-.hero {
-    text-align: center;
-    padding: 100px 20px;
-    background: radial-gradient(circle at center, #1b1214 0%, var(--bg-dark) 70%);
-}
-
+/* --- Interactive Store Grid --- */
 .store-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -100,6 +79,17 @@ body {
     border: 1px solid #24242b;
     border-radius: 8px;
     overflow: hidden;
+    transition: transform 0.2s, border-color 0.2s;
+}
+
+.store-card:hover {
+    border-color: var(--accent-color);
+}
+
+.media-frame {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
 }
 
 .card-info { padding: 20px; }
@@ -111,12 +101,34 @@ body {
     margin-top: 15px;
 }
 
+.price {
+    font-size: 1.3rem;
+    font-weight: 700;
+}
+
+/* --- Buttons & UI Elements --- */
 .btn-buy {
     background: #3f3f46 !important;
     color: #fff !important;
     border: none;
-    padding: 8px 16px;
+    padding: 10px 20px;
     border-radius: 4px;
     cursor: pointer;
-    font-weight: 600;
+    transition: all 0.3s ease;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+    font-weight: 700;
+    min-width: 120px;
+}
+
+.btn-buy.copied {
+    background: var(--accent-color) !important;
+    color: #000 !important;
+}
+
+.checkmark {
+    font-weight: bold;
+    color: #00ff00;
 }
