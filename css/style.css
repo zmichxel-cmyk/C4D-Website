@@ -610,8 +610,8 @@ h2 {
     text-align: left;
     overflow: hidden;
 
-    /* RE-TUNED DESKTOP ENGINE: Slowed down to a smooth 3.6s total loop */
-    animation: rapidCardPulse 3.6s infinite cubic-bezier(0.25, 1, 0.5, 1); 
+    /* LOW-GEAR DESKTOP TIMING: 7.5s master loop for a smooth wave effect */
+    animation: rapidCardPulse 7.5s infinite ease-in-out; 
 }
 
 .step-num {
@@ -625,14 +625,14 @@ h2 {
     line-height: 1;
     z-index: 1;
 
-    /* RE-TUNED DESKTOP TIMELINE FOR NUMBER GLOWS */
-    animation: rapidNumberFade 3.6s infinite cubic-bezier(0.25, 1, 0.5, 1);
+    /* Matches the extended desktop duration */
+    animation: rapidNumberFade 7.5s infinite ease-in-out;
 }
 
-/* Stately 1.2s Sequential Step Splits for Desktop Windows */
+/* 2.5-second sequential increments across the 3 desktop columns */
 .step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s; }
-.step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 1.2s; }
-.step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 2.4s; }
+.step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 2.5s; }
+.step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 5.0s; }
 
 /* Foreground Layer Stack */
 .step-card h3,
@@ -675,29 +675,29 @@ h2 {
     
     .step-card {
         padding: 35px 25px 35px 110px !important;
-        /* Slowed down to a relaxed 4.5s loop for easy reading while scrolling */
-        animation-duration: 4.5s !important;
+        /* Extended 9.0s track time for an ultra-chill mobile scroll speed */
+        animation-duration: 9s !important;
     }
 
     .step-num {
-        animation-duration: 4.5s !important;
+        animation-duration: 9s !important;
     }
 
-    /* 1.5s incremental pacing updates for vertical mobile stacks */
+    /* 3.0-second clean intervals for the stacked vertical cards */
     .step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s !important; }
-    .step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 1.5s !important; }
-    .step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 3.0s !important; }
+    .step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 3s !important; }
+    .step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 6s !important; }
 }
 
 /* ==========================================
-    ANIMATION KEYFRAME MATRICES
+    RE-TUNED ANIMATION KEYFRAME MATRICES (SMOOTH SIMMER)
    ========================================== */
 @keyframes rapidCardPulse {
-    0%, 33.3%, 100% { border-color: #222222; }
-    12% { border-color: rgba(255, 51, 68, 0.9); } 
+    0%, 40%, 100% { border-color: #222222; }
+    15%, 25% { border-color: rgba(255, 51, 68, 0.9); } /* Holds the red border glow longer */
 }
 
 @keyframes rapidNumberFade {
-    0%, 33.3%, 100% { color: rgba(255, 51, 68, 0.04); opacity: 0.3; }
-    12% { color: rgba(255, 51, 68, 0.3); opacity: 1; }
+    0%, 40%, 100% { color: rgba(255, 51, 68, 0.04); opacity: 0.3; }
+    15%, 25% { color: rgba(255, 51, 68, 0.25); opacity: 1; } /* Holds the text glow longer */
 }
