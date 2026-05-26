@@ -32,11 +32,12 @@
             align-items: center !important;
             width: 100% !important;
             margin: 0 auto !important;
+            padding: 10px 0 !important;
         }
         .main-nav .logo img {
-            width: auto !important;
-            height: 55px !important; /* Physically scales up the logo size */
-            max-height: 55px !important;
+            width: 85% !important;        /* Matches the perfect huge custom page size */
+            max-width: 290px !important;  /* High ceiling cap so it can stretch out */
+            height: auto !important;       /* Maintains crisp aspect ratio */
             object-fit: contain !important;
             display: block !important;
         }
