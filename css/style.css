@@ -82,22 +82,39 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
     .hero h1 { font-size: 2.1rem !important; }
 }
 
-/* --- HOW IT WORKS: RESTORED GLOW ANIMATIONS --- */
+/* --- HOW IT WORKS: STRENGTHENED VERSION --- */
 
 .step-card {
-    /* Ensures the pulse runs infinitely */
-    animation: rapidCardPulse 7.5s infinite ease-in-out;
+    background: #111111;
+    border: 1px solid #222222;
+    border-radius: 6px;
+    padding: 40px 30px 40px 110px !important;
+    position: relative;
+    transition: transform 0.3s ease;
+    text-align: left;
+    overflow: hidden;
+    /* Forces the animation to override previous static states */
+    animation: rapidCardPulse 7.5s infinite ease-in-out !important;
+    pointer-events: none;
 }
 
 .step-num {
-    /* Ensures the number fade runs infinitely */
-    animation: rapidNumberFade 7.5s infinite ease-in-out;
+    font-size: 4.5rem;
+    font-weight: 900;
+    font-family: 'Impact', 'Arial Black', sans-serif;
+    position: absolute;
+    top: 20px;
+    left: 15px !important;
+    line-height: 1;
+    z-index: 1;
+    /* Forces the animation to override previous static states */
+    animation: rapidNumberFade 7.5s infinite ease-in-out !important;
 }
 
-/* Sequential timing for the three columns */
-.step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s; }
-.step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 2.5s; }
-.step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 5.0s; }
+/* Sequential timing */
+.step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s !important; }
+.step-card:nth-child(2), .step-card:nth-child(2) .step-num { animation-delay: 2.5s !important; }
+.step-card:nth-child(3), .step-card:nth-child(3) .step-num { animation-delay: 5.0s !important; }
 
 @keyframes rapidCardPulse {
     0%, 40%, 100% { border-color: #222222; }
@@ -109,7 +126,7 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
     15%, 25% { color: rgba(255, 51, 68, 0.25); opacity: 1; }
 }
 
-/* Mobile adjustments to keep the sequence clean */
+/* Mobile */
 @media screen and (max-width: 900px) {
     .step-card, .step-num { animation-duration: 9s !important; }
     .step-card:nth-child(1), .step-card:nth-child(1) .step-num { animation-delay: 0s !important; }
