@@ -508,101 +508,80 @@ h2 {
 }
 
 /* ==========================================
-   FINAL MOBILE RESPONSIVE REPAIR
+   FORCE MOBILE RESPONSIVE OVERRIDES
    ========================================== */
-@media (max-width: 768px) {
-    /* 1. Force the Logo to Expand to Full Space */
+@media screen and (max-width: 768px) {
+    
+    /* 1. FORCE LOGO TO OVERRIDE ALL CONTROLS */
     .main-nav {
-        padding: 25px 15px 15px 15px;
-        flex-direction: column;
-        align-items: center;
-        justify-content: center;
-        gap: 20px;
-        width: 100%;
-        box-sizing: border-box;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        justify-content: center !important;
+        padding: 25px 10px 15px 10px !important;
+        width: 100% !important;
+        box-sizing: border-box !important;
     }
 
     .main-nav .logo {
-        width: 100%;
-        max-width: 280px; /* Gives the logo container a wider footprint to stretch into */
-        display: flex;
-        justify-content: center;
-        margin: 0 auto;
+        width: 100% !important;
+        display: flex !important;
+        justify-content: center !important;
+        margin: 0 auto 10px auto !important;
     }
 
     .main-nav .logo img {
-        width: 100%;       /* Forces the image to fill the expanded container space */
-        max-height: 120px; /* High ceiling so your brand dominance is clear */
-        object-fit: contain;
+        width: auto !important;
+        height: 80px !important;       /* Explicit physical height overwrite */
+        max-height: 80px !important;   /* Hard ceiling limit break */
+        object-fit: contain !important;
+        display: block !important;
     }
 
-    /* 2. Un-clip and Dynamic Wrap Nav Links */
+    /* 2. FORCE NAV LINKS TO STACK / WRAP CLEANLY */
     .main-nav nav {
-        display: flex;
-        flex-direction: row;
-        justify-content: center;
-        align-items: center;
-        flex-wrap: wrap; /* CRITICAL: If the screen is ultra-narrow, links drop to a new line instead of cutting off */
-        gap: 12px;
-        width: 100%;
-        padding: 0 10px;
-        box-sizing: border-box;
+        display: flex !important;
+        flex-direction: row !important;
+        flex-wrap: wrap !important;     /* Forces drop down if links run out of room */
+        justify-content: center !important;
+        align-items: center !important;
+        gap: 10px !important;
+        width: 100% !important;
     }
 
     .main-nav nav a {
-        font-size: 0.9rem;
-        padding: 6px 10px;
+        font-size: 0.9rem !important;
+        padding: 6px 10px !important;
+        white-space: nowrap !important; /* Blocks text tracking separation */
     }
 
-    /* Fix the Custom Request Border Button tracking */
     .nav-cta {
+        display: inline-block !important;
         padding: 6px 12px !important;
-        display: inline-block;
-        white-space: nowrap; /* Keeps the text bound cleanly inside its box */
     }
 
-    /* 3. Tighten Typography Lockup */
-    main h1, 
-    .hero h1 {
-        font-size: 2.1rem;
-        line-height: 1.15;
-        letter-spacing: -0.5px;
-        text-align: center;
-        max-width: 90%;
-        margin: 30px auto 15px auto;
-    }
-
-    main p, 
-    .hero p {
-        font-size: 0.95rem;
-        line-height: 1.45;
-        max-width: 85%;
-        margin: 0 auto 25px auto;
-    }
-
-    /* 4. Perfect Center Alignment for Hero CTA Buttons */
+    /* 3. FORCE PERFECT CENTER BUTTON ALIGNMENT */
     .hero-buttons {
-        display: flex;
-        flex-direction: column;
-        align-items: center;     /* Hard locks both buttons exactly down the screen center-line */
-        justify-content: center;
-        gap: 14px;
-        width: 100%;
-        padding: 0;
-        margin: 25px auto 0 auto;
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;    /* Absolute center axis anchor */
+        justify-content: center !important;
+        gap: 15px !important;
+        width: 100% !important;
+        padding: 0 !important;
+        margin: 25px auto 0 auto !important;
     }
 
-    /* Balance both call-to-action shapes symmetrically */
+    /* Target both link wrappers and buttons strictly */
     .hero-buttons a, 
-    .hero-buttons button {
-        display: block;
-        width: 85%;             /* Locks identical horizontal widths for both shapes */
-        max-width: 300px;       /* Keeps them from getting overly stretched on small tablets */
-        text-align: center;
-        padding: 14px 0;
-        box-sizing: border-box; /* Includes padding inside the width math to prevent off-center shifts */
-        margin: 0 auto;         /* Centers the element boxes entirely */
-        font-size: 1rem;
-        font-weight: 600;
+    .hero-buttons button,
+    .hero-buttons .btn {
+        display: block !important;
+        width: 85% !important;            /* Hard matches container layout sizes */
+        max-width: 290px !important;      /* Equalizes exact shape limits */
+        padding: 14px 0 !important;
+        box-sizing: border-box !important;/* Locks border/padding calculations together */
+        margin: 0 auto !important;        /* Centers element box footprints */
+        text-align: center !important;
     }
 }
