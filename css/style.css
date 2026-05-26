@@ -1,3 +1,15 @@
+/* 1. Force the body to be invisible by default */
+body {
+    opacity: 0;
+    /* 2. We trigger the animation only when the page is loaded */
+    animation: fadeIn 0.8s ease-in-out forwards;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
+
 /* --- 1. GLOBAL ANIMATIONS --- */
 @keyframes fadeIn {
     from { opacity: 0; }
