@@ -4,143 +4,58 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Overlays | Customs4Daez</title>
-    <link rel="stylesheet" href="./css/style.css">
-    
-    <style>
-    @media screen and (max-width: 768px) {
-        header.main-header {
-            height: auto !important;
-            min-height: unset !important;
-            max-height: unset !important;
-            padding: 0 !important;
-            margin: 0 !important;
-        }
-        .main-nav {
-            display: flex !important;
-            flex-direction: column !important; 
-            align-items: center !important;    
-            justify-content: center !important;
-            text-align: center !important;
-            padding: 25px 10px 15px 10px !important; 
-            width: 100% !important;
-            box-sizing: border-box !important;
-            gap: 12px !important;
-        }
-        .main-nav .logo {
-            display: flex !important;
-            justify-content: center !important; 
-            align-items: center !important;
-            width: 100% !important;
-            margin: 0 auto !important;         
-        }
-        .main-nav .logo a {
-            display: flex !important;
-            justify-content: center !important; 
-            align-items: center !important;
-            width: 100% !important;
-        }
-        .main-nav .logo img {
-            width: 85% !important;        
-            max-width: 290px !important;  
-            height: auto !important;       
-            object-fit: contain !important;
-            display: block !important;
-            margin: 0 auto !important;     
-        }
-        .main-nav nav {
-            display: flex !important;
-            flex-direction: row !important; 
-            justify-content: center !important;
-            align-items: center !important;
-            gap: 14px !important;         
-            width: 100% !important;
-            margin: 0 auto !important;
-        }
-        .main-nav nav a {
-            font-size: 0.8rem !important; 
-            white-space: nowrap !important; 
-            text-decoration: none !important;
-            padding: 4px 2px !important;
-        }
-        .nav-cta {
-            display: inline-block !important;
-            padding: 5px 10px !important;
-            border: 1px solid #ff0000 !important;
-            border-radius: 4px !important;
-        }
-    }
-    </style>
+    <link rel="stylesheet" href="css/style.css">
 </head>
 <body>
 
+    <!-- Header & Navigation -->
     <header class="main-header">
-        <div class="overlay-grid">
-    <div class="overlay-card">
-        <div class="overlay-preview">
+        <div class="main-nav">
+            <div class="logo">
+                <a href="index.html">
+                    <img src="./assets/images/logo.png" alt="Customs4Daez Logo">
+                </a>
             </div>
-        <div class="overlay-info">
-            <h3>Classic White (Xbox Layout)</h3>
-            <div class="link-box">
-                <input type="text" value="https://yourname.github.io/file" readonly>
-                <button onclick="copyToClipboard(this)">Copy Link</button>
-            </div>
+            <nav>
+                <a href="showroom.html">Showroom</a>
+                <a href="free-overlays.html">Free Overlays</a>
+                <a href="custom.html" class="nav-cta">Custom Request</a>
+            </nav>
         </div>
-    </div>
-    </div>
     </header>
 
+    <!-- Page Content -->
     <main class="section-container">
-    <h2 style="text-align: center;">FREE OVERLAYS</h2>
-    <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;">
-        Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.
-    </p>
+        <h2 style="text-align: center;">FREE OVERLAYS</h2>
+        <p style="text-align: center; color: var(--text-muted); margin-bottom: 40px;">
+            Test out the performance in OBS instantly. Features a locked, non-removable on-screen watermark.
+        </p>
 
-    <div class="store-grid">
-        <!-- Overlay Card Start -->
-        <div class="store-card">
-            <div class="media-frame" style="background: #111;">
-                <!-- Your preview image or video goes here -->
-            </div>
-            <div class="card-info">
-                <h3>Classic White (Xbox Layout)</h3>
-                <!-- Use your existing URL Copy Box inside the card -->
-                <div class="url-copy-box">
-                    <input type="text" value="https://yourname.github.io/file" readonly>
-                    <button onclick="copyToClipboard(this)">Copy</button>
+        <div class="store-grid">
+            <!-- Overlay Card -->
+            <div class="store-card">
+                <div class="media-frame" style="background: #111;">
+                    <!-- Your preview content -->
+                </div>
+                <div class="card-info">
+                    <h3>Classic White (Xbox Layout)</h3>
+                    <div class="url-copy-box">
+                        <input type="text" value="https://yourname.github.io/file" readonly>
+                        <button onclick="copyToClipboard(this)">Copy</button>
+                    </div>
                 </div>
             </div>
         </div>
-        <!-- Overlay Card End -->
-    </div>
-</main>
+    </main>
 
     <script>
-    function copyOverlayLink(inputId, buttonElement) {
-        var copyText = document.getElementById(inputId);
-        copyText.select();
-        copyText.setSelectionRange(0, 99999); // Mobile device safety
-        navigator.clipboard.writeText(copyText.value);
-        
-        // Quick visual button feedback
-        var originalText = buttonElement.innerHTML;
-        buttonElement.innerHTML = "Copied!";
-        buttonElement.style.background = "#ff0000";
-        setTimeout(function() {
-            buttonElement.innerHTML = originalText;
-            buttonElement.style.background = "";
-        }, 2000);
-    }
+        function copyToClipboard(button) {
+            const input = button.previousElementSibling;
+            input.select();
+            document.execCommand("copy");
+            button.innerText = "Copied!";
+            setTimeout(() => { button.innerText = "Copy"; }, 2000);
+        }
     </script>
-
-    <script>
-function copyToClipboard(button) {
-    const input = button.previousElementSibling;
-    input.select();
-    document.execCommand("copy");
-    button.innerText = "Copied!";
-    setTimeout(() => { button.innerText = "Copy Link"; }, 2000);
-}
-</script>
-
 </body>
 </html>
