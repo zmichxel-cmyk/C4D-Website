@@ -210,20 +210,14 @@ h2 {
     font-size: 1.1rem;
 }
 
-/* --- Pulse Animation for the Bottom Button Only --- */
+/* --- High Priority Pulse --- */
 .custom-cta-faded .btn-primary {
-    animation: pulse-red 2s infinite;
-    display: inline-block; /* Helps with animation positioning */
+    animation: pulse-red 2s infinite !important;
+    position: relative !important;
 }
 
 @keyframes pulse-red {
-    0% {
-        box-shadow: 0 0 0 0 rgba(255, 51, 68, 0.7);
-    }
-    70% {
-        box-shadow: 0 0 0 10px rgba(255, 51, 68, 0);
-    }
-    100% {
-        box-shadow: 0 0 0 0 rgba(255, 51, 68, 0);
-    }
+    0% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 51, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0); }
 }
