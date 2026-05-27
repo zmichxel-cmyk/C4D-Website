@@ -199,7 +199,7 @@ h2 {
     animation: pulse-red 2s infinite !important;
     position: relative !important;
     display: inline-block !important; /* Required to allow margins */
-    margin-top: 50px !important;     /* Adjust this value to move it further down */
+    margin-top: 60px !important;     /* Adjust this value to move it further down */
 }
 
 @keyframes pulse-red {
