@@ -16,7 +16,6 @@
     </a>
     
     <nav>
-        <!-- Links updated to point to direct files, not home anchors -->
         <a href="showroom.html">Showroom</a>
         <a href="overlays.html">Free Overlays</a>
         <a href="custom.html" class="nav-cta">Custom Request</a>
@@ -60,9 +59,43 @@
                 <textarea id="details" name="details" rows="6" placeholder="Describe any specific animations, glowing effects, custom fonts, or branding placements you want included..." required></textarea>
             </div>
 
-            <button type="submit" class="btn-submit">Submit Design Brief</button>
+            <button type="submit" id="my-form-button" class="btn-submit">Submit Design Brief</button>
         </form>
+
+        <!-- Success Message Container -->
+        <div id="my-form-status" style="display:none; text-align:center; padding: 40px; border: 1px solid var(--accent-color); border-radius: 8px; margin-top: 20px;">
+            <h2 style="color: var(--accent-color);">Request Received!</h2>
+            <p>Your design brief has been sent. I'll review your details and reach out to your email address shortly to get your project started.</p>
+        </div>
     </main>
-   
+
+    <!-- AJAX Submission Script -->
+    <script>
+        var form = document.getElementById("my-form");
+        var status = document.getElementById("my-form-status");
+
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    form.style.display = "none";
+                    status.style.display = "block";
+                    form.reset();
+                } else {
+                    status.innerHTML = "Oops! There was a problem submitting your form.";
+                    status.style.display = "block";
+                }
+            }).catch(error => {
+                status.innerHTML = "Oops! There was a problem submitting your form.";
+                status.style.display = "block";
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+    </script>
 </body>
 </html>
