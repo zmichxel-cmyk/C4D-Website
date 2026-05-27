@@ -210,10 +210,10 @@ h2 {
     font-size: 1.1rem;
 }
 
-/* --- Pulse Animation --- */
-.btn-primary {
-    /* Existing styles remain, just add these two lines: */
+/* --- Pulse Animation for the Bottom Button Only --- */
+.custom-cta-faded .btn-primary {
     animation: pulse-red 2s infinite;
+    display: inline-block; /* Helps with animation positioning */
 }
 
 @keyframes pulse-red {
