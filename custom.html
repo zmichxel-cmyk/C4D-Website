@@ -8,33 +8,39 @@
 </head>
 <body>
 
-   <header class="main-nav">
-    <a href="index.html" class="logo-link">
-        <div class="logo">
-            <img src="assets/images/logo.png" alt="My Brand Logo">
-        </div>
-    </a>
-    <nav>
-        <a href="showroom.html">Showroom</a>
-        <a href="overlays.html">Free Overlays</a>
-        <a href="custom.html" class="nav-cta">Custom Request</a>
-    </nav>
-</header>
+    <header class="main-nav">
+        <a href="index.html" class="logo-link">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="My Brand Logo">
+            </div>
+        </a>
+        <nav>
+            <a href="showroom.html">Showroom</a>
+            <a href="overlays.html">Free Overlays</a>
+            <a href="custom.html" class="nav-cta">Custom Request</a>
+        </nav>
+    </header>
 
     <main class="form-container">
         <h1>COMMISSION A <span class="text-accent">CUSTOM</span> DESIGN</h1>
         <p class="form-intro">Fill out the design brief below. Custom assets start at a premium flat rate. Once submitted, I will review your details and send an upfront deposit link to secure your slot.</p>
 
-        <!-- Form without AJAX script -->
+        <!-- THIS IS WHERE YOUR FORMSPREE URL IS USED -->
         <form action="https://formspree.io/f/mdajwzky" method="POST" class="brief-form">
+            
+            <!-- This hidden field directs the browser to your success page after submission -->
+            <input type="hidden" name="_next" value="/success.html" />
+
             <div class="form-group">
                 <label for="streamer-name">Twitch / Kick / YouTube Name</label>
                 <input type="text" id="streamer-name" name="streamer_name" placeholder="e.g., StreamerNameTV" required>
             </div>
+
             <div class="form-group">
                 <label for="email">Your Email Address</label>
                 <input type="email" id="email" name="email" placeholder="where I should send your invoice" required>
             </div>
+
             <div class="form-group">
                 <label for="controller-type">Controller Layout Style</label>
                 <select id="controller-type" name="controller_type" required>
@@ -46,14 +52,17 @@
                     <option value="custom-hybrid">Other / Fully Custom Layout</option>
                 </select>
             </div>
+
             <div class="form-group">
                 <label for="colors">Color Palette & Aesthetic</label>
                 <input type="text" id="colors" name="colors" placeholder="e.g., Graffiti style, matte black with neon crimson accents" required>
             </div>
+
             <div class="form-group">
                 <label for="details">Specific Design Details & Features</label>
                 <textarea id="details" name="details" rows="6" placeholder="Describe any specific animations, glowing effects, custom fonts, or branding placements you want included..." required></textarea>
             </div>
+
             <button type="submit" class="btn-submit">Submit Design Brief</button>
         </form>
     </main>
