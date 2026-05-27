@@ -25,8 +25,8 @@
         <h1>COMMISSION A <span class="text-accent">CUSTOM</span> DESIGN</h1>
         <p class="form-intro">Fill out the design brief below. Custom assets start at a premium flat rate. Once submitted, I will review your details and send an upfront deposit link to secure your slot.</p>
 
-        <!-- The form -->
-        <form id="my-form" action="https://formspree.io/f/mdajwzky" method="POST" class="brief-form">
+        <!-- Form without AJAX script -->
+        <form action="https://formspree.io/f/mdajwzky" method="POST" class="brief-form">
             <div class="form-group">
                 <label for="streamer-name">Twitch / Kick / YouTube Name</label>
                 <input type="text" id="streamer-name" name="streamer_name" placeholder="e.g., StreamerNameTV" required>
@@ -54,46 +54,8 @@
                 <label for="details">Specific Design Details & Features</label>
                 <textarea id="details" name="details" rows="6" placeholder="Describe any specific animations, glowing effects, custom fonts, or branding placements you want included..." required></textarea>
             </div>
-            <button type="submit" id="my-form-button" class="btn-submit">Submit Design Brief</button>
+            <button type="submit" class="btn-submit">Submit Design Brief</button>
         </form>
-
-        <!-- Success Message (Hidden by default) -->
-        <div id="my-form-status" style="display:none; text-align:center; padding: 40px; border: 1px solid var(--accent-color); border-radius: 8px; margin-top: 20px;">
-            <h2 style="color: var(--accent-color);">Request Received!</h2>
-            <p>Your design brief has been sent. I'll review your details and reach out to your email address shortly to get your project started.</p>
-        </div>
     </main>
-
-    <script>
-        const form = document.getElementById("my-form");
-        const status = document.getElementById("my-form-status");
-
-        form.addEventListener("submit", async (e) => {
-            e.preventDefault();
-            console.log("Submit intercepted...");
-
-            const data = new FormData(form);
-            
-            try {
-                const response = await fetch(form.action, {
-                    method: form.method,
-                    body: data,
-                    headers: { 'Accept': 'application/json' }
-                });
-
-                if (response.ok) {
-                    console.log("Success!");
-                    form.style.display = "none";
-                    status.style.display = "block";
-                } else {
-                    console.error("Server error:", response.status);
-                    alert("Submission failed. Try again.");
-                }
-            } catch (error) {
-                console.error("Network error:", error);
-                alert("Network error.");
-            }
-        });
-    </script>
 </body>
 </html>
