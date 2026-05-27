@@ -122,3 +122,46 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
     .main-nav { flex-direction: column; gap: 15px; }
     .steps-grid { flex-direction: column; align-items: center; }
 }
+
+/* --- Success Page Additions --- */
+.success-card {
+    background: var(--bg-card);
+    padding: 40px;
+    border-radius: 8px;
+    border: 1px solid #24242b;
+    text-align: center;
+    width: 100%;
+}
+
+.next-steps-box {
+    text-align: left;
+    margin: 25px 0;
+    padding: 15px;
+    background: rgba(255, 255, 255, 0.03);
+    border-radius: 4px;
+}
+
+.checkmark-circle {
+    width: 60px; 
+    height: 60px; 
+    border-radius: 50%; 
+    background: #28a745;
+    margin: 0 auto 20px auto; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.checkmark {
+    width: 15px; 
+    height: 30px; 
+    border: solid white;
+    border-width: 0 5px 5px 0; 
+    transform: rotate(45deg);
+}
+
+@keyframes popIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
