@@ -180,26 +180,30 @@ h2 {
     .steps-grid { flex-direction: column; align-items: center; }
 }
 
+/* --- Optimized CTA Section --- */
 .custom-cta-faded {
     padding: 80px 20px;
-    text-align: center;
     margin: 40px auto;
     width: 100%;
-    /* Soft radial glow that fades into your dark background */
+    /* Flexbox setup to control spacing */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px; /* Adjust this number to move the button up or down */
+    
     background: radial-gradient(
         circle at 50% 50%, 
         rgba(255, 51, 68, 0.12) 0%, 
         rgba(15, 15, 18, 0) 75%
     );
-    
 }
 
-/* --- High Priority Pulse --- */
+/* --- Button Pulse Animation --- */
 .custom-cta-faded .btn-primary {
     animation: pulse-red 2s infinite !important;
     position: relative !important;
-    display: inline-block !important; /* Required to allow margins */
-    margin-top: 60px !important;     /* Adjust this value to move it further down */
+    display: inline-block !important;
+    margin-top: 0 !important; /* Managed by the 'gap' above */
 }
 
 @keyframes pulse-red {
