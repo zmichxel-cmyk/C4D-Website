@@ -34,8 +34,7 @@ h1, h2 {
     margin-bottom: 30px; 
     text-transform: uppercase; 
     letter-spacing: 1px; 
-    text-align: center; 
-    width: 100%;
+    text-align: center; /* This centers the text inside its box */
 }
 
 .accent-num { color: var(--accent-color); }
@@ -112,4 +111,46 @@ h1, h2 {
 .brief-form { width: 100%; display: flex; flex-direction: column; gap: 20px; background: var(--bg-card); padding: 30px; border: 1px solid #24242b; border-radius: 8px; }
 .form-group { display: flex; flex-direction: column; gap: 8px; }
 .form-group label { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
-.form-group input, .form-group select, .
+.form-group input, .form-group select, .form-group textarea { padding: 12px; background-color: var(--bg-dark); border: 1px solid #24242b; color: var(--text-main); border-radius: 4px; }
+
+.btn-submit { 
+    background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color);
+    padding: 12px; border-radius: 4px; font-weight: 900; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s ease; animation: pulse-red 2s infinite;
+    position: relative; display: inline-block;
+}
+.btn-submit:hover { background: var(--accent-color); color: #000; animation: none; }
+
+/* --- Success Page Additions --- */
+.success-card {
+    background: var(--bg-card); padding: 40px; border-radius: 8px;
+    border: 1px solid #24242b; text-align: center; width: 100%;
+}
+.next-steps-box {
+    text-align: left; margin: 25px 0; padding: 20px;
+    background: rgba(255, 255, 255, 0.03); border-radius: 4px;
+}
+.next-steps-box ul {
+    list-style-position: outside; padding-left: 25px; margin-top: 10px;
+}
+.next-steps-box li {
+    margin-bottom: 12px; padding-left: 5px;
+}
+.checkmark-circle {
+    width: 60px; height: 60px; border-radius: 50%; background: #28a745;
+    margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center;
+    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+.checkmark {
+    width: 15px; height: 30px; border: solid white;
+    border-width: 0 5px 5px 0; transform: rotate(45deg);
+}
+@keyframes popIn {
+    0% { transform: scale(0); }
+    100% { transform: scale(1); }
+}
+
+@media (max-width: 768px) {
+    .main-nav { flex-direction: column; gap: 15px; }
+    .steps-grid { flex-direction: column; align-items: center; }
+}
