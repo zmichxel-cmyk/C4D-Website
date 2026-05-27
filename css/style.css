@@ -12,6 +12,8 @@
 
 html, body {
     min-height: 100vh;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
 }
 
 body {
@@ -19,11 +21,15 @@ body {
     color: var(--text-main);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
+    animation: fadeInPage 0.4s ease-in-out;
 }
+
+@keyframes fadeInPage { 0% { opacity: 0; } 100% { opacity: 1; } }
 
 /* --- Layout --- */
 .section-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px 20px 20px; }
 h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
+.accent-num { color: var(--accent-color); }
 
 /* --- Navigation Bar --- */
 .main-nav {
@@ -31,60 +37,90 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
     padding: 20px 40px; background: rgba(15, 15, 18, 0.85); backdrop-filter: blur(10px);
     position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #24242b;
 }
+.logo-link { text-decoration: none; display: block; cursor: pointer; }
+.logo { display: flex; align-items: center; width: 210px; height: 100px; overflow: hidden; }
+.logo img { width: 100%; height: auto; display: block; object-fit: contain; }
 
-/* --- Navigation CTA (Red Text, Hollow) --- */
-.nav-cta {
+.main-nav nav a { color: var(--text-muted); text-decoration: none; margin-left: 24px; font-weight: 500; transition: color 0.2s; }
+.main-nav nav a:hover { color: var(--text-main); }
+
+/* --- Hollow-to-Solid Button Styles (Restricted to Nav/CTA/Form) --- */
+.nav-cta, 
+.custom-cta-faded .btn-primary, 
+.brief-form .btn-submit {
     background: transparent;
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
     padding: 6px 16px;
     border-radius: 4px;
     text-decoration: none;
-    font-weight: 600;
-    transition: all 0.2s ease;
-}
-
-.nav-cta:hover {
-    background: var(--accent-color);
-    color: #000000;
-}
-
-/* --- Solid Buttons (White Text) --- */
-.btn-primary, .btn-submit {
-    background: var(--accent-color);
-    color: #ffffff;
-    padding: 10px 24px;
-    border-radius: 4px;
-    text-decoration: none;
     font-weight: 700;
-    border: none;
+    transition: all 0.3s ease;
     cursor: pointer;
-    transition: opacity 0.2s;
     display: inline-block;
 }
 
-.btn-primary:hover, .btn-submit:hover { opacity: 0.9; }
+.nav-cta:hover, 
+.custom-cta-faded .btn-primary:hover, 
+.brief-form .btn-submit:hover {
+    background: var(--accent-color);
+    color: #000;
+}
+
+.nav-cta:active, 
+.custom-cta-faded .btn-primary:active, 
+.brief-form .btn-submit:active {
+    background: var(--accent-color);
+    color: #000;
+    transform: scale(0.98);
+}
 
 /* --- Hero Section --- */
 .hero {
     text-align: center; padding: 100px 20px;
+    background: radial-gradient(circle at center, #1b1214 0%, var(--bg-dark) 70%);
 }
-.hero h1 { font-size: 3.5rem; font-weight: 900; margin-bottom: 20px; }
+.hero h1 { font-size: 3.5rem; font-weight: 900; letter-spacing: -1px; margin-bottom: 20px; }
 .hero h1 span { color: var(--accent-color); }
+.hero p { color: var(--text-muted); max-width: 600px; margin: 0 auto 40px auto; font-size: 1.2rem; }
 
-/* --- 3-Step Section --- */
+/* --- 3-Step Section & Staggered Animation --- */
+.steps-container { padding: 80px 20px; }
 .steps-grid { display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
 .step-card {
     background: var(--bg-card); border: 1px solid #24242b; padding: 30px; border-radius: 8px; width: 300px;
-    text-align: center;
+    text-align: center; opacity: 0; animation: fadeIn 9s infinite;
 }
+.step-1 { animation-delay: 0s; } .step-2 { animation-delay: 1s; } .step-3 { animation-delay: 2s; }
 .step-num { display: block; font-size: 3rem; font-weight: 900; color: var(--accent-color); margin-bottom: 10px; }
 
-/* --- Forms --- */
-.form-container { max-width: 600px; margin: 60px auto; padding: 20px; }
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    70% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 0; transform: translateY(0); }
+    100% { opacity: 0; }
+}
+
+/* --- CTA Section --- */
+.custom-cta-faded {
+    padding: 60px 20px 40px 20px; margin: 40px auto 0 auto; width: 100%;
+    display: flex; flex-direction: column; align-items: center; gap: 20px;
+    background: radial-gradient(circle at center, #1b1214 0%, var(--bg-dark) 70%);
+}
+.custom-cta-faded .btn-primary { animation: pulse-red 2s infinite !important; }
+
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 51, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0); }
+}
+
+/* --- Store & Forms --- */
+.store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+.form-container { max-width: 600px; margin: 60px auto; padding: 20px; display: flex; flex-direction: column; align-items: center; }
 .brief-form { width: 100%; display: flex; flex-direction: column; gap: 20px; background: var(--bg-card); padding: 30px; border: 1px solid #24242b; border-radius: 8px; }
-.form-group { display: flex; flex-direction: column; gap: 8px; }
-.form-group input, .form-group textarea, .form-group select { padding: 12px; background-color: var(--bg-dark); border: 1px solid #24242b; color: var(--text-main); border-radius: 4px; }
+.form-group input, .form-group textarea { padding: 12px; background-color: var(--bg-dark); border: 1px solid #24242b; color: var(--text-main); border-radius: 4px; }
 
 @media (max-width: 768px) {
     .main-nav { flex-direction: column; gap: 15px; }
