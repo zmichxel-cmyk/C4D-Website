@@ -198,6 +198,8 @@ h2 {
 .custom-cta-faded .btn-primary {
     animation: pulse-red 2s infinite !important;
     position: relative !important;
+    display: inline-block !important; /* Required to allow margins */
+    margin-top: 50px !important;     /* Adjust this value to move it further down */
 }
 
 @keyframes pulse-red {
