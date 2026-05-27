@@ -19,11 +19,10 @@ body {
     color: var(--text-main);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
     line-height: 1.6;
-    /* --- Smooth Transition Added Here --- */
+    /* Smooth page load transition */
     animation: fadeInPage 0.4s ease-in-out;
 }
 
-/* --- Transition Keyframes --- */
 @keyframes fadeInPage {
     0% { opacity: 0; }
     100% { opacity: 1; }
@@ -133,7 +132,7 @@ h2 {
     font-size: 1.2rem;
 }
 
-/* --- 3-Step Section --- */
+/* --- 3-Step Section & Staggered Animation --- */
 .steps-container { padding: 80px 20px; }
 
 .steps-grid {
@@ -152,7 +151,8 @@ h2 {
     width: 300px;
     text-align: center;
     opacity: 0;
-    animation: fadeIn 6s infinite;
+    /* 9s duration for sequence + reading pause */
+    animation: fadeIn 9s infinite;
 }
 
 .step-1 { animation-delay: 0s; }
@@ -167,15 +167,15 @@ h2 {
     margin-bottom: 10px;
 }
 
-/* --- Updated 3-Step Animation (Hold longer) --- */
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
-    15% { opacity: 1; transform: translateY(0); }
-    85% { opacity: 1; transform: translateY(0); }
+    10% { opacity: 1; transform: translateY(0); }
+    70% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 0; transform: translateY(0); }
     100% { opacity: 0; }
 }
 
-/* --- Interactive Store Grid --- */
+/* --- Store Grid --- */
 .store-grid {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(320px, 1fr));
@@ -195,7 +195,7 @@ h2 {
 
 .btn-primary:hover { opacity: 0.9; }
 
-/* --- Optimized CTA Section --- */
+/* --- Pulsing CTA Section --- */
 .custom-cta-faded {
     padding: 80px 20px;
     margin: 40px auto;
@@ -204,23 +204,15 @@ h2 {
     flex-direction: column;
     align-items: center;
     gap: 20px; 
-    background: radial-gradient(
-        circle at 50% 50%, 
-        rgba(255, 51, 68, 0.12) 0%, 
-        rgba(15, 15, 18, 0) 75%
-    );
+    background: radial-gradient(circle at 50% 50%, rgba(255, 51, 68, 0.12) 0%, rgba(15, 15, 18, 0) 75%);
 }
 
-.custom-cta-faded h2, 
-.custom-cta-faded p {
-    margin: 0 !important;
-}
+.custom-cta-faded h2, .custom-cta-faded p { margin: 0 !important; }
 
 .custom-cta-faded .btn-primary {
     animation: pulse-red 2s infinite !important;
     position: relative !important;
     display: inline-block !important;
-    margin-top: 0 !important;
 }
 
 @keyframes pulse-red {
@@ -229,89 +221,17 @@ h2 {
     100% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0); }
 }
 
-/* --- Commission Form (custom.html) --- */
-.form-container {
-    max-width: 600px;
-    margin: 60px auto;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-}
+/* --- Form --- */
+.form-container { max-width: 600px; margin: 60px auto; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.form-container h1 { font-size: 2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; width: 100%; white-space: nowrap; }
+.form-container h1 .text-accent { color: var(--accent-color); }
+.brief-form { width: 100%; display: flex; flex-direction: column; gap: 20px; background: var(--bg-card); padding: 30px; border: 1px solid #24242b; border-radius: 8px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
+.form-group input, .form-group select, .form-group textarea { padding: 12px; background-color: var(--bg-dark); border: 1px solid #24242b; color: var(--text-main); border-radius: 4px; }
+.btn-submit { background: var(--accent-color); color: #000; padding: 12px; border: none; border-radius: 4px; font-weight: 900; text-transform: uppercase; cursor: pointer; }
 
-.form-container h1 {
-    font-size: 2rem;
-    font-weight: 900;
-    margin-bottom: 20px;
-    text-transform: uppercase;
-    letter-spacing: -0.5px;
-    width: 100%;
-    white-space: nowrap;
-}
-
-.form-container h1 .text-accent {
-    color: var(--accent-color);
-}
-
-.form-intro {
-    color: var(--text-muted);
-    margin-bottom: 30px;
-    width: 100%;
-}
-
-.brief-form {
-    width: 100%;
-    display: flex;
-    flex-direction: column;
-    gap: 20px;
-    background: var(--bg-card);
-    padding: 30px;
-    border: 1px solid #24242b;
-    border-radius: 8px;
-    text-align: left;
-}
-
-.form-group {
-    display: flex;
-    flex-direction: column;
-    gap: 8px;
-}
-
-.form-group label {
-    font-weight: 700;
-    color: var(--text-main);
-    text-transform: uppercase;
-    font-size: 0.85rem;
-}
-
-.form-group input, 
-.form-group select, 
-.form-group textarea {
-    padding: 12px;
-    background-color: var(--bg-dark);
-    border: 1px solid #24242b;
-    color: var(--text-main);
-    border-radius: 4px;
-    font-size: 1rem;
-    width: 100%;
-}
-
-.btn-submit {
-    background: var(--accent-color);
-    color: #000;
-    padding: 12px;
-    border: none;
-    border-radius: 4px;
-    font-weight: 900;
-    text-transform: uppercase;
-    cursor: pointer;
-    transition: opacity 0.2s;
-}
-
-.btn-submit:hover { opacity: 0.9; }
-
-/* --- Mobile Polish --- */
+/* --- Mobile --- */
 @media (max-width: 768px) {
     .main-nav { flex-direction: column; gap: 15px; }
     .steps-grid { flex-direction: column; align-items: center; }
