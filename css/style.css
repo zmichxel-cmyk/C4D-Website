@@ -217,3 +217,34 @@ h2 {
     .main-nav { flex-direction: column; gap: 15px; }
     .steps-grid { flex-direction: column; align-items: center; }
 }
+
+/* --- Form Fixes --- */
+.commission-form {
+    display: flex;
+    flex-direction: column;
+    max-width: 600px;
+    margin: 40px auto;
+    gap: 20px; /* Restores the space between fields */
+    padding: 20px;
+}
+
+.commission-form div {
+    display: flex;
+    flex-direction: column;
+    gap: 8px; /* Space between label and input */
+}
+
+.commission-form label {
+    font-weight: 600;
+    color: var(--text-main);
+}
+
+.commission-form input, 
+.commission-form select, 
+.commission-form textarea {
+    padding: 12px;
+    background: var(--bg-card);
+    border: 1px solid #24242b;
+    color: var(--text-main);
+    border-radius: 4px;
+}
