@@ -92,7 +92,6 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
 /* --- Store & Form --- */
 .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
 
-/* Updated .btn-primary to be hollow */
 .btn-primary { 
     background: transparent; 
     color: var(--accent-color); 
@@ -132,7 +131,6 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
     text-align: center;
     width: 100%;
 }
-
 .next-steps-box {
     text-align: left;
     margin: 25px 0;
@@ -140,7 +138,15 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
     background: rgba(255, 255, 255, 0.03);
     border-radius: 4px;
 }
-
+.next-steps-box ul {
+    list-style-position: inside;
+    padding-left: 0;
+    margin-top: 10px;
+}
+.next-steps-box li {
+    margin-bottom: 8px;
+    padding-left: 5px;
+}
 .checkmark-circle {
     width: 60px; 
     height: 60px; 
@@ -152,7 +158,6 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
     justify-content: center;
     animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
-
 .checkmark {
     width: 15px; 
     height: 30px; 
@@ -160,7 +165,6 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
     border-width: 0 5px 5px 0; 
     transform: rotate(45deg);
 }
-
 @keyframes popIn {
     0% { transform: scale(0); }
     100% { transform: scale(1); }
