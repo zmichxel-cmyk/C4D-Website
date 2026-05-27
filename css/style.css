@@ -185,14 +185,14 @@ h2 {
     text-align: center;
     margin: 40px auto;
     width: 100%;
-    /* Radial gradient creates a soft 'light source' effect instead of a flat bar */
+    /* Soft radial glow that fades into your dark background */
     background: radial-gradient(
-        ellipse at center, 
-        rgba(255, 51, 68, 0.15) 0%, 
-        rgba(15, 15, 18, 0) 70%
+        circle at 50% 50%, 
+        rgba(255, 51, 68, 0.12) 0%, 
+        rgba(15, 15, 18, 0) 75%
     );
-    border-top: 1px solid rgba(255, 51, 68, 0.1);
-    border-bottom: 1px solid rgba(255, 51, 68, 0.1);
+    border-top: 1px solid rgba(255, 51, 68, 0.05);
+    border-bottom: 1px solid rgba(255, 51, 68, 0.05);
 }
 
 /* --- High Priority Pulse --- */
