@@ -44,7 +44,6 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
 .main-nav nav a { color: var(--text-muted); text-decoration: none; margin-left: 24px; font-weight: 500; transition: color 0.2s; }
 .main-nav nav a:hover { color: var(--text-main); }
 
-/* UPDATED: Nav CTA text color is now red */
 .main-nav nav a.nav-cta { color: var(--accent-color); border: 1px solid var(--accent-color); padding: 6px 16px; border-radius: 4px; }
 .main-nav nav a.nav-cta:hover { background: var(--accent-color); color: #000; }
 
@@ -92,8 +91,23 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
 
 /* --- Store & Form --- */
 .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
-.btn-primary { background: var(--accent-color); color: #000; padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 700; transition: opacity 0.2s; }
-.btn-primary:hover { opacity: 0.9; }
+
+/* Updated .btn-primary to be hollow */
+.btn-primary { 
+    background: transparent; 
+    color: var(--accent-color); 
+    border: 1px solid var(--accent-color); 
+    padding: 10px 24px; 
+    border-radius: 4px; 
+    text-decoration: none; 
+    font-weight: 700; 
+    transition: all 0.3s ease; 
+    display: inline-block;
+}
+.btn-primary:hover { 
+    background: var(--accent-color); 
+    color: #000; 
+}
 
 .form-container { max-width: 600px; margin: 60px auto; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .form-container h1 { font-size: 2rem; font-weight: 900; margin-bottom: 20px; text-transform: uppercase; width: 100%; white-space: nowrap; }
