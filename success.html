@@ -3,30 +3,41 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Request Received | Customs4Daez</title>
+    <title>Submission Received | Customs4Daez</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        .success-container {
-            display: flex; flex-direction: column; align-items: center; justify-content: center;
-            height: 80vh; text-align: center; padding: 20px;
-        }
-        .success-card {
-            background: var(--bg-card); padding: 40px; border-radius: 8px;
-            border: 1px solid #24242b; max-width: 500px;
-        }
-        .success-card h1 { color: var(--accent-color); margin-bottom: 20px; }
-        .success-card p { color: var(--text-muted); margin-bottom: 30px; }
-    </style>
 </head>
 <body>
 
-    <div class="success-container">
-        <div class="success-card">
-            <h1>Request Received!</h1>
-            <p>Your design brief has been sent. I'll review your details and reach out to your email address shortly to get your project started.</p>
-            <a href="index.html" class="btn-primary">Return to Home</a>
+    <header class="main-nav">
+        <div class="logo">
+            <img src="assets/images/logo.png" alt="My Brand Logo">
         </div>
-    </div>
+        <nav>
+            <a href="index.html#showroom">Showroom</a>
+            <a href="index.html#free">Free Overlays</a>
+            <a href="custom.html" class="nav-cta">Custom Request</a>
+        </nav>
+    </header>
+
+    <main class="success-container">
+        <div class="success-card">
+            <div class="success-icon">✓</div>
+            
+            <h1>DESIGN BRIEF RECEIVED</h1>
+            <p>Your details have been successfully transmitted to the ezCrew design dashboard.</p>
+            
+            <div class="next-steps-box">
+                <h3>What happens next?</h3>
+                <ul>
+                    <li>I will review your aesthetic preferences and chosen controller layout style.</li>
+                    <li>A structured response alongside your 1-of-1 deposit invoice will hit your inbox within 24 hours.</li>
+                    <li>Once the deposit clears, your milestone slot is locked onto the production calendar.</li>
+                </ul>
+            </div>
+
+            <a href="index.html" class="btn-return">Return to Storefront</a>
+        </div>
+    </main>
 
 </body>
 </html>
