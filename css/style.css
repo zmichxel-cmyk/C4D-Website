@@ -30,6 +30,7 @@ body {
 .section-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px 20px 20px; }
 h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spacing: 1px; text-align: center; }
 .accent-num { color: var(--accent-color); }
+.text-accent { color: var(--accent-color); }
 
 /* --- Navigation Bar --- */
 .main-nav {
@@ -105,7 +106,6 @@ h2 { font-size: 2rem; margin-bottom: 30px; text-transform: uppercase; letter-spa
 .form-group label { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
 .form-group input, .form-group select, .form-group textarea { padding: 12px; background-color: var(--bg-dark); border: 1px solid #24242b; color: var(--text-main); border-radius: 4px; }
 
-/* Finalized .btn-submit: Hollow, pulsing, and consistent */
 .btn-submit { 
     background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color);
     padding: 12px; border-radius: 4px; font-weight: 900; text-transform: uppercase;
