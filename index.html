@@ -48,12 +48,76 @@
         </div>
     </section>
 
-<!-- index.html -->
-<section class="custom-cta-faded">
-    <h2>NEED A 1-OF-1 EXCLUSIVE DESIGN?</h2>
-    <p>Get a completely personalized layout matched exactly to your stream's brand identity, color schemes, and custom channel graphics.</p>
-    
-    <div class="btn-wrapper">
-    <a href="custom.html" class="btn-primary">Launch The Custom Design Form</a>
-</div>
-</section>
+    <!-- CTA Section -->
+    <section class="custom-cta-faded">
+        <h2>NEED A 1-OF-1 EXCLUSIVE DESIGN?</h2>
+        <p>Get a completely personalized layout matched exactly to your stream's brand identity, color schemes, and custom channel graphics.</p>
+        <div class="btn-wrapper">
+            <a href="custom.html" class="btn-primary">Launch The Custom Design Form</a>
+        </div>
+    </section>
+
+    <!-- Design Brief Form -->
+    <section class="form-container">
+        <form id="my-form" action="https://formspree.io/f/YOUR_FORM_ID" method="POST" class="brief-form">
+            <div class="form-group">
+                <label>Twitch / Kick / YouTube Name</label>
+                <input type="text" name="name" placeholder="e.g., OfficialHolidaez" required>
+            </div>
+            <div class="form-group">
+                <label>Your Email Address</label>
+                <input type="email" name="email" placeholder="Where I should send your inv" required>
+            </div>
+            <div class="form-group">
+                <label>Controller Layout Style</label>
+                <select name="layout">
+                    <option>Select a layout...</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <label>Color Palette & Aesthetic</label>
+                <input type="text" name="aesthetic" placeholder="e.g., Graffiti style, matte black">
+            </div>
+            <div class="form-group">
+                <label>Specific Design Details & Features</label>
+                <textarea name="details" placeholder="Describe any specific animations, glowing effects, custom fonts, or branding placements you want included..."></textarea>
+            </div>
+            <button type="submit" id="my-form-button" class="btn-submit">Submit Design Brief</button>
+        </form>
+        
+        <!-- Success Message (Hidden by default) -->
+        <div id="my-form-status" style="display:none; text-align:center; padding: 20px; color: var(--accent-color); font-weight: bold; border: 1px solid var(--accent-color); border-radius: 8px; margin-top: 20px;">
+            Thanks for your request! I'll be in touch soon.
+        </div>
+    </section>
+
+    <!-- AJAX Submission Script -->
+    <script>
+        var form = document.getElementById("my-form");
+        async function handleSubmit(event) {
+            event.preventDefault();
+            var status = document.getElementById("my-form-status");
+            var data = new FormData(event.target);
+            fetch(event.target.action, {
+                method: form.method,
+                body: data,
+                headers: { 'Accept': 'application/json' }
+            }).then(response => {
+                if (response.ok) {
+                    form.style.display = "none";
+                    status.style.display = "block";
+                    form.reset();
+                } else {
+                    status.innerHTML = "Oops! There was a problem submitting your form.";
+                    status.style.display = "block";
+                }
+            }).catch(error => {
+                status.innerHTML = "Oops! There was a problem submitting your form.";
+                status.style.display = "block";
+            });
+        }
+        form.addEventListener("submit", handleSubmit);
+    </script>
+
+</body>
+</html>
