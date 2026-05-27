@@ -3,8 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Customs4Daez | Stream Branding & Overlays</title>
-    <link rel="stylesheet" href="css/style.css">
+    <title>Customs4Daez | Stream Branding</title>
+    <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
@@ -20,43 +20,46 @@
         </nav>
     </header>
 
-    <div id="home-page">
-        <section class="hero">
-            <h1>PRO-GRADE <span>CSS CONTROLLER</span> OVERLAYS</h1>
-            <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
-            <div class="hero-buttons">
-                <a href="showroom.html" class="btn-primary">Browse Premium</a>
-                <a href="overlays.html" class="btn-secondary">Grab Free Themes</a>
-            </div>
-        </section>
+    <!-- Hero Section: Added padding-top to clear the navigation bar -->
+    <section class="hero" style="padding-top: 140px; text-align: center;">
+        <h1>PRO-GRADE <span>CSS CONTROLLER</span> OVERLAYS</h1>
+        <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
+        
+        <!-- Button Wrapper: Added flexbox to align buttons -->
+        <div class="hero-buttons" style="display: flex; justify-content: center; gap: 15px; margin-top: 20px;">
+            <a href="showroom.html" class="btn-primary">Browse Premium</a>
+            <a href="overlays.html" class="btn-secondary" style="color: white; border: 1px solid #3f3f46; padding: 10px 24px; text-decoration: none; border-radius: 4px;">Grab Free Themes</a>
+        </div>
+    </section>
 
-        <section class="steps-container">
-            <h2>Level up your stream in 3 easy steps</h2>
-            <div class="steps-grid">
-                <div class="step-card step-1">
-                    <span class="step-num">1</span>
-                    <h3>CHOOSE YOUR STYLE</h3>
-                    <p>Pick a ready-to-roll theme from our Premium Showroom or launch a 1-of-1 Custom Request.</p>
-                </div>
-                <div class="step-card step-2">
-                    <span class="step-num">2</span>
-                    <h3>GET YOUR ASSET LINK</h3>
-                    <p>Instantly unlock your dedicated overlay code or receive your custom design package.</p>
-                </div>
-                <div class="step-card step-3">
-                    <span class="step-num">3</span>
-                    <h3>PASTE INTO OBS</h3>
-                    <p>Add a new Browser Source in OBS or Streamlabs, paste your URL, and go live.</p>
-                </div>
+    <!-- 3-Step Section -->
+    <section class="steps-container">
+        <h2>Level up your stream in 3 easy steps</h2>
+        <div class="steps-grid">
+            <div class="step-card step-1">
+                <span class="step-num">1</span>
+                <h3>CHOOSE YOUR STYLE</h3>
+                <p>Pick a ready-to-roll theme from our Premium Showroom or launch a 1-of-1 Custom Request.</p>
             </div>
-        </section>
+            <div class="step-card step-2">
+                <span class="step-num">2</span>
+                <h3>GET YOUR ASSET LINK</h3>
+                <p>Instantly unlock your dedicated overlay code or receive your custom design package.</p>
+            </div>
+            <div class="step-card step-3">
+                <span class="step-num">3</span>
+                <h3>PASTE INTO OBS</h3>
+                <p>Add a new Browser Source in OBS or Streamlabs, paste your URL, and go live.</p>
+            </div>
+        </div>
+    </section>
 
-        <section class="custom-cta-block">
-            <h2>NEED A 1-OF-1 EXCLUSIVE DESIGN?</h2>
-            <p>Get a completely personalized layout matched exactly to your stream's brand identity, color schemes, and custom channel graphics.</p>
-            <a href="custom.html" class="btn-primary">Launch the Custom Design Brief</a>
-        </section>
-    </div>
+    <!-- Bottom CTA: Wrapped in section-container for consistent spacing -->
+    <section class="section-container" style="text-align: center; padding-bottom: 80px;">
+        <h2>NEED A 1-OF-1 EXCLUSIVE DESIGN?</h2>
+        <p>Get a completely personalized layout matched exactly to your stream's brand identity, color schemes, and custom channel graphics.</p>
+        <a href="custom.html" class="btn-primary" style="display: inline-block; margin-top: 20px;">Launch the Custom Design Brief</a>
+    </section>
 
 </body>
 </html>
