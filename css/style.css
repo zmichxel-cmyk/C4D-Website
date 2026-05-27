@@ -209,3 +209,21 @@ h2 {
     margin: 0 auto 30px auto;
     font-size: 1.1rem;
 }
+
+/* --- Pulse Animation --- */
+.btn-primary {
+    /* Existing styles remain, just add these two lines: */
+    animation: pulse-red 2s infinite;
+}
+
+@keyframes pulse-red {
+    0% {
+        box-shadow: 0 0 0 0 rgba(255, 51, 68, 0.7);
+    }
+    70% {
+        box-shadow: 0 0 0 10px rgba(255, 51, 68, 0);
+    }
+    100% {
+        box-shadow: 0 0 0 0 rgba(255, 51, 68, 0);
+    }
+}
