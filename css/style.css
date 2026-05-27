@@ -191,8 +191,7 @@ h2 {
         rgba(255, 51, 68, 0.12) 0%, 
         rgba(15, 15, 18, 0) 75%
     );
-    border-top: 1px solid rgba(255, 51, 68, 0.05);
-    border-bottom: 1px solid rgba(255, 51, 68, 0.05);
+    
 }
 
 /* --- High Priority Pulse --- */
