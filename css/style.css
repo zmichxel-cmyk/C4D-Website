@@ -14,7 +14,6 @@
     padding: 0;
 }
 
-/* This reset kills the accidental white/black space at the bottom */
 html, body {
     min-height: 100vh;
     padding-bottom: 0 !important;
@@ -47,6 +46,11 @@ h2 {
     text-transform: uppercase;
     letter-spacing: 1px;
     text-align: center;
+}
+
+/* Add this to your CSS for the "3" highlight */
+.accent-num {
+    color: var(--accent-color);
 }
 
 /* --- Navigation Bar --- */
@@ -109,16 +113,15 @@ h2 {
     100% { opacity: 0; }
 }
 
-/* --- CTA Section: UPDATED for Hero Match & No Gap --- */
+/* --- CTA Section --- */
 .custom-cta-faded {
-    padding: 60px 20px 40px 20px; /* Tightened bottom padding */
-    margin: 40px auto 0 auto;     /* Removed bottom margin */
+    padding: 60px 20px 40px 20px;
+    margin: 40px auto 0 auto;
     width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
     gap: 20px; 
-    /* Matches Hero gradient exactly */
     background: radial-gradient(circle at center, #1b1214 0%, var(--bg-dark) 70%);
 }
 .custom-cta-faded h2, .custom-cta-faded p { margin: 0 !important; }
