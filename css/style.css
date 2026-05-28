@@ -34,7 +34,7 @@ h1, h2 {
     margin-bottom: 30px; 
     text-transform: uppercase; 
     letter-spacing: 1px; 
-    text-align: center; /* This centers the text inside its box */
+    text-align: center; 
 }
 
 .accent-num { color: var(--accent-color); }
@@ -131,26 +131,3 @@ h1, h2 {
     background: rgba(255, 255, 255, 0.03); border-radius: 4px;
 }
 .next-steps-box ul {
-    list-style-position: outside; padding-left: 25px; margin-top: 10px;
-}
-.next-steps-box li {
-    margin-bottom: 12px; padding-left: 5px;
-}
-.checkmark-circle {
-    width: 60px; height: 60px; border-radius: 50%; background: #28a745;
-    margin: 0 auto 20px auto; display: flex; align-items: center; justify-content: center;
-    animation: popIn 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-}
-.checkmark {
-    width: 15px; height: 30px; border: solid white;
-    border-width: 0 5px 5px 0; transform: rotate(45deg);
-}
-@keyframes popIn {
-    0% { transform: scale(0); }
-    100% { transform: scale(1); }
-}
-
-@media (max-width: 768px) {
-    .main-nav { flex-direction: column; gap: 15px; }
-    .steps-grid { flex-direction: column; align-items: center; }
-}
