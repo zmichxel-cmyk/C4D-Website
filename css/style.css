@@ -253,19 +253,49 @@ h1, h2 {
 .product-card {
     background: var(--bg-card);
     border: 1px solid #24242b;
-    padding: 20px;
-    text-align: center;
     border-radius: 8px;
+    padding: 0;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease;
 }
 .product-card:hover { border-color: var(--accent-color); }
-.product-card img { max-width: 100%; height: auto; margin-bottom: 15px; }
-.product-card h3 { color: var(--text-main); margin: 10px 0; font-size: 1.1rem; }
-.price { color: var(--text-muted); margin-bottom: 15px; }
+
+/* Black image container area */
+.product-card img {
+    width: 100%;
+    aspect-ratio: 16 / 9;
+    background: #000;
+    object-fit: contain;
+    padding: 15px;
+}
+
+/* Info section for Title, Price, and Button */
+.card-info {
+    padding: 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 10px;
+}
+.card-text {
+    display: flex;
+    flex-direction: column;
+}
+.product-card h3 {
+    color: var(--text-main);
+    margin: 0;
+    font-size: 1.1rem;
+}
+.price {
+    color: var(--text-muted);
+    margin: 0;
+    font-weight: bold;
+}
 
 .unlock-btn {
-    width: 100%;
-    padding: 12px;
+    padding: 10px 16px;
     background: transparent;
     color: var(--accent-color);
     border: 1px solid var(--accent-color);
@@ -274,6 +304,7 @@ h1, h2 {
     transition: all 0.3s ease;
     text-transform: uppercase;
     border-radius: 4px;
+    white-space: nowrap;
 }
 .unlock-btn:hover, 
 .unlock-btn.active {
