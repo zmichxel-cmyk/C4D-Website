@@ -10,28 +10,81 @@
 
     <div class="glow-container"></div>
 
- <header class="main-nav">
-    <a href="index.html" class="logo-link">
-        <div class="logo">
-            <img src="assets/images/logo.png" alt="My Brand Logo">
-        </div>
-    </a>
-    
-    <nav>
-        <!-- Links updated to point to direct files, not home anchors -->
-        <a href="showroom.html">Showroom</a>
-        <a href="overlays.html">Free Overlays</a>
-        <a href="custom.html" class="nav-cta">Custom Request</a>
-    </nav>
-</header>
+    <header class="main-nav">
+        <a href="index.html" class="logo-link">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="My Brand Logo">
+            </div>
+        </a>
+        
+        <nav>
+            <a href="showroom.html">Showroom</a>
+            <a href="overlays.html">Free Overlays</a>
+            <a href="custom.html" class="nav-cta">Custom Request</a>
+        </nav>
+    </header>
 
     <main class="section-container">
-       <h1>THE <span class="text-accent">PREMIUM</span> SHOWROOM</h1>
-        <div class="store-grid">
-            <p>Premium designs coming soon...</p>
-        </div>
-    </main>
+        <h1>THE <span class="text-accent">PREMIUM</span> SHOWROOM</h1>
 
-  <!-- This runs the ember generator -->
+        <section class="platform-section">
+            <h2 class="platform-title">PS5</h2>
+            <div class="showroom-grid">
+                <div class="product-card">
+                    <img src="assets/images/ps5-1.png" alt="Neon Storm">
+                    <h3>NEON STORM PS5</h3>
+                    <p class="price">$39.99</p>
+                    <button class="unlock-btn">Unlock Code</button>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/ps5-2.png" alt="Carbon Fiber">
+                    <h3>CARBON FIBER ELITE PS5</h3>
+                    <p class="price">$34.99</p>
+                    <button class="unlock-btn">Unlock Code</button>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/ps5-3.png" alt="Cyberpunk">
+                    <h3>CYBERPUNK RED PS5</h3>
+                    <p class="price">$44.99</p>
+                    <button class="unlock-btn">Unlock Code</button>
+                </div>
+            </div>
+        </section>
+
+        <section class="platform-section">
+            <h2 class="platform-title">XBOX SERIES X/S</h2>
+            <div class="showroom-grid">
+                <div class="product-card">
+                    <img src="assets/images/xbox-1.png" alt="Military Stealth">
+                    <h3>MILITARY STEALTH XBOX</h3>
+                    <p class="price">$37.99</p>
+                    <button class="unlock-btn">Unlock Code</button>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/xbox-2.png" alt="Crimson Ghost">
+                    <h3>CRIMSON GHOST XBOX</h3>
+                    <p class="price">$41.99</p>
+                    <button class="unlock-btn">Unlock Code</button>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/xbox-3.png" alt="Forza Edition">
+                    <h3>FORZA HORIZON XBOX</h3>
+                    <p class="price">$39.99</p>
+                    <button class="unlock-btn">Unlock Code</button>
+                </div>
+            </div>
+        </section>
+
+        </main>
+
+    <script>
+        document.querySelectorAll('.unlock-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                this.innerText = this.classList.contains('active') ? 'Code Unlocked' : 'Unlock Code';
+            });
+        });
+    </script>
     <script src="js/embers.js"></script>
 </body>
+</html>
