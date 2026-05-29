@@ -201,18 +201,23 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
-/* --- Footer Glowing Pulse (Expanded) --- */
 .page-footer-glow {
+    /* These three lines are the key to pinning it */
     position: fixed;
     bottom: 0;
     left: 0;
+    
+    /* Ensure it spans the full viewport */
     width: 100vw;
-    /* Expanding height to cover the screen for a fuller wash */
-    height: 80vh;
-    /* Stretching the ellipse to fade out at the very top of the screen */
-    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%);
+    height: 100vh;
+    
+    /* Pin it behind everything else */
+    z-index: -1; 
+    
+    /* Ignore all clicks/hovers so it doesn't interfere with buttons */
     pointer-events: none;
-    z-index: 0;
+    
+    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%);
     animation: pulse-glow 3s infinite ease-in-out;
 }
 
