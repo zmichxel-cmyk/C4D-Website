@@ -9,9 +9,9 @@ document.addEventListener("DOMContentLoaded", () => {
         ember.className = 'ember';
         
         // Randomize size, position, and speed
-        const size = Math.random() * 8 + 3;
-        ember.style.width = size + 'px';
-        ember.style.height = size + 'px';
+       const size = Math.random() * 4 + 1; // Reduces size range to 1px - 5px
+ember.style.width = size + 'px';
+ember.style.height = size + 'px';
         ember.style.left = Math.random() * 100 + '%';
         ember.style.animationDuration = (Math.random() * 10 + 10) + 's';
         ember.style.animationDelay = Math.random() * 10 + 's';
