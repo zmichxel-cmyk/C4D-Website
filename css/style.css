@@ -61,7 +61,8 @@ h1, h2 {
 .hero {
     text-align: center; 
     padding: 100px 20px 40px 20px; 
-    background: var(--bg-dark);
+    /* CHANGE THIS to transparent */
+    background: transparent !important; 
 }
 
 .hero h1 { 
