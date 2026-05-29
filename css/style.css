@@ -91,19 +91,26 @@ h1, h2 {
     -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
     mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
 }
+/* --- Banner Video Fix --- */
 .banner-video-container {
-    position: relative;
-    z-index: 5;
+    /* Remove any weird absolute positioning if it exists elsewhere */
+    display: block;
+    margin: 40px auto 80px auto; /* Top, Right, Bottom, Left */
     width: 90%;
     max-width: 800px;
     height: 250px;
-    /* Updated margin: top, horizontal auto, bottom */
-    margin: 40px auto 80px auto; 
-    border-radius: 8px;
-    overflow: hidden;
-    display: block;
-    -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
-    mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
+    position: relative;
+    z-index: 5;
+    /* Ensure it doesn't get pushed by surrounding elements */
+    flex-shrink: 0; 
+}
+
+/* If the parent is a flex container, ensure it centers children */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* This forces the video to center horizontally */
+    padding: 100px 20px 40px 20px;
 }
 .video-overlay {
     position: absolute;
