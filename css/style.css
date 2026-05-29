@@ -201,25 +201,19 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
-/* --- Pure Ambient Bottom Glow --- */
+/* Ensure this is NOT inside any container with a 'transform' property */
 .page-footer-glow {
-    position: fixed;
-    bottom: 0;
-    left: 0;
-    width: 100vw;
-    height: 60vh; /* Adjust height if you want the glow taller or shorter */
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
     
-    /* Ensure no background color, borders, or padding are added to this container */
-    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%);
+    /* Make sure no other CSS is overriding these */
+    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%) !important;
     
-    pointer-events: none; /* Makes sure it doesn't block clicks */
-    z-index: 0; /* Keeps it behind your main content */
+    pointer-events: none !important;
+    z-index: -1 !important; /* Keep it behind all content */
     
-    /* Smooth pulse animation */
     animation: pulse-glow 3s infinite ease-in-out;
-}
-
-@keyframes pulse-glow {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.7; }
 }
