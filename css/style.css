@@ -202,6 +202,7 @@ h1, h2 {
 }
 
 /* --- Locked Ambient Bottom Glow --- */
+/* This attaches the glow to the window viewport itself */
 html::before {
     content: "";
     position: fixed;
@@ -209,9 +210,13 @@ html::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none;
-    z-index: -1;
+    pointer-events: none; /* Allows clicks to pass through */
+    z-index: -1;          /* Stays behind all your content */
+    
+    /* The radial gradient fixed at the bottom */
     background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%);
+    
+    /* The pulse animation */
     animation: pulse-glow 3s infinite ease-in-out;
 }
 
