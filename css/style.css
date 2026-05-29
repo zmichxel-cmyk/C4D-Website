@@ -208,7 +208,7 @@ h1, h2 {
     left: 0;
     width: 100vw;
     /* Expanding height to cover the screen for a fuller wash */
-    height: 100vh;
+    height: 80vh;
     /* Stretching the ellipse to fade out at the very top of the screen */
     background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%);
     pointer-events: none;
