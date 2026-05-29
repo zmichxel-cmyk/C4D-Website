@@ -188,3 +188,40 @@ h1, h2 {
     .main-nav { flex-direction: column; gap: 15px; }
     .steps-grid { flex-direction: column; align-items: center; }
 }
+
+/* --- Add this to your existing body style --- */
+body {
+    background-color: var(--bg-dark);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    animation: fadeInPage 0.4s ease-in-out;
+    overflow-x: hidden; /* Prevents horizontal scroll from embers */
+}
+
+/* --- Ember Background Effect --- */
+.ember-container {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    z-index: -1;
+}
+
+.ember {
+    position: absolute;
+    width: 4px;
+    height: 4px;
+    background: var(--accent-color);
+    border-radius: 50%;
+    opacity: 0;
+    animation: float 10s infinite ease-in-out;
+}
+
+@keyframes float {
+    0% { transform: translateY(100vh) scale(0); opacity: 0; }
+    50% { opacity: 0.8; }
+    100% { transform: translateY(-100px) scale(1); opacity: 0; }
+}
