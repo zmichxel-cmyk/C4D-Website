@@ -81,3 +81,5 @@ body {
 @media (max-width: 768px) {
     .main-nav { flex-direction: column; gap: 15px; }
 }
+
+* { outline: 1px solid red !important; }
