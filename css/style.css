@@ -201,15 +201,14 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
-/* --- Footer Glowing Pulse (Enhanced) --- */
 .page-footer-glow {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100vw;
     height: 60vh;
-    background: radial-gradient(ellipse at bottom, var(--accent-glow) 0%, transparent 40%);
-    background-size: 100% 100%; /* Forces the gradient to stretch across the full area */
+    /* This ensures the ellipse stretches to fill the 100vw width */
+    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 40%);
     pointer-events: none;
     z-index: 0;
     animation: pulse-glow 3s infinite ease-in-out;
