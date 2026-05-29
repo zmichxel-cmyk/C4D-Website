@@ -209,7 +209,7 @@ h1, h2 {
     top: 0;
     left: 0;
     width: 100vw;
-    height: 100vh;
+    height: 70vh;
     
     /* Crucial: Prevents it from interfering with layout */
     pointer-events: none; 
