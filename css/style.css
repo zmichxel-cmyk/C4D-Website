@@ -203,9 +203,10 @@ body {
 .ember {
     position: absolute;
     background: #ff3344;
-    /* Soften the shape and add blur */
-    border-radius: 50% 20% 50% 20%; 
-    filter: blur(2px);
+    /* This makes them look like small, thin slivers */
+    border-radius: 50% 10% 50% 10%; 
+    /* A lighter blur keeps them looking like hot sparks */
+    filter: blur(1px); 
     opacity: 0;
     pointer-events: none;
     animation: float-random 15s infinite linear;
