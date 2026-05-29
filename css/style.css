@@ -59,6 +59,9 @@ h1, h2 {
 
 /* --- Hero Section --- */
 .hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
     text-align: center; 
     padding: 100px 20px 40px 20px; 
     background: transparent !important; 
@@ -79,39 +82,27 @@ h1, h2 {
 
 /* --- Banner Video Styles --- */
 .banner-video-container {
-    position: relative;
-    z-index: 5;
-    width: 90%;
-    max-width: 800px;
-    height: 250px;
-    margin: 20px auto;
-    border-radius: 8px;
-    overflow: hidden;
-    display: block;
+    display: block !important;
+    margin: 40px auto 80px auto !important; 
+    width: 90% !important;
+    max-width: 800px !important;
+    height: 250px !important;
+    position: relative !important;
+    z-index: 5 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
     -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
     mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
 }
-/* --- Banner Video Fix --- */
-.banner-video-container {
-    /* Remove any weird absolute positioning if it exists elsewhere */
-    display: block;
-    margin: 40px auto 80px auto; /* Top, Right, Bottom, Left */
-    width: 90%;
-    max-width: 800px;
-    height: 250px;
-    position: relative;
-    z-index: 5;
-    /* Ensure it doesn't get pushed by surrounding elements */
-    flex-shrink: 0; 
+
+.banner-video-container video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
 }
 
-/* If the parent is a flex container, ensure it centers children */
-.hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center; /* This forces the video to center horizontally */
-    padding: 100px 20px 40px 20px;
-}
 .video-overlay {
     position: absolute;
     top: 0;
