@@ -46,7 +46,7 @@ h1, h2 {
 .main-nav {
     display: flex; justify-content: space-between; align-items: center;
     padding: 20px 40px; background: rgba(15, 15, 18, 0.85); backdrop-filter: blur(10px);
-    position: sticky; top: 0; z-index: 100; border-bottom: 1px solid #24242b;
+    position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid #24242b;
 }
 .logo-link { text-decoration: none; display: block; cursor: pointer; }
 .logo { display: flex; align-items: center; width: 210px; height: 100px; overflow: hidden; }
@@ -80,6 +80,7 @@ h1, h2 {
 /* --- Banner Video Styles --- */
 .banner-video-container {
     position: relative;
+    z-index: 5;
     width: 90%;
     max-width: 800px;
     height: 250px;
@@ -129,13 +130,7 @@ h1, h2 {
     max-width: 600px;
     height: 1px;
     margin: 40px auto;
-    /* This creates a white line that fades to transparent at the edges */
-    background: linear-gradient(
-        to right, 
-        transparent, 
-        #ffffff, 
-        transparent
-    );
+    background: linear-gradient(to right, transparent, #ffffff, transparent);
 }
 
 .custom-cta-faded {
@@ -149,7 +144,7 @@ h1, h2 {
     animation: pulse-red 2s infinite !important; 
     position: relative !important; 
     display: inline-block !important; 
-    margin-top: 25px; /* Added spacing */
+    margin-top: 25px;
 }
 
 @keyframes pulse-red {
@@ -200,7 +195,7 @@ h1, h2 {
 /* --- Ember Effect --- */
 .ember-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 1; overflow: hidden; /* Changed z-index to 1 */
+    pointer-events: none; z-index: -100; overflow: hidden;
 }
 .ember {
     position: absolute; background: #ff3344;
@@ -223,7 +218,7 @@ h1, h2 {
     width: 100vw;
     height: 100vh;
     pointer-events: none; 
-    z-index: -1;
+    z-index: -100;
     background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 80%);
     overflow: hidden;
     animation: pulse-glow 3s infinite ease-in-out;
