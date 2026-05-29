@@ -201,8 +201,12 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
-/* --- Locked Ambient Bottom Glow --- */
-/* This attaches the glow to the window viewport itself */
+/* --- Locked Ambient Bottom Glow (Fail-Safe) --- */
+html {
+    /* Ensure the HTML tag itself doesn't have a conflicting background */
+    background: var(--bg-dark); 
+}
+
 html::before {
     content: "";
     position: fixed;
@@ -210,13 +214,12 @@ html::before {
     left: 0;
     width: 100vw;
     height: 100vh;
-    pointer-events: none; /* Allows clicks to pass through */
-    z-index: -1;          /* Stays behind all your content */
+    pointer-events: none;
+    z-index: -1;
     
-    /* The radial gradient fixed at the bottom */
+    /* Ensure the background is strictly transparent where the gradient isn't */
     background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%);
     
-    /* The pulse animation */
     animation: pulse-glow 3s infinite ease-in-out;
 }
 
