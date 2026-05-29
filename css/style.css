@@ -201,13 +201,23 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
-/* --- Footer Glow --- */
+/* --- Footer Glowing Pulse (Enhanced) --- */
 .page-footer-glow {
-    position: fixed; bottom: 0; left: 0; width: 100%; height: 100px;
-    background: radial-gradient(ellipse at bottom, var(--accent-glow) 0%, transparent 70%);
-    pointer-events: none; z-index: 0; animation: pulse-glow 4s infinite ease-in-out;
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    /* Increase height so the glow reaches toward the middle of the screen */
+    height: 60vh; 
+    /* Use a larger color-stop (40%) to stretch the red further up */
+    background: radial-gradient(ellipse at bottom, var(--accent-glow) 0%, transparent 40%);
+    pointer-events: none;
+    z-index: 0;
+    /* Increase the opacity and slow down the pulse for a more intense flicker */
+    animation: pulse-glow 3s infinite ease-in-out;
 }
+
 @keyframes pulse-glow {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.7; }
+    0%, 100% { opacity: 0.4; }
+    50% { opacity: 0.9; } /* More noticeable peak */
 }
