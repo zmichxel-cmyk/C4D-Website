@@ -22,19 +22,16 @@ body {
     overflow-x: hidden;
 }
 
-/* --- Hero Section - Controls all spacing --- */
 .hero {
     display: flex;
     flex-direction: column;
-    align-items: center; /* This centers the video horizontally */
-    text-align: center; 
-    padding: 100px 20px; 
-    background: transparent;
-    /* This sets the distance between the H1, the video, and the H2 below */
-    gap: 80px; 
+    align-items: center; /* This centers horizontally */
+    justify-content: center; /* This helps center vertically */
+    padding: 100px 20px 40px 20px;
+    gap: 80px; /* Use gap for spacing instead of margins */
+    background: transparent !important;
 }
 
-/* --- Banner Video Container --- */
 .banner-video-container {
     width: 90%;
     max-width: 800px;
@@ -44,8 +41,7 @@ body {
     z-index: 5;
     border-radius: 8px;
     overflow: hidden;
-    /* Reset margins so Flexbox can center it */
-    margin: 0 !important; 
+    /* Do NOT use margin: auto here; Flexbox handles it */
     
     -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
