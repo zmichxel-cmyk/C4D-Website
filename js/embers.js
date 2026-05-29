@@ -1,18 +1,16 @@
 document.addEventListener("DOMContentLoaded", () => {
+    console.log("Embers script loaded!"); // Check your browser console for this!
+    
     const container = document.createElement('div');
     container.className = 'ember-container';
-    document.body.prepend(container);
+    document.body.appendChild(container); // Changed from prepend to appendChild
 
-    // Increased count from 20 to 50 for more prominence
-    for (let i = 0; i < 50; i++) {
+    for (let i = 0; i < 30; i++) {
         const ember = document.createElement('div');
         ember.className = 'ember';
-        // Randomized size for more depth
-        const size = Math.random() * 6 + 2; 
-        ember.style.width = size + 'px';
-        ember.style.height = size + 'px';
         ember.style.left = Math.random() * 100 + '%';
-        ember.style.animationDelay = Math.random() * 10 + 's';
+        ember.style.top = Math.random() * 100 + '%'; // Added top position
+        ember.style.animationDelay = Math.random() * 8 + 's';
         container.appendChild(ember);
     }
 });
