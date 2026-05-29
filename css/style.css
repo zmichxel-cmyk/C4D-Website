@@ -201,13 +201,8 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
-/* --- Locked Ambient Bottom Glow (Fail-Safe) --- */
-html {
-    /* Ensure the HTML tag itself doesn't have a conflicting background */
-    background: var(--bg-dark); 
-}
-
-html::before {
+/* Move the glow to the body instead of html */
+body::before {
     content: "";
     position: fixed;
     top: 0;
@@ -216,14 +211,16 @@ html::before {
     height: 100vh;
     pointer-events: none;
     z-index: -1;
-    
-    /* Ensure the background is strictly transparent where the gradient isn't */
     background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%);
-    
     animation: pulse-glow 3s infinite ease-in-out;
 }
 
-@keyframes pulse-glow {
-    0%, 100% { opacity: 0.3; }
-    50% { opacity: 0.7; }
+/* Ensure the body is transparent so the glow shows through */
+body {
+    background: transparent;
+}
+
+/* Move your original dark background to the html tag instead */
+html {
+    background: #121212; /* Or whatever your dark color is */
 }
