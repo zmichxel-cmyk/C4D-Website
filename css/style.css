@@ -96,11 +96,21 @@ h1, h2 {
     mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
 }
 
-.banner-video-container video {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
+.banner-video-container {
+    display: block !important;
+    /* Current: 40px top / 80px bottom. Let's increase them to 80px and 120px */
+    margin: 80px auto 120px auto !important; 
+    width: 90% !important;
+    max-width: 800px !important;
+    height: 250px !important;
+    position: relative !important;
+    z-index: 5 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    
+    -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
 }
 
 .video-overlay {
