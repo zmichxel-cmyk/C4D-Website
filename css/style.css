@@ -199,26 +199,24 @@ body {
     overflow-x: hidden; /* Prevents horizontal scroll from embers */
 }
 
-/* --- Force Embers to be visible --- */
-.ember-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: 1; /* Changed from -1 to 1 to ensure they are on top */
-}
-
+/* --- Optimized Ember Effect --- */
 .ember {
     position: absolute;
-    width: 8px; /* Made larger */
-    height: 8px; /* Made larger */
-    background: #ff3344 !important; /* Force red color */
-    border-radius: 50%;
-    opacity: 1 !important; /* Force visibility */
-    box-shadow: 0 0 15px #ff3344;
-    animation: float 8s infinite ease-in-out;
+    background: #ff3344;
+    /* Soften the shape and add blur */
+    border-radius: 50% 20% 50% 20%; 
+    filter: blur(2px);
+    opacity: 0;
+    pointer-events: none;
+    animation: float-random 15s infinite linear;
+}
+
+@keyframes float-random {
+    0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
+    20% { opacity: 0.6; }
+    50% { transform: translateY(50vh) translateX(50px) scale(1); }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
 /* --- New Footer Glowing Pulse --- */
