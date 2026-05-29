@@ -201,23 +201,21 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
+/* --- Pure Ambient Bottom Glow --- */
 .page-footer-glow {
-    /* These three lines are the key to pinning it */
     position: fixed;
     bottom: 0;
     left: 0;
-    
-    /* Ensure it spans the full viewport */
     width: 100vw;
-    height: 100vh;
+    height: 60vh; /* Adjust height if you want the glow taller or shorter */
     
-    /* Pin it behind everything else */
-    z-index: -1; 
-    
-    /* Ignore all clicks/hovers so it doesn't interfere with buttons */
-    pointer-events: none;
-    
+    /* Ensure no background color, borders, or padding are added to this container */
     background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%);
+    
+    pointer-events: none; /* Makes sure it doesn't block clicks */
+    z-index: 0; /* Keeps it behind your main content */
+    
+    /* Smooth pulse animation */
     animation: pulse-glow 3s infinite ease-in-out;
 }
 
