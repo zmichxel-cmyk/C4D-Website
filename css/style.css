@@ -22,16 +22,23 @@ body {
     overflow-x: hidden;
 }
 
+/* --- Hero Section - FIXED --- */
 .hero {
     display: flex;
     flex-direction: column;
-    align-items: center; /* This centers horizontally */
-    justify-content: center; /* This helps center vertically */
+    align-items: center; 
+    justify-content: center;
     padding: 100px 20px 40px 20px;
-    gap: 80px; /* Use gap for spacing instead of margins */
     background: transparent !important;
+    gap: 80px;
+    
+    /* These three lines are the fix for the shifting/scrolling issue */
+    width: 100%;
+    max-width: 100vw; 
+    overflow-x: hidden; 
 }
 
+/* --- Banner Video Container - FIXED --- */
 .banner-video-container {
     width: 90%;
     max-width: 800px;
@@ -41,17 +48,11 @@ body {
     z-index: 5;
     border-radius: 8px;
     overflow: hidden;
-    /* Do NOT use margin: auto here; Flexbox handles it */
+    /* Remove all margins to let Flexbox handle the centering */
+    margin: 0 !important; 
     
     -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
     mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
-}
-
-.banner-video-container video {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    display: block;
 }
 
 /* --- Navigation Bar --- */
