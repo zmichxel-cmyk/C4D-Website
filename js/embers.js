@@ -4,7 +4,7 @@ document.addEventListener("DOMContentLoaded", () => {
     document.body.prepend(container);
 
     // Reduce count to 15 for a subtle, premium look
-    for (let i = 0; i < 15; i++) {
+    for (let i = 0; i < 30; i++) {
         const ember = document.createElement('div');
         ember.className = 'ember';
         
