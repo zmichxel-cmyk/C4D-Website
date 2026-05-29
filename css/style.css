@@ -125,14 +125,15 @@ h1, h2 {
 }
 
 .divider-line {
-    width: 60%;                /* Controls how long the line is */
-    max-width: 600px;          /* Prevents it from getting too wide */
-    height: 1px;               /* Thickness of the line */
-    margin: 40px auto;         /* Spacing above and below */
+    width: 60%;
+    max-width: 600px;
+    height: 1px;
+    margin: 40px auto;
+    /* This creates a white line that fades to transparent at the edges */
     background: linear-gradient(
         to right, 
         transparent, 
-        var(--accent-color), 
+        #ffffff, 
         transparent
     );
 }
