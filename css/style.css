@@ -201,20 +201,22 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
+/* --- Footer Glowing Pulse (Expanded) --- */
 .page-footer-glow {
     position: fixed;
     bottom: 0;
     left: 0;
     width: 100vw;
-    height: 60vh;
-    /* This ensures the ellipse stretches to fill the 100vw width */
-    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 40%);
+    /* Expanding height to cover the screen for a fuller wash */
+    height: 100vh;
+    /* Stretching the ellipse to fade out at the very top of the screen */
+    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 70%);
     pointer-events: none;
     z-index: 0;
     animation: pulse-glow 3s infinite ease-in-out;
 }
 
 @keyframes pulse-glow {
-    0%, 100% { opacity: 0.4; }
-    50% { opacity: 0.9; } /* More noticeable peak */
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
 }
