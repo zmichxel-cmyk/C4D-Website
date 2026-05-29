@@ -124,6 +124,19 @@ h1, h2 {
     100% { opacity: 0; }
 }
 
+.divider-line {
+    width: 60%;                /* Controls how long the line is */
+    max-width: 600px;          /* Prevents it from getting too wide */
+    height: 1px;               /* Thickness of the line */
+    margin: 40px auto;         /* Spacing above and below */
+    background: linear-gradient(
+        to right, 
+        transparent, 
+        var(--accent-color), 
+        transparent
+    );
+}
+
 .custom-cta-faded {
     background: transparent !important;
     border: none !important;
