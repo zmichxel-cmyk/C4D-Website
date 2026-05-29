@@ -205,7 +205,7 @@ h1, h2 {
     height: 100vh;
     pointer-events: none; 
     z-index: -1;
-    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 80%);
+    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 60%);
     overflow: hidden;
     animation: pulse-glow 3s infinite ease-in-out;
 }
