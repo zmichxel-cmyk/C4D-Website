@@ -238,23 +238,12 @@ h1, h2 { 
 /* --- Premium Showroom Layout --- */
 .platform-section { margin-bottom: 50px; }
 .platform-title {
-    color: var(--text-main);
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    text-align: left;
-    
-    /* Remove the old red border */
-    border-bottom: none;
-    
-    /* Add the white fading line */
-    height: 1px;
-    background: linear-gradient(
-        90deg, 
-        transparent 0%, 
-        #ffffff 50%, 
-        transparent 100%
-    );
+    color: var(--text-main);
+    font-size: 1.5rem;
+    margin-bottom: 20px;
+    border-bottom: 2px solid var(--accent-color);
+    padding-bottom: 10px;
+    text-align: left;
 }
 .showroom-grid {
     display: grid;
@@ -326,4 +315,3 @@ h1, h2 { 
 @media (max-width: 900px) {
     .showroom-grid { grid-template-columns: 1fr; }
 }
-
