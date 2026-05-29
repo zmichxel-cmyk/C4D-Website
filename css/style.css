@@ -124,16 +124,18 @@ h1, h2 {
     100% { opacity: 0; }
 }
 
-/* --- CTA Section --- */
 .custom-cta-faded {
-    padding: 60px 20px 40px 20px; 
-    margin: 40px auto 0 auto; 
-    width: 100%;
-    display: flex; 
-    flex-direction: column; 
-    align-items: center; 
-    gap: 20px; 
-    background: var(--bg-dark);
+    /* Remove these two lines if they exist */
+    /* background-color: #something; */
+    /* border: 1px solid #something; */
+
+    /* Add these to ensure the box is gone */
+    background: transparent !important;
+    border: none !important;
+    
+    /* Keep your existing spacing */
+    padding: 50px 0;
+    text-align: center;
 }
 .custom-cta-faded h2, .custom-cta-faded p { margin: 0 !important; }
 .custom-cta-faded .btn-primary { animation: pulse-red 2s infinite !important; position: relative !important; display: inline-block !important; }
