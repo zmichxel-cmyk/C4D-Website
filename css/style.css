@@ -199,29 +199,30 @@ body {
     overflow-x: hidden; /* Prevents horizontal scroll from embers */
 }
 
-/* --- Ember Background Effect --- */
-.ember-container {
-    position: fixed;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    pointer-events: none;
-    z-index: -1;
-}
-
+/* --- Enhanced Ember Effect --- */
 .ember {
     position: absolute;
-    width: 4px;
-    height: 4px;
     background: var(--accent-color);
     border-radius: 50%;
     opacity: 0;
-    animation: float 10s infinite ease-in-out;
+    animation: float 8s infinite ease-in-out;
+    box-shadow: 0 0 10px var(--accent-color); /* Added glow to embers */
 }
 
-@keyframes float {
-    0% { transform: translateY(100vh) scale(0); opacity: 0; }
-    50% { opacity: 0.8; }
-    100% { transform: translateY(-100px) scale(1); opacity: 0; }
+/* --- New Footer Glowing Pulse --- */
+.page-footer-glow {
+    position: fixed;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+    height: 100px;
+    background: radial-gradient(ellipse at bottom, var(--accent-glow) 0%, transparent 70%);
+    pointer-events: none;
+    z-index: 0;
+    animation: pulse-glow 4s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.3; }
+    50% { opacity: 0.7; }
 }
