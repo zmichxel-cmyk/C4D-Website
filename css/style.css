@@ -125,15 +125,8 @@ h1, h2 {
 }
 
 .custom-cta-faded {
-    /* Remove these two lines if they exist */
-    /* background-color: #something; */
-    /* border: 1px solid #something; */
-
-    /* Add these to ensure the box is gone */
     background: transparent !important;
     border: none !important;
-    
-    /* Keep your existing spacing */
     padding: 50px 0;
     text-align: center;
 }
@@ -203,21 +196,21 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
+/* --- Updated Glow Container --- */
 .glow-container {
-    /* Pin to the viewport, ignoring page height */
     position: fixed; 
     top: 0;
     left: 0;
     width: 100vw;
     height: 100vh;
-    
-    /* Crucial: Prevents it from interfering with layout */
     pointer-events: none; 
     z-index: -1;
-    
-    /* Gradient specifically at the bottom */
-    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 60%);
-    
-    /* Ensure it doesn't cause a scrollbar */
+    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 80%);
     overflow: hidden;
+    animation: pulse-glow 3s infinite ease-in-out;
+}
+
+@keyframes pulse-glow {
+    0%, 100% { opacity: 0.1; }
+    50% { opacity: 0.4; }
 }
