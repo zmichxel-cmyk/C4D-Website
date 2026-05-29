@@ -206,14 +206,12 @@ h1, h2 {
     position: fixed;
     bottom: 0;
     left: 0;
-    width: 100%;
-    /* Increase height so the glow reaches toward the middle of the screen */
-    height: 60vh; 
-    /* Use a larger color-stop (40%) to stretch the red further up */
+    width: 100vw;
+    height: 60vh;
     background: radial-gradient(ellipse at bottom, var(--accent-glow) 0%, transparent 40%);
+    background-size: 100% 100%; /* Forces the gradient to stretch across the full area */
     pointer-events: none;
     z-index: 0;
-    /* Increase the opacity and slow down the pulse for a more intense flicker */
     animation: pulse-glow 3s infinite ease-in-out;
 }
 
