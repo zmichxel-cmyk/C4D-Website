@@ -28,6 +28,7 @@
     <main class="section-container">
         <h1>THE <span class="text-accent">PREMIUM</span> SHOWROOM</h1>
 
+        <!-- PS5 Section -->
         <section class="platform-section">
             <h2 class="platform-title">PS5</h2>
             <div class="showroom-grid" id="ps5-grid">
@@ -63,17 +64,19 @@
                 </div>
             </div>
             
-            <div class="more-content" id="ps5-more" style="display: none;">
-                <div class="showroom-grid" style="margin-top: 20px;">
-                    </div>
+            <div id="ps5-more" style="display: none;">
+                <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
 
-            <div class="see-more-wrapper">
-                <button class="see-more-btn" onclick="toggleMore('ps5-more', this)">See More</button>
-                <div class="arrow-down"></div>
+            <!-- New Geometric See More -->
+            <div class="see-more-container" onclick="toggleMore('ps5-more', this)">
+                <div class="see-more-divider"></div>
+                <div class="see-more-text">SEE MORE</div>
+                <div class="arrow-container"><div class="straight-arrow"></div></div>
             </div>
         </section>
 
+        <!-- XBOX Section -->
         <section class="platform-section">
             <h2 class="platform-title">XBOX SERIES X/S</h2>
             <div class="showroom-grid" id="xbox-grid">
@@ -109,16 +112,18 @@
                 </div>
             </div>
             
-            <div class="more-content" id="xbox-more" style="display: none;">
+            <div id="xbox-more" style="display: none;">
                 <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
 
-            <div class="see-more-wrapper">
-                <button class="see-more-btn" onclick="toggleMore('xbox-more', this)">See More</button>
-                <div class="arrow-down"></div>
+            <div class="see-more-container" onclick="toggleMore('xbox-more', this)">
+                <div class="see-more-divider"></div>
+                <div class="see-more-text">SEE MORE</div>
+                <div class="arrow-container"><div class="straight-arrow"></div></div>
             </div>
         </section>
 
+        <!-- PS4 Section -->
         <section class="platform-section">
             <h2 class="platform-title">PS4</h2>
             <div class="showroom-grid" id="ps4-grid">
@@ -154,16 +159,18 @@
                 </div>
             </div>
 
-            <div class="more-content" id="ps4-more" style="display: none;">
+            <div id="ps4-more" style="display: none;">
                 <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
 
-            <div class="see-more-wrapper">
-                <button class="see-more-btn" onclick="toggleMore('ps4-more', this)">See More</button>
-                <div class="arrow-down"></div>
+            <div class="see-more-container" onclick="toggleMore('ps4-more', this)">
+                <div class="see-more-divider"></div>
+                <div class="see-more-text">SEE MORE</div>
+                <div class="arrow-container"><div class="straight-arrow"></div></div>
             </div>
         </section>
 
+        <!-- PC Section -->
         <section class="platform-section">
             <h2 class="platform-title">PC (MKB)</h2>
             <div class="showroom-grid" id="pc-grid">
@@ -199,13 +206,14 @@
                 </div>
             </div>
 
-            <div class="more-content" id="pc-more" style="display: none;">
+            <div id="pc-more" style="display: none;">
                 <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
 
-            <div class="see-more-wrapper">
-                <button class="see-more-btn" onclick="toggleMore('pc-more', this)">See More</button>
-                <div class="arrow-down"></div>
+            <div class="see-more-container" onclick="toggleMore('pc-more', this)">
+                <div class="see-more-divider"></div>
+                <div class="see-more-text">SEE MORE</div>
+                <div class="arrow-container"><div class="straight-arrow"></div></div>
             </div>
         </section>
     </main>
@@ -219,19 +227,20 @@
             });
         });
 
-        // "See More" functionality
-        function toggleMore(id, btn) {
-            var content = document.getElementById(id);
-            var arrow = btn.nextElementSibling;
+        // Updated "See More" functionality
+        function toggleMore(id, container) {
+            const section = document.getElementById(id);
+            const text = container.querySelector('.see-more-text');
+            const arrow = container.querySelector('.arrow-container');
             
-            if (content.style.display === "none" || content.style.display === "") {
-                content.style.display = "block";
-                btn.innerText = "Show Less";
-                arrow.style.display = "none"; // Hide arrow when expanded
+            if (section.style.display === "none" || section.style.display === "") {
+                section.style.display = "block";
+                text.innerText = "SHOW LESS";
+                arrow.style.transform = "rotate(180deg)";
             } else {
-                content.style.display = "none";
-                btn.innerText = "See More";
-                arrow.style.display = "block"; // Show arrow when collapsed
+                section.style.display = "none";
+                text.innerText = "SEE MORE";
+                arrow.style.transform = "rotate(0deg)";
             }
         }
     </script>
