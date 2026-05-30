@@ -29,7 +29,7 @@
 
         <section class="platform-section">
             <h2 class="platform-title">PS5</h2>
-            <div class="showroom-grid">
+            <div class="showroom-grid" id="ps5-grid">
                 <div class="product-card">
                     <img src="assets/images/ps5-1.png" alt="Neon Storm">
                     <div class="card-info">
@@ -61,11 +61,16 @@
                     </div>
                 </div>
             </div>
+            <div class="more-content" id="ps5-more" style="display: none;">
+                <div class="showroom-grid" style="margin-top: 20px;">
+                    </div>
+            </div>
+            <button class="see-more-btn" onclick="toggleMore('ps5-more', this)">See More</button>
         </section>
 
         <section class="platform-section">
             <h2 class="platform-title">XBOX SERIES X/S</h2>
-            <div class="showroom-grid">
+            <div class="showroom-grid" id="xbox-grid">
                 <div class="product-card">
                     <img src="assets/images/xbox-1.png" alt="Military Stealth">
                     <div class="card-info">
@@ -97,11 +102,16 @@
                     </div>
                 </div>
             </div>
+            <div class="more-content" id="xbox-more" style="display: none;">
+                <div class="showroom-grid" style="margin-top: 20px;">
+                    </div>
+            </div>
+            <button class="see-more-btn" onclick="toggleMore('xbox-more', this)">See More</button>
         </section>
 
         <section class="platform-section">
             <h2 class="platform-title">PS4</h2>
-            <div class="showroom-grid">
+            <div class="showroom-grid" id="ps4-grid">
                 <div class="product-card">
                     <img src="assets/images/ps4-1.png" alt="Glacier White">
                     <div class="card-info">
@@ -133,11 +143,16 @@
                     </div>
                 </div>
             </div>
+            <div class="more-content" id="ps4-more" style="display: none;">
+                <div class="showroom-grid" style="margin-top: 20px;">
+                    </div>
+            </div>
+            <button class="see-more-btn" onclick="toggleMore('ps4-more', this)">See More</button>
         </section>
 
         <section class="platform-section">
             <h2 class="platform-title">PC (MKB)</h2>
-            <div class="showroom-grid">
+            <div class="showroom-grid" id="pc-grid">
                 <div class="product-card">
                     <img src="assets/images/pc-1.png" alt="Techno Ghost">
                     <div class="card-info">
@@ -169,16 +184,34 @@
                     </div>
                 </div>
             </div>
+            <div class="more-content" id="pc-more" style="display: none;">
+                <div class="showroom-grid" style="margin-top: 20px;">
+                    </div>
+            </div>
+            <button class="see-more-btn" onclick="toggleMore('pc-more', this)">See More</button>
         </section>
     </main>
 
     <script>
+        // Unlock button functionality
         document.querySelectorAll('.unlock-btn').forEach(btn => {
             btn.addEventListener('click', function() {
                 this.classList.toggle('active');
                 this.innerText = this.classList.contains('active') ? 'Code Unlocked' : 'Unlock Code';
             });
         });
+
+        // "See More" functionality
+        function toggleMore(id, btn) {
+            var content = document.getElementById(id);
+            if (content.style.display === "none" || content.style.display === "") {
+                content.style.display = "block";
+                btn.innerText = "Show Less";
+            } else {
+                content.style.display = "none";
+                btn.innerText = "See More";
+            }
+        }
     </script>
     <script src="js/embers.js"></script>
 </body>
