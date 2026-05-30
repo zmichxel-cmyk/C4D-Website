@@ -247,17 +247,22 @@ h1, h2 {
 /* --- Premium Showroom Layout --- */
 .platform-section { margin-bottom: 50px; }
 .platform-title {
-    /* Existing styles */
     color: var(--text-main);
     font-size: 1.5rem;
     margin-bottom: 20px;
     padding-bottom: 10px;
     text-align: left;
-    
-    /* Remove the old solid border */
-    border-bottom: none;
-    
-    /* Add the fading red line */
+    position: relative; /* Required for the line positioning */
+    border-bottom: none; /* Ensure no old borders remain */
+}
+
+/* This creates the line only below the text */
+.platform-title::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 100%;
     height: 2px;
     background: linear-gradient(
         90deg, 
