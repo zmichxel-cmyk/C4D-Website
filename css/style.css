@@ -372,4 +372,16 @@ h1, h2 {
     .hero {
         padding: 20px 10px !important;
     }
+
+    /* --- Add this to the very bottom of your CSS --- */
+
+/* Ensures hidden containers don't create unwanted empty space */
+[id$="-more"] {
+    transition: all 0.3s ease;
 }
+
+/* Ensures the grid flows properly when revealed */
+[id$="-more"] .showroom-grid {
+    margin-top: 20px;
+}
+
