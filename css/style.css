@@ -64,7 +64,6 @@ h1, h2 {
     flex-direction: column;
     align-items: center; 
     text-align: center; 
-    /* Extremely tight padding for the hero section */
     padding: 10px 20px !important; 
     background: transparent !important; 
 }
@@ -72,16 +71,15 @@ h1, h2 {
 .header-logo-container {
     display: flex;
     justify-content: center;
-    /* Force margins to be zero so nothing pushes the text away */
     margin: 0 auto 0 auto !important; 
     padding: 0 !important;
+    line-height: 0; /* REMOVES HIDDEN GAP UNDER IMAGE */
 }
 
 .hero p {
-    /* Target the descriptive text directly */
     display: block !important;
-    margin-top: 0 !important;
-    margin-bottom: 10px !important; /* Small gap between text and what follows */
+    margin-top: -10px !important; /* PULLS TEXT UPWARD */
+    margin-bottom: 20px !important; /* LEAVES GAP BELOW TEXT */
     line-height: 1.2 !important;
 }
 
@@ -94,6 +92,7 @@ h1, h2 {
     object-fit: contain;
     margin-bottom: 0 !important;
 }
+
 /* --- Banner Video Styles --- */
 .banner-video-container {
     display: block !important;
