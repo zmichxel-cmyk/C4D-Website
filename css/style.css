@@ -133,10 +133,8 @@ h1, h2 {
 
 /* --- Updated White Fading Divider Line --- */
 .divider-line {
-    /* Set a specific width so it doesn't span the full screen */
     width: 60%; 
     max-width: 600px;
-    /* Use 'auto' left and right margins to center the element */
     margin: 40px auto; 
     height: 1px;
     background: linear-gradient(
@@ -252,8 +250,8 @@ h1, h2 {
     margin-bottom: 20px;
     padding-bottom: 10px;
     text-align: left;
-    position: relative; /* Required for the line positioning */
-    border-bottom: none; /* Ensure no old borders remain */
+    position: relative; 
+    border-bottom: none; 
 }
 
 /* This creates the line only below the text */
@@ -301,8 +299,9 @@ h1, h2 {
 .card-info {
     padding: 20px;
     display: flex;
-    justify-content: space-between;
-    align-items: center;
+    flex-direction: column; /* Vertical stacking */
+    justify-content: space-between; /* Pushes button to bottom */
+    height: 100%; /* Fills the card */
     gap: 10px;
 }
 .card-text {
