@@ -265,7 +265,7 @@ h1, h2 {
     background: linear-gradient(
         90deg, 
         transparent 0%, 
-       #ff3344 50%, 
+        #ff3344 50%, 
         transparent 100%
     );
 }
@@ -333,6 +333,25 @@ h1, h2 {
 }
 .unlock-btn:hover, 
 .unlock-btn.active {
+    background: var(--accent-color);
+    color: #000;
+}
+
+/* See More Button Styles */
+.see-more-btn {
+    display: block;
+    margin: 30px auto;
+    background: transparent;
+    color: var(--accent-color);
+    border: 1px solid var(--accent-color);
+    padding: 10px 24px;
+    cursor: pointer;
+    text-transform: uppercase;
+    font-weight: bold;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+.see-more-btn:hover {
     background: var(--accent-color);
     color: #000;
 }
