@@ -228,7 +228,7 @@ h1, h2 {
 .showroom-logo-container {
     display: flex;
     justify-content: center;
-    margin: 40px auto; 
+    margin: 20px auto 30px auto; 
     padding: 0;
 }
 .showroom-logo-img {
@@ -236,6 +236,20 @@ h1, h2 {
     width: 600px;
     height: auto;
     object-fit: contain;
+}
+.platform-title {
+    color: var(--text-main); 
+    font-size: 1.5rem; 
+    margin-bottom: 20px;
+    padding-bottom: 10px; 
+    text-align: left !important;
+    position: relative; 
+    border-bottom: none;
+    width: 100%;
+}
+.platform-title::after {
+    content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
 .showroom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
 .product-card {
