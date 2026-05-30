@@ -281,21 +281,22 @@ h1, h2 {
     cursor: pointer;
     transition: opacity 0.3s ease;
     position: relative;
+    padding: 20px 0;
 }
 
-/* The Fading Horizontal Lines */
+/* Fading Horizontal Lines - Now anchored to text sides */
 .see-more-container::before,
 .see-more-container::after {
     content: '';
     position: absolute;
-    top: 12px;
-    width: 150px;
+    top: 32px;
+    width: 30%;
     height: 1px;
     background: linear-gradient(90deg, transparent, #ffffff);
     z-index: 1;
 }
-.see-more-container::before { left: 0; transform: rotate(180deg); }
-.see-more-container::after { right: 0; }
+.see-more-container::before { left: 10%; transform: rotate(180deg); }
+.see-more-container::after { right: 10%; }
 
 .see-more-text {
     color: #ffffff;
@@ -303,17 +304,18 @@ h1, h2 {
     font-size: 1rem;
     letter-spacing: 2px;
     text-transform: uppercase;
-    margin-bottom: 15px;
     z-index: 2;
     background: var(--bg-dark);
     padding: 0 15px;
+    position: relative;
 }
 
-/* The Arrow Container (Two full chevrons) */
+/* Arrow Container - Fixed to show two full chevrons */
 .arrow-container {
     position: relative;
     width: 40px;
-    height: 25px;
+    height: 30px;
+    margin-top: 15px;
 }
 
 .arrow-container::before,
@@ -329,7 +331,7 @@ h1, h2 {
 }
 
 .arrow-container::before { top: 0px; transform: rotate(45deg); animation-delay: 0s; }
-.arrow-container::after { top: 8px; transform: rotate(45deg); animation-delay: 0.5s; }
+.arrow-container::after { top: 10px; transform: rotate(45deg); animation-delay: 0.5s; }
 
 @keyframes fade-down {
     0% { opacity: 0; transform: translateY(0) rotate(45deg); }
