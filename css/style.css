@@ -322,6 +322,12 @@ h1, h2 {
     display: flex;
     justify-content: center;
     align-items: center;
+    transition: transform 0.4s ease; /* Smooth rotation transition */
+}
+
+/* Rotation logic when the active class is toggled on the container */
+.arrow-container.active {
+    transform: rotate(180deg);
 }
 
 .arrow-container::before,
