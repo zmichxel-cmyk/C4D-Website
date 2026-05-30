@@ -279,24 +279,30 @@ h1, h2 {
     width: 100%;
     max-width: 800px;
     cursor: pointer;
-    transition: opacity 0.3s ease;
     position: relative;
     padding: 20px 0;
 }
 
-/* Fading Horizontal Lines - Now anchored to text sides */
+/* Lines now fade outwards */
 .see-more-container::before,
 .see-more-container::after {
     content: '';
     position: absolute;
     top: 32px;
-    width: 30%;
+    width: 250px;
     height: 1px;
-    background: linear-gradient(90deg, transparent, #ffffff);
     z-index: 1;
 }
-.see-more-container::before { left: 10%; transform: rotate(180deg); }
-.see-more-container::after { right: 10%; }
+
+/* Fades from white (at text) to transparent (outwards) */
+.see-more-container::before { 
+    right: 50%; margin-right: 80px; 
+    background: linear-gradient(90deg, transparent, #ffffff);
+}
+.see-more-container::after { 
+    left: 50%; margin-left: 80px; 
+    background: linear-gradient(90deg, #ffffff, transparent);
+}
 
 .see-more-text {
     color: #ffffff;
@@ -305,17 +311,16 @@ h1, h2 {
     letter-spacing: 2px;
     text-transform: uppercase;
     z-index: 2;
-    background: var(--bg-dark);
-    padding: 0 15px;
+    background: transparent; /* Box effect removed */
     position: relative;
 }
 
-/* Arrow Container - Fixed to show two full chevrons */
+/* Arrow Container - Fixed stacking */
 .arrow-container {
     position: relative;
     width: 40px;
     height: 30px;
-    margin-top: 15px;
+    margin-top: 10px;
 }
 
 .arrow-container::before,
@@ -330,8 +335,9 @@ h1, h2 {
     animation: fade-down 2s infinite;
 }
 
-.arrow-container::before { top: 0px; transform: rotate(45deg); animation-delay: 0s; }
-.arrow-container::after { top: 10px; transform: rotate(45deg); animation-delay: 0.5s; }
+/* Corrected alignment for both chevrons */
+.arrow-container::before { top: 0px; transform: rotate(45deg); }
+.arrow-container::after { top: 8px; transform: rotate(45deg); animation-delay: 0.5s; }
 
 @keyframes fade-down {
     0% { opacity: 0; transform: translateY(0) rotate(45deg); }
