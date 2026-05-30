@@ -283,7 +283,6 @@ h1, h2 {
     padding: 20px 0;
 }
 
-/* Fading Lines */
 .see-more-container::before,
 .see-more-container::after {
     content: '';
@@ -314,37 +313,45 @@ h1, h2 {
     position: relative;
 }
 
-/* --- Fixed Full Chevrons --- */
+/* --- Optimized Full Chevron Stacking --- */
 .arrow-container {
     position: relative;
-    width: 40px;
-    height: 40px;
-    margin-top: 15px;
+    width: 60px;
+    height: 60px;
+    margin: 15px auto 0 auto;
     display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 .arrow-container::before,
 .arrow-container::after {
     content: '';
     position: absolute;
-    width: 25px;
-    height: 12px;
-    border-bottom: 3px solid #ffffff;
-    border-right: 3px solid #ffffff;
+    width: 20px;
+    height: 20px;
+    border-bottom: 4px solid #ffffff;
+    border-right: 4px solid #ffffff;
     border-radius: 2px;
     transform: rotate(45deg);
     animation: fade-down 2s infinite;
     opacity: 0;
 }
 
-.arrow-container::before { top: 0px; animation-delay: 0s; }
-.arrow-container::after { top: 12px; animation-delay: 0.5s; }
+.arrow-container::before { 
+    top: 0px; 
+    animation-delay: 0s; 
+}
+
+.arrow-container::after { 
+    top: 15px; 
+    animation-delay: 0.5s; 
+}
 
 @keyframes fade-down {
     0% { opacity: 0; transform: translateY(0) rotate(45deg); }
     50% { opacity: 1; }
-    100% { opacity: 0; transform: translateY(15px) rotate(45deg); }
+    100% { opacity: 0; transform: translateY(20px) rotate(45deg); }
 }
 
 @media (max-width: 900px) {
