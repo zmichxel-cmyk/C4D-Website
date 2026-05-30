@@ -62,10 +62,12 @@
                 </div>
             </div>
             <div class="more-content" id="ps5-more" style="display: none;">
-                <div class="showroom-grid" style="margin-top: 20px;">
-                    </div>
+                <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
-            <button class="see-more-btn" onclick="toggleMore('ps5-more', this)">See More</button>
+            <div class="see-more-wrapper">
+                <button class="see-more-btn" onclick="toggleMore('ps5-more', this)">See More</button>
+                <div class="arrow-down"></div>
+            </div>
         </section>
 
         <section class="platform-section">
@@ -103,10 +105,12 @@
                 </div>
             </div>
             <div class="more-content" id="xbox-more" style="display: none;">
-                <div class="showroom-grid" style="margin-top: 20px;">
-                    </div>
+                <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
-            <button class="see-more-btn" onclick="toggleMore('xbox-more', this)">See More</button>
+            <div class="see-more-wrapper">
+                <button class="see-more-btn" onclick="toggleMore('xbox-more', this)">See More</button>
+                <div class="arrow-down"></div>
+            </div>
         </section>
 
         <section class="platform-section">
@@ -144,10 +148,12 @@
                 </div>
             </div>
             <div class="more-content" id="ps4-more" style="display: none;">
-                <div class="showroom-grid" style="margin-top: 20px;">
-                    </div>
+                <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
-            <button class="see-more-btn" onclick="toggleMore('ps4-more', this)">See More</button>
+            <div class="see-more-wrapper">
+                <button class="see-more-btn" onclick="toggleMore('ps4-more', this)">See More</button>
+                <div class="arrow-down"></div>
+            </div>
         </section>
 
         <section class="platform-section">
@@ -185,10 +191,12 @@
                 </div>
             </div>
             <div class="more-content" id="pc-more" style="display: none;">
-                <div class="showroom-grid" style="margin-top: 20px;">
-                    </div>
+                <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
-            <button class="see-more-btn" onclick="toggleMore('pc-more', this)">See More</button>
+            <div class="see-more-wrapper">
+                <button class="see-more-btn" onclick="toggleMore('pc-more', this)">See More</button>
+                <div class="arrow-down"></div>
+            </div>
         </section>
     </main>
 
@@ -201,15 +209,19 @@
             });
         });
 
-        // "See More" functionality
+        // "See More" functionality with arrow toggle
         function toggleMore(id, btn) {
             var content = document.getElementById(id);
+            var arrow = btn.nextElementSibling; // Targets the arrow div next to the button
+            
             if (content.style.display === "none" || content.style.display === "") {
                 content.style.display = "block";
                 btn.innerText = "Show Less";
+                arrow.style.display = "none"; // Hide arrow when expanded
             } else {
                 content.style.display = "none";
                 btn.innerText = "See More";
+                arrow.style.display = "block"; // Show arrow when collapsed
             }
         }
     </script>
