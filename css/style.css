@@ -133,15 +133,16 @@ h1, h2 {
 
 /* --- Updated White Fading Divider Line --- */
 .divider-line {
-    width: 50%;
+    /* Set a specific width so it doesn't span the full screen */
+    width: 60%; 
+    max-width: 600px;
+    /* Use 'auto' left and right margins to center the element */
+    margin: 40px auto; 
     height: 1px;
-    margin: 80px 0;
     background: linear-gradient(
         90deg, 
         transparent 0%, 
-        rgba(255, 255, 255, 0.5) 20%, 
         #ffffff 50%, 
-        rgba(255, 255, 255, 0.5) 80%, 
         transparent 100%
     );
     border: none;
