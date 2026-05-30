@@ -283,7 +283,7 @@ h1, h2 {
     padding: 20px 0;
 }
 
-/* Lines now fade outwards */
+/* Fading Lines */
 .see-more-container::before,
 .see-more-container::after {
     content: '';
@@ -294,7 +294,6 @@ h1, h2 {
     z-index: 1;
 }
 
-/* Fades from white (at text) to transparent (outwards) */
 .see-more-container::before { 
     right: 50%; margin-right: 80px; 
     background: linear-gradient(90deg, transparent, #ffffff);
@@ -311,33 +310,36 @@ h1, h2 {
     letter-spacing: 2px;
     text-transform: uppercase;
     z-index: 2;
-    background: transparent; /* Box effect removed */
+    background: transparent;
     position: relative;
 }
 
-/* Arrow Container - Fixed stacking */
+/* --- Fixed Full Chevrons --- */
 .arrow-container {
     position: relative;
     width: 40px;
-    height: 30px;
-    margin-top: 10px;
+    height: 40px;
+    margin-top: 15px;
+    display: flex;
+    justify-content: center;
 }
 
 .arrow-container::before,
 .arrow-container::after {
     content: '';
     position: absolute;
-    left: 10px;
-    width: 20px;
-    height: 3px;
-    background: #ffffff;
+    width: 25px;
+    height: 12px;
+    border-bottom: 3px solid #ffffff;
+    border-right: 3px solid #ffffff;
     border-radius: 2px;
+    transform: rotate(45deg);
     animation: fade-down 2s infinite;
+    opacity: 0;
 }
 
-/* Corrected alignment for both chevrons */
-.arrow-container::before { top: 0px; transform: rotate(45deg); }
-.arrow-container::after { top: 8px; transform: rotate(45deg); animation-delay: 0.5s; }
+.arrow-container::before { top: 0px; animation-delay: 0s; }
+.arrow-container::after { top: 12px; animation-delay: 0.5s; }
 
 @keyframes fade-down {
     0% { opacity: 0; transform: translateY(0) rotate(45deg); }
