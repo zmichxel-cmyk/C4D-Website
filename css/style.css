@@ -316,16 +316,15 @@ h1, h2 {
 /* --- Optimized Smaller Full Chevron Stacking --- */
 .arrow-container {
     position: relative;
-    width: 40px;  /* Narrower container */
-    height: 30px; /* Reduced height to pull them closer */
-    margin: 5px auto 0 auto; /* Reduced top margin to pull up */
+    width: 40px; 
+    height: 30px; 
+    margin: 5px auto 0 auto; 
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.4s ease; /* Smooth rotation transition */
+    transition: transform 0.4s ease; 
 }
 
-/* Rotation logic when the active class is toggled on the container */
 .arrow-container.active {
     transform: rotate(180deg);
 }
@@ -334,9 +333,9 @@ h1, h2 {
 .arrow-container::after {
     content: '';
     position: absolute;
-    width: 12px;  /* Smaller chevron size */
+    width: 12px; 
     height: 12px;
-    border-bottom: 3px solid #ffffff; /* Thinner border */
+    border-bottom: 3px solid #ffffff; 
     border-right: 3px solid #ffffff;
     border-radius: 2px;
     transform: rotate(45deg);
@@ -345,12 +344,12 @@ h1, h2 {
 }
 
 .arrow-container::before { 
-    top: -5px; /* Moved up relative to container */
+    top: -5px; 
     animation-delay: 0s; 
 }
 
 .arrow-container::after { 
-    top: 5px;  /* Tighter gap */
+    top: 5px; 
     animation-delay: 0.5s; 
 }
 
@@ -372,16 +371,21 @@ h1, h2 {
     .hero {
         padding: 20px 10px !important;
     }
-
-    /* --- Add this to the very bottom of your CSS --- */
-
-/* Ensures hidden containers don't create unwanted empty space */
-[id$="-more"] {
-    transition: all 0.3s ease;
 }
 
-/* Ensures the grid flows properly when revealed */
-[id$="-more"] .showroom-grid {
-    margin-top: 20px;
+/* --- Smooth Reveal & Spacing Fixes --- */
+.more-content {
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out;
 }
 
+.more-content.active {
+    max-height: 2000px;
+    opacity: 1;
+}
+
+.more-content .showroom-grid {
+    margin-top: 30px;
+}
