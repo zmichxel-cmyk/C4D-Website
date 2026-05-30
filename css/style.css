@@ -131,18 +131,13 @@ h1, h2 {
     100% { opacity: 0; }
 }
 
-/* --- Updated White Fading Divider Line --- */
+/* --- Divider Line --- */
 .divider-line {
     width: 60%; 
     max-width: 600px;
     margin: 40px auto; 
     height: 1px;
-    background: linear-gradient(
-        90deg, 
-        transparent 0%, 
-        #ffffff 50%, 
-        transparent 100%
-    );
+    background: linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%);
     border: none;
 }
 
@@ -187,7 +182,7 @@ h1, h2 {
 }
 .btn-submit:hover { background: var(--accent-color); color: #000; animation: none; }
 
-/* --- Success Page Additions --- */
+/* --- Success Page --- */
 .success-card { background: var(--bg-card); padding: 40px; border-radius: 8px; border: 1px solid #24242b; text-align: center; width: 100%; }
 .next-steps-box { text-align: left; margin: 25px 0; padding: 20px; background: rgba(255, 255, 255, 0.03); border-radius: 4px; }
 .next-steps-box ul { list-style-position: outside; padding-left: 25px; margin-top: 10px; }
@@ -200,12 +195,7 @@ h1, h2 {
 .checkmark { width: 15px; height: 30px; border: solid white; border-width: 0 5px 5px 0; transform: rotate(45deg); }
 @keyframes popIn { 0% { transform: scale(0); } 100% { transform: scale(1); } }
 
-@media (max-width: 768px) {
-    .main-nav { flex-direction: column; gap: 15px; }
-    .steps-grid { flex-direction: column; align-items: center; }
-}
-
-/* --- Ember Effect --- */
+/* --- Effects --- */
 .ember-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: -100; overflow: hidden;
@@ -223,148 +213,72 @@ h1, h2 {
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
-/* --- Updated Glow Container --- */
 .glow-container {
-    position: fixed; 
-    top: 0;
-    left: 0;
-    width: 100vw;
-    height: 100vh;
-    pointer-events: none; 
-    z-index: -100;
+    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
+    pointer-events: none; z-index: -100;
     background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 80%);
-    overflow: hidden;
     animation: pulse-glow 3s infinite ease-in-out;
 }
-
-@keyframes pulse-glow {
-    0%, 100% { opacity: 0.1; }
-    50% { opacity: 0.4; }
-}
+@keyframes pulse-glow { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.4; } }
 
 /* --- Premium Showroom Layout --- */
 .platform-section { margin-bottom: 50px; }
 .platform-title {
-    color: var(--text-main);
-    font-size: 1.5rem;
-    margin-bottom: 20px;
-    padding-bottom: 10px;
-    text-align: left;
-    position: relative; 
-    border-bottom: none; 
+    color: var(--text-main); font-size: 1.5rem; margin-bottom: 20px;
+    padding-bottom: 10px; text-align: left; position: relative; border-bottom: none;
 }
-
 .platform-title::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 100%;
-    height: 2px;
-    background: linear-gradient(
-        90deg, 
-        transparent 0%, 
-        #ff3344 50%, 
-        transparent 100%
-    );
+    content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
+    background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
-.showroom-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 20px;
-}
+.showroom-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 20px; }
 .product-card {
-    background: var(--bg-card);
-    border: 1px solid #24242b;
-    border-radius: 8px;
-    padding: 0;
-    overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    transition: transform 0.3s ease;
+    background: var(--bg-card); border: 1px solid #24242b; border-radius: 8px;
+    overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease;
 }
 .product-card:hover { border-color: var(--accent-color); }
+.product-card img { width: 100%; aspect-ratio: 16 / 9; background: #000; object-fit: contain; padding: 15px; }
 
-.product-card img {
-    width: 100%;
-    aspect-ratio: 16 / 9;
-    background: #000;
-    object-fit: contain;
-    padding: 15px;
-}
-
-.card-info {
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    justify-content: space-between;
-    height: 100%;
-    gap: 10px;
-}
-.card-text {
-    display: flex;
-    flex-direction: column;
-}
-.product-card h3 {
-    color: var(--text-main);
-    margin: 0;
-    font-size: 1.1rem;
-}
-.price {
-    color: var(--text-muted);
-    margin: 0;
-    font-weight: bold;
-}
+.card-info { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 10px; }
+.product-card h3 { color: var(--text-main); font-size: 1.1rem; }
+.price { color: var(--text-muted); font-weight: bold; }
 
 .unlock-btn {
-    padding: 10px 16px;
-    background: transparent;
-    color: var(--accent-color);
-    border: 1px solid var(--accent-color);
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    text-transform: uppercase;
-    border-radius: 4px;
-    white-space: nowrap;
+    padding: 10px 16px; background: transparent; color: var(--accent-color);
+    border: 1px solid var(--accent-color); font-weight: bold; cursor: pointer;
+    transition: all 0.3s ease; text-transform: uppercase; border-radius: 4px;
 }
-.unlock-btn:hover, 
-.unlock-btn.active {
-    background: var(--accent-color);
-    color: #000;
-}
+.unlock-btn:hover, .unlock-btn.active { background: var(--accent-color); color: #000; }
 
-/* --- New See More Button & Arrow Styles --- */
+/* --- See More Button & Arrow --- */
 .see-more-wrapper {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: 30px;
-    gap: 10px;
+    display: flex; flex-direction: column; align-items: center;
+    margin-top: 40px; gap: 15px;
 }
 
 .see-more-btn {
-    background: transparent;
-    color: var(--text-main);
-    border: 1px solid var(--accent-color);
-    padding: 10px 24px;
+    background: #ffffff;
+    color: #000000;
+    border: none;
+    padding: 12px 30px;
     cursor: pointer;
     text-transform: uppercase;
-    font-weight: bold;
+    font-weight: 800;
+    letter-spacing: 1px;
     border-radius: 4px;
     transition: all 0.3s ease;
 }
 
 .see-more-btn:hover {
     background: var(--accent-color);
-    color: #000;
+    color: #ffffff;
 }
 
 .arrow-down {
     width: 20px;
     height: 10px;
-    border-left: 2px solid var(--accent-color);
-    border-bottom: 2px solid var(--accent-color);
+    border-left: 2px solid #ffffff;
+    border-bottom: 2px solid #ffffff;
     transform: rotate(-45deg);
     animation: bounce 1.5s infinite;
 }
@@ -377,4 +291,5 @@ h1, h2 {
 
 @media (max-width: 900px) {
     .showroom-grid { grid-template-columns: 1fr; }
+    .main-nav { flex-direction: column; gap: 15px; }
 }
