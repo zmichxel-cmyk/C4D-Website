@@ -30,11 +30,11 @@ body {
 @keyframes fadeInPage { 0% { opacity: 0; } 100% { opacity: 1; } }
 
 /* --- Layout --- */
-.section-container { max-width: 1200px; margin: 0 auto; padding: 60px 20px 20px 20px; }
+.section-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px 20px 20px; }
 
 h1, h2 { 
     font-size: 2rem; 
-    margin-bottom: 30px; 
+    margin-bottom: 20px; 
     text-transform: uppercase; 
     letter-spacing: 1px; 
     text-align: center; 
@@ -64,20 +64,20 @@ h1, h2 {
     flex-direction: column;
     align-items: center; 
     text-align: center; 
-    padding: 100px 20px 40px 20px; 
+    padding: 40px 20px 20px 20px !important; 
     background: transparent !important; 
 }
 
 .header-logo-container {
     display: flex;
     justify-content: center;
-    margin: 20px auto 40px auto;
-    padding: 20px;
+    margin: 10px auto 20px auto;
+    padding: 10px;
 }
 
 .header-logo-img {
     max-width: 95%;
-    width: 800px; 
+    width: 1000px; 
     height: auto;
     object-fit: contain;
     transition: filter 0.3s ease;
@@ -90,7 +90,7 @@ h1, h2 {
 /* --- Banner Video Styles --- */
 .banner-video-container {
     display: block !important;
-    margin: 40px auto 80px auto !important; 
+    margin: 20px auto 40px auto !important; 
     width: 90% !important;
     max-width: 800px !important;
     height: 250px !important;
@@ -121,8 +121,8 @@ h1, h2 {
 }
 
 /* --- 3-Step Section & Staggered Animation --- */
-.steps-container { padding: 80px 20px; background: transparent !important; }
-.steps-grid { display: flex; justify-content: center; gap: 30px; margin-top: 40px; flex-wrap: wrap; }
+.steps-container { padding: 40px 20px; background: transparent !important; }
+.steps-grid { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
 .step-card {
     background: var(--bg-card); border: 1px solid var(--border-color); padding: 30px; border-radius: 8px; width: 300px;
     text-align: center; opacity: 0; animation: fadeIn 9s infinite;
@@ -142,7 +142,7 @@ h1, h2 {
 .divider-line {
     width: 60%; 
     max-width: 600px;
-    margin: 40px auto; 
+    margin: 20px auto; 
     height: 1px;
     background: linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%);
     border: none;
@@ -151,7 +151,7 @@ h1, h2 {
 .custom-cta-faded {
     background: transparent !important;
     border: none !important;
-    padding: 50px 0;
+    padding: 20px 0;
     text-align: center;
 }
 .custom-cta-faded h2, .custom-cta-faded p { margin: 0 !important; }
@@ -176,7 +176,7 @@ h1, h2 {
     transition: all 0.3s ease; display: inline-block;
 }
 .btn-primary:hover { background: var(--accent-color); color: #000; }
-.form-container { max-width: 600px; margin: 60px auto; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.form-container { max-width: 600px; margin: 20px auto; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
 .brief-form { width: 100%; display: flex; flex-direction: column; gap: 20px; background: var(--bg-card); padding: 30px; border: 1px solid var(--border-color); border-radius: 8px; }
 .form-group { display: flex; flex-direction: column; gap: 8px; }
 .form-group label { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
@@ -216,7 +216,7 @@ h1, h2 {
 @keyframes pulse-glow { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.4; } }
 
 /* --- Premium Showroom Layout --- */
-.platform-section { margin-bottom: 50px; }
+.platform-section { margin-bottom: 30px; }
 .platform-title {
     color: var(--text-main); font-size: 1.5rem; margin-bottom: 20px;
     padding-bottom: 10px; text-align: left; position: relative; border-bottom: none;
@@ -247,7 +247,7 @@ h1, h2 {
 /* --- Geometric "See More" Design --- */
 .see-more-container {
     display: flex; flex-direction: column; align-items: center;
-    margin: 40px auto; width: 100%; max-width: 800px; cursor: pointer;
+    margin: 20px auto; width: 100%; max-width: 800px; cursor: pointer;
 }
 .see-more-divider {
     width: 100%; height: 1px;
@@ -269,4 +269,13 @@ h1, h2 {
 @media (max-width: 900px) {
     .showroom-grid { grid-template-columns: 1fr; }
     .main-nav { flex-direction: column; gap: 15px; }
+    
+    .header-logo-img {
+        width: 100% !important;
+        max-width: 500px;
+    }
+    
+    .hero {
+        padding: 20px 10px !important;
+    }
 }
