@@ -270,27 +270,57 @@ h1, h2 {
 }
 .unlock-btn:hover, .unlock-btn.active { background: var(--accent-color); color: #000; }
 
-/* --- Geometric "See More" Design --- */
+/* --- Professional See-More Button --- */
 .see-more-container {
-    display: flex; flex-direction: column; align-items: center;
-    margin: 20px auto; width: 100%; max-width: 800px; cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 40px auto;
+    width: 100%;
+    max-width: 800px;
+    cursor: pointer;
+    transition: opacity 0.3s ease;
 }
-.see-more-divider {
-    width: 100%; height: 1px;
-    background: linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%);
-    margin-bottom: 25px;
-}
+.see-more-container:hover { opacity: 0.8; }
 .see-more-text {
-    color: #ffffff; font-weight: 800; font-size: 1rem;
-    letter-spacing: 2px; text-transform: uppercase;
+    color: #ffffff;
+    font-weight: 800;
+    font-size: 1rem;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    margin-bottom: 10px;
 }
-.arrow-container { margin-top: 15px; transition: transform 0.3s ease; }
-.straight-arrow {
-    width: 12px; height: 12px;
-    border-right: 2px solid #ffffff; border-bottom: 2px solid #ffffff;
+.arrow-container {
+    position: relative;
+    width: 40px;
+    height: 20px;
+}
+.arrow-container::before,
+.arrow-container::after {
+    content: '';
+    position: absolute;
+    left: 10px;
+    width: 20px;
+    height: 3px;
+    background: #ffffff;
+    border-radius: 2px;
+    animation: fade-down 2s infinite;
+}
+.arrow-container::before {
+    top: -5px;
     transform: rotate(45deg);
+    animation-delay: 0s;
 }
-.see-more-container.active .arrow-container { transform: rotate(180deg); }
+.arrow-container::after {
+    top: 5px;
+    transform: rotate(45deg);
+    animation-delay: 0.5s;
+}
+@keyframes fade-down {
+    0% { opacity: 0; transform: translateY(0) rotate(45deg); }
+    50% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(15px) rotate(45deg); }
+}
 
 @media (max-width: 900px) {
     .showroom-grid { grid-template-columns: 1fr; }
