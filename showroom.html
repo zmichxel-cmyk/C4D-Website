@@ -9,6 +9,7 @@
 <body>
 
     <div class="glow-container"></div>
+    <div class="ember-container" id="ember-container"></div>
 
     <header class="main-nav">
         <a href="index.html" class="logo-link">
@@ -61,9 +62,12 @@
                     </div>
                 </div>
             </div>
+            
             <div class="more-content" id="ps5-more" style="display: none;">
-                <div class="showroom-grid" style="margin-top: 20px;"></div>
+                <div class="showroom-grid" style="margin-top: 20px;">
+                    </div>
             </div>
+
             <div class="see-more-wrapper">
                 <button class="see-more-btn" onclick="toggleMore('ps5-more', this)">See More</button>
                 <div class="arrow-down"></div>
@@ -104,9 +108,11 @@
                     </div>
                 </div>
             </div>
+            
             <div class="more-content" id="xbox-more" style="display: none;">
                 <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
+
             <div class="see-more-wrapper">
                 <button class="see-more-btn" onclick="toggleMore('xbox-more', this)">See More</button>
                 <div class="arrow-down"></div>
@@ -147,9 +153,11 @@
                     </div>
                 </div>
             </div>
+
             <div class="more-content" id="ps4-more" style="display: none;">
                 <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
+
             <div class="see-more-wrapper">
                 <button class="see-more-btn" onclick="toggleMore('ps4-more', this)">See More</button>
                 <div class="arrow-down"></div>
@@ -190,9 +198,11 @@
                     </div>
                 </div>
             </div>
+
             <div class="more-content" id="pc-more" style="display: none;">
                 <div class="showroom-grid" style="margin-top: 20px;"></div>
             </div>
+
             <div class="see-more-wrapper">
                 <button class="see-more-btn" onclick="toggleMore('pc-more', this)">See More</button>
                 <div class="arrow-down"></div>
@@ -209,10 +219,10 @@
             });
         });
 
-        // "See More" functionality with arrow toggle
+        // "See More" functionality
         function toggleMore(id, btn) {
             var content = document.getElementById(id);
-            var arrow = btn.nextElementSibling; // Targets the arrow div next to the button
+            var arrow = btn.nextElementSibling;
             
             if (content.style.display === "none" || content.style.display === "") {
                 content.style.display = "block";
