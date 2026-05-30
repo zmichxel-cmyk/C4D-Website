@@ -133,9 +133,9 @@ h1, h2 {
 
 /* --- Updated White Fading Divider Line --- */
 .divider-line {
-    width: 100%;
+    width: 70%;
     height: 1px;
-    margin: 60px 0;
+    margin: 50px 0;
     background: linear-gradient(
         90deg, 
         transparent 0%, 
