@@ -270,59 +270,59 @@ h1, h2 {
 }
 .unlock-btn:hover, .unlock-btn.active { background: var(--accent-color); color: #000; }
 
-/* --- Professional See-More Design --- */
+/* --- Professional See-More Design (Compact Version) --- */
 .see-more-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin: 40px auto;
+    margin: 20px auto;
     width: 100%;
-    max-width: 800px;
+    max-width: 600px;
     cursor: pointer;
     position: relative;
-    padding: 20px 0;
+    padding: 10px 0;
 }
 
 .see-more-container::before,
 .see-more-container::after {
     content: '';
     position: absolute;
-    top: 32px;
-    width: 250px;
+    top: 22px;
+    width: 150px;
     height: 1px;
     z-index: 1;
 }
 
 .see-more-container::before { 
-    right: 50%; margin-right: 80px; 
+    right: 50%; margin-right: 60px; 
     background: linear-gradient(90deg, transparent, #ffffff);
 }
 .see-more-container::after { 
-    left: 50%; margin-left: 80px; 
+    left: 50%; margin-left: 60px; 
     background: linear-gradient(90deg, #ffffff, transparent);
 }
 
 .see-more-text {
     color: #ffffff;
     font-weight: 800;
-    font-size: 1rem;
-    letter-spacing: 2px;
+    font-size: 0.85rem;
+    letter-spacing: 1px;
     text-transform: uppercase;
     z-index: 2;
     background: transparent;
     position: relative;
 }
 
-/* --- Optimized Smaller Full Chevron Stacking --- */
+/* --- Optimized Smaller Chevron Stacking --- */
 .arrow-container {
     position: relative;
-    width: 40px; 
-    height: 30px; 
-    margin: 5px auto 0 auto; 
+    width: 30px;
+    height: 20px;
+    margin: 5px auto 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
-    transition: transform 0.4s ease; 
+    transition: transform 0.4s ease;
 }
 
 .arrow-container.active {
@@ -333,23 +333,23 @@ h1, h2 {
 .arrow-container::after {
     content: '';
     position: absolute;
-    width: 12px; 
-    height: 12px;
-    border-bottom: 3px solid #ffffff; 
-    border-right: 3px solid #ffffff;
-    border-radius: 2px;
+    width: 8px;
+    height: 8px;
+    border-bottom: 2px solid #ffffff;
+    border-right: 2px solid #ffffff;
+    border-radius: 1px;
     transform: rotate(45deg);
     animation: fade-down 2s infinite;
     opacity: 0;
 }
 
 .arrow-container::before { 
-    top: -5px; 
+    top: -4px; 
     animation-delay: 0s; 
 }
 
 .arrow-container::after { 
-    top: 5px; 
+    top: 4px; 
     animation-delay: 0.5s; 
 }
 
