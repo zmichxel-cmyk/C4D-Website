@@ -227,22 +227,21 @@
             });
         });
 
-        // Updated "See More" functionality
-        function toggleMore(id, container) {
-            const section = document.getElementById(id);
-            const text = container.querySelector('.see-more-text');
-            const arrow = container.querySelector('.arrow-container');
-            
-            if (section.style.display === "none" || section.style.display === "") {
-                section.style.display = "block";
-                text.innerText = "SHOW LESS";
-                arrow.style.transform = "rotate(180deg)";
-            } else {
-                section.style.display = "none";
-                text.innerText = "SEE MORE";
-                arrow.style.transform = "rotate(0deg)";
-            }
-        }
+       // Updated "See More" functionality
+function toggleMore(id, container) {
+    const section = document.getElementById(id);
+    const text = container.querySelector('.see-more-text');
+    
+    if (section.style.display === "none" || section.style.display === "") {
+        section.style.display = "block";
+        text.innerText = "SHOW LESS";
+        container.classList.add('active'); // Adds class to rotate arrow
+    } else {
+        section.style.display = "none";
+        text.innerText = "SEE MORE";
+        container.classList.remove('active'); // Removes class to reset arrow
+    }
+}
     </script>
     <script src="js/embers.js"></script>
 </body>
