@@ -122,4 +122,121 @@
 
         <section class="platform-section">
             <h2 class="platform-title">PS4</h2>
-            <div class="showroom
+            <div class="showroom-grid" id="ps4-grid">
+                <div class="product-card">
+                    <img src="assets/images/ps4-1.png" alt="Glacier White">
+                    <div class="card-info">
+                        <div class="card-text">
+                            <h3>GLACIER WHITE PS4</h3>
+                            <p class="price">$29.99</p>
+                        </div>
+                        <button class="unlock-btn">Unlock Code</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/ps4-2.png" alt="Urban Camo">
+                    <div class="card-info">
+                        <div class="card-text">
+                            <h3>URBAN CAMO PS4</h3>
+                            <p class="price">$32.99</p>
+                        </div>
+                        <button class="unlock-btn">Unlock Code</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/ps4-3.png" alt="Sunset Orange">
+                    <div class="card-info">
+                        <div class="card-text">
+                            <h3>SUNSET ORANGE PS4</h3>
+                            <p class="price">$27.99</p>
+                        </div>
+                        <button class="unlock-btn">Unlock Code</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="ps4-more" style="display: none;">
+                <div class="showroom-grid" style="margin-top: 20px;"></div>
+            </div>
+
+            <div class="see-more-container" onclick="toggleMore('ps4-more', this)">
+                <div class="see-more-text">SEE MORE</div>
+                <div class="arrow-container"></div>
+            </div>
+        </section>
+
+        <section class="platform-section">
+            <h2 class="platform-title">PC (MKB)</h2>
+            <div class="showroom-grid" id="pc-grid">
+                <div class="product-card">
+                    <img src="assets/images/pc-1.png" alt="Techno Ghost">
+                    <div class="card-info">
+                        <div class="card-text">
+                            <h3>TECHNO GHOST MKB</h3>
+                            <p class="price">$19.99</p>
+                        </div>
+                        <button class="unlock-btn">Unlock Code</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/pc-2.png" alt="Cyber Punish">
+                    <div class="card-info">
+                        <div class="card-text">
+                            <h3>CYBER PUNISH MKB</h3>
+                            <p class="price">$21.99</p>
+                        </div>
+                        <button class="unlock-btn">Unlock Code</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img src="assets/images/pc-3.png" alt="Fractal Reign">
+                    <div class="card-info">
+                        <div class="card-text">
+                            <h3>FRACTAL REIGN MKB</h3>
+                            <p class="price">$18.99</p>
+                        </div>
+                        <button class="unlock-btn">Unlock Code</button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="pc-more" style="display: none;">
+                <div class="showroom-grid" style="margin-top: 20px;"></div>
+            </div>
+
+            <div class="see-more-container" onclick="toggleMore('pc-more', this)">
+                <div class="see-more-text">SEE MORE</div>
+                <div class="arrow-container"></div>
+            </div>
+        </section>
+    </main>
+
+    <script>
+        // Unlock button functionality
+        document.querySelectorAll('.unlock-btn').forEach(btn => {
+            btn.addEventListener('click', function() {
+                this.classList.toggle('active');
+                this.innerText = this.classList.contains('active') ? 'Code Unlocked' : 'Unlock Code';
+            });
+        });
+
+        // Fixed "See More" functionality
+        function toggleMore(id, container) {
+            const section = document.getElementById(id);
+            const text = container.querySelector('.see-more-text');
+            const arrow = container.querySelector('.arrow-container'); 
+            
+            if (section.style.display === "none" || section.style.display === "") {
+                section.style.display = "block";
+                text.innerText = "SHOW LESS";
+                arrow.classList.add('active'); 
+            } else {
+                section.style.display = "none";
+                text.innerText = "SEE MORE";
+                arrow.classList.remove('active'); 
+            }
+        }
+    </script>
+    <script src="js/embers.js"></script>
+</body>
+</html>
