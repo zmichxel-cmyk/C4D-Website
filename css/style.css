@@ -69,26 +69,24 @@ h1, h2 {
 }
 
 .header-logo-container {
-    display: flex;
-    justify-content: center;
-    margin: 0 auto 0 auto !important; 
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 auto !important; 
     padding: 0 !important;
-    line-height: 0; /* REMOVES HIDDEN GAP UNDER IMAGE */
+    line-height: 0 !important; /* Kills the gap under the image */
+    font-size: 0 !important;   /* Kills the gap under the image */
 }
 
+/* This targets the paragraph specifically to pull it into the logo space */
 .hero p {
     display: block !important;
-    margin-top: 0 !important;
-    margin-bottom: 20px !important;
+    margin-top: -25px !important; /* Adjust this value (e.g., -30px) to move it closer */
+    margin-bottom: 20px !important; 
     line-height: 1.2 !important;
-    
-    /* NEW FORCE-MOVE LINES */
     position: relative !important;
-    top: -20px !important; /* Adjust this number to move text up or down */
     z-index: 10 !important;
 }
 
-/* --- Ensure the Header Logo doesn't have hidden space --- */
 .header-logo-img {
     display: block !important;
     max-width: 95%;
