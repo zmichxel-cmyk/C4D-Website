@@ -58,34 +58,24 @@ h1, h2 {
 .main-nav nav a.nav-cta { color: var(--accent-color); border: 1px solid var(--accent-color); padding: 6px 16px; border-radius: 4px; }
 .main-nav nav a.nav-cta:hover { background: var(--accent-color); color: #000; }
 
-/* --- Tighten Header and Sub-text --- */
+/* --- Hero Section (Strict Spacing) --- */
 .hero {
     display: flex;
     flex-direction: column;
     align-items: center; 
     text-align: center; 
-    /* Extremely tight padding for the hero section */
-    padding: 10px 20px !important; 
+    padding: 0 20px !important; 
     background: transparent !important; 
 }
 
 .header-logo-container {
     display: flex;
     justify-content: center;
-    /* Force margins to be zero so nothing pushes the text away */
-    margin: 0 auto 0 auto !important; 
+    margin: 0 !important; 
     padding: 0 !important;
+    line-height: 0; /* Prevents inline-element vertical gap */
 }
 
-.hero p {
-    /* Target the descriptive text directly */
-    display: block !important;
-    margin-top: 0 !important;
-    margin-bottom: 10px !important; /* Small gap between text and what follows */
-    line-height: 1.2 !important;
-}
-
-/* --- Ensure the Header Logo doesn't have hidden space --- */
 .header-logo-img {
     display: block !important;
     max-width: 95%;
@@ -94,18 +84,25 @@ h1, h2 {
     object-fit: contain;
     margin-bottom: 0 !important;
 }
+
+.hero p {
+    display: block !important;
+    margin-top: 0 !important;
+    margin-bottom: 30px !important; /* Gap below the text */
+    line-height: 1.2 !important;
+    color: var(--text-main);
+}
+
 /* --- Banner Video Styles --- */
 .banner-video-container {
     display: block !important;
-    margin: 20px auto 40px auto !important; 
+    margin: 0 auto 40px auto !important; 
     width: 90% !important;
     max-width: 800px !important;
     height: 250px !important;
     position: relative !important;
-    z-index: 5 !important;
     border-radius: 8px !important;
     overflow: hidden !important;
-    flex-shrink: 0 !important;
     -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
     mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
 }
@@ -117,172 +114,40 @@ h1, h2 {
     object-position: center !important;
 }
 
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 15, 18, 0.4);
-    pointer-events: none;
-}
-
-/* --- 3-Step Section & Staggered Animation --- */
+/* --- Section Styles --- */
 .steps-container { padding: 40px 20px; background: transparent !important; }
 .steps-grid { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
 .step-card {
     background: var(--bg-card); border: 1px solid var(--border-color); padding: 30px; border-radius: 8px; width: 300px;
     text-align: center; opacity: 0; animation: fadeIn 9s infinite;
 }
-.step-1 { animation-delay: 0s; } .step-2 { animation-delay: 1s; } .step-3 { animation-delay: 2s; }
 .step-num { display: block; font-size: 3rem; font-weight: 900; color: var(--accent-color); margin-bottom: 10px; }
 
 @keyframes fadeIn {
-    0% { opacity: 0; transform: translateY(20px); }
-    10% { opacity: 1; transform: translateY(0); }
-    70% { opacity: 1; transform: translateY(0); }
-    90% { opacity: 0; transform: translateY(0); }
-    100% { opacity: 0; }
+    0%, 100% { opacity: 0; transform: translateY(20px); }
+    10%, 70% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 0; }
 }
 
-/* --- Divider Line --- */
 .divider-line {
-    width: 60%; 
-    max-width: 600px;
-    margin: 20px auto; 
-    height: 1px;
+    width: 60%; max-width: 600px; margin: 20px auto; height: 1px;
     background: linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%);
     border: none;
 }
 
-.custom-cta-faded {
-    background: transparent !important;
-    border: none !important;
-    padding: 20px 0;
-    text-align: center;
-}
-.custom-cta-faded h2, .custom-cta-faded p { margin: 0 !important; }
-.custom-cta-faded .btn-primary { 
-    animation: pulse-red 2s infinite !important; 
-    position: relative !important; 
-    display: inline-block !important; 
-    margin-top: 25px;
-}
-
-@keyframes pulse-red {
-    0% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0.7); }
-    70% { box-shadow: 0 0 0 15px rgba(255, 51, 68, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0); }
-}
-
-/* --- Store & Form --- */
 .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
 .btn-primary { 
     background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color);
     padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 700;
     transition: all 0.3s ease; display: inline-block;
 }
-.btn-primary:hover { background: var(--accent-color); color: #000; }
-.form-container { max-width: 600px; margin: 20px auto; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
-.brief-form { width: 100%; display: flex; flex-direction: column; gap: 20px; background: var(--bg-card); padding: 30px; border: 1px solid var(--border-color); border-radius: 8px; }
-.form-group { display: flex; flex-direction: column; gap: 8px; }
-.form-group label { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
-.form-group input, .form-group select, .form-group textarea { padding: 12px; background-color: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 4px; }
-.btn-submit { 
-    background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color);
-    padding: 12px; border-radius: 4px; font-weight: 900; text-transform: uppercase;
-    cursor: pointer; transition: all 0.3s ease; animation: pulse-red 2s infinite;
-    position: relative; display: inline-block;
-}
-.btn-submit:hover { background: var(--accent-color); color: #000; animation: none; }
 
 /* --- Effects --- */
-.ember-container {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: -100; overflow: hidden;
-}
-.ember {
-    position: absolute; background: #ff3344;
-    border-radius: 50% 10% 50% 10%; filter: blur(1px); 
-    opacity: 0; pointer-events: none; animation: float-random 15s infinite linear;
-}
-@keyframes float-random {
-    0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
-    20% { opacity: 0.6; }
-    50% { transform: translateY(50vh) translateX(50px) scale(1); }
-    80% { opacity: 0.6; }
-    100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
-}
-
-.glow-container {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none; z-index: -100;
-    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 80%);
-    animation: pulse-glow 3s infinite ease-in-out;
-}
-@keyframes pulse-glow { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.4; } }
-
-/* --- Premium Showroom Layout --- */
-.platform-section { margin-bottom: 30px; }
-.platform-title {
-    color: var(--text-main); font-size: 1.5rem; margin-bottom: 20px;
-    padding-bottom: 10px; text-align: left; position: relative; border-bottom: none;
-}
-.platform-title::after {
-    content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
-    background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
-}
-.showroom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
-.product-card {
-    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px;
-    overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease;
-}
-.product-card:hover { border-color: var(--accent-color); }
-.product-card img { width: 100%; aspect-ratio: 16 / 9; background: #000; object-fit: contain; padding: 15px; }
-
-.card-info { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 10px; }
-.product-card h3 { color: var(--text-main); font-size: 1.1rem; }
-.price { color: var(--text-muted); font-weight: bold; }
-
-.unlock-btn {
-    padding: 10px 16px; background: transparent; color: var(--accent-color);
-    border: 1px solid var(--accent-color); font-weight: bold; cursor: pointer;
-    transition: all 0.3s ease; text-transform: uppercase; border-radius: 4px;
-}
-.unlock-btn:hover, .unlock-btn.active { background: var(--accent-color); color: #000; }
-
-/* --- Geometric "See More" Design --- */
-.see-more-container {
-    display: flex; flex-direction: column; align-items: center;
-    margin: 20px auto; width: 100%; max-width: 800px; cursor: pointer;
-}
-.see-more-divider {
-    width: 100%; height: 1px;
-    background: linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%);
-    margin-bottom: 25px;
-}
-.see-more-text {
-    color: #ffffff; font-weight: 800; font-size: 1rem;
-    letter-spacing: 2px; text-transform: uppercase;
-}
-.arrow-container { margin-top: 15px; transition: transform 0.3s ease; }
-.straight-arrow {
-    width: 12px; height: 12px;
-    border-right: 2px solid #ffffff; border-bottom: 2px solid #ffffff;
-    transform: rotate(45deg);
-}
-.see-more-container.active .arrow-container { transform: rotate(180deg); }
+.ember-container { position: fixed; top: 0; left: 0; width: 100%; height: 100%; pointer-events: none; z-index: -100; overflow: hidden; }
 
 @media (max-width: 900px) {
     .showroom-grid { grid-template-columns: 1fr; }
     .main-nav { flex-direction: column; gap: 15px; }
-    
-    .header-logo-img {
-        width: 100% !important;
-        max-width: 500px;
-    }
-    
-    .hero {
-        padding: 20px 10px !important;
-    }
+    .header-logo-img { width: 100% !important; }
+    .hero { padding: 10px !important; }
 }
