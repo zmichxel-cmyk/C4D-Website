@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Showroom | Customs4Daez</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* CSS to ensure smooth reveal and proper spacing */
+        .more-content {
+            max-height: 0;
+            opacity: 0;
+            overflow: hidden;
+            transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out;
+        }
+
+        .more-content.active {
+            max-height: 1000px; /* Adjust based on your content height */
+            opacity: 1;
+        }
+
+        /* Adds breathing room between the initial grid and the revealed grid */
+        .showroom-grid + .more-content .showroom-grid {
+            margin-top: 30px; 
+        }
+    </style>
 </head>
 <body>
 
@@ -34,13 +53,12 @@
         <section class="platform-section">
             <h2 class="platform-title">PS5</h2>
             <div class="showroom-grid" id="ps5-grid">
-                <!-- Original 3 Cards -->
                 <div class="product-card"><img src="assets/images/ps5-1.png" alt="Neon Storm"><div class="card-info"><div class="card-text"><h3>NEON STORM PS5</h3><p class="price">$39.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 <div class="product-card"><img src="assets/images/ps5-2.png" alt="Carbon Fiber"><div class="card-info"><div class="card-text"><h3>CARBON FIBER ELITE PS5</h3><p class="price">$34.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 <div class="product-card"><img src="assets/images/ps5-3.png" alt="Cyberpunk"><div class="card-info"><div class="card-text"><h3>CYBERPUNK RED PS5</h3><p class="price">$44.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
             </div>
             
-            <div id="ps5-more" style="display: none;">
+            <div id="ps5-more" class="more-content">
                 <div class="showroom-grid">
                     <div class="product-card"><img src="assets/images/ps5-4.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA PS5 1</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                     <div class="product-card"><img src="assets/images/ps5-5.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA PS5 2</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
@@ -54,24 +72,22 @@
             </div>
         </section>
 
+        <!-- Repeat for other sections (XBOX, PS4, PC) using the same pattern -->
         <!-- XBOX Section -->
         <section class="platform-section">
             <h2 class="platform-title">XBOX SERIES X/S</h2>
             <div class="showroom-grid" id="xbox-grid">
-                <!-- Original 3 Cards -->
                 <div class="product-card"><img src="assets/images/xbox-1.png" alt="Military Stealth"><div class="card-info"><div class="card-text"><h3>MILITARY STEALTH XBOX</h3><p class="price">$37.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 <div class="product-card"><img src="assets/images/xbox-2.png" alt="Crimson Ghost"><div class="card-info"><div class="card-text"><h3>CRIMSON GHOST XBOX</h3><p class="price">$41.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 <div class="product-card"><img src="assets/images/xbox-3.png" alt="Forza Edition"><div class="card-info"><div class="card-text"><h3>FORZA HORIZON XBOX</h3><p class="price">$39.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
             </div>
-            
-            <div id="xbox-more" style="display: none;">
+            <div id="xbox-more" class="more-content">
                 <div class="showroom-grid">
                     <div class="product-card"><img src="assets/images/xbox-4.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA XBOX 1</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                     <div class="product-card"><img src="assets/images/xbox-5.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA XBOX 2</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                     <div class="product-card"><img src="assets/images/xbox-6.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA XBOX 3</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 </div>
             </div>
-
             <div class="see-more-container" onclick="toggleMore('xbox-more', this)">
                 <div class="see-more-text">SEE MORE</div>
                 <div class="arrow-container"></div>
@@ -82,20 +98,17 @@
         <section class="platform-section">
             <h2 class="platform-title">PS4</h2>
             <div class="showroom-grid" id="ps4-grid">
-                <!-- Original 3 Cards -->
                 <div class="product-card"><img src="assets/images/ps4-1.png" alt="Glacier White"><div class="card-info"><div class="card-text"><h3>GLACIER WHITE PS4</h3><p class="price">$29.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 <div class="product-card"><img src="assets/images/ps4-2.png" alt="Urban Camo"><div class="card-info"><div class="card-text"><h3>URBAN CAMO PS4</h3><p class="price">$32.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 <div class="product-card"><img src="assets/images/ps4-3.png" alt="Sunset Orange"><div class="card-info"><div class="card-text"><h3>SUNSET ORANGE PS4</h3><p class="price">$27.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
             </div>
-
-            <div id="ps4-more" style="display: none;">
+            <div id="ps4-more" class="more-content">
                 <div class="showroom-grid">
                     <div class="product-card"><img src="assets/images/ps4-4.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA PS4 1</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                     <div class="product-card"><img src="assets/images/ps4-5.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA PS4 2</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                     <div class="product-card"><img src="assets/images/ps4-6.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA PS4 3</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 </div>
             </div>
-
             <div class="see-more-container" onclick="toggleMore('ps4-more', this)">
                 <div class="see-more-text">SEE MORE</div>
                 <div class="arrow-container"></div>
@@ -106,20 +119,17 @@
         <section class="platform-section">
             <h2 class="platform-title">PC (MKB)</h2>
             <div class="showroom-grid" id="pc-grid">
-                <!-- Original 3 Cards -->
                 <div class="product-card"><img src="assets/images/pc-1.png" alt="Techno Ghost"><div class="card-info"><div class="card-text"><h3>TECHNO GHOST MKB</h3><p class="price">$19.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 <div class="product-card"><img src="assets/images/pc-2.png" alt="Cyber Punish"><div class="card-info"><div class="card-text"><h3>CYBER PUNISH MKB</h3><p class="price">$21.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 <div class="product-card"><img src="assets/images/pc-3.png" alt="Fractal Reign"><div class="card-info"><div class="card-text"><h3>FRACTAL REIGN MKB</h3><p class="price">$18.99</p></div><button class="unlock-btn">Unlock Code</button></div></div>
             </div>
-
-            <div id="pc-more" style="display: none;">
+            <div id="pc-more" class="more-content">
                 <div class="showroom-grid">
                     <div class="product-card"><img src="assets/images/pc-4.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA PC 1</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                     <div class="product-card"><img src="assets/images/pc-5.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA PC 2</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                     <div class="product-card"><img src="assets/images/pc-6.png" alt="Extra"><div class="card-info"><div class="card-text"><h3>EXTRA PC 3</h3><p class="price">$XX.XX</p></div><button class="unlock-btn">Unlock Code</button></div></div>
                 </div>
             </div>
-
             <div class="see-more-container" onclick="toggleMore('pc-more', this)">
                 <div class="see-more-text">SEE MORE</div>
                 <div class="arrow-container"></div>
@@ -140,12 +150,13 @@
             const text = container.querySelector('.see-more-text');
             const arrow = container.querySelector('.arrow-container'); 
             
-            if (section.style.display === "none" || section.style.display === "") {
-                section.style.display = "block";
+            // Toggle the class for CSS transition
+            section.classList.toggle('active');
+            
+            if (section.classList.contains('active')) {
                 text.innerText = "SHOW LESS";
                 arrow.classList.add('active'); 
             } else {
-                section.style.display = "none";
                 text.innerText = "SEE MORE";
                 arrow.classList.remove('active'); 
             }
