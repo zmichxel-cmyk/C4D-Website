@@ -135,7 +135,7 @@ h1, h2 {
 .divider-line {
     width: 50%;
     height: 1px;
-    margin: 60px 0;
+    margin: 80px 0;
     background: linear-gradient(
         90deg, 
         transparent 0%, 
