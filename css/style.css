@@ -80,7 +80,7 @@ h1, h2 {
 /* This targets the paragraph specifically to pull it into the logo space */
 .hero p {
     display: block !important;
-    margin-top: -50px !important; /* Adjust this value (e.g., -30px) to move it closer */
+    margin-top: -60px !important; /* Adjust this value (e.g., -30px) to move it closer */
     margin-bottom: 20px !important; 
     line-height: 1.2 !important;
     position: relative !important;
