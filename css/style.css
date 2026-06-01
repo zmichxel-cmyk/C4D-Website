@@ -357,18 +357,45 @@ h1, h2 {
 
 /* Modal Container */
 #modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center;
-    z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.4s ease-out;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.85); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    z-index: 9999; /* Higher value to stay on top */
+    opacity: 0; 
+    visibility: hidden; 
+    transition: all 0.3s ease-in-out;
 }
-#modal-overlay.show { opacity: 1; visibility: visible; }
 
-/* The Rectangular Box */
+#modal-overlay.show { 
+    opacity: 1; 
+    visibility: visible; 
+}
+
+/* The Zoom-Out Animation */
 .modal-content {
-    background: var(--bg-card); border: 1px solid var(--accent-color); padding: 40px;
-    width: 90%; max-width: 400px; text-align: center; border-radius: 8px;
-    transform: scale(1.2); transition: transform 0.4s ease-out;
+    background: #1a1a1a; 
+    border: 1px solid #ff0000; 
+    padding: 40px;
+    width: 90%; 
+    max-width: 400px; 
+    text-align: center; 
+    border-radius: 8px;
+    transform: scale(1.1); /* Starts slightly zoomed */
+    transition: transform 0.3s ease-in-out;
 }
-.modal-overlay.show .modal-content { transform: scale(1); }
 
-.close-btn { position: absolute; top: 20px; right: 30px; font-size: 30px; cursor: pointer; color: var(--text-muted); }
+#modal-overlay.show .modal-content { 
+    transform: scale(1); /* Zooms into place */
+}
+
+/* Blur effect applied to main content only */
+.modal-active-bg { 
+    filter: blur(8px); 
+    pointer-events: none; /* Prevents clicking behind the modal */
+}
