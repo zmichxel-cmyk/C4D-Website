@@ -331,7 +331,7 @@ h1, h2 {
 
 /* --- FORCE RESIZE: Overlays Page --- */
 .overlays-page .showroom-grid .product-card {
-    min-width: 320px !important; /* Change this number to 200px if you want them smaller */
+    min-width: 250px !important; /* Change this number to 200px if you want them smaller */
     max-width: 100% !important;
 }
 
