@@ -266,16 +266,24 @@ h1, h2 {
     background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
 
+/* --- FIX: Scoped Grids --- */
 .showroom-grid {
     display: grid;
-    /* Keeps cards at a reasonable width and allows them to wrap */
-    grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
-    /* This centers the cards horizontally within the grid container */
-    justify-content: center;
     gap: 30px;
     padding: 20px;
-    max-width: 1200px;
+    justify-content: center;
     margin: 0 auto;
+    max-width: 1200px;
+}
+
+/* 3 Columns for Showroom */
+.page-showroom .showroom-grid {
+    grid-template-columns: repeat(3, minmax(300px, 400px));
+}
+
+/* 2 Columns for Overlays */
+.page-overlays .showroom-grid {
+    grid-template-columns: repeat(2, minmax(300px, 400px));
 }
 
 .product-card {
@@ -285,7 +293,6 @@ h1, h2 {
     overflow: hidden;
     display: flex !important;
     flex-direction: column !important;
-    /* Force the width to fill the grid cell */
     width: 100% !important;
     transition: transform 0.3s ease;
 }
@@ -330,7 +337,7 @@ h1, h2 {
 }
 
 @media (max-width: 900px) {
-    .showroom-grid { grid-template-columns: 1fr; justify-items: center; }
+    .showroom-grid { grid-template-columns: 1fr !important; }
     .main-nav { flex-direction: column; gap: 15px; }
     .header-logo-img { width: 100% !important; max-width: 500px; }
     .hero { padding: 20px 10px !important; }
