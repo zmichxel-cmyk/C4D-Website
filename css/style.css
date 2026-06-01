@@ -266,7 +266,9 @@ h1, h2 {
     background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
 
-/* --- Shared Base Grid (Everything stays the same) --- */
+/* --- SCOPED GRID FIXES --- */
+
+/* Base Grid */
 .showroom-grid {
     display: grid;
     justify-content: center; 
@@ -276,17 +278,17 @@ h1, h2 {
     margin: 0 auto;
 }
 
-/* --- Showroom: 3 Columns --- */
+/* 1. Showroom Page: Force 3 columns */
 .page-showroom .showroom-grid {
     grid-template-columns: repeat(3, 400px);
 }
 
-/* --- Overlays: 2 Columns (The exact same logic as showroom) --- */
+/* 2. Overlays Page: Force 2 columns */
 .page-overlays .showroom-grid {
     grid-template-columns: repeat(2, 400px);
 }
 
-/* --- Card Styles (Consistent across both) --- */
+/* --- Card Styles --- */
 .product-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -295,16 +297,10 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     transition: transform 0.3s ease;
+    width: 100%;
 }
-
 .product-card:hover { border-color: var(--accent-color); }
-.product-card img { 
-    width: 100%; 
-    aspect-ratio: 16 / 9; 
-    background: #000; 
-    object-fit: contain; 
-    padding: 15px; 
-}
+.product-card img { width: 100%; aspect-ratio: 16 / 9; background: #000; object-fit: contain; padding: 15px; }
 
 .card-info { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 10px; }
 .product-card h3 { color: var(--text-main); font-size: 1.1rem; }
@@ -343,8 +339,12 @@ h1, h2 {
     100% { opacity: 0; transform: translateY(12px) rotate(45deg); }
 }
 
-@media (max-width: 900px) {
-    .showroom-grid { grid-template-columns: 1fr; justify-items: center; }
+@media (max-width: 1250px) {
+    .page-showroom .showroom-grid,
+    .page-overlays .showroom-grid { 
+        grid-template-columns: 1fr !important; 
+        justify-items: center; 
+    }
     .main-nav { flex-direction: column; gap: 15px; }
     .header-logo-img { width: 100% !important; max-width: 500px; }
     .hero { padding: 20px 10px !important; }
