@@ -184,19 +184,18 @@
 <!-- The Updated Modal Structure -->
 <div id="modal-overlay">
     <div class="modal-content">
-        <!-- Image of the controller -->
-        <img id="modal-controller-img" src="assets/images/placeholder.png" alt="Controller Preview" style="width: 100%; max-height: 200px; object-fit: contain; margin-bottom: 15px;">
+        <!-- Back Button moved to the top and made smaller -->
+        <button class="back-btn-small" onclick="closeModal()">BACK TO OVERLAYS</button>
         
-        <h2 id="modal-title">Grab your controller!</h2>
-        <p id="modal-desc" style="margin-bottom: 20px; color: #ccc;">Brief style description goes here.</p>
+        <!-- Controller Image -->
+        <img id="modal-controller-img" src="" alt="Controller Preview">
         
-        <!-- Button Organization -->
-        <button class="back-btn" onclick="closeModal()" style="margin-bottom: 10px; width: 100%; padding: 10px; background: transparent; border: 1px solid #ff0000; color: white; cursor: pointer;">
-            BACK TO OVERLAYS
-        </button>
-        <button class="unlock-btn" onclick="downloadController()" style="width: 100%; padding: 12px; font-weight: bold;">
-            DOWNLOAD CONTROLLER
-        </button>
+        <!-- Title made significantly smaller -->
+        <h3 id="modal-title" style="font-size: 1.2rem; margin: 15px 0;"></h3>
+        <p id="modal-desc" style="font-size: 0.9rem; color: #888;"></p>
+        
+        <!-- Download button styled like your form Submit button with pulse -->
+        <button class="download-btn-pulse" onclick="downloadController()">DOWNLOAD CONTROLLER</button>
     </div>
 </div>
 
