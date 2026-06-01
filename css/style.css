@@ -270,7 +270,7 @@ h1, h2 {
 .showroom-grid {
     display: grid !important;
     /* Increase the 450px here to make them even bigger */
-    grid-template-columns: repeat(auto-fit, 450px) !important; 
+    grid-template-columns: repeat(auto-fit, 400px) !important; 
     justify-content: center !important; 
     gap: 30px !important;
 }
