@@ -266,25 +266,15 @@ h1, h2 {
     background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
 
-/* --- SCOPED GRID FIXES --- */
-
-/* 1. Showroom Page: Force 3 columns */
-.page-showroom .showroom-grid {
+/* --- THE GRID FIX (Nuclear Override) --- */
+.showroom-grid {
     display: grid !important;
+    /* This forces the grid to be exactly 3 columns wide, one for each card */
     grid-template-columns: repeat(3, 400px) !important;
     justify-content: center !important; 
     gap: 30px !important;
 }
 
-/* 2. Overlays Page: Force 2 columns (Change this to whatever you want) */
-.page-overlays .showroom-grid {
-    display: grid !important;
-    grid-template-columns: repeat(2, 400px) !important;
-    justify-content: center !important; 
-    gap: 30px !important;
-}
-
-/* 3. Shared Card Styles */
 .product-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -292,6 +282,7 @@ h1, h2 {
     overflow: hidden;
     display: flex !important;
     flex-direction: column !important;
+    /* Force the width to fill the grid cell */
     width: 100% !important;
     transition: transform 0.3s ease;
 }
@@ -336,7 +327,7 @@ h1, h2 {
 }
 
 @media (max-width: 900px) {
-    .showroom-grid { grid-template-columns: 1fr !important; justify-items: center; }
+    .showroom-grid { grid-template-columns: 1fr; justify-items: center; }
     .main-nav { flex-direction: column; gap: 15px; }
     .header-logo-img { width: 100% !important; max-width: 500px; }
     .hero { padding: 20px 10px !important; }
