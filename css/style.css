@@ -377,41 +377,73 @@ h1, h2 {
     visibility: visible; 
 }
 
-/* The Zoom-Out Animation */
-/* Wider and longer modal box */
+/* Modal Container Background */
+#modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
+    z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s ease-in-out;
+}
+#modal-overlay.show { opacity: 1; visibility: visible; }
+
+/* The Modal Box - Matches Form Aesthetic */
 .modal-content {
     background: #1a1a1a; 
-    border: 1px solid #ff0000; 
-    padding: 30px;
+    border: 1px solid #333; /* Matches your form border */
+    padding: 40px;
     width: 90%; 
-    max-width: 500px; /* Increased from 400px */
-    min-height: 400px; /* Ensures it is longer */
+    max-width: 600px; /* Wider to support the image */
+    min-height: 500px; 
     text-align: center; 
     border-radius: 8px;
     display: flex;
     flex-direction: column;
-    justify-content: space-between; /* Pushes download button to the bottom */
+    position: relative;
+    transform: scale(1.1); 
+    transition: transform 0.3s ease-in-out;
+}
+#modal-overlay.show .modal-content { transform: scale(1); }
+
+/* Small Back Button positioned at the top */
+.back-btn-small {
+    background: transparent; 
+    border: 1px solid #ff0000; 
+    color: #ff0000;
+    padding: 5px 15px; 
+    font-size: 0.7rem; 
+    cursor: pointer; 
+    margin-bottom: 20px;
+    align-self: flex-start;
 }
 
-/* Ensure the X button is removed (we deleted it from the HTML) */
-
-#modal-overlay.show .modal-content { 
-    transform: scale(1); /* Zooms into place */
+/* Controller Image Styling */
+#modal-controller-img {
+    width: 100%; 
+    max-height: 250px; 
+    object-fit: contain;
+    margin-bottom: 15px;
 }
 
-/* Blur effect applied to main content only */
+/* Download Button - Styled like Form Submit with Pulse */
+.download-btn-pulse {
+    background: transparent; 
+    border: 2px solid #ff0000; 
+    color: #ff0000;
+    padding: 15px; 
+    width: 100%; 
+    font-weight: bold; 
+    cursor: pointer;
+    margin-top: auto; /* Pushes button to bottom */
+    animation: pulse 2s infinite; 
+}
+
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+}
+
+/* Background Blur Effect */
 .modal-active-bg { 
     filter: blur(8px); 
-    pointer-events: none; /* Prevents clicking behind the modal */
-}
-
-.back-btn {
-    display: block;
-    width: 100%;
-    border-radius: 5px;
-    transition: background 0.3s ease;
-}
-
-.back-btn:hover {
-    background: rgba(255, 0, 0, 0.1) !important;
+    pointer-events: none; 
 }
