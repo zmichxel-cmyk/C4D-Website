@@ -10,93 +10,80 @@
 
     <div class="glow-container"></div>
 
-  <header class="main-nav">
-    <a href="index.html" class="logo-link">
-        <div class="logo">
-            <img src="assets/images/logo.png" alt="My Brand Logo">
-        </div>
-    </a>
-    
-    <nav>
-        <!-- Links updated to point to direct files, not home anchors -->
-        <a href="showroom.html">Showroom</a>
-        <a href="overlays.html">Free Overlays</a>
-        <a href="custom.html" class="nav-cta">Custom Request</a>
-    </nav>
-</header>
+    <header class="main-nav">
+        <a href="index.html" class="logo-link">
+            <div class="logo">
+                <img src="assets/images/logo.png" alt="My Brand Logo">
+            </div>
+        </a>
+        
+        <nav>
+            <a href="showroom.html">Showroom</a>
+            <a href="overlays.html">Free Overlays</a>
+            <a href="custom.html" class="nav-cta">Custom Request</a>
+        </nav>
+    </header>
 
-  <section id="free" class="section-container free-tier">
-    <div class="header-img-container">
-        <img src="assets/images/Free.png" alt="Free Watermarked Layouts" class="header-img">
-    </div>
-      <!-- WRAPPER STARTS HERE -->
-    <div id="overlays-page-content">
+    <!-- Use main with overlays-page class for clean CSS isolation -->
+    <main class="section-container overlays-page">
+        <div class="header-img-container">
+            <img src="assets/images/Free.png" alt="Free Watermarked Layouts" class="header-img">
+        </div>
+
         <section id="ps5" class="platform-section">
-             <!-- All your platform code remains here -->
-        </section>
-    </div>
-    <!-- WRAPPER ENDS HERE -->
-
-    <section id="ps5" class="platform-section">
-        <h2 class="platform-title">PS5</h2>
-        <div class="showroom-grid">
-            <div class="product-card">
-                <img src="assets/images/custom4daez-ps5.png" alt="Custom4daez PS5">
-                <div class="card-info">
-                    <h3>Custom4daez Edition</h3>
-                    <p class="price">FREE</p>
-                    <button class="unlock-btn">UNLOCK CODE</button>
-                </div>
-            </div>
-
-            <div class="product-card">
-                <img id="ps5-display" src="assets/images/ps5-white.png" alt="Selectable PS5 Controller">
-                <div class="card-info">
-                    <h3>Selectable Color PS5</h3>
-                    <div class="color-selector">
-                        <button onclick="changeColor('ps5', 'white')" class="color-dot" style="background: white;"></button>
-                        <button onclick="changeColor('ps5', 'black')" class="color-dot" style="background: black;"></button>
-                        <button onclick="changeColor('ps5', 'blue')" class="color-dot" style="background: blue;"></button>
-                        <button onclick="changeColor('ps5', 'red')" class="color-dot" style="background: red;"></button>
-                        <button onclick="changeColor('ps5', 'green')" class="color-dot" style="background: green;"></button>
+            <h2 class="platform-title">PS5</h2>
+            <div class="showroom-grid">
+                <!-- Product 1 -->
+                <div class="product-card">
+                    <img src="assets/images/custom4daez-ps5.png" alt="Custom4daez PS5">
+                    <div class="card-info">
+                        <h3>Custom4daez Edition</h3>
+                        <p class="price">FREE</p>
+                        <button class="unlock-btn">UNLOCK CODE</button>
                     </div>
-                    <button class="unlock-btn">UNLOCK CODE</button>
+                </div>
+
+                <!-- Product 2 (Color Selector) -->
+                <div class="product-card">
+                    <img id="ps5-display" src="assets/images/ps5-white.png" alt="Selectable PS5 Controller">
+                    <div class="card-info">
+                        <h3>Selectable Color PS5</h3>
+                        <div class="color-selector">
+                            <button onclick="changeColor('ps5', 'white')" class="color-dot" style="background: white;"></button>
+                            <button onclick="changeColor('ps5', 'black')" class="color-dot" style="background: black;"></button>
+                            <button onclick="changeColor('ps5', 'blue')" class="color-dot" style="background: blue;"></button>
+                            <button onclick="changeColor('ps5', 'red')" class="color-dot" style="background: red;"></button>
+                            <button onclick="changeColor('ps5', 'green')" class="color-dot" style="background: green;"></button>
+                        </div>
+                        <button class="unlock-btn">UNLOCK CODE</button>
+                    </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    </section>
+        </section>
+    </main>
 
     <script>
-    function copyOverlayLink(inputId, buttonElement) {
-        const copyText = document.getElementById(inputId);
-        copyText.select();
-        navigator.clipboard.writeText(copyText.value).then(() => {
-            const originalText = buttonElement.innerText;
-            buttonElement.innerText = "Copied!";
-            buttonElement.classList.add("copied-success");
-            setTimeout(() => {
-                buttonElement.innerText = originalText;
-                buttonElement.classList.remove("copied-success");
-            }, 2000);
-        });
-    }
-    </script>
-
-    <script>
-    function changeColor(platform, color) {
-        // Targets the image ID uniquely based on the platform clicked
-        const displayImg = document.getElementById(`${platform}-display`);
-        if (displayImg) {
-            // Assumes your images are named like 'ps5-white.png', 'ps4-blue.png' etc.
-            displayImg.src = `assets/images/${platform}-${color}.png`;
+        function changeColor(platform, color) {
+            const displayImg = document.getElementById(`${platform}-display`);
+            if (displayImg) {
+                displayImg.src = `assets/images/${platform}-${color}.png`;
+            }
         }
-    }
-    
-    // ... keep your existing copyOverlayLink function here ...
-</script>
 
-    <!-- This runs the ember generator -->
+        function copyOverlayLink(inputId, buttonElement) {
+            const copyText = document.getElementById(inputId);
+            copyText.select();
+            navigator.clipboard.writeText(copyText.value).then(() => {
+                const originalText = buttonElement.innerText;
+                buttonElement.innerText = "Copied!";
+                buttonElement.classList.add("copied-success");
+                setTimeout(() => {
+                    buttonElement.innerText = originalText;
+                    buttonElement.classList.remove("copied-success");
+                }, 2000);
+            });
+        }
+    </script>
     <script src="js/embers.js"></script>
 </body>
+</html>
