@@ -274,8 +274,15 @@ h1, h2 {
     gap: 30px;
 }
 .product-card {
-    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px;
-    overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    /* ADD THIS: ensures the card doesn't try to grow larger than it needs to */
+    flex-grow: 0; 
+    transition: transform 0.3s ease;
 }
 .product-card:hover { border-color: var(--accent-color); }
 .product-card img { width: 100%; aspect-ratio: 16 / 9; background: #000; object-fit: contain; padding: 15px; }
