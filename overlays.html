@@ -182,24 +182,22 @@
             }
         }
 
-        function openModal(type) {
-            const modal = document.getElementById("modal-overlay");
-            const title = document.getElementById("modal-title");
-            
-            if(type === 'c4d') {
-                title.innerText = "Grab your C4D Controller Free of charge!";
-            } else {
-                title.innerText = "Grab your FREE watermarked controller!";
-            }
+       function openModal(type) {
+    const modal = document.getElementById("modal-overlay");
+    const title = document.getElementById("modal-title");
+    
+    // Set text
+    title.innerText = (type === 'c4d') ? "Grab your C4D Controller Free of charge!" : "Grab your FREE watermarked controller!";
 
-            document.body.classList.add("modal-active-bg");
-            modal.classList.add("show");
-        }
+    // Blur the main content, not the body (this keeps the modal clear)
+    document.querySelector(".section-container").classList.add("modal-active-bg");
+    modal.classList.add("show");
+}
 
-        function closeModal() {
-            document.body.classList.remove("modal-active-bg");
-            document.getElementById("modal-overlay").classList.remove("show");
-        }
+function closeModal() {
+    document.querySelector(".section-container").classList.remove("modal-active-bg");
+    document.getElementById("modal-overlay").classList.remove("show");
+}
     </script>
     <script src="js/embers.js"></script>
 </body>
