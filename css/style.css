@@ -265,7 +265,14 @@ h1, h2 {
     content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
     background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
-.showroom-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.showroom-grid {
+    display: grid;
+    /* Use minmax with auto to prevent stretching */
+    grid-template-columns: repeat(auto-fit, minmax(320px, auto)); 
+    /* Center the items in the container */
+    justify-content: center; 
+    gap: 30px;
+}
 .product-card {
     background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px;
     overflow: hidden; display: flex; flex-direction: column; transition: transform 0.3s ease;
