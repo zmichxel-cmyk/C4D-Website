@@ -345,6 +345,26 @@ h1, h2 {
 .more-content.active { max-height: 2000px; opacity: 1; }
 .more-content .showroom-grid { margin-top: 30px; }
 
+/* --- Color Selector (Restored) --- */
+.platform-section .color-selector { 
+    display: flex; 
+    gap: 10px; 
+    margin: 15px 0; 
+    justify-content: center; 
+}
+.platform-section .color-dot { 
+    width: 22px; 
+    height: 22px; 
+    border-radius: 50%; 
+    border: 1px solid var(--border-color); 
+    cursor: pointer; 
+    transition: transform 0.2s, border-color 0.2s; 
+}
+.platform-section .color-dot:hover { 
+    transform: scale(1.15); 
+    border-color: var(--accent-color); 
+}
+
 /* --- Modal Overlay & Content --- */
 #modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
