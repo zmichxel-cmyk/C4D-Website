@@ -334,8 +334,10 @@ h1, h2 {
 /* --- Final Layout Override --- */
 /* We target the grid container and reset its column behavior */
 
-main.overlays-page .showroom-grid {
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
+/* Use 'auto' instead of '1fr' to stop the cards from stretching */
+.overlays-page .showroom-grid {
+    grid-template-columns: repeat(auto-fit, minmax(320px, auto)) !important;
+    justify-content: center; /* This centers the cards if they don't fill the whole row */
 }
 
 main.showroom-page .showroom-grid {
