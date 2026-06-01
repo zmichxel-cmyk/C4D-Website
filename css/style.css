@@ -366,6 +366,7 @@ h1, h2 {
 }
 
 /* --- Modal Overlay & Content --- */
+/* --- Modal Overlay & Content (FORCE UPDATED) --- */
 #modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
@@ -375,54 +376,45 @@ h1, h2 {
 #modal-overlay.show { opacity: 1; visibility: visible; }
 
 .modal-content {
-    background: #1a1a1a; 
-    padding: 0; 
-    width: 90%; 
-    max-width: 800px;
-    /* Increased min-height to make the box longer */
-    min-height: 800px; 
-    display: flex; 
-    flex-direction: column;
-    position: relative; 
-    border-radius: 8px; 
-    overflow: hidden;
-    /* Added a thin, dark border to prevent blending */
-    border: 1px solid #33333d !important; 
+    background: #1a1a1a !important; 
+    padding: 0 !important; 
+    width: 90% !important; 
+    max-width: 800px !important;
+    min-height: 850px !important; /* Made significantly longer */
+    display: flex !important; 
+    flex-direction: column !important;
+    position: relative !important; 
+    border-radius: 8px !important; 
+    overflow: hidden !important;
+    border: 1px solid #33333d !important; /* Border to stop blending */
     box-shadow: 0 10px 30px rgba(0,0,0,0.5) !important;
-    
-    transform: scale(0.8);
-    opacity: 0;
-    transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), opacity 0.4s;
-}
-
-#modal-overlay.show .modal-content {
-    transform: scale(1);
-    opacity: 1;
-}
-
-.back-arrow {
-    position: absolute; top: 15px; left: 15px;
-    color: white; font-size: 2.5rem; cursor: pointer; z-index: 20; line-height: 1;
 }
 
 .modal-img-container {
-    width: 100%; height: 450px; background: #000;
-    display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
+    width: 100% !important; 
+    height: 450px !important; 
+    background: #000 !important;
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: center !important; 
+    margin-bottom: 20px !important;
 }
-#modal-controller-img { width: 100%; height: 100%; object-fit: contain; }
 
-.text-container { padding: 0 40px 40px 40px; text-align: center; flex-grow: 1; }
+#modal-controller-img { width: 100% !important; height: 100% !important; object-fit: contain !important; }
 
-/* Made the button way smaller by reducing padding and width */
+.text-container { padding: 0 40px 40px 40px !important; text-align: center !important; flex-grow: 1 !important; }
+
+/* Button size forced smaller */
 .download-btn-pulse {
-    background: transparent; 
-    border: 1px solid var(--accent-color);
-    color: var(--accent-color); 
-    padding: 12px 24px; 
-    width: auto; 
-    display: inline-block;
-    font-weight: bold; 
-    cursor: pointer; 
-    text-transform: uppercase;
-    animation: pulse-red 2s infinite;
+    background: transparent !important; 
+    border: 1px solid var(--accent-color) !important;
+    color: var(--accent-color) !important; 
+    padding: 8px 16px !important; /* Smaller padding */
+    width: auto !important; 
+    display: inline-block !important;
+    font-size: 0.8rem !important; /* Smaller text */
+    font-weight: bold !important; 
+    cursor: pointer !important; 
+    text-transform: uppercase !important;
+    animation: pulse-red 2s infinite !important;
 }
