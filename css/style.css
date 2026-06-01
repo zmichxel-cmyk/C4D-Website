@@ -427,3 +427,31 @@ h1, h2 {
     transform: scale(1.15);
     border-color: var(--accent-color);
 }
+
+/* --- Smaller Product Cards for Free Overlays Page --- */
+.platform-section .showroom-grid {
+    /* Tightens the grid gap */
+    gap: 20px; 
+}
+
+.platform-section .product-card {
+    /* Limits the card width to make them feel more compact */
+    max-width: 280px;
+    margin: 0 auto;
+}
+
+.platform-section .product-card img {
+    /* Reduces the image area slightly */
+    padding: 10px;
+}
+
+.platform-section .card-info {
+    /* Reduces internal spacing in the card */
+    padding: 15px;
+    gap: 8px;
+}
+
+.platform-section .product-card h3 {
+    /* Shrinks the title slightly */
+    font-size: 1rem;
+}
