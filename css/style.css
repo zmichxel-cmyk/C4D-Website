@@ -329,10 +329,10 @@ h1, h2 {
 
 /* Overlays Page: Uses 320px minimum for larger card presentation */
 .overlays-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
 }
 
 /* Showroom Page: Uses 200px minimum to fit more items per row */
 .showroom-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
 }
