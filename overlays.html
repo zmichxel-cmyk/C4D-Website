@@ -229,6 +229,19 @@ function closeModal() {
     document.querySelector(".section-container").classList.remove("modal-active-bg");
     document.getElementById("modal-overlay").classList.remove("show");
 }
+
+        function downloadController() {
+    // Replace the URL with your actual file path
+    const downloadLink = document.getElementById("modal-controller-img").src;
+    
+    // Create a temporary link element to trigger the download
+    const link = document.createElement('a');
+    link.href = downloadLink;
+    link.download = 'Controller-Design.png'; // File name for the user
+    document.body.appendChild(link);
+    link.click();
+    document.body.removeChild(link);
+}
     </script>
     <script src="js/embers.js"></script>
 </body>
