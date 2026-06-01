@@ -238,7 +238,7 @@ h1, h2 {
 @keyframes pulse-glow { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.4; } }
 
 /* --- Premium Showroom Layout --- */
-.platform-section { margin-bottom: 30px; }
+.platform-section { margin-bottom: 30px; margin-left: auto; margin-right: auto; max-width: 1200px; }
 .showroom-logo-container {
     display: flex;
     justify-content: center;
@@ -267,9 +267,8 @@ h1, h2 {
 }
 .showroom-grid {
     display: grid;
-    /* 'auto' tells the grid to only be as wide as the cards themselves */
+    /* Fixed width keeps cards from stretching; justify-content centers them */
     grid-template-columns: repeat(auto-fit, 320px); 
-    /* This centers the cards in the middle of the page */
     justify-content: center; 
     gap: 30px;
 }
@@ -280,7 +279,6 @@ h1, h2 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    /* ADD THIS: ensures the card doesn't try to grow larger than it needs to */
     flex-grow: 0; 
     transition: transform 0.3s ease;
 }
@@ -325,7 +323,7 @@ h1, h2 {
 }
 
 @media (max-width: 900px) {
-    .showroom-grid { grid-template-columns: 1fr; }
+    .showroom-grid { grid-template-columns: 1fr; justify-items: center; }
     .main-nav { flex-direction: column; gap: 15px; }
     .header-logo-img { width: 100% !important; max-width: 500px; }
     .hero { padding: 20px 10px !important; }
@@ -339,17 +337,3 @@ h1, h2 {
 .platform-section .color-selector { display: flex; gap: 10px; margin: 15px 0; justify-content: center; }
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
-
-
-/* Use 'auto' instead of '1fr' to stop the cards from stretching */
-.overlays-page .showroom-grid {
-    grid-template-columns: repeat(auto-fit, minmax(320px, auto)) !important;
-    justify-content: center; /* This centers the cards if they don't fill the whole row */
-}
-
-main.showroom-page .showroom-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
-    justify-content: center; /* This centers the cards if they don't fill the whole row */
-}
-
-}
