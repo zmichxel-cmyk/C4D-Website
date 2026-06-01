@@ -5,27 +5,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Showroom | Customs4Daez</title>
     <link rel="stylesheet" href="css/style.css">
-    <style>
-        /* CSS to ensure smooth reveal and proper spacing */
-        .more-content {
-            max-height: 0;
-            opacity: 0;
-            overflow: hidden;
-            transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out;
-        }
-
-        .more-content.active {
-            max-height: 1000px; /* Adjust based on your content height */
-            opacity: 1;
-        }
-
-        /* Adds breathing room between the initial grid and the revealed grid */
-        .showroom-grid + .more-content .showroom-grid {
-            margin-top: 30px; 
-        }
-    </style>
 </head>
-<body>
+<body class="page-showroom">
 
     <div class="glow-container"></div>
     <div class="ember-container" id="ember-container"></div>
@@ -36,7 +17,6 @@
                 <img src="assets/images/logo.png" alt="My Brand Logo">
             </div>
         </a>
-        
         <nav>
             <a href="showroom.html">Showroom</a>
             <a href="overlays.html">Free Overlays</a>
@@ -44,12 +24,8 @@
         </nav>
     </header>
 
-   <main class="section-container overlays-page">
-    <div class="showroom-grid">
-        </div>
-</main>
-    <!-- Rest of your showroom content -->
-</main>
+    <main class="section-container">
+        
         <div class="showroom-logo-container">
             <img src="assets/images/showroom.png" alt="The Premium Showroom" class="showroom-logo-img">
         </div>
@@ -77,7 +53,6 @@
             </div>
         </section>
 
-        <!-- Repeat for other sections (XBOX, PS4, PC) using the same pattern -->
         <!-- XBOX Section -->
         <section class="platform-section">
             <h2 class="platform-title">XBOX SERIES X/S</h2>
@@ -155,7 +130,6 @@
             const text = container.querySelector('.see-more-text');
             const arrow = container.querySelector('.arrow-container'); 
             
-            // Toggle the class for CSS transition
             section.classList.toggle('active');
             
             if (section.classList.contains('active')) {
