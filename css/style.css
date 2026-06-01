@@ -283,7 +283,7 @@ h1, h2 {
 
 /* 2 Columns for Overlays */
 .page-overlays .showroom-grid {
-    grid-template-columns: repeat(2, minmax(300px, 400px));
+    grid-template-columns: repeat(2, minmax(400px, 500px));
 }
 
 .product-card {
