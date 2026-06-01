@@ -330,9 +330,9 @@ h1, h2 {
 /* Resize cards by changing the pixel value in minmax() */
 
 .overlays-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
 }
 
 .showroom-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
 }
