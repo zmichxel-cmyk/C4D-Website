@@ -165,14 +165,21 @@
         </section>
     </main> 
 
-    <!-- Modal Element -->
-    <div id="modal-overlay">
-        <div class="modal-content">
-            <span class="close-btn" onclick="closeModal()">&times;</span>
-            <h2 id="modal-title">Grab your controller!</h2>
-            <button class="unlock-btn" onclick="closeModal()">DOWNLOAD CONTROLLER</button>
-        </div>
+   <!-- The Modal Structure -->
+<div id="modal-overlay">
+    <div class="modal-content">
+        <span class="close-btn" onclick="closeModal()">&times;</span>
+        <h2 id="modal-title">Grab your controller!</h2>
+        
+        <!-- Primary Action -->
+        <button class="unlock-btn" onclick="downloadController()">DOWNLOAD CONTROLLER</button>
+        
+        <!-- Back/Close Button -->
+        <button class="back-btn" onclick="closeModal()" style="margin-top: 15px; background: transparent; border: 1px solid var(--accent-color); color: white; padding: 10px 20px; cursor: pointer;">
+            BACK TO OVERLAYS
+        </button>
     </div>
+</div>
 
     <script>
         function changeColor(platform, color) {
