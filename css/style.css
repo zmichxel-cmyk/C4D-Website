@@ -248,7 +248,7 @@ h1, h2 {
 }
 .showroom-logo-img {
     max-width: 100%;
-    width: 600px;
+    width: 550px;
     height: auto;
     object-fit: contain;
 }
@@ -380,7 +380,7 @@ h1, h2 {
     
     .header-logo-img {
         width: 100% !important;
-        max-width: 600px;
+        max-width: 500px;
     }
     
     .hero {
