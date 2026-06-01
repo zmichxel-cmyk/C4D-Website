@@ -326,17 +326,13 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- Page Specific Sizing --- */
-/* Resize cards by changing the pixel value in minmax() */
 
-/* --- Page Specific Sizing --- */
-
-/* Overlays Page: Uses 200px minimum to fit more items per row */
+/* Overlays Page: Uses 320px minimum for larger card presentation */
 .overlays-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
 }
 
-/* Showroom Page: Uses 320px minimum for larger card presentation */
+/* Showroom Page: Uses 200px minimum to fit more items per row */
 .showroom-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
 }
