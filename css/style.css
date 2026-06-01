@@ -329,10 +329,14 @@ h1, h2 {
 
 /* --- Page Specific Sizing (Testing with !important) --- */
 
-.overlays-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)) !important; 
+/* --- FORCE RESIZE: Overlays Page --- */
+.overlays-page .showroom-grid .product-card {
+    min-width: 320px !important; /* Change this number to 200px if you want them smaller */
+    max-width: 100% !important;
 }
 
-.showroom-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; 
+/* --- FORCE RESIZE: Showroom Page --- */
+.showroom-page .showroom-grid .product-card {
+    min-width: 200px !important; /* Change this number to 320px if you want them bigger */
+    max-width: 100% !important;
 }
