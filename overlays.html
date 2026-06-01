@@ -181,23 +181,19 @@
         </section>
     </main> 
 
-<div id="modal-overlay">
-    <div class="modal-content">
-        <span class="back-arrow" onclick="closeModal()">&#8592;</span>
-        
-        <div class="modal-img-container">
-            <img id="modal-controller-img" src="" alt="Controller Preview">
-        </div>
-        
-        <div class="text-container">
-            <h3 id="modal-title"></h3>
-            <p id="modal-desc"></p>
-        </div>
-        
+<div class="modal-content">
+    <span class="back-arrow" onclick="closeModal()">&#8592;</span>
+    
+    <div class="modal-img-container">
+        <img id="modal-controller-img" src="" alt="Controller Preview">
+    </div>
+    
+    <div class="text-container">
+        <h3 id="modal-title"></h3>
+        <p id="modal-desc"></p>
         <button class="download-btn-pulse" onclick="downloadController()">DOWNLOAD CONTROLLER</button>
     </div>
 </div>
-
     <script>
         function changeColor(platform, color) {
             const displayImg = document.getElementById(`${platform}-display`);
