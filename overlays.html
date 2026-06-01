@@ -70,6 +70,20 @@
                         <button class="unlock-btn">UNLOCK CODE</button>
                     </div>
                 </div>
+                <div class="product-card">
+                    <img id="xbox-display" src="assets/images/xbox-white.png" alt="Selectable XBOX Controller">
+                    <div class="card-info">
+                        <h3>Selectable Color XBOX</h3>
+                        <div class="color-selector">
+                            <button onclick="changeColor('xbox', 'white')" class="color-dot" style="background: white;"></button>
+                            <button onclick="changeColor('xbox', 'black')" class="color-dot" style="background: black;"></button>
+                            <button onclick="changeColor('xbox', 'blue')" class="color-dot" style="background: blue;"></button>
+                            <button onclick="changeColor('xbox', 'red')" class="color-dot" style="background: red;"></button>
+                            <button onclick="changeColor('xbox', 'green')" class="color-dot" style="background: green;"></button>
+                        </div>
+                        <button class="unlock-btn">UNLOCK CODE</button>
+                    </div>
+                </div>
             </div>
         </section>
 
@@ -81,6 +95,20 @@
                     <div class="card-info">
                         <h3>PS4 Standard</h3>
                         <p class="price">FREE</p>
+                        <button class="unlock-btn">UNLOCK CODE</button>
+                    </div>
+                </div>
+                <div class="product-card">
+                    <img id="ps4-display" src="assets/images/ps4-white.png" alt="Selectable PS4 Controller">
+                    <div class="card-info">
+                        <h3>Selectable Color PS4</h3>
+                        <div class="color-selector">
+                            <button onclick="changeColor('ps4', 'white')" class="color-dot" style="background: white;"></button>
+                            <button onclick="changeColor('ps4', 'black')" class="color-dot" style="background: black;"></button>
+                            <button onclick="changeColor('ps4', 'blue')" class="color-dot" style="background: blue;"></button>
+                            <button onclick="changeColor('ps4', 'red')" class="color-dot" style="background: red;"></button>
+                            <button onclick="changeColor('ps4', 'green')" class="color-dot" style="background: green;"></button>
+                        </div>
                         <button class="unlock-btn">UNLOCK CODE</button>
                     </div>
                 </div>
@@ -98,33 +126,31 @@
                         <button class="unlock-btn">UNLOCK CODE</button>
                     </div>
                 </div>
+                <div class="product-card">
+                    <img id="pc-display" src="assets/images/pc-white.png" alt="Selectable PC Layout">
+                    <div class="card-info">
+                        <h3>Selectable Color PC</h3>
+                        <div class="color-selector">
+                            <button onclick="changeColor('pc', 'white')" class="color-dot" style="background: white;"></button>
+                            <button onclick="changeColor('pc', 'black')" class="color-dot" style="background: black;"></button>
+                            <button onclick="changeColor('pc', 'blue')" class="color-dot" style="background: blue;"></button>
+                            <button onclick="changeColor('pc', 'red')" class="color-dot" style="background: red;"></button>
+                            <button onclick="changeColor('pc', 'green')" class="color-dot" style="background: green;"></button>
+                        </div>
+                        <button class="unlock-btn">UNLOCK CODE</button>
+                    </div>
+                </div>
             </div>
         </section>
 
     </main> 
 
     <script>
-        // Updated to handle multiple platforms
         function changeColor(platform, color) {
             const displayImg = document.getElementById(`${platform}-display`);
             if (displayImg) {
-                // Ensure your image files are named like: ps5-white.png, xbox-white.png, etc.
                 displayImg.src = `assets/images/${platform}-${color}.png`;
             }
-        }
-
-        function copyOverlayLink(inputId, buttonElement) {
-            const copyText = document.getElementById(inputId);
-            copyText.select();
-            navigator.clipboard.writeText(copyText.value).then(() => {
-                const originalText = buttonElement.innerText;
-                buttonElement.innerText = "Copied!";
-                buttonElement.classList.add("copied-success");
-                setTimeout(() => {
-                    buttonElement.innerText = originalText;
-                    buttonElement.classList.remove("copied-success");
-                }, 2000);
-            });
         }
     </script>
     <script src="js/embers.js"></script>
