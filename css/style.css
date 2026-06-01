@@ -86,7 +86,7 @@ h1, h2 {
 }
 
 .header-img {
-    max-width: 500px; 
+    max-width: 600px; 
     width: 100%;
     height: auto;
     object-fit: contain;
