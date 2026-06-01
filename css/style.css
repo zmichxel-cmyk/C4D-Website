@@ -266,28 +266,45 @@ h1, h2 {
     background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
 
-/* --- THE GRID FIX (Nuclear Override) --- */
+/* --- Shared Base Grid (Everything stays the same) --- */
 .showroom-grid {
-    display: grid !important;
-    /* This forces the grid to be exactly 3 columns wide, one for each card */
-    grid-template-columns: repeat(3, 400px) !important;
-    justify-content: center !important; 
-    gap: 30px !important;
+    display: grid;
+    justify-content: center; 
+    gap: 30px;
+    padding: 20px;
+    max-width: 1400px;
+    margin: 0 auto;
 }
 
+/* --- Showroom: 3 Columns --- */
+.page-showroom .showroom-grid {
+    grid-template-columns: repeat(3, 400px);
+}
+
+/* --- Overlays: 2 Columns (The exact same logic as showroom) --- */
+.page-overlays .showroom-grid {
+    grid-template-columns: repeat(2, 400px);
+}
+
+/* --- Card Styles (Consistent across both) --- */
 .product-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
-    display: flex !important;
-    flex-direction: column !important;
-    /* Force the width to fill the grid cell */
-    width: 100% !important;
+    display: flex;
+    flex-direction: column;
     transition: transform 0.3s ease;
 }
+
 .product-card:hover { border-color: var(--accent-color); }
-.product-card img { width: 100%; aspect-ratio: 16 / 9; background: #000; object-fit: contain; padding: 15px; }
+.product-card img { 
+    width: 100%; 
+    aspect-ratio: 16 / 9; 
+    background: #000; 
+    object-fit: contain; 
+    padding: 15px; 
+}
 
 .card-info { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 10px; }
 .product-card h3 { color: var(--text-main); font-size: 1.1rem; }
