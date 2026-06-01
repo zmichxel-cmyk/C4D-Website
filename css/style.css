@@ -329,10 +329,14 @@ h1, h2 {
 /* --- Page Specific Sizing --- */
 /* Resize cards by changing the pixel value in minmax() */
 
+/* --- Page Specific Sizing --- */
+
+/* Overlays Page: Uses 200px minimum to fit more items per row */
 .overlays-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
 }
 
+/* Showroom Page: Uses 320px minimum for larger card presentation */
 .showroom-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
 }
