@@ -266,13 +266,13 @@ h1, h2 {
     background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
 
-/* --- THE UPDATED GRID --- */
+/* --- THE GRID FIX (Nuclear Override) --- */
 .showroom-grid {
-    display: grid;
-    /* Cards are now 400px wide */
-    grid-template-columns: repeat(auto-fit, 400px); 
-    justify-content: center; 
-    gap: 30px;
+    display: grid !important;
+    /* Increase the 450px here to make them even bigger */
+    grid-template-columns: repeat(auto-fit, 450px) !important; 
+    justify-content: center !important; 
+    gap: 30px !important;
 }
 
 .product-card {
@@ -280,10 +280,10 @@ h1, h2 {
     border: 1px solid var(--border-color);
     border-radius: 8px;
     overflow: hidden;
-    display: flex;
-    flex-direction: column;
-    /* Cleaned up overrides to ensure size consistency */
-    width: 100%;
+    display: flex !important;
+    flex-direction: column !important;
+    /* Force the width to fill the grid cell */
+    width: 100% !important;
     transition: transform 0.3s ease;
 }
 .product-card:hover { border-color: var(--accent-color); }
