@@ -265,13 +265,16 @@ h1, h2 {
     content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px;
     background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
+
+/* --- THE UPDATED GRID --- */
 .showroom-grid {
     display: grid;
-    /* Increase 320px to 400px (or larger) to make cards bigger */
+    /* Cards are now 400px wide */
     grid-template-columns: repeat(auto-fit, 400px); 
     justify-content: center; 
     gap: 30px;
 }
+
 .product-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -279,7 +282,8 @@ h1, h2 {
     overflow: hidden;
     display: flex;
     flex-direction: column;
-    flex-grow: 0; 
+    /* Cleaned up overrides to ensure size consistency */
+    width: 100%;
     transition: transform 0.3s ease;
 }
 .product-card:hover { border-color: var(--accent-color); }
