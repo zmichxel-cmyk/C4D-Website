@@ -33,7 +33,6 @@
         <section id="ps5" class="platform-section">
             <h2 class="platform-title">PS5</h2>
             <div class="showroom-grid">
-                
                 <div class="product-card">
                     <img src="assets/images/custom4daez-ps5.png" alt="Custom4daez PS5">
                     <div class="card-info">
@@ -57,15 +56,59 @@
                         <button class="unlock-btn">UNLOCK CODE</button>
                     </div>
                 </div>
-
             </div> 
-        </section> 
+        </section>
+
+        <section id="xbox" class="platform-section">
+            <h2 class="platform-title">XBOX SERIES X/S</h2>
+            <div class="showroom-grid">
+                <div class="product-card">
+                    <img src="assets/images/xbox-default.png" alt="XBOX Product">
+                    <div class="card-info">
+                        <h3>XBOX Standard</h3>
+                        <p class="price">FREE</p>
+                        <button class="unlock-btn">UNLOCK CODE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="ps4" class="platform-section">
+            <h2 class="platform-title">PS4</h2>
+            <div class="showroom-grid">
+                <div class="product-card">
+                    <img src="assets/images/ps4-default.png" alt="PS4 Product">
+                    <div class="card-info">
+                        <h3>PS4 Standard</h3>
+                        <p class="price">FREE</p>
+                        <button class="unlock-btn">UNLOCK CODE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <section id="pc" class="platform-section">
+            <h2 class="platform-title">PC (MKB)</h2>
+            <div class="showroom-grid">
+                <div class="product-card">
+                    <img src="assets/images/pc-default.png" alt="PC Product">
+                    <div class="card-info">
+                        <h3>PC MKB Layout</h3>
+                        <p class="price">FREE</p>
+                        <button class="unlock-btn">UNLOCK CODE</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
     </main> 
 
     <script>
+        // Updated to handle multiple platforms
         function changeColor(platform, color) {
             const displayImg = document.getElementById(`${platform}-display`);
             if (displayImg) {
+                // Ensure your image files are named like: ps5-white.png, xbox-white.png, etc.
                 displayImg.src = `assets/images/${platform}-${color}.png`;
             }
         }
