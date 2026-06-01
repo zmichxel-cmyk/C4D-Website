@@ -332,9 +332,9 @@ h1, h2 {
 /* --- Optimized Smaller Chevron Stacking --- */
 .arrow-container {
     position: relative;
-    width: 30px;
-    height: 20px;
-    margin: 5px auto 0 auto;
+    width: 40px;
+    height: 30px;
+    margin: 10px auto 0 auto;
     display: flex;
     justify-content: center;
     align-items: center;
