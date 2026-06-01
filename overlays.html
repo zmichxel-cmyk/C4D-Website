@@ -24,11 +24,8 @@
         </nav>
     </header>
 
-    <!-- Use main with overlays-page class for clean CSS isolation -->
     <main class="section-container overlays-page">
-    <div class="showroom-grid">
-        </div>
-</main>
+
         <div class="header-img-container">
             <img src="assets/images/Free.png" alt="Free Watermarked Layouts" class="header-img">
         </div>
@@ -36,7 +33,7 @@
         <section id="ps5" class="platform-section">
             <h2 class="platform-title">PS5</h2>
             <div class="showroom-grid">
-                <!-- Product 1 -->
+                
                 <div class="product-card">
                     <img src="assets/images/custom4daez-ps5.png" alt="Custom4daez PS5">
                     <div class="card-info">
@@ -46,7 +43,6 @@
                     </div>
                 </div>
 
-                <!-- Product 2 (Color Selector) -->
                 <div class="product-card">
                     <img id="ps5-display" src="assets/images/ps5-white.png" alt="Selectable PS5 Controller">
                     <div class="card-info">
@@ -61,11 +57,8 @@
                         <button class="unlock-btn">UNLOCK CODE</button>
                     </div>
                 </div>
-            </div>
-        </section>
-    </main>
 
-    <script>
+            </div> </section> </main> <script>
         function changeColor(platform, color) {
             const displayImg = document.getElementById(`${platform}-display`);
             if (displayImg) {
