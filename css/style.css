@@ -327,13 +327,6 @@ h1, h2 {
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
 
-/* --- Page Specific Sizing (Testing with !important) --- */
-
-/* --- Correct Way: Target the Grid, not the Card --- */
-
-/* --- Final Layout Override --- */
-/* We target the grid container and reset its column behavior */
-
 /* Use 'auto' instead of '1fr' to stop the cards from stretching */
 .overlays-page .showroom-grid {
     grid-template-columns: repeat(auto-fit, minmax(320px, auto)) !important;
@@ -342,4 +335,7 @@ h1, h2 {
 
 main.showroom-page .showroom-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+    justify-content: center; /* This centers the cards if they don't fill the whole row */
+}
+
 }
