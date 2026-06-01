@@ -378,17 +378,22 @@ h1, h2 {
 }
 
 /* The Zoom-Out Animation */
+/* Wider and longer modal box */
 .modal-content {
     background: #1a1a1a; 
     border: 1px solid #ff0000; 
-    padding: 40px;
+    padding: 30px;
     width: 90%; 
-    max-width: 400px; 
+    max-width: 500px; /* Increased from 400px */
+    min-height: 400px; /* Ensures it is longer */
     text-align: center; 
     border-radius: 8px;
-    transform: scale(1.1); /* Starts slightly zoomed */
-    transition: transform 0.3s ease-in-out;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between; /* Pushes download button to the bottom */
 }
+
+/* Ensure the X button is removed (we deleted it from the HTML) */
 
 #modal-overlay.show .modal-content { 
     transform: scale(1); /* Zooms into place */
