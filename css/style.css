@@ -269,10 +269,10 @@ h1, h2 {
 /* --- THE GRID FIX (Nuclear Override) --- */
 .showroom-grid {
     display: grid !important;
-    /* Increase the 450px here to make them even bigger */
-    grid-template-columns: repeat(auto-fit, 400px) !important; 
+    /* This forces the grid to be exactly 3 columns wide, one for each card */
+    grid-template-columns: repeat(3, 400px) !important;
     justify-content: center !important; 
-    gap: 20px !important;
+    gap: 30px !important;
 }
 
 .product-card {
