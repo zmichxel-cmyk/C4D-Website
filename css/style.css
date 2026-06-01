@@ -294,15 +294,9 @@ h1, h2 {
     display: flex !important;
     flex-direction: column !important;
     width: 100% !important;
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1);
+    transition: transform 0.3s ease;
 }
-.product-card:hover { border-color: var(--accent-color); animation: zoomOut 0.6s forwards; }
-
-@keyframes zoomOut {
-    from { transform: scale(1); }
-    to { transform: scale(0.95); }
-}
-
+.product-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
 .product-card img { width: 100%; aspect-ratio: 16 / 9; background: #000; object-fit: contain; padding: 15px; }
 
 .card-info { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 10px; }
