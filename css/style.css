@@ -272,7 +272,7 @@ h1, h2 {
     /* Increase the 450px here to make them even bigger */
     grid-template-columns: repeat(auto-fit, 400px) !important; 
     justify-content: center !important; 
-    gap: 30px !important;
+    gap: 20px !important;
 }
 
 .product-card {
