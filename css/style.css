@@ -399,3 +399,14 @@ h1, h2 {
     filter: blur(8px); 
     pointer-events: none; /* Prevents clicking behind the modal */
 }
+
+.back-btn {
+    display: block;
+    width: 100%;
+    border-radius: 5px;
+    transition: background 0.3s ease;
+}
+
+.back-btn:hover {
+    background: rgba(255, 0, 0, 0.1) !important;
+}
