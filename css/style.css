@@ -267,9 +267,9 @@ h1, h2 {
 }
 .showroom-grid {
     display: grid;
-    /* Use minmax with auto to prevent stretching */
-    grid-template-columns: repeat(auto-fit, minmax(320px, auto)); 
-    /* Center the items in the container */
+    /* 'auto' tells the grid to only be as wide as the cards themselves */
+    grid-template-columns: repeat(auto-fit, 320px); 
+    /* This centers the cards in the middle of the page */
     justify-content: center; 
     gap: 30px;
 }
