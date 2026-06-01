@@ -192,14 +192,17 @@
             }
         }
 
-       function openModal(type) {
+      function openModal(type, imageSrc, description) {
     const modal = document.getElementById("modal-overlay");
     const title = document.getElementById("modal-title");
+    const img = document.getElementById("modal-controller-img");
+    const desc = document.getElementById("modal-desc");
     
-    // Set text
+    // Set dynamic content
+    img.src = imageSrc;
+    desc.innerText = description;
     title.innerText = (type === 'c4d') ? "Grab your C4D Controller Free of charge!" : "Grab your FREE watermarked controller!";
 
-    // Blur the main content, not the body (this keeps the modal clear)
     document.querySelector(".section-container").classList.add("modal-active-bg");
     modal.classList.add("show");
 }
