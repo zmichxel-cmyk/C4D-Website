@@ -327,12 +327,12 @@ h1, h2 {
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
 
-/* Overlays Page: Uses 320px minimum for larger card presentation */
+/* --- Page Specific Sizing (Testing with !important) --- */
+
 .overlays-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)) !important; 
 }
 
-/* Showroom Page: Uses 200px minimum to fit more items per row */
 .showroom-page .showroom-grid { 
-    grid-template-columns: repeat(auto-fit, minmax(100px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important; 
 }
