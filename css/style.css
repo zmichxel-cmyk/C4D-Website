@@ -267,7 +267,7 @@ h1, h2 {
 }
 .showroom-grid {
     display: grid;
-    /* Fixed width keeps cards from stretching; justify-content centers them */
+    /* Increase 320px to 400px (or larger) to make cards bigger */
     grid-template-columns: repeat(auto-fit, 400px); 
     justify-content: center; 
     gap: 30px;
