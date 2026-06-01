@@ -377,71 +377,51 @@ h1, h2 {
     visibility: visible; 
 }
 
-/* Modal Container Background */
+/* Modal Overlay - Background Blur */
 #modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
-    z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s ease-in-out;
+    z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease-out;
 }
 #modal-overlay.show { opacity: 1; visibility: visible; }
 
-/* Modal Box: Now a perfect mimic of the product card */
+/* The "Player Card" Modal Box */
 .modal-content {
-    background: #1a1a1a; /* Matches the card background */
-    border: none;        /* Removed the red border */
-    padding: 0;          /* Remove padding to let the image hit the edges */
-    width: 90%; 
-    max-width: 500px; 
-    min-height: 600px; 
-    display: flex;
-    flex-direction: column;
-    border-radius: 8px;
-    overflow: hidden;    /* Keeps the image contained */
-    text-align: left;    /* Aligns everything to the left like the card */
+    background: #1a1a1a; 
+    padding: 0; /* Important: Allows image to hit edges */
+    width: 90%; max-width: 700px; min-height: 750px;
+    display: flex; flex-direction: column;
+    position: relative; border-radius: 8px; overflow: hidden;
 }
 
-/* Controller Image: Takes up the top space */
-#modal-controller-img {
-    width: 100%; 
-    height: 300px; 
-    object-fit: cover; 
-    background: #000; /* Maintains the black top section */
-    margin-bottom: 20px;
+/* White Back Arrow (Replaces "Back to Overlays") */
+.back-arrow {
+    position: absolute; top: 20px; left: 20px;
+    color: white; font-size: 2rem; cursor: pointer; z-index: 10;
 }
 
-/* Padding container for text to keep it aligned like the card */
-.text-container {
-    padding: 0 20px 20px 20px;
-    flex-grow: 1;
+/* Full-width Black Header Area */
+.modal-img-container {
+    width: 100%; height: 350px; background: #000;
+    display: flex; align-items: center; justify-content: center;
 }
+#modal-controller-img { max-width: 90%; max-height: 90%; object-fit: contain; }
 
-/* Back Button: Styled to look like a subtle utility link */
-.back-btn-small {
-    background: transparent; 
-    border: 1px solid #ff0000; 
-    color: #ff0000;
-    padding: 4px 8px; 
-    font-size: 0.6rem; 
-    margin: 15px; 
-    cursor: pointer;
-    align-self: flex-start;
-}
+/* Left-aligned Text Area */
+.text-container { padding: 40px; flex-grow: 1; text-align: left; }
+#modal-title { color: #fff; font-size: 1.8rem; margin-bottom: 15px; }
+#modal-desc { color: #bbb; font-size: 1.1rem; line-height: 1.6; }
 
-/* Download Button: Styled like the 'GRAB CONTROLLER' button */
+/* Pulsing Download Button */
 .download-btn-pulse {
-    background: transparent; 
-    border: 1px solid #ff0000; 
-    color: #ff0000;
-    padding: 15px; 
-    width: calc(100% - 40px); /* Account for card padding */
-    margin: 0 20px 20px 20px;
-    font-weight: bold; 
-    cursor: pointer;
-    animation: pulse 2s infinite; 
+    background: transparent; border: 1px solid #ff0000; color: #ff0000;
+    padding: 20px; width: calc(100% - 80px); margin: 0 40px 40px 40px;
+    font-weight: bold; cursor: pointer; animation: pulse 2s infinite; 
+}
+@keyframes pulse {
+    0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
+    70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
 }
 
-/* Background Blur Effect */
-.modal-active-bg { 
-    filter: blur(8px); 
-    pointer-events: none; 
-}
+.modal-active-bg { filter: blur(8px); }
