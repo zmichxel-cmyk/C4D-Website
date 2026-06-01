@@ -331,12 +331,13 @@ h1, h2 {
 
 /* --- Correct Way: Target the Grid, not the Card --- */
 
-/* Overlays Page: Wider cards (320px) */
-.overlays-page .showroom-grid {
-    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
+/* --- Final Layout Override --- */
+/* We target the grid container and reset its column behavior */
+
+main.overlays-page .showroom-grid {
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)) !important;
 }
 
-/* Showroom Page: Smaller cards (200px) */
-.showroom-page .showroom-grid {
+main.showroom-page .showroom-grid {
     grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)) !important;
 }
