@@ -431,7 +431,7 @@ h1, h2 {
 /* --- Strictly for Overlays Page --- */
 #overlays-page-content .platform-section .showroom-grid {
     /* Set to 360px to be larger than standard showroom cards */
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)); 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); 
     gap: 30px; 
 }
 
