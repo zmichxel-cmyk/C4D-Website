@@ -266,13 +266,16 @@ h1, h2 {
     background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%);
 }
 
-/* --- THE GRID FIX (Nuclear Override) --- */
 .showroom-grid {
-    display: grid !important;
-    /* This forces the grid to be exactly 3 columns wide, one for each card */
-    grid-template-columns: repeat(3, 400px) !important;
-    justify-content: center !important; 
-    gap: 30px !important;
+    display: grid;
+    /* Keeps cards at a reasonable width and allows them to wrap */
+    grid-template-columns: repeat(auto-fit, minmax(320px, 400px));
+    /* This centers the cards horizontally within the grid container */
+    justify-content: center;
+    gap: 30px;
+    padding: 20px;
+    max-width: 1200px;
+    margin: 0 auto;
 }
 
 .product-card {
