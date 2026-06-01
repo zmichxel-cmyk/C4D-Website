@@ -184,17 +184,19 @@
 <!-- The Updated Modal Structure -->
 <div id="modal-overlay">
     <div class="modal-content">
-        <!-- Back Button moved to the top and made smaller -->
+        <!-- Back button at the very top -->
         <button class="back-btn-small" onclick="closeModal()">BACK TO OVERLAYS</button>
         
         <!-- Controller Image -->
         <img id="modal-controller-img" src="" alt="Controller Preview">
         
-        <!-- Title made significantly smaller -->
-        <h3 id="modal-title" style="font-size: 1.2rem; margin: 15px 0;"></h3>
-        <p id="modal-desc" style="font-size: 0.9rem; color: #888;"></p>
+        <!-- Title and Description area -->
+        <div class="text-container">
+            <h3 id="modal-title"></h3>
+            <p id="modal-desc"></p>
+        </div>
         
-        <!-- Download button styled like your form Submit button with pulse -->
+        <!-- Pulsing Download button at the bottom -->
         <button class="download-btn-pulse" onclick="downloadController()">DOWNLOAD CONTROLLER</button>
     </div>
 </div>
