@@ -5,6 +5,25 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Free Overlays | Customs4Daez</title>
     <link rel="stylesheet" href="css/style.css">
+    <style>
+        /* Modal Styles */
+        #modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8); display: flex; align-items: center; justify-content: center;
+            z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.4s ease-out;
+        }
+        #modal-overlay.show { opacity: 1; visibility: visible; }
+        
+        .modal-content {
+            background: #1a1a1a; border: 1px solid #ff0000; padding: 40px;
+            width: 90%; max-width: 400px; text-align: center; border-radius: 8px;
+            transform: scale(1.2); transition: transform 0.4s ease-out;
+        }
+        #modal-overlay.show .modal-content { transform: scale(1); }
+        
+        .close-btn { position: absolute; top: 20px; right: 30px; font-size: 30px; cursor: pointer; color: white; }
+        .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
+    </style>
 </head>
 <body class="page-overlays">
 
@@ -25,11 +44,11 @@
     </header>
 
     <main class="section-container">
-
         <div class="header-img-container">
             <img src="assets/images/Free.png" alt="Free Watermarked Layouts" class="header-img">
         </div>
 
+        <!-- PS5 Section -->
         <section id="ps5" class="platform-section">
             <h2 class="platform-title">PS5</h2>
             <div class="showroom-grid">
@@ -38,10 +57,9 @@
                     <div class="card-info">
                         <h3>C4D PS5 Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('c4d')">GRAB CONTROLLER</button>
                     </div>
                 </div>
-
                 <div class="product-card">
                     <img id="ps5-display" src="assets/images/ps5-white.png" alt="Selectable PS5 Controller">
                     <div class="card-info">
@@ -53,12 +71,13 @@
                             <button onclick="changeColor('ps5', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('ps5', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('selectable')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div> 
         </section>
 
+        <!-- XBOX Section -->
         <section id="xbox" class="platform-section">
             <h2 class="platform-title">XBOX SERIES X/S</h2>
             <div class="showroom-grid">
@@ -67,7 +86,7 @@
                     <div class="card-info">
                         <h3>C4D XBOX Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('c4d')">GRAB CONTROLLER</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -81,12 +100,13 @@
                             <button onclick="changeColor('xbox', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('xbox', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('selectable')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- PS4 Section -->
         <section id="ps4" class="platform-section">
             <h2 class="platform-title">PS4</h2>
             <div class="showroom-grid">
@@ -95,7 +115,7 @@
                     <div class="card-info">
                         <h3>C4D PS4 Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('c4d')">GRAB CONTROLLER</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -109,12 +129,13 @@
                             <button onclick="changeColor('ps4', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('ps4', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('selectable')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div>
         </section>
 
+        <!-- PC Section -->
         <section id="pc" class="platform-section">
             <h2 class="platform-title">PC (MKB)</h2>
             <div class="showroom-grid">
@@ -123,7 +144,7 @@
                     <div class="card-info">
                         <h3>C4D PC (MKB) Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('c4d')">GRAB CONTROLLER</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -137,13 +158,21 @@
                             <button onclick="changeColor('pc', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('pc', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('selectable')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div>
         </section>
-
     </main> 
+
+    <!-- Modal Element -->
+    <div id="modal-overlay">
+        <div class="modal-content">
+            <span class="close-btn" onclick="closeModal()">&times;</span>
+            <h2 id="modal-title">Grab your controller!</h2>
+            <button class="unlock-btn" onclick="closeModal()">DOWNLOAD CONTROLLER</button>
+        </div>
+    </div>
 
     <script>
         function changeColor(platform, color) {
@@ -151,6 +180,25 @@
             if (displayImg) {
                 displayImg.src = `assets/images/${platform}-${color}.png`;
             }
+        }
+
+        function openModal(type) {
+            const modal = document.getElementById("modal-overlay");
+            const title = document.getElementById("modal-title");
+            
+            if(type === 'c4d') {
+                title.innerText = "Grab your C4D Controller Free of charge!";
+            } else {
+                title.innerText = "Grab your FREE watermarked controller!";
+            }
+
+            document.body.classList.add("modal-active-bg");
+            modal.classList.add("show");
+        }
+
+        function closeModal() {
+            document.body.classList.remove("modal-active-bg");
+            document.getElementById("modal-overlay").classList.remove("show");
         }
     </script>
     <script src="js/embers.js"></script>
