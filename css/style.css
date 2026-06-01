@@ -327,10 +327,12 @@ h1, h2 {
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
 /* --- Page Specific Sizing --- */
-.overlays-page .showroom-grid { grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 30px; }
-.overlays-page .product-card { max-width: 100%; }
-.overlays-page .product-card img { padding: 20px; }
-.overlays-page .card-info { padding: 20px; gap: 10px; }
-.overlays-page .product-card h3 { font-size: 1.15rem; }
+/* Resize cards by changing the pixel value in minmax() */
 
-.showroom-page .showroom-grid { grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 30px; }
+.overlays-page .showroom-grid { 
+    grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); 
+}
+
+.showroom-page .showroom-grid { 
+    grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); 
+}
