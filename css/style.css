@@ -430,7 +430,7 @@ h1, h2 {
 
 /* --- Corrected Sizing for Overlays Page --- */
 #overlays-page-content .showroom-grid {
-    grid-template-columns: repeat(auto-fit, minmax(360px, 1fr)) !important; 
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)) !important; 
     gap: 30px !important; 
 }
 
