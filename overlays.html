@@ -25,14 +25,41 @@
     </nav>
 </header>
 
-   <section id="free" class="section-container free-tier">
+  <section id="free" class="section-container free-tier">
     <div class="header-img-container">
         <img src="assets/images/Free.png" alt="Free Watermarked Layouts" class="header-img">
     </div>
-    
-    <div class="store-grid">
+
+    <section id="ps5" class="platform-section">
+        <h2 class="platform-title">PS5</h2>
+        <div class="showroom-grid">
+            <div class="product-card">
+                <img src="assets/images/custom4daez-ps5.png" alt="Custom4daez PS5">
+                <div class="card-info">
+                    <h3>Custom4daez Edition</h3>
+                    <p class="price">FREE</p>
+                    <button class="unlock-btn">UNLOCK CODE</button>
+                </div>
+            </div>
+
+            <div class="product-card">
+                <img id="ps5-display" src="assets/images/ps5-white.png" alt="Selectable PS5 Controller">
+                <div class="card-info">
+                    <h3>Selectable Color PS5</h3>
+                    <div class="color-selector">
+                        <button onclick="changeColor('ps5', 'white')" class="color-dot" style="background: white;"></button>
+                        <button onclick="changeColor('ps5', 'black')" class="color-dot" style="background: black;"></button>
+                        <button onclick="changeColor('ps5', 'blue')" class="color-dot" style="background: blue;"></button>
+                        <button onclick="changeColor('ps5', 'red')" class="color-dot" style="background: red;"></button>
+                        <button onclick="changeColor('ps5', 'green')" class="color-dot" style="background: green;"></button>
+                    </div>
+                    <button class="unlock-btn">UNLOCK CODE</button>
+                </div>
+            </div>
         </div>
-</section>
+    </section>
+
+    </section>
 
     <script>
     function copyOverlayLink(inputId, buttonElement) {
@@ -49,6 +76,19 @@
         });
     }
     </script>
+
+    <script>
+    function changeColor(platform, color) {
+        // Targets the image ID uniquely based on the platform clicked
+        const displayImg = document.getElementById(`${platform}-display`);
+        if (displayImg) {
+            // Assumes your images are named like 'ps5-white.png', 'ps4-blue.png' etc.
+            displayImg.src = `assets/images/${platform}-${color}.png`;
+        }
+    }
+    
+    // ... keep your existing copyOverlayLink function here ...
+</script>
 
     <!-- This runs the ember generator -->
     <script src="js/embers.js"></script>
