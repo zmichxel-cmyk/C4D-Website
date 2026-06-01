@@ -352,125 +352,38 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* Blur background when active */
-.modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
-
-/* Modal Container */
-#modal-overlay {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background: rgba(0,0,0,0.85); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    z-index: 9999; /* Higher value to stay on top */
-    opacity: 0; 
-    visibility: hidden; 
-    transition: all 0.3s ease-in-out;
-}
-
-#modal-overlay.show { 
-    opacity: 1; 
-    visibility: visible; 
-}
-
-/* Modal Overlay - Background Blur */
+/* --- UPDATED MODAL STYLES --- */
 #modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
-    z-index: 2000; opacity: 0; visibility: hidden; transition: all 0.3s ease-out;
+    z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s ease-in-out;
 }
 #modal-overlay.show { opacity: 1; visibility: visible; }
 
-/* The Card Container */
 .modal-content {
-    background: #1a1a1a; 
-    padding: 0; 
-    width: 90%; 
-    max-width: 700px; /* Makes the card wider */
-    min-height: 600px;
-    display: flex; 
-    flex-direction: column;
-    position: relative; 
-    border-radius: 8px; 
-    overflow: hidden;
-    transition: transform 0.3s ease;
+    background: #1a1a1a; padding: 0; width: 90%; max-width: 800px;
+    min-height: 650px; display: flex; flex-direction: column;
+    position: relative; border-radius: 8px; overflow: hidden;
+    border: none !important; box-shadow: none !important;
 }
 
-/* Hover Effect for the card */
-.modal-content:hover {
-    box-shadow: 0 0 20px rgba(255, 51, 68, 0.2);
-}
-
-/* The Card Container - Wider */
-.modal-content {
-    background: #1a1a1a; 
-    padding: 0; 
-    width: 90%; 
-    max-width: 800px; /* Increased width */
-    min-height: 650px;
-    display: flex; 
-    flex-direction: column;
-    position: relative; 
-    border-radius: 8px; 
-    overflow: hidden;
-    border: none !important; /* Removes red border */
-    box-shadow: none !important; /* Removes shadow/hover effects */
-}
-
-/* Back Arrow - Precise Top-Left Positioning */
 .back-arrow {
-    position: absolute; 
-    top: 15px; 
-    left: 15px;
-    color: white; 
-    font-size: 2.5rem; 
-    cursor: pointer; 
-    z-index: 20;
-    line-height: 1;
+    position: absolute; top: 15px; left: 15px;
+    color: white; font-size: 2.5rem; cursor: pointer; z-index: 20; line-height: 1;
 }
 
-/* Full-width Black Header - Stretches 100% */
 .modal-img-container {
-    width: 100%; 
-    height: 350px; 
-    background: #000;
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    margin-bottom: 20px;
+    width: 100%; height: 350px; background: #000;
+    display: flex; align-items: center; justify-content: center; margin-bottom: 20px;
 }
+#modal-controller-img { width: 100%; height: 100%; object-fit: contain; }
 
-#modal-controller-img { 
-    width: 100%; /* Forces image to stretch */
-    height: 100%; 
-    object-fit: contain; 
-}
-
-/* Text and Button Styles */
-.text-container { 
-    padding: 0 40px 40px 40px; 
-    text-align: center; 
-    flex-grow: 1; 
-}
+.text-container { padding: 0 40px 40px 40px; text-align: center; flex-grow: 1; }
 
 .download-btn-pulse {
-    background: transparent; 
-    border: 1px solid #ff3344; 
-    color: #ff3344;
-    padding: 20px; 
-    width: 100%; /* Full width of parent */
-    font-weight: bold; 
-    cursor: pointer; 
-    text-transform: uppercase;
-}
-@keyframes pulse {
-    0% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0.7); }
-    70% { box-shadow: 0 0 0 10px rgba(255, 0, 0, 0); }
-    100% { box-shadow: 0 0 0 0 rgba(255, 0, 0, 0); }
+    background: transparent; border: 1px solid #ff3344; color: #ff3344;
+    padding: 20px; width: 100%; font-weight: bold; cursor: pointer; 
+    text-transform: uppercase; animation: pulse-red 2s infinite;
 }
 
-.modal-active-bg { filter: blur(8px); }
+.modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
