@@ -428,30 +428,30 @@ h1, h2 {
     border-color: var(--accent-color);
 }
 
-/* --- Smaller Product Cards for Free Overlays Page --- */
+/* --- Larger Product Cards for Free Overlays Page --- */
 .platform-section .showroom-grid {
-    /* Tightens the grid gap */
-    gap: 20px; 
+    /* Increased minmax width to 400px to make them larger than the default showroom */
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr)); 
+    gap: 40px; 
 }
 
 .platform-section .product-card {
-    /* Limits the card width to make them feel more compact */
-    max-width: 280px;
-    margin: 0 auto;
+    /* Removed max-width constraint to allow them to fill the 400px space */
+    max-width: 100%; 
 }
 
 .platform-section .product-card img {
-    /* Reduces the image area slightly */
-    padding: 10px;
+    /* Slightly increased padding for a cleaner look at larger sizes */
+    padding: 25px;
 }
 
 .platform-section .card-info {
-    /* Reduces internal spacing in the card */
-    padding: 15px;
-    gap: 8px;
+    /* Increased internal spacing to match larger box size */
+    padding: 25px;
+    gap: 15px;
 }
 
 .platform-section .product-card h3 {
-    /* Shrinks the title slightly */
-    font-size: 1rem;
+    /* Larger title for better readability */
+    font-size: 1.3rem;
 }
