@@ -413,6 +413,10 @@ h1, h2 {
     height: auto; 
     object-fit: contain; 
     padding: 0; 
+
+    /* --- HIDES THE 404 ALT TEXT --- */
+    color: transparent; 
+    text-indent: -9999px; 
 }
 
 .modal-info, .text-container { padding: 40px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
