@@ -60,86 +60,34 @@ h1, h2 {
 
 /* --- Hero & Image Header --- */
 .hero {
-    display: flex;
-    flex-direction: column;
-    align-items: center; 
-    text-align: center; 
-    padding: 10px 20px !important; 
-    background: transparent !important; 
-}
-
-.header-logo-container {
-    display: flex !important;
-    justify-content: center !important;
-    margin: 0 auto !important; 
-    padding: 0 !important;
-    line-height: 0 !important;
-    font-size: 0 !important;
+    display: flex; flex-direction: column; align-items: center; 
+    text-align: center; padding: 10px 20px !important; background: transparent !important; 
 }
 
 .header-img-container {
-    display: flex;
-    justify-content: center;
-    margin: 20px auto 40px auto; 
-    width: 100%;
+    display: flex; justify-content: center;
+    margin: 20px auto 40px auto; width: 100%;
 }
 
-.header-img {
-    max-width: 600px; 
-    width: 100%;
-    height: auto;
-    object-fit: contain;
-}
-
-.hero p {
-    display: block !important;
-    margin-top: -80px !important; 
-    margin-bottom: 70px !important; 
-    line-height: 1.2 !important;
-    position: relative !important;
-    z-index: 10 !important;
-}
+.header-img { max-width: 600px; width: 100%; height: auto; object-fit: contain; }
 
 .header-logo-img {
-    display: block !important;
-    max-width: 95%;
-    width: 1000px; 
-    height: auto;
-    object-fit: contain;
-    margin-bottom: 0 !important;
+    display: block !important; max-width: 95%; width: 1000px; height: auto; 
+    object-fit: contain; margin-bottom: 0 !important;
 }
 
 /* --- Banner Video Styles --- */
 .banner-video-container {
-    display: block !important;
-    margin: 20px auto 40px auto !important; 
-    width: 90% !important;
-    max-width: 800px !important;
-    height: 250px !important;
-    position: relative !important;
-    z-index: 5 !important;
-    border-radius: 8px !important;
-    overflow: hidden !important;
-    flex-shrink: 0 !important;
+    display: block !important; margin: 20px auto 40px auto !important; 
+    width: 90% !important; max-width: 800px !important; height: 250px !important; 
+    position: relative !important; z-index: 5 !important; border-radius: 8px !important; 
+    overflow: hidden !important; flex-shrink: 0 !important;
     -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
     mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
 }
 
 .banner-video-container video {
-    width: 100% !important;
-    height: 100% !important;
-    object-fit: cover !important;
-    object-position: center !important;
-}
-
-.video-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background: rgba(15, 15, 18, 0.4);
-    pointer-events: none;
+    width: 100% !important; height: 100% !important; object-fit: cover !important; object-position: center !important;
 }
 
 /* --- 3-Step Section & Staggered Animation --- */
@@ -162,26 +110,16 @@ h1, h2 {
 
 /* --- Divider Line --- */
 .divider-line {
-    width: 60%; 
-    max-width: 600px;
-    margin: 20px auto; 
-    height: 1px;
+    width: 60%; max-width: 600px; margin: 20px auto; height: 1px;
     background: linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%);
     border: none;
 }
 
-.custom-cta-faded {
-    background: transparent !important;
-    border: none !important;
-    padding: 20px 0;
-    text-align: center;
-}
+.custom-cta-faded { background: transparent !important; border: none !important; padding: 20px 0; text-align: center; }
 .custom-cta-faded h2, .custom-cta-faded p { margin: 0 !important; }
 .custom-cta-faded .btn-primary { 
-    animation: pulse-red 2s infinite !important; 
-    position: relative !important; 
-    display: inline-block !important; 
-    margin-top: 25px;
+    animation: pulse-red 2s infinite !important; position: relative !important; 
+    display: inline-block !important; margin-top: 25px;
 }
 
 @keyframes pulse-red {
@@ -237,21 +175,15 @@ h1, h2 {
 }
 @keyframes pulse-glow { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.4; } }
 
-.modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
-
 /* --- Premium Showroom Layout --- */
 .platform-section { margin-bottom: 30px; margin-left: auto; margin-right: auto; max-width: 1200px; }
-.showroom-logo-container { display: flex; justify-content: center; margin: 20px auto 30px auto; padding: 0; }
-.showroom-logo-img { max-width: 100%; width: 550px; height: auto; object-fit: contain; }
 .platform-title {
     color: var(--text-main); font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 10px; 
     text-align: left !important; position: relative; border-bottom: none; width: 100%;
 }
 .platform-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%); }
 
-/* --- Scoped Grids --- */
 .showroom-grid { display: grid; gap: 30px; padding: 20px; justify-content: center; margin: 0 auto; max-width: 1200px; }
-.page-showroom .showroom-grid { grid-template-columns: repeat(3, minmax(300px, 400px)); }
 .page-overlays .showroom-grid { grid-template-columns: repeat(2, minmax(400px, 500px)); }
 
 .product-card {
@@ -308,92 +240,49 @@ h1, h2 {
 #modal-overlay.show { opacity: 1; visibility: visible; }
 
 .modal-content {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    width: 650px !important; 
-    min-height: 800px !important; 
+    background: #1a1a1a;
+    border: 1px solid #333;
+    width: 500px;
+    min-height: 700px;
     display: flex;
     flex-direction: column;
+    border-radius: 12px;
     overflow: hidden;
     transform: scale(0.8);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease !important;
-    position: relative; 
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    position: relative; /* CRITICAL: Creates anchor for the button */
 }
 #modal-overlay.show .modal-content { transform: scale(1); }
 
-.modal-img-container { 
-    width: 100%; height: 500px; background: #000; 
-    display: flex; align-items: center; justify-content: center; position: relative;
+.modal-img-container { width: 100%; height: 400px; background: #000; display: flex; align-items: center; justify-content: center; }
+#modal-controller-img { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
+
+.text-container { 
+    padding: 40px 40px 100px 40px; /* Extra bottom padding for the button */
+    display: block; 
+    text-align: center; 
 }
-
-#modal-controller-img { 
-    max-width: 90%; max-height: 90%; width: auto; height: auto; object-fit: contain; 
-    color: transparent; text-indent: -9999px;
-}
-
-/* ==================================================== */
-/* --- THE FIX: FOOLPROOF BLOCK LAYOUT FOR MODAL TEXT --- */
-/* ==================================================== */
-
-<style>
-    /* Modal Overlay - Background */
-    #modal-overlay {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
-        z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
-    }
-    #modal-overlay.show { opacity: 1; visibility: visible; }
-
-    /* Modal Card - Increased Size */
-    .modal-content {
-        background: #1a1a1a;
-        border: 1px solid #333;
-        width: 500px;
-        min-height: 700px;
-        display: flex;
-        flex-direction: column;
-        border-radius: 12px;
-        overflow: hidden;
-        transform: scale(0.8);
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative; /* CRITICAL: Creates anchor for the button */
-    }
-    #modal-overlay.show .modal-content { transform: scale(1); }
-
-    .modal-img-container { width: 100%; height: 400px; background: #000; display: flex; align-items: center; justify-content: center; }
-    #modal-controller-img { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
-
-    /* Text Container - Now acts like a normal block */
-    .text-container { 
-        padding: 40px 40px 100px 40px; /* Extra bottom padding for the button */
-        display: block; 
-        text-align: center; 
-    }
-    .text-container h3 { font-size: 1.5rem; margin-bottom: 20px; }
-    .modal-logo { width: 100px; margin: 0 auto 20px auto; display: block; }
-    .back-arrow { color: white; font-size: 2.5rem; cursor: pointer; padding: 15px; position: absolute; z-index: 10; }
-
-    /* Button - Pinned to absolute bottom */
-    .download-btn-pulse {
-        position: absolute;
-        bottom: 40px;
-        left: 40px;
-        right: 40px;
-        background: transparent; 
-        border: 2px solid #ff3344; 
-        color: #ff3344;
-        padding: 20px; 
-        font-size: 1.2rem; 
-        font-weight: bold; 
-        cursor: pointer; 
-        text-transform: uppercase;
-    }
-    .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
-</style>
+.text-container h3 { font-size: 1.5rem; margin-bottom: 20px; }
+.modal-logo { width: 100px; margin: 0 auto 20px auto; display: block; }
 
 .back-arrow { 
     position: absolute; top: 15px; left: 20px; color: #ffffff; 
-    font-size: 2.5rem; cursor: pointer; z-index: 100; line-height: 1;
+    font-size: 2.5rem; cursor: pointer; z-index: 100; padding: 15px;
 }
 .back-arrow:hover { color: var(--accent-color); }
+
+.download-btn-pulse {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    background: transparent; 
+    border: 2px solid #ff3344; 
+    color: #ff3344;
+    padding: 20px; 
+    font-size: 1.2rem; 
+    font-weight: bold; 
+    cursor: pointer; 
+    text-transform: uppercase;
+}
+.modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
