@@ -356,7 +356,7 @@ h1, h2 {
 }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- Updated Tall Modal Container --- */
+/* --- Modal Overlay & Content --- */
 #modal-overlay {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
@@ -364,150 +364,63 @@ h1, h2 {
 }
 #modal-overlay.show { opacity: 1; visibility: visible; }
 
-/* --- UPDATED MODAL SIZING --- */
 .modal-content {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    
-    /* These now correctly target your HTML class */
     width: 650px !important; 
     min-height: 800px !important; 
-    
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transform: scale(0.8);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease !important;
-    opacity: 1; 
     position: relative; 
 }
+#modal-overlay.show .modal-content { transform: scale(1); }
 
-/* Force the button to vanish immediately when the modal hides */
-#modal-overlay:not(.show) .modal-download-btn,
-#modal-overlay:not(.show) .download-btn-pulse {
-    opacity: 0 !important;
-    transition: opacity 0.1s ease !important;
-}
-
-#modal-overlay.show .modal-card { transform: scale(1); }
-
-/* Adjusted Img Container to center the image and match new width */
 .modal-img-container { 
-    width: 100%; 
-    
-    /* --- INCREASED SIZE --- */
-    height: 500px; /* Increased from 400px so it doesn't look squished */
-    
-    background: #000; 
+    width: 100%; height: 500px; background: #000; 
+    display: flex; align-items: center; justify-content: center; position: relative;
+}
+
+#modal-controller-img { 
+    max-width: 90%; max-height: 90%; width: auto; height: auto; object-fit: contain; 
+    color: transparent; text-indent: -9999px;
+}
+
+/* --- Modal Text & Content --- */
+.text-container { 
+    padding: 20px 40px !important; 
     display: flex; 
-    align-items: center; 
-    justify-content: center; 
-    position: relative;
+    flex-direction: column; 
+    flex-grow: 1; 
+    text-align: center; 
+    align-items: center;
 }
 
-.modal-content img, #modal-controller-img { 
-    max-width: 90%; 
-    max-height: 90%; 
-    width: auto; 
-    height: auto; 
-    object-fit: contain; 
-    padding: 0; 
-
-    /* --- HIDES THE 404 ALT TEXT --- */
-    color: transparent; 
-    text-indent: -9999px; 
-}
-
-.modal-info, .text-container { padding: 40px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
-.modal-info h3, .text-container h3 { color: var(--text-main); margin-bottom: 20px; font-size: 1.5rem; }
-
-/* --- RESIZED BUTTON FIX --- */
-.download-btn-pulse,
-.modal-download-btn {
-    margin-top: auto !important;
-    background: transparent !important; 
-    border: 2px solid var(--accent-color) !important; 
-    color: var(--accent-color) !important;
-    
-    /* Resized: Smaller padding */
-    padding: 10px 20px !important; 
-    
-    /* Resized: Smaller font size and less bold */
-    font-size: 0.9rem !important; 
-    font-weight: 500 !important; 
-    
-    /* Layout: Keeps button centered and avoids full-width stretch */
-    width: max-content !important; 
-    align-self: center !important; 
-    
-    cursor: pointer !important; 
-    text-transform: uppercase !important;
-    border-radius: 4px !important;
-    transition: all 0.3s ease !important;
-    animation: pulse-red 2s infinite !important;
-    display: block !important;
-}
-
-.download-btn-pulse:hover,
-.modal-download-btn:hover {
-    background: var(--accent-color) !important;
-    color: #000 !important;
-    font-weight: 600 !important; /* Slightly bolder on hover for clarity */
-    animation: none !important;
-}
-
-.back-arrow { 
-    position: absolute; 
-    top: 15px; 
-    left: 20px; 
-    color: #ffffff; 
-    font-size: 2.5rem; 
-    cursor: pointer; 
-    z-index: 100; /* Forces it to sit on top of the black background/image */
-    line-height: 1;
-    transition: color 0.2s ease;
-}
-
-.back-arrow:hover {
-    color: var(--accent-color); /* Gives it a nice red hover effect */
-}
-
-/* --- Modal Content Improvements --- */
-.text-container {
-    padding: 30px 40px !important;
+.top-content-group {
     display: flex;
     flex-direction: column;
     align-items: center;
-    text-align: center;
+    margin-top: -20px;
 }
 
-/* --- ZERO-GAP LOGO CONFIGURATION --- */
 .modal-logo {
-    width: 250px !important; /* Back to your preferred size */
-    max-width: 60% !important;
-    height: auto !important;
-    display: block !important;
-    margin: 0 auto -10px auto !important; /* The -10px pulls the text up into the logo's bottom space */
-    position: relative;
-    z-index: 2;
+    width: 250px !important; max-width: 60% !important; height: auto !important;
+    display: block !important; margin: 0 auto 10px auto !important;
+    position: relative; z-index: 2;
 }
 
-.text-container {
-    padding: 20px 40px !important; /* Reduced top padding to bring everything up */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
-.text-container h3 {
-    margin: 0 !important; /* Absolutely zero margin */
-    line-height: 1.1;     /* Tightens the line-height of the title */
-    font-size: 1.4rem;
+.text-container h3 { 
+    margin: 0 !important; 
+    line-height: 1.1; 
+    font-size: 1.4rem; 
+    color: var(--text-main);
 }
 
 .controller-description {
-    margin-top: 5px !important; /* Tight spacing between title and paragraph */
+    margin-top: 5px !important;
     margin-bottom: 20px !important;
     color: var(--text-muted);
     font-size: 0.95rem;
@@ -515,8 +428,31 @@ h1, h2 {
     max-width: 450px;
 }
 
-/* Fix for empty image container */
-#modal-controller-img { 
-    color: transparent; 
-    text-indent: -9999px; 
+.download-btn-pulse {
+    margin-top: auto !important; 
+    margin-bottom: 20px !important;
+    background: transparent !important; 
+    border: 2px solid var(--accent-color) !important; 
+    color: var(--accent-color) !important;
+    padding: 10px 20px !important; 
+    font-size: 0.9rem !important; 
+    font-weight: 500 !important; 
+    width: max-content !important; 
+    align-self: center !important; 
+    cursor: pointer !important; 
+    text-transform: uppercase !important;
+    border-radius: 4px !important;
+    animation: pulse-red 2s infinite !important;
 }
+
+.download-btn-pulse:hover {
+    background: var(--accent-color) !important;
+    color: #000 !important;
+    animation: none !important;
+}
+
+.back-arrow { 
+    position: absolute; top: 15px; left: 20px; color: #ffffff; 
+    font-size: 2.5rem; cursor: pointer; z-index: 100; line-height: 1;
+}
+.back-arrow:hover { color: var(--accent-color); }
