@@ -368,14 +368,18 @@ h1, h2 {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    width: 500px;
-    min-height: 700px;
+    
+    /* --- INCREASED SIZES --- */
+    width: 650px; /* Increased from 500px */
+    min-height: 800px; /* Increased from 700px */
+    
     display: flex;
     flex-direction: column;
     overflow: hidden;
     transform: scale(0.8);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease !important;
     opacity: 1; /* Ensure it starts visible */
+    position: relative; /* Ensures the arrow anchors to the card */
 }
 
 /* Force the button to vanish immediately when the modal hides */
@@ -387,17 +391,19 @@ h1, h2 {
 
 #modal-overlay.show .modal-card { transform: scale(1); }
 
-/* Adjusted Img Container to center the image */
+/* Adjusted Img Container to center the image and match new width */
 .modal-img-container { 
     width: 100%; 
-    height: 400px; 
+    
+    /* --- INCREASED SIZE --- */
+    height: 500px; /* Increased from 400px so it doesn't look squished */
+    
     background: #000; 
     display: flex; 
     align-items: center; 
     justify-content: center; 
     position: relative;
 }
-
 /* Adjusted image fit inside container */
 .modal-card img, #modal-controller-img { 
     max-width: 90%; 
