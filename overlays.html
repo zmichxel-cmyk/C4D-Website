@@ -152,20 +152,28 @@
         </section>
     </main>
 
-    <div id="modal-overlay">
-        <div class="modal-content">
-            <span class="back-arrow" onclick="closeModal()">&#8592;</span>
-            <div class="modal-img-container">
-                <img id="modal-controller-img" src="" alt="Controller Preview">
+   <!-- Modal Overlay -->
+<div id="modal-overlay">
+    <div class="modal-content">
+        <span class="back-arrow" onclick="closeModal()">&#8592;</span>
+        
+        <div class="modal-img-container">
+            <img id="modal-controller-img" src="" alt="Controller Preview">
+        </div>
+        
+        <!-- Updated Text Container -->
+        <div class="text-container">
+            <div class="top-content-group">
+                <img src="assets/images/logo.png" alt="Logo" class="modal-logo">
+                <h3>Download your free C4D controller!</h3>
+                <p class="controller-description">
+                    Experience premium quality with our custom-designed C4D edition controllers. 
+                    Engineered for precision, comfort, and unmatched style.
+                </p>
             </div>
-           <div class="text-container">
-    <img src="assets/images/logo.png" alt="Logo" class="modal-logo">
-    <h3>Download your free C4D controller!</h3>
-    <p class="controller-description">
-        Experience premium quality with our custom-designed C4D edition controllers. 
-        Engineered for precision, comfort, and unmatched style.
-    </p>
-    <button class="download-btn-pulse" onclick="downloadController()">DOWNLOAD CONTROLLER</button>
+            <button class="download-btn-pulse" onclick="downloadController()">DOWNLOAD CONTROLLER</button>
+        </div>
+    </div>
 </div>
 
     <script>
