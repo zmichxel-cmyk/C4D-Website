@@ -483,9 +483,12 @@ h1, h2 {
 }
 
 .modal-logo {
-    width: 80px; 
+    /* --- RESIZED FOR BETTER FIT --- */
+    width: 250px;       /* Keep this large enough to be readable */
+    max-width: 60%;     /* Ensures it never gets wider than the modal */
     height: auto;
-    margin: 0 auto 15px auto;
+    
+    margin: 0 auto 20px auto; /* Increased bottom margin for more space */
     display: block;
 }
 
