@@ -390,28 +390,6 @@ h1, h2 {
 }
 
 /* --- Modal Text & Content --- */
-.text-container { 
-    padding: 20px 40px !important; 
-    display: flex; 
-    flex-direction: column; 
-    flex-grow: 1; 
-    text-align: center; 
-    align-items: center;
-}
-
-.top-content-group {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    margin-top: -20px;
-}
-
-.modal-logo {
-    width: 250px !important; max-width: 60% !important; height: auto !important;
-    display: block !important; margin: 0 auto 10px auto !important;
-    position: relative; z-index: 2;
-}
-
 .text-container h3 { 
     margin: 0 !important; 
     line-height: 1.1; 
@@ -419,9 +397,37 @@ h1, h2 {
     color: var(--text-main);
 }
 
+.top-content-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin-top: 0 !important; /* Resetting negative margins */
+}
+
+.modal-logo {
+    width: 250px !important; 
+    max-width: 60% !important; 
+    height: auto !important;
+    display: block !important; 
+    margin: 0 auto !important; /* Centered without pushing text down */
+    position: relative; 
+    z-index: 2;
+}
+
+.text-container { 
+    padding: 20px 40px !important; 
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
+    text-align: center; 
+    align-items: center;
+    /* This shifts the whole block to the top */
+    justify-content: flex-start; 
+    gap: 15px; /* Adjust this value to control spacing between elements */
+}
+
 .controller-description {
-    margin-top: 5px !important;
-    margin-bottom: 20px !important;
+    margin: 0 !important; /* Controlled by the container gap now */
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.4;
@@ -429,7 +435,7 @@ h1, h2 {
 }
 
 .download-btn-pulse {
-    margin-top: auto !important; 
+    margin-top: 10px !important; /* Small space from the description */
     margin-bottom: 20px !important;
     background: transparent !important; 
     border: 2px solid var(--accent-color) !important; 
