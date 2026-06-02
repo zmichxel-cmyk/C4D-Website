@@ -472,3 +472,39 @@ h1, h2 {
 .back-arrow:hover {
     color: var(--accent-color); /* Gives it a nice red hover effect */
 }
+
+/* --- Modal Content Improvements --- */
+.text-container {
+    padding: 30px 40px !important;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+}
+
+.modal-logo {
+    width: 80px; 
+    height: auto;
+    margin: 0 auto 15px auto;
+    display: block;
+}
+
+.controller-description {
+    color: var(--text-muted);
+    font-size: 0.95rem;
+    line-height: 1.5;
+    margin-bottom: 25px;
+    max-width: 450px;
+}
+
+.text-container h3 {
+    margin-bottom: 10px !important;
+    font-size: 1.4rem;
+    letter-spacing: 0.5px;
+}
+
+/* Fix for empty image container */
+#modal-controller-img { 
+    color: transparent; 
+    text-indent: -9999px; 
+}
