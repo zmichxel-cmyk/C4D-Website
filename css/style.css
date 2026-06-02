@@ -364,6 +364,7 @@ h1, h2 {
 }
 #modal-overlay.show { opacity: 1; visibility: visible; }
 
+/* REVISED: Forcing content to the top */
 .modal-content {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -372,6 +373,7 @@ h1, h2 {
     min-height: 800px !important; 
     display: flex;
     flex-direction: column;
+    justify-content: flex-start !important; /* CRITICAL: This pulls items to top */
     overflow: hidden;
     transform: scale(0.8);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease !important;
@@ -390,6 +392,17 @@ h1, h2 {
 }
 
 /* --- Modal Text & Content --- */
+.text-container { 
+    padding: 20px 40px !important; 
+    display: flex; 
+    flex-direction: column; 
+    flex-grow: 1; 
+    text-align: center; 
+    align-items: center;
+    justify-content: flex-start !important; /* CRITICAL: This pulls items to top */
+    gap: 15px; 
+}
+
 .text-container h3 { 
     margin: 0 !important; 
     line-height: 1.1; 
@@ -401,7 +414,7 @@ h1, h2 {
     display: flex;
     flex-direction: column;
     align-items: center;
-    margin-top: 0 !important; /* Resetting negative margins */
+    margin-top: 0 !important;
 }
 
 .modal-logo {
@@ -409,25 +422,13 @@ h1, h2 {
     max-width: 60% !important; 
     height: auto !important;
     display: block !important; 
-    margin: 0 auto !important; /* Centered without pushing text down */
+    margin: 0 auto !important; 
     position: relative; 
     z-index: 2;
 }
 
-.text-container { 
-    padding: 20px 40px !important; 
-    display: flex; 
-    flex-direction: column; 
-    flex-grow: 1; 
-    text-align: center; 
-    align-items: center;
-    /* This shifts the whole block to the top */
-    justify-content: flex-start; 
-    gap: 15px; /* Adjust this value to control spacing between elements */
-}
-
 .controller-description {
-    margin: 0 !important; /* Controlled by the container gap now */
+    margin: 0 !important; 
     color: var(--text-muted);
     font-size: 0.95rem;
     line-height: 1.4;
@@ -435,7 +436,7 @@ h1, h2 {
 }
 
 .download-btn-pulse {
-    margin-top: 10px !important; /* Small space from the description */
+    margin-top: 10px !important; 
     margin-bottom: 20px !important;
     background: transparent !important; 
     border: 2px solid var(--accent-color) !important; 
