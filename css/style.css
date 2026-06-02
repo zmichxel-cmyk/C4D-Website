@@ -364,12 +364,13 @@ h1, h2 {
 }
 #modal-overlay.show { opacity: 1; visibility: visible; }
 
-.modal-card {
+/* --- UPDATED MODAL SIZING --- */
+.modal-content {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
     
-    /* Forced dimensions */
+    /* These now correctly target your HTML class */
     width: 650px !important; 
     min-height: 800px !important; 
     
@@ -404,8 +405,8 @@ h1, h2 {
     justify-content: center; 
     position: relative;
 }
-/* Adjusted image fit inside container */
-.modal-card img, #modal-controller-img { 
+
+.modal-content img, #modal-controller-img { 
     max-width: 90%; 
     max-height: 90%; 
     width: auto; 
@@ -450,11 +451,6 @@ h1, h2 {
     color: #000 !important;
     font-weight: 600 !important; /* Slightly bolder on hover for clarity */
     animation: none !important;
-}
-
-/* --- BACK ARROW FIX --- */
-.modal-card {
-    position: relative; /* Ensures the arrow anchors to the card, not the whole screen */
 }
 
 .back-arrow { 
