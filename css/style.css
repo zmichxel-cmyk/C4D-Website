@@ -382,19 +382,32 @@ h1, h2 {
 .modal-info { padding: 40px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
 .modal-info h3 { color: var(--text-main); margin-bottom: 20px; font-size: 1.5rem; }
 
+/* --- FORCED BUTTON FIX --- */
+.download-btn-pulse,
 .modal-download-btn {
-    margin-top: auto;
-    background: transparent; 
-    border: 2px solid var(--accent-color); 
-    color: var(--accent-color);
-    padding: 12px 24px;
-    width: auto;
-    align-self: center;
-    font-size: 1rem; 
-    font-weight: bold; 
-    cursor: pointer; 
-    text-transform: uppercase;
-    transition: all 0.3s ease;
-    animation: pulse-red 2s infinite;
+    margin-top: auto !important;
+    background: transparent !important; 
+    border: 2px solid var(--accent-color) !important; 
+    color: var(--accent-color) !important;
+    padding: 12px 30px !important; 
+    
+    /* These two lines stop the 100% flex stretching shown in image_c3cee4.png */
+    width: max-content !important; 
+    align-self: center !important; 
+    
+    font-size: 1.1rem !important; 
+    font-weight: 900 !important; 
+    cursor: pointer !important; 
+    text-transform: uppercase !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+    animation: pulse-red 2s infinite !important;
+    display: block !important;
 }
-.modal-download-btn:hover { background: var(--accent-color); color: #000; animation: none; }
+
+.download-btn-pulse:hover,
+.modal-download-btn:hover {
+    background: var(--accent-color) !important;
+    color: #000 !important;
+    animation: none !important; /* Stops the pulse when hovering */
+}
