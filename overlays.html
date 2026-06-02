@@ -6,44 +6,40 @@
     <title>Free Overlays | Customs4Daez</title>
     <link rel="stylesheet" href="css/style.css">
     <style>
-        /* Modal Overlay - Full Screen Background */
+        /* Modal Overlay - Background */
         #modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
             background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
-            z-index: 9999; opacity: 0; visibility: hidden; transition: all 0.3s ease;
+            z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
         }
         #modal-overlay.show { opacity: 1; visibility: visible; }
 
-        /* Modal Content - Wide Card */
+        /* Modal Card - Stretched Vertical Rectangle */
         .modal-content {
-            background: #1a1a1a; padding: 0; width: 90%; max-width: 800px;
-            min-height: 650px; display: flex; flex-direction: column;
-            position: relative; border-radius: 8px; overflow: hidden;
-            border: none !important; box-shadow: none !important;
+            background: #1a1a1a;
+            border: 1px solid #333;
+            width: 350px;
+            min-height: 500px;
+            display: flex;
+            flex-direction: column;
+            border-radius: 8px;
+            overflow: hidden;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
         }
+        #modal-overlay.show .modal-content { transform: scale(1); }
 
-        /* Top-Left Arrow */
-        .back-arrow {
-            position: absolute; top: 15px; left: 15px;
-            color: white; font-size: 2.5rem; cursor: pointer; z-index: 20;
-            line-height: 1;
-        }
+        .modal-img-container { width: 100%; height: 250px; background: #000; display: flex; align-items: center; justify-content: center; }
+        #modal-controller-img { width: 100%; height: 100%; object-fit: contain; padding: 10px; }
 
-        /* Full Width Header Container */
-        .modal-img-container {
-            width: 100%; height: 350px; background: #000;
-            display: flex; align-items: center; justify-content: center;
-        }
-        #modal-controller-img { width: 100%; height: 100%; object-fit: contain; }
+        .text-container { padding: 20px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
+        .back-arrow { color: white; font-size: 2rem; cursor: pointer; padding: 10px; }
 
-        /* Content Area */
-        .text-container { padding: 40px; text-align: center; flex-grow: 1; }
         .download-btn-pulse {
+            margin-top: auto;
             background: transparent; border: 1px solid #ff3344; color: #ff3344;
-            padding: 20px; width: 100%; margin-top: 20px; font-weight: bold;
-            cursor: pointer; text-transform: uppercase;
+            padding: 15px; width: 100%; font-weight: bold; cursor: pointer; text-transform: uppercase;
         }
-
         .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
     </style>
 </head>
@@ -76,7 +72,7 @@
                     <div class="card-info">
                         <h3>C4D PS5 Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn" onclick="openModal('c4d', 'assets/images/custom4daez-ps5.png', 'This is the exclusive C4D Edition design.')">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('assets/images/custom4daez-ps5.png')">GRAB CONTROLLER</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -90,7 +86,7 @@
                             <button onclick="changeColor('ps5', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('ps5', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn" onclick="openModal('c4d', 'assets/images/custom4daez-ps5.png', 'This is the exclusive C4D Edition design.')">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('assets/images/custom4daez-ps5.png')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div> 
@@ -105,7 +101,7 @@
                     <div class="card-info">
                         <h3>C4D XBOX Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn" onclick="openModal('c4d', 'assets/images/custom4daez-ps5.png', 'This is the exclusive C4D Edition design.')">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('assets/images/custom4daez-ps5.png')">GRAB CONTROLLER</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -119,7 +115,7 @@
                             <button onclick="changeColor('xbox', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('xbox', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn" onclick="openModal('c4d', 'assets/images/custom4daez-ps5.png', 'This is the exclusive C4D Edition design.')">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('assets/images/custom4daez-ps5.png')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div>
@@ -134,7 +130,7 @@
                     <div class="card-info">
                         <h3>C4D PS4 Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn" onclick="openModal('c4d', 'assets/images/custom4daez-ps5.png', 'This is the exclusive C4D Edition design.')">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('assets/images/custom4daez-ps5.png')">GRAB CONTROLLER</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -148,43 +144,13 @@
                             <button onclick="changeColor('ps4', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('ps4', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn" onclick="openModal('c4d', 'assets/images/custom4daez-ps5.png', 'This is the exclusive C4D Edition design.')">GRAB CONTROLLER</button>
-                    </div>
-                </div>
-            </div>
-        </section>
-
-        <!-- PC Section -->
-        <section id="pc" class="platform-section">
-            <h2 class="platform-title">PC (MKB)</h2>
-            <div class="showroom-grid">
-                <div class="product-card">
-                    <img src="assets/images/pc-default.png" alt="PC Product">
-                    <div class="card-info">
-                        <h3>C4D PC (MKB) Edition</h3>
-                        <p class="price">FREE</p>
-                        <button class="unlock-btn" onclick="openModal('c4d', 'assets/images/custom4daez-ps5.png', 'This is the exclusive C4D Edition design.')">GRAB YOUR MKB DESIGN</button>
-                    </div>
-                </div>
-                <div class="product-card">
-                    <img id="pc-display" src="assets/images/pc-white.png" alt="Selectable PC Layout">
-                    <div class="card-info">
-                        <h3>Selectable Color PC</h3>
-                        <div class="color-selector">
-                            <button onclick="changeColor('pc', 'white')" class="color-dot" style="background: white;"></button>
-                            <button onclick="changeColor('pc', 'black')" class="color-dot" style="background: black;"></button>
-                            <button onclick="changeColor('pc', 'blue')" class="color-dot" style="background: blue;"></button>
-                            <button onclick="changeColor('pc', 'red')" class="color-dot" style="background: red;"></button>
-                            <button onclick="changeColor('pc', 'green')" class="color-dot" style="background: green;"></button>
-                        </div>
-                        <button class="unlock-btn" onclick="openModal('c4d', 'assets/images/custom4daez-ps5.png', 'This is the exclusive C4D Edition design.')">GRAB YOUR MKB DESIGN</button>
+                        <button class="unlock-btn" onclick="openModal('assets/images/custom4daez-ps5.png')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
-    <!-- Correctly Nested Modal Structure -->
     <div id="modal-overlay">
         <div class="modal-content">
             <span class="back-arrow" onclick="closeModal()">&#8592;</span>
@@ -192,8 +158,7 @@
                 <img id="modal-controller-img" src="" alt="Controller Preview">
             </div>
             <div class="text-container">
-                <h3 id="modal-title"></h3>
-                <p id="modal-desc"></p>
+                <h3>Download your free watermarked controller!</h3>
                 <button class="download-btn-pulse" onclick="downloadController()">DOWNLOAD CONTROLLER</button>
             </div>
         </div>
@@ -202,21 +167,12 @@
     <script>
         function changeColor(platform, color) {
             const displayImg = document.getElementById(`${platform}-display`);
-            if (displayImg) {
-                displayImg.src = `assets/images/${platform}-${color}.png`;
-            }
+            if (displayImg) { displayImg.src = `assets/images/${platform}-${color}.png`; }
         }
 
-        function openModal(type, imageSrc, description) {
+        function openModal(imageSrc) {
             const modal = document.getElementById("modal-overlay");
-            const title = document.getElementById("modal-title");
-            const img = document.getElementById("modal-controller-img");
-            const desc = document.getElementById("modal-desc");
-            
-            img.src = imageSrc;
-            desc.innerText = description;
-            title.innerText = (type === 'c4d') ? "Grab your C4D Controller Free of charge!" : "Grab your FREE watermarked controller!";
-
+            document.getElementById("modal-controller-img").src = imageSrc;
             document.querySelector(".section-container").classList.add("modal-active-bg");
             modal.classList.add("show");
         }
