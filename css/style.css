@@ -382,21 +382,25 @@ h1, h2 {
 .modal-info { padding: 40px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
 .modal-info h3 { color: var(--text-main); margin-bottom: 20px; font-size: 1.5rem; }
 
-/* --- FORCED BUTTON FIX --- */
+/* --- RESIZED BUTTON FIX --- */
 .download-btn-pulse,
 .modal-download-btn {
     margin-top: auto !important;
     background: transparent !important; 
     border: 2px solid var(--accent-color) !important; 
     color: var(--accent-color) !important;
-    padding: 12px 30px !important; 
     
-    /* These two lines stop the 100% flex stretching shown in image_c3cee4.png */
+    /* Resized: Smaller padding */
+    padding: 10px 20px !important; 
+    
+    /* Resized: Smaller font size and less bold */
+    font-size: 0.9rem !important; 
+    font-weight: 500 !important; 
+    
+    /* Layout: Keeps button centered and avoids full-width stretch */
     width: max-content !important; 
     align-self: center !important; 
     
-    font-size: 1.1rem !important; 
-    font-weight: 900 !important; 
     cursor: pointer !important; 
     text-transform: uppercase !important;
     border-radius: 4px !important;
@@ -409,5 +413,6 @@ h1, h2 {
 .modal-download-btn:hover {
     background: var(--accent-color) !important;
     color: #000 !important;
-    animation: none !important; /* Stops the pulse when hovering */
+    font-weight: 600 !important; /* Slightly bolder on hover for clarity */
+    animation: none !important;
 }
