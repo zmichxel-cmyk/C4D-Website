@@ -482,28 +482,36 @@ h1, h2 {
     text-align: center;
 }
 
-/* --- Tightened Modal Layout --- */
+/* --- ZERO-GAP LOGO CONFIGURATION --- */
 .modal-logo {
-    width: 250px !important;
+    width: 250px !important; /* Back to your preferred size */
     max-width: 60% !important;
     height: auto !important;
     display: block !important;
-    margin: 0 auto 5px auto !important; /* Reduced bottom margin from 20px to 5px */
+    margin: 0 auto -10px auto !important; /* The -10px pulls the text up into the logo's bottom space */
+    position: relative;
+    z-index: 2;
+}
+
+.text-container {
+    padding: 20px 40px !important; /* Reduced top padding to bring everything up */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
 }
 
 .text-container h3 {
-    margin-top: 0 !important; /* Removes default top spacing */
-    margin-bottom: 10px !important;
+    margin: 0 !important; /* Absolutely zero margin */
+    line-height: 1.1;     /* Tightens the line-height of the title */
     font-size: 1.4rem;
-    letter-spacing: 0.5px;
 }
 
 .controller-description {
-    margin-top: 0 !important; /* Pulls the description up closer to the H3 */
+    margin-top: 5px !important; /* Tight spacing between title and paragraph */
+    margin-bottom: 20px !important;
     color: var(--text-muted);
     font-size: 0.95rem;
-    line-height: 1.5;
-    margin-bottom: 25px;
+    line-height: 1.4;
     max-width: 450px;
 }
 
