@@ -378,19 +378,38 @@ h1, h2 {
     opacity: 1; /* Ensure it starts visible */
 }
 
-/* Add this to force the button to vanish immediately when the modal hides */
+/* Force the button to vanish immediately when the modal hides */
 #modal-overlay:not(.show) .modal-download-btn,
 #modal-overlay:not(.show) .download-btn-pulse {
     opacity: 0 !important;
     transition: opacity 0.1s ease !important;
-
 }
 
 #modal-overlay.show .modal-card { transform: scale(1); }
 
-.modal-card img { width: 100%; height: 400px; object-fit: contain; padding: 20px; background: #000; }
-.modal-info { padding: 40px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
-.modal-info h3 { color: var(--text-main); margin-bottom: 20px; font-size: 1.5rem; }
+/* Adjusted Img Container to center the image */
+.modal-img-container { 
+    width: 100%; 
+    height: 400px; 
+    background: #000; 
+    display: flex; 
+    align-items: center; 
+    justify-content: center; 
+    position: relative;
+}
+
+/* Adjusted image fit inside container */
+.modal-card img, #modal-controller-img { 
+    max-width: 90%; 
+    max-height: 90%; 
+    width: auto; 
+    height: auto; 
+    object-fit: contain; 
+    padding: 0; 
+}
+
+.modal-info, .text-container { padding: 40px; display: flex; flex-direction: column; flex-grow: 1; text-align: center; }
+.modal-info h3, .text-container h3 { color: var(--text-main); margin-bottom: 20px; font-size: 1.5rem; }
 
 /* --- RESIZED BUTTON FIX --- */
 .download-btn-pulse,
