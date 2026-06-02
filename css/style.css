@@ -336,72 +336,61 @@ h1, h2 {
 /* --- THE FIX: FOOLPROOF BLOCK LAYOUT FOR MODAL TEXT --- */
 /* ==================================================== */
 
-.text-container { 
-    /* Extra bottom padding to ensure text doesn't overlap the pinned button */
-    padding: 30px 40px 100px 40px !important; 
-    /* CRITICAL: Force standard block layout to completely kill flex centering */
-    display: block !important; 
-    flex-grow: 1 !important; 
-    text-align: center !important; 
-    position: relative !important; /* This creates the anchor point for the absolute button */
-    width: 100% !important;
-}
+<style>
+    /* Modal Overlay - Background */
+    #modal-overlay {
+        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+        background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
+        z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+    }
+    #modal-overlay.show { opacity: 1; visibility: visible; }
 
-.top-content-group {
-    display: block !important;
-    margin: 0 !important;
-}
+    /* Modal Card - Increased Size */
+    .modal-content {
+        background: #1a1a1a;
+        border: 1px solid #333;
+        width: 500px;
+        min-height: 700px;
+        display: flex;
+        flex-direction: column;
+        border-radius: 12px;
+        overflow: hidden;
+        transform: scale(0.8);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+        position: relative; /* CRITICAL: Creates anchor for the button */
+    }
+    #modal-overlay.show .modal-content { transform: scale(1); }
 
-.modal-logo {
-    width: 250px !important; 
-    max-width: 60% !important; 
-    height: auto !important;
-    display: block !important; 
-    margin: 0 auto 15px auto !important; /* Pushes to top, centered horizontally */
-    position: relative; 
-    z-index: 2;
-}
+    .modal-img-container { width: 100%; height: 400px; background: #000; display: flex; align-items: center; justify-content: center; }
+    #modal-controller-img { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
 
-.text-container h3 { 
-    margin: 0 0 10px 0 !important; 
-    line-height: 1.1 !important; 
-    font-size: 1.4rem !important; 
-    color: var(--text-main) !important;
-}
+    /* Text Container - Now acts like a normal block */
+    .text-container { 
+        padding: 40px 40px 100px 40px; /* Extra bottom padding for the button */
+        display: block; 
+        text-align: center; 
+    }
+    .text-container h3 { font-size: 1.5rem; margin-bottom: 20px; }
+    .modal-logo { width: 100px; margin: 0 auto 20px auto; display: block; }
+    .back-arrow { color: white; font-size: 2.5rem; cursor: pointer; padding: 15px; position: absolute; z-index: 10; }
 
-.controller-description {
-    margin: 0 auto !important; 
-    color: var(--text-muted) !important;
-    font-size: 0.95rem !important;
-    line-height: 1.4 !important;
-    max-width: 450px !important;
-}
-
-.download-btn-pulse {
-    /* CRITICAL: Pin the button exactly 30px from the bottom center */
-    position: absolute !important; 
-    bottom: 30px !important;
-    left: 50% !important;
-    transform: translateX(-50%) !important;
-    
-    background: transparent !important; 
-    border: 2px solid var(--accent-color) !important; 
-    color: var(--accent-color) !important;
-    padding: 10px 20px !important; 
-    font-size: 0.9rem !important; 
-    font-weight: 500 !important; 
-    width: max-content !important; 
-    cursor: pointer !important; 
-    text-transform: uppercase !important;
-    border-radius: 4px !important;
-    animation: pulse-red 2s infinite !important;
-}
-
-.download-btn-pulse:hover {
-    background: var(--accent-color) !important;
-    color: #000 !important;
-    animation: none !important;
-}
+    /* Button - Pinned to absolute bottom */
+    .download-btn-pulse {
+        position: absolute;
+        bottom: 40px;
+        left: 40px;
+        right: 40px;
+        background: transparent; 
+        border: 2px solid #ff3344; 
+        color: #ff3344;
+        padding: 20px; 
+        font-size: 1.2rem; 
+        font-weight: bold; 
+        cursor: pointer; 
+        text-transform: uppercase;
+    }
+    .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
+</style>
 
 .back-arrow { 
     position: absolute; top: 15px; left: 20px; color: #ffffff; 
