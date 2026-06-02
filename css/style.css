@@ -483,13 +483,11 @@ h1, h2 {
 }
 
 .modal-logo {
-    /* --- RESIZED FOR BETTER FIT --- */
-    width: 250px;       /* Keep this large enough to be readable */
-    max-width: 60%;     /* Ensures it never gets wider than the modal */
-    height: auto;
-    
-    margin: 0 auto 20px auto; /* Increased bottom margin for more space */
-    display: block;
+    width: 250px !important; 
+    max-width: 90% !important; /* Safety net for small screens */
+    height: auto !important;
+    margin: 0 auto 20px auto !important;
+    display: block !important;
 }
 
 .controller-description {
