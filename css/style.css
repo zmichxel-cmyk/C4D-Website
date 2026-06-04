@@ -375,20 +375,23 @@ h1, h2 {
     font-size: 2.5rem; cursor: pointer; z-index: 10;
 }
 
-/* --- BOTTOM SECTION FIXED --- */
+/* Container for the logo, text, and button */
 .text-container {
-    padding: 30px 40px; 
+    padding: 20px 40px;      /* Tight padding to pull items up */
     display: flex;
-    flex-direction: column; /* Stacks items vertically */
-    align-items: center;    /* Centers everything horizontally */
+    flex-direction: column;  /* Stack items top-to-bottom */
+    align-items: center;     /* Horizontal center */
+    flex-grow: 1;            /* Ensure it fills the space */
     text-align: center;
-    flex-grow: 1;           /* Ensures it takes up remaining space */
+    position: relative;
+    min-height: 350px;       /* Gives the container enough height to push the button down */
 }
 
+/* Logo specific spacing */
 .modal-logo {
-    width: 280px;           /* Larger size */
-    max-width: 100%;
-    margin-bottom: 15px;    /* Tight space between logo and text */
+    width: 240px;            /* Adjust width as needed */
+    margin: 0 auto 15px auto;
+    display: block;
 }
 
 .text-container h3 { 
@@ -403,20 +406,20 @@ h1, h2 {
     margin-bottom: 20px;    /* Space before the button */
 }
 
-/* Compact Button */
+/* Button specific styling */
 .download-btn-pulse {
-    width: fit-content;     /* Button only as wide as its text */
-    padding: 10px 25px;     /* Smaller padding */
+    margin-top: auto;        /* CRITICAL: This pushes the button to the very bottom */
+    width: fit-content;      /* Makes the button only as wide as the text inside */
+    padding: 10px 25px;      /* Smaller, compact size */
     background: transparent;
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
-    font-size: 0.9rem;      /* Smaller text */
+    font-size: 0.9rem;       /* Smaller font */
     font-weight: bold;
     cursor: pointer;
     text-transform: uppercase;
     border-radius: 4px;
     transition: all 0.3s ease;
-    margin-top: auto;       /* Pushes button to bottom of the flex container */
 }
 
 .download-btn-pulse:hover {
