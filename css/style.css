@@ -336,64 +336,83 @@ h1, h2 {
 /* --- THE FIX: FOOLPROOF BLOCK LAYOUT FOR MODAL TEXT --- */
 /* ==================================================== */
 
-<style>
-    /* Modal Overlay - Background */
-    #modal-overlay {
-        position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-        background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
-        z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
-    }
-    #modal-overlay.show { opacity: 1; visibility: visible; }
-
-    /* Modal Card - Increased Size */
-    .modal-content {
-        background: #1a1a1a;
-        border: 1px solid #333;
-        width: 500px;
-        min-height: 700px;
-        display: flex;
-        flex-direction: column;
-        border-radius: 12px;
-        overflow: hidden;
-        transform: scale(0.8);
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-        position: relative; /* CRITICAL: Creates anchor for the button */
-    }
-    #modal-overlay.show .modal-content { transform: scale(1); }
-
-    .modal-img-container { width: 100%; height: 400px; background: #000; display: flex; align-items: center; justify-content: center; }
-    #modal-controller-img { width: 100%; height: 100%; object-fit: contain; padding: 20px; }
-
-    /* Text Container - Now acts like a normal block */
-    .text-container { 
-        padding: 40px 40px 100px 40px; /* Extra bottom padding for the button */
-        display: block; 
-        text-align: center; 
-    }
-    .text-container h3 { font-size: 1.5rem; margin-bottom: 20px; }
-    .modal-logo { width: 100px; margin: 0 auto 20px auto; display: block; }
-    .back-arrow { color: white; font-size: 2.5rem; cursor: pointer; padding: 15px; position: absolute; z-index: 10; }
-
-    /* Button - Pinned to absolute bottom */
-    .download-btn-pulse {
-        position: absolute;
-        bottom: 40px;
-        left: 40px;
-        right: 40px;
-        background: transparent; 
-        border: 2px solid #ff3344; 
-        color: #ff3344;
-        padding: 20px; 
-        font-size: 1.2rem; 
-        font-weight: bold; 
-        cursor: pointer; 
-        text-transform: uppercase;
-    }
-    .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
-</style>
-
-.back-arrow { 
-    position: absolute; top: 15px; left: 20px; color: #ffffff; 
-    font-size: 2.5rem; cursor: pointer; z-index: 100; line-height: 1;
+/* --- Modal Overlay & Content --- */
+#modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
+    z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
 }
-.back-arrow:hover { color: var(--accent-color); }
+#modal-overlay.show { opacity: 1; visibility: visible; }
+
+.modal-content {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 12px;
+    width: 550px; 
+    min-height: 750px;
+    display: flex;
+    flex-direction: column;
+    overflow: hidden;
+    transform: scale(0.8);
+    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+}
+#modal-overlay.show .modal-content { transform: scale(1); }
+
+/* Top Section */
+.modal-img-container {
+    width: 100%;
+    height: 400px;
+    background: #000;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: relative;
+}
+
+#modal-controller-img {
+    width: 100%; height: 100%; object-fit: contain; padding: 20px;
+}
+
+.back-arrow {
+    position: absolute; top: 20px; left: 20px; color: #ffffff;
+    font-size: 2.5rem; cursor: pointer; z-index: 10;
+}
+
+/* Bottom Section: Fixed Layout */
+.text-container {
+    padding: 30px 40px; 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex-grow: 1; /* Pushes content up */
+}
+
+.modal-logo {
+    width: 320px; /* Made the logo larger */
+    max-width: 100%;
+    margin-bottom: 20px;
+}
+
+.text-container h3 { font-size: 1.6rem; margin-bottom: 15px; color: #fff; }
+.text-container p { color: var(--text-muted); font-size: 1rem; margin-bottom: 30px; }
+
+/* Compact Button */
+.download-btn-pulse {
+    width: fit-content; /* Shrinks button to text size */
+    padding: 12px 30px;
+    background: transparent;
+    border: 2px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: bold;
+    cursor: pointer;
+    text-transform: uppercase;
+    border-radius: 4px;
+    transition: all 0.3s ease;
+}
+
+.download-btn-pulse:hover {
+    background: var(--accent-color);
+    color: #000;
+}
