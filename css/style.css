@@ -311,9 +311,8 @@ h1, h2 {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    width: 550px !important; /* Back to a reasonable, non-massive width */
+    width: 550px !important; /* Proportional box size */
     max-width: 95vw;
-    /* REMOVED min-height completely so the box doesn't stretch artificially */
     display: flex;
     flex-direction: column;
     overflow: hidden;
@@ -323,7 +322,7 @@ h1, h2 {
 /* Top Section: The Image */
 .modal-img-container {
     width: 100%;
-    height: 350px; /* Shrunk slightly to keep the overall modal compact */
+    height: 350px;
     background: #000;
     display: flex;
     align-items: center;
@@ -343,56 +342,59 @@ h1, h2 {
 
 /* --- Bottom Section: The Gray Area --- */
 .text-container {
-    padding: 10px 40px 30px 40px !important; /* VERY small top padding (10px) to keep logo at the top */
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    text-align: center;
-    min-height: 280px; /* Just enough height to push the button down cleanly */
+    padding: 30px 40px 30px 40px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    justify-content: flex-start !important;
+    text-align: center !important;
+    min-height: 320px !important; /* Gives elements enough room so they never squish together */
 }
 
-/* LOGO: Hugging the top */
+/* LOGO: Hugs the top */
 .modal-logo {
-    width: 350px !important; /* Kept your preferred size */
-    max-width: 100%;
-    margin-top: 0 !important;
-    margin-bottom: 5px !important; /* Very tight space directly below it */
-    display: block;
+    width: 320px !important;
+    max-width: 100% !important;
+    position: relative !important; /* Forces normal document flow */
+    margin: 0 0 10px 0 !important; /* Space between logo and h3 */
+    display: block !important;
 }
 
-/* TEXT: Right beneath the logo */
-.text-container h3 { 
-    font-size: 1.5rem; 
-    margin-top: 0 !important; 
-    margin-bottom: 8px !important; 
-    color: #fff; 
+/* TEXT: Right below logo */
+.text-container h3 {
+    font-size: 1.5rem !important;
+    margin: 0 0 10px 0 !important;
+    color: #fff !important;
+    position: relative !important; /* Prevents overlap */
 }
-.text-container p { 
-    color: var(--text-muted); 
-    font-size: 0.95rem; 
-    line-height: 1.4; 
-    margin-bottom: 0 !important; 
+.text-container p {
+    color: var(--text-muted) !important;
+    font-size: 0.95rem !important;
+    line-height: 1.4 !important;
+    margin: 0 0 30px 0 !important; /* Space between paragraph and button */
+    position: relative !important; /* Prevents overlap */
 }
 
-/* BUTTON: Centered, small, at the absolute bottom */
+/* BUTTON: Small, Centered, Very Bottom */
 .download-btn-pulse {
-    margin-top: auto !important;     /* Auto margin forces it to the bottom */
-    align-self: center !important; 
+    position: relative !important; /* CRITICAL: Kills overlap and absolute positioning */
+    margin-top: auto !important;   /* Pushes it safely to the bottom */
     width: fit-content !important;
-    min-width: 200px;                
-    padding: 10px 25px !important;   /* Compact padding */
-    background: transparent;
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
-    font-size: 0.9rem;
-    font-weight: bold;
-    cursor: pointer;
-    text-transform: uppercase;
-    border-radius: 4px;
-    transition: all 0.3s ease;
+    min-width: 220px !important;
+    padding: 12px 25px !important;
+    background: transparent !important;
+    border: 2px solid var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    font-size: 0.9rem !important;
+    font-weight: bold !important;
+    cursor: pointer !important;
+    text-transform: uppercase !important;
+    border-radius: 4px !important;
+    transition: all 0.3s ease !important;
+    display: block !important;
 }
 
-.download-btn-pulse:hover { 
-    background: var(--accent-color); 
-    color: #000; 
+.download-btn-pulse:hover {
+    background: var(--accent-color) !important;
+    color: #000 !important;
 }
