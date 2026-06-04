@@ -311,39 +311,6 @@ h1, h2 {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    width: 650px !important; 
-    min-height: 800px !important; 
-    display: flex;
-    flex-direction: column;
-    overflow: hidden;
-    transform: scale(0.8);
-    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275), opacity 0.3s ease !important;
-    position: relative; 
-}
-#modal-overlay.show .modal-content { transform: scale(1); }
-
-.modal-img-container { 
-    width: 100%; height: 500px; background: #000; 
-    display: flex; align-items: center; justify-content: center; position: relative;
-}
-
-#modal-controller-img { 
-    max-width: 90%; max-height: 90%; width: auto; height: auto; object-fit: contain; 
-    color: transparent; text-indent: -9999px;
-}
-
-/* --- Modal Overlay & Content --- */
-#modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
-    z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
-}
-#modal-overlay.show { opacity: 1; visibility: visible; }
-
-.modal-content {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
     width: 550px; 
     min-height: 750px;
     display: flex;
@@ -355,71 +322,47 @@ h1, h2 {
 }
 #modal-overlay.show .modal-content { transform: scale(1); }
 
-/* Top Section (Image area) */
-.modal-img-container {
-    width: 100%;
-    height: 400px;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
+/* Top Section */
+.modal-img-container { width: 100%; height: 400px; background: #000; position: relative; }
 
-#modal-controller-img {
-    width: 100%; height: 100%; object-fit: contain; padding: 20px;
-}
-
-.back-arrow {
-    position: absolute; top: 20px; left: 20px; color: #ffffff;
-    font-size: 2.5rem; cursor: pointer; z-index: 10;
-}
-
-/* Container for the logo, text, and button */
+/* Bottom Section: FORCED POSITIONING */
 .text-container {
-    padding: 20px 40px;      /* Tight padding to pull items up */
+    padding-top: 20px !important; /* Forces logo to the top */
     display: flex;
-    flex-direction: column;  /* Stack items top-to-bottom */
-    align-items: center;     /* Horizontal center */
-    flex-grow: 1;            /* Ensure it fills the space */
+    flex-direction: column;
+    align-items: center;
     text-align: center;
+    width: 100%;
     position: relative;
-    min-height: 350px;       /* Gives the container enough height to push the button down */
 }
 
-/* Logo specific spacing */
 .modal-logo {
-    width: 240px;            /* Adjust width as needed */
-    margin: 0 auto 15px auto;
-    display: block;
+    width: 240px !important;
+    margin-bottom: 10px !important;
+    display: block !important;
 }
 
-.text-container h3 { 
-    font-size: 1.5rem; 
-    margin-bottom: 10px; 
-    color: #fff; 
+.text-container h3, .text-container p {
+    margin-left: 40px !important;
+    margin-right: 40px !important;
 }
 
-.text-container p { 
-    color: var(--text-muted); 
-    font-size: 0.95rem; 
-    margin-bottom: 20px;    /* Space before the button */
-}
-
-/* Button specific styling */
+/* Forced Small Button */
 .download-btn-pulse {
-    margin-top: auto;        /* CRITICAL: This pushes the button to the very bottom */
-    width: fit-content;      /* Makes the button only as wide as the text inside */
-    padding: 10px 25px;      /* Smaller, compact size */
-    background: transparent;
-    border: 2px solid var(--accent-color);
-    color: var(--accent-color);
-    font-size: 0.9rem;       /* Smaller font */
-    font-weight: bold;
+    position: absolute !important;
+    bottom: 30px !important;
+    left: 50% !important;
+    transform: translateX(-50%) !important;
+    width: 200px !important; /* Forces the small width */
+    padding: 10px !important;
+    background: transparent !important;
+    border: 2px solid var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    font-size: 0.8rem !important;
     cursor: pointer;
     text-transform: uppercase;
+    font-weight: bold;
     border-radius: 4px;
-    transition: all 0.3s ease;
 }
 
 .download-btn-pulse:hover {
