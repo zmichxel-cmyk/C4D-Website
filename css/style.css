@@ -312,48 +312,47 @@ h1, h2 {
     border: 1px solid var(--border-color);
     border-radius: 12px;
     width: 550px; 
-    min-height: 750px;
+    /* REMOVED min-height: 750px; to let content define the size */
     display: flex;
     flex-direction: column;
     overflow: hidden;
-    transform: scale(0.8);
-    transition: transform 0.3s ease, opacity 0.3s ease;
+    position: relative;
+    padding-bottom: 80px; /* Reserves space at the bottom for the button */
+}
+
+/* Image Section */
+.modal-img-container {
+    width: 100%;
+    height: 350px; /* Set a specific height so it doesn't move */
+    background: #000;
     position: relative;
 }
-#modal-overlay.show .modal-content { transform: scale(1); }
 
-/* Top Section */
-.modal-img-container { width: 100%; height: 400px; background: #000; position: relative; }
-
-/* Container for everything below the image */
+/* Text Section */
 .text-container {
-    padding: 30px 40px; 
+    padding: 30px 40px 20px 40px; 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centers everything horizontally */
+    align-items: center;
     text-align: center;
-    flex: 1;             /* Tells it to fill all available height */
-    position: relative;
 }
 
-/* Logo */
 .modal-logo {
-    width: 240px; 
-    max-width: 100%;
+    width: 240px;
     margin-bottom: 15px;
-    display: block;
 }
 
-/* Text */
 .text-container h3 { font-size: 1.4rem; margin-bottom: 10px; color: #fff; }
-.text-container p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; margin-bottom: 20px; }
+.text-container p { color: var(--text-muted); font-size: 0.9rem; line-height: 1.4; }
 
-/* Compact Button */
+/* The Button - Pinned to the bottom reserved space */
 .download-btn-pulse {
-    margin-top: auto;      /* Pushes the button to the absolute bottom of the container */
-    width: fit-content;    /* Only as wide as the text */
-    min-width: 200px;
-    padding: 10px 25px;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 200px; /* Fixed smaller width */
+    padding: 10px;
     background: transparent;
     border: 2px solid var(--accent-color);
     color: var(--accent-color);
@@ -362,12 +361,6 @@ h1, h2 {
     cursor: pointer;
     text-transform: uppercase;
     border-radius: 4px;
-    transition: all 0.3s ease;
-}
-
-.download-btn-pulse:hover {
-    background: var(--accent-color);
-    color: #000;
 }
 
 .download-btn-pulse:hover {
