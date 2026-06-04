@@ -366,37 +366,40 @@ h1, h2 {
 }
 
 /* --- Bottom Section: The Gray Area --- */
+/* --- Bottom Section: The Gray Area --- */
 .text-container {
-    padding: 25px 30px !important; 
-    display: block !important;     /* Normal flow engine prevents stacking overlaps */
+    padding: 15px 30px 25px 30px !important; /* Reduced top padding */
+    display: block !important;
     text-align: center !important;
 }
 
-/* LOGO: Scaled nicely at the top of the gray section */
+/* LOGO: Hugging the top of the container */
 .modal-logo {
-    width: 260px !important;
+    width: 260px !important; /* Kept your perfect size */
     max-width: 80%;
-    margin: 0 auto 15px auto !important; /* Centers block logo and keeps room below */
+    margin: 0 auto 5px auto !important; /* Reduced bottom margin to 5px */
     display: block !important;
 }
 
-/* TEXT: Flows directly underneath */
+/* TEXT: Zeroed out margins to kill the gap */
 .text-container h3 {
     font-size: 1.4rem !important;
-    margin: 0 0 10px 0 !important;
+    margin: 0 !important; /* Removes the default browser gap */
+    padding: 0 !important;
     color: #fff !important;
 }
+
 .text-container p {
     color: var(--text-muted) !important;
     font-size: 0.95rem !important;
     line-height: 1.4 !important;
-    margin: 0 0 25px 0 !important;  /* Creates clean separation above button */
+    margin: 8px 0 25px 0 !important; /* Controls the space between title and paragraph */
 }
 
-/* BUTTON: Clean, isolated, centered link at the bottom */
+/* BUTTON: Kept your perfect size and placement */
 .download-btn-pulse {
     display: block !important;
-    margin: 0 auto !important;       /* Perfect block-level centering */
+    margin: 0 auto !important;
     width: fit-content !important;
     min-width: 200px !important;
     padding: 10px 24px !important;
@@ -410,7 +413,6 @@ h1, h2 {
     border-radius: 4px !important;
     transition: all 0.3s ease !important;
 }
-
 .download-btn-pulse:hover {
     background: var(--accent-color) !important;
     color: #000 !important;
