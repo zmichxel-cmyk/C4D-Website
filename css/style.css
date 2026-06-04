@@ -301,28 +301,41 @@ h1, h2 {
 
 /* --- Modal Overlay & Content --- */
 #modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
-    z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+    position: fixed; 
+    top: 0; 
+    left: 0; 
+    width: 100%; 
+    height: 100%;
+    background: rgba(0,0,0,0.85); 
+    display: flex; 
+    align-items: center; 
+    justify-content: center;
+    z-index: 9999; 
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.3s ease;
 }
-#modal-overlay.show { opacity: 1; visibility: visible; }
+#modal-overlay.show { 
+    opacity: 1; 
+    visibility: visible; 
+}
 
 .modal-content {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    width: 550px !important; /* Proportional box size */
+    width: 500px !important;       /* Clean, compact width */
     max-width: 95vw;
-    display: flex;
-    flex-direction: column;
+    display: block !important;     /* Changes block model to prevent unintended stretching */
     overflow: hidden;
     position: relative;
+    height: auto !important;       /* Lets content naturally define the height */
 }
 
 /* Top Section: The Image */
 .modal-img-container {
     width: 100%;
-    height: 350px;
+    height: 300px !important;      /* Sized down to prevent a massive card appearance */
     background: #000;
     display: flex;
     align-items: center;
@@ -331,57 +344,62 @@ h1, h2 {
 }
 
 #modal-controller-img {
-    width: 100%; height: 100%; object-fit: contain; padding: 20px; position: relative; z-index: 1; display: block;
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; 
+    padding: 20px; 
+    display: block;
 }
-#modal-controller-img[src=""], #modal-controller-img:not([src]) { visibility: hidden; }
+#modal-controller-img[src=""], #modal-controller-img:not([src]) { 
+    visibility: hidden; 
+}
 
 .back-arrow {
-    position: absolute; top: 20px; left: 20px; color: #ffffff;
-    font-size: 2.5rem; cursor: pointer; z-index: 10; line-height: 1;
+    position: absolute; 
+    top: 20px; 
+    left: 20px; 
+    color: #ffffff;
+    font-size: 2.5rem; 
+    cursor: pointer; 
+    z-index: 10; 
+    line-height: 1;
 }
 
 /* --- Bottom Section: The Gray Area --- */
 .text-container {
-    padding: 30px 40px 30px 40px !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: flex-start !important;
+    padding: 25px 30px !important; 
+    display: block !important;     /* Normal flow engine prevents stacking overlaps */
     text-align: center !important;
-    min-height: 320px !important; /* Gives elements enough room so they never squish together */
 }
 
-/* LOGO: Hugs the top */
+/* LOGO: Scaled nicely at the top of the gray section */
 .modal-logo {
-    width: 320px !important;
-    max-width: 100% !important;
-    position: relative !important; /* Forces normal document flow */
-    margin: 0 0 10px 0 !important; /* Space between logo and h3 */
+    width: 260px !important;
+    max-width: 80%;
+    margin: 0 auto 15px auto !important; /* Centers block logo and keeps room below */
     display: block !important;
 }
 
-/* TEXT: Right below logo */
+/* TEXT: Flows directly underneath */
 .text-container h3 {
-    font-size: 1.5rem !important;
+    font-size: 1.4rem !important;
     margin: 0 0 10px 0 !important;
     color: #fff !important;
-    position: relative !important; /* Prevents overlap */
 }
 .text-container p {
     color: var(--text-muted) !important;
     font-size: 0.95rem !important;
     line-height: 1.4 !important;
-    margin: 0 0 30px 0 !important; /* Space between paragraph and button */
-    position: relative !important; /* Prevents overlap */
+    margin: 0 0 25px 0 !important;  /* Creates clean separation above button */
 }
 
-/* BUTTON: Small, Centered, Very Bottom */
+/* BUTTON: Clean, isolated, centered link at the bottom */
 .download-btn-pulse {
-    position: relative !important; /* CRITICAL: Kills overlap and absolute positioning */
-    margin-top: auto !important;   /* Pushes it safely to the bottom */
+    display: block !important;
+    margin: 0 auto !important;       /* Perfect block-level centering */
     width: fit-content !important;
-    min-width: 220px !important;
-    padding: 12px 25px !important;
+    min-width: 200px !important;
+    padding: 10px 24px !important;
     background: transparent !important;
     border: 2px solid var(--accent-color) !important;
     color: var(--accent-color) !important;
@@ -391,7 +409,6 @@ h1, h2 {
     text-transform: uppercase !important;
     border-radius: 4px !important;
     transition: all 0.3s ease !important;
-    display: block !important;
 }
 
 .download-btn-pulse:hover {
