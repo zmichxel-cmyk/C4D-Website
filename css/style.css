@@ -301,41 +301,26 @@ h1, h2 {
 
 /* --- Modal Overlay & Content --- */
 #modal-overlay {
-    position: fixed; 
-    top: 0; 
-    left: 0; 
-    width: 100%; 
-    height: 100%;
-    background: rgba(0,0,0,0.85); 
-    display: flex; 
-    align-items: center; 
-    justify-content: center;
-    z-index: 9999; 
-    opacity: 0; 
-    visibility: hidden; 
-    transition: opacity 0.3s ease;
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
+    z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
 }
-#modal-overlay.show { 
-    opacity: 1; 
-    visibility: visible; 
-}
+#modal-overlay.show { opacity: 1; visibility: visible; }
 
 .modal-content {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     border-radius: 12px;
-    width: 500px !important;       /* Clean, compact width */
-    max-width: 95vw;
-    display: block !important;     /* Changes block model to prevent unintended stretching */
+    width: 500px !important;
+    display: block !important;
     overflow: hidden;
     position: relative;
-    height: auto !important;       /* Lets content naturally define the height */
+    height: auto !important;
 }
 
-/* Top Section: The Image */
 .modal-img-container {
     width: 100%;
-    height: 300px !important;      /* Sized down to prevent a massive card appearance */
+    height: 300px !important;
     background: #000;
     display: flex;
     align-items: center;
@@ -344,75 +329,58 @@ h1, h2 {
 }
 
 #modal-controller-img {
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; 
-    padding: 20px; 
-    display: block;
-}
-#modal-controller-img[src=""], #modal-controller-img:not([src]) { 
-    visibility: hidden; 
+    width: 100%; height: 100%; object-fit: contain; padding: 20px; display: block;
 }
 
 .back-arrow {
-    position: absolute; 
-    top: 20px; 
-    left: 20px; 
-    color: #ffffff;
-    font-size: 2.5rem; 
-    cursor: pointer; 
-    z-index: 10; 
-    line-height: 1;
+    position: absolute; top: 20px; left: 20px; color: #ffffff;
+    font-size: 2.5rem; cursor: pointer; z-index: 10;
 }
 
-/* --- Bottom Section: The Gray Area --- */
-/* --- Bottom Section: The Gray Area --- */
+/* --- THE FIX AREA --- */
 .text-container {
-    padding: 15px 30px 25px 30px !important; /* Reduced top padding */
-    display: block !important;
-    text-align: center !important;
+    padding: 0px 30px 25px 30px !important; /* Zeroed top padding */
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
 }
 
-/* LOGO: Hugging the top of the container */
 .modal-logo {
-    width: 260px !important; /* Kept your perfect size */
-    max-width: 80%;
-    margin: 0 auto 5px auto !important; /* Reduced bottom margin to 5px */
+    width: 260px !important;
+    margin: 10px auto -15px auto !important; /* NEGATIVE BOTTOM MARGIN pulls text UP */
     display: block !important;
+    position: relative !important;
+    z-index: 2;
 }
 
-/* TEXT: Zeroed out margins to kill the gap */
 .text-container h3 {
     font-size: 1.4rem !important;
-    margin: 0 !important; /* Removes the default browser gap */
+    margin: 0 !important; 
     padding: 0 !important;
     color: #fff !important;
+    position: relative !important;
+    z-index: 1;
 }
 
 .text-container p {
     color: var(--text-muted) !important;
     font-size: 0.95rem !important;
-    line-height: 1.4 !important;
-    margin: 8px 0 25px 0 !important; /* Controls the space between title and paragraph */
+    margin: 10px 0 25px 0 !important;
 }
 
-/* BUTTON: Kept your perfect size and placement */
 .download-btn-pulse {
     display: block !important;
     margin: 0 auto !important;
     width: fit-content !important;
     min-width: 200px !important;
     padding: 10px 24px !important;
-    background: transparent !important;
     border: 2px solid var(--accent-color) !important;
     color: var(--accent-color) !important;
-    font-size: 0.9rem !important;
     font-weight: bold !important;
-    cursor: pointer !important;
     text-transform: uppercase !important;
     border-radius: 4px !important;
-    transition: all 0.3s ease !important;
 }
+
 .download-btn-pulse:hover {
     background: var(--accent-color) !important;
     color: #000 !important;
