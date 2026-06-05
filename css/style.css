@@ -299,7 +299,7 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* 1. Reset Modal Structure */
+/* --- Tightened Modal Layout --- */
 #modal-overlay {
     position: fixed !important; 
     top: 0 !important; 
@@ -314,57 +314,49 @@ h1, h2 {
 }
 
 .modal-content {
+    position: relative !important;
     background: #1a1a1a !important;
     width: 400px !important; 
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 30px !important;
-    gap: 15px !important;
+    padding: 15px 20px !important; /* Reduced vertical padding */
+    gap: 8px !important;           /* Tighter spacing between elements */
     border-radius: 12px !important;
     text-align: center !important;
-    position: relative !important;
 }
 
-/* 2. THE FIX: Nuke all potential preview/image boxes */
-.controller-preview-placeholder, 
-.modal-img-container, 
-.preview-container, 
-.image-wrapper { 
-    display: none !important; 
-}
-
-/* 3. The Back Arrow (Top Left) */
+/* Arrow positioned at top left */
 .back-arrow { 
     position: absolute !important;
-    top: 20px !important;
-    left: 20px !important;
+    top: 15px !important;
+    left: 15px !important;
     cursor: pointer !important;
 }
 
-/* 4. Logo */
+/* Logo */
 .modal-logo {
-    width: 280px !important;
+    width: 250px !important; /* Slightly smaller to fit tighter box */
     height: auto !important;
-    margin: 0 auto !important; /* Forces centering */
+    margin: 5px 0 !important;
 }
 
-/* 5. Text */
+/* Text */
 .text-container {
     width: 100% !important;
-    padding: 0 !important;
     margin: 0 !important;
 }
 
-/* 6. Download Button (Small at bottom) */
+/* Download Button: Smaller and Centered */
 .download-btn-pulse {
-    width: 160px !important;
-    padding: 8px !important;
+    width: 130px !important;       /* Smaller width */
+    padding: 6px !important;       /* Smaller padding */
+    font-size: 0.75rem !important; /* Smaller text */
+    margin: 5px auto 0 auto !important; /* Centered */
     background: transparent !important;
     border: 1px solid #ff3344 !important;
     color: #ff3344 !important;
     cursor: pointer !important;
-    font-size: 0.8rem !important;
-    margin-top: 5px !important;
+    display: block !important;
 }
 .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
