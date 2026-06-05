@@ -299,29 +299,14 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- FINAL CLEAN MODAL STYLING --- */
-
-/* 1. Modal Container - Shrinked vertical padding */
-#modal-overlay {
-    position: fixed !important; 
-    top: 0 !important; 
-    left: 0 !important; 
-    width: 100% !important; 
-    height: 100% !important;
-    background: rgba(0,0,0,0.85) !important; 
-    display: flex !important; 
-    align-items: center !important; 
-    justify-content: center !important;
-    z-index: 9999 !important;
-}
+/* --- TIGHTENED MODAL STYLING (The "Minimal Height" Fix) --- */
 
 .modal-content {
     position: relative !important;
-    padding: 15px 20px !important; /* Reduced vertical padding */
-    gap: 0px !important;           /* Removes gap between logo and text */
-    height: auto !important;        
+    padding: 10px !important;      /* Reduced from 15px to 10px */
+    gap: 5px !important;           /* Minimal gap */
     background: #1a1a1a !important;
-    width: 400px !important;
+    width: 350px !important;       /* Slightly narrower to keep it compact */
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -329,50 +314,38 @@ h1, h2 {
     text-align: center !important;
 }
 
-/* 2. Hide Black Boxes */
-.controller-preview, 
-.controller-preview-placeholder, 
-.modal-img-container { 
-    display: none !important; 
+/* Force all children to have zero margins so the box doesn't grow */
+.modal-content > * {
+    margin: 0 !important;
 }
 
-/* 3. Back Arrow */
-.back-arrow { 
-    position: absolute !important;
-    top: 15px !important;
-    left: 15px !important;
-    cursor: pointer !important;
-}
-
-/* 4. Logo - Flush with text */
 .modal-logo {
-    width: 220px !important; /* Slightly smaller logo */
+    width: 180px !important;       /* Smaller logo */
     height: auto !important;
-    margin: 0 auto 5px auto !important; /* Tight margin */
+    display: block !important;
 }
 
-/* 5. Text - Tighter spacing */
 .text-container {
     width: 100% !important;
-    margin: 0 !important;
-    padding: 0 10px !important;
-}
-.text-container h3, .text-container h2 {
-    white-space: nowrap !important;
-    margin: 0 !important;
-    font-size: 1.1rem !important; /* Slightly smaller text */
+    padding: 0 !important;
 }
 
-/* 6. Button - Smaller and tighter */
+.text-container h3, .text-container h2 {
+    font-size: 1rem !important;    /* Smaller text to reduce height */
+    line-height: 1.1 !important;
+    margin: 2px 0 !important;      /* Minimal vertical breathing room */
+}
+
+.text-container p {
+    font-size: 0.85rem !important;
+    line-height: 1.2 !important;
+    margin: 2px 0 !important;
+}
+
 .download-btn-pulse {
-    white-space: nowrap !important; 
-    width: auto !important;         
-    padding: 6px 12px !important;   /* Thinner button */
-    margin: 15px auto 5px auto !important;   
-    display: block !important;
-    background: transparent !important;
-    border: 1px solid var(--accent-color) !important;
-    color: var(--accent-color) !important;
-    cursor: pointer !important;
-    font-size: 0.85rem !important;  /* Smaller button text */
+    width: auto !important;
+    padding: 4px 12px !important;  /* Tighter button */
+    margin-top: 8px !important;    /* Small gap between text and button */
+    font-size: 0.8rem !important;
+    display: inline-block !important;
 }
