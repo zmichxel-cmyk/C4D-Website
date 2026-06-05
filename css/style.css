@@ -380,7 +380,6 @@ h1, h2 {
     text-transform: uppercase !important;
     border-radius: 4px !important;
 }
-
 .download-btn-pulse:hover {
     background: var(--accent-color) !important;
     color: #000 !important;
