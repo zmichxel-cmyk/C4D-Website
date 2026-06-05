@@ -7,24 +7,7 @@
     <link rel="stylesheet" href="css/style.css">
 </head>
 
-    <script>
-    // This script watches for the modal appearing and forces the styles you want
-    const observer = new MutationObserver((mutations) => {
-        const modal = document.querySelector('.modal-content');
-        if (modal) {
-            // Force the styles that were being ignored
-            modal.style.setProperty('height', 'auto', 'important');
-            modal.style.setProperty('min-height', '0', 'important');
-            modal.style.setProperty('padding', '0', 'important');
-            
-            const textContainer = document.querySelector('.text-container');
-            if (textContainer) {
-                textContainer.style.setProperty('padding', '10px', 'important');
-            }
-        }
-    });
-
-    // Start watching the body for changes
+  // Start watching the body for changes
     observer.observe(document.body, { childList: true, subtree: true });
 </script>
     
@@ -104,5 +87,42 @@
             container.appendChild(ember);
         }
     </script>
+
+    <script>
+        // 1. OLD SCRIPT: This handles the floating ember effects
+        const container = document.querySelector('.ember-container');
+        for (let i = 0; i < 20; i++) {
+            const ember = document.createElement('div');
+            ember.className = 'ember';
+            ember.style.left = Math.random() * 100 + 'vw';
+            ember.style.animationDelay = Math.random() * 15 + 's';
+            ember.style.width = Math.random() * 5 + 2 + 'px';
+            ember.style.height = ember.style.width;
+            container.appendChild(ember);
+        }
+
+        // 2. NEW SCRIPT: This "watches" the modal to force your custom CSS
+        const styleObserver = new MutationObserver((mutations) => {
+            const modal = document.querySelector('.modal-content');
+            const textContainer = document.querySelector('.text-container');
+            const button = document.querySelector('.download-btn-pulse');
+            
+            if (modal) {
+                modal.style.setProperty('padding', '0', 'important');
+                modal.style.setProperty('margin', '0', 'important');
+            }
+            if (textContainer) {
+                textContainer.style.setProperty('padding-top', '10px', 'important');
+            }
+            if (button) {
+                button.style.setProperty('display', 'block', 'important');
+                button.style.setProperty('margin', '0 auto', 'important');
+            }
+        });
+
+        // Start watching the page
+        styleObserver.observe(document.body, { childList: true, subtree: true });
+    </script>
+    
 </body>
 </html>
