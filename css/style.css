@@ -300,7 +300,8 @@ h1, h2 {
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
 <style>
-       <style>
+
+      <style>
         /* Modal Overlay - Background */
         #modal-overlay {
             position: fixed; top: 0; left: 0; width: 100%; height: 100%;
