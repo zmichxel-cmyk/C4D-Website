@@ -299,69 +299,62 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- Modal Layout Fixes --- */
+/* --- Tightened Modal Fixes --- */
+
 #modal-overlay {
-    position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
-    background: rgba(0,0,0,0.85) !important; display: flex !important; align-items: center !important; justify-content: center !important;
-    z-index: 9999 !important; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+    position: fixed !important; 
+    top: 0 !important; 
+    left: 0 !important; 
+    width: 100% !important; 
+    height: 100% !important;
+    background: rgba(0,0,0,0.85) !important; 
+    display: flex !important; 
+    align-items: center !important; 
+    justify-content: center !important;
+    z-index: 9999 !important; 
+    opacity: 0; 
+    visibility: hidden; 
+    transition: opacity 0.3s ease;
 }
+
 #modal-overlay.show { opacity: 1 !important; visibility: visible !important; }
 
 .modal-content {
     background: #1a1a1a !important;
-    width: 500px !important;
+    width: 400px !important; /* Smaller modal width */
     display: flex !important;
     flex-direction: column !important;
-    height: auto !important;
-    min-height: 0 !important;
-    overflow: hidden !important;
+    padding: 15px 10px !important; /* Tight padding */
+    gap: 10px !important; /* Tight space between elements */
     border-radius: 12px !important;
-    padding: 15px !important; /* Tight padding */
-    gap: 5px !important; /* Tight spacing */
+    text-align: center !important;
 }
 
-/* Hides the empty image gap entirely */
-.modal-img-container {
-    display: none !important;
-}
-
-.text-container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 5px !important; /* Minimal padding */
-    gap: 5px !important;
-    flex-grow: 0 !important; /* Prevents stretching */
-}
+.modal-img-container { display: none !important; }
 
 .modal-logo {
-    width: 280px !important;
+    width: 220px !important; /* Smaller logo */
     margin: 0 auto !important;
-    display: block !important;
 }
 
-.text-container h3 {
+/* Reduces gap between logo and text */
+.text-container {
+    padding: 0 20px !important;
     margin: 0 !important;
-    padding: 0 !important;
 }
 
-.controller-description {
-    margin: 0 0 10px 0 !important;
-    font-size: 0.9rem !important;
-}
-
-/* Button Refinements */
 .download-btn-pulse {
-    width: fit-content !important; /* Shrinks button to text */
-    padding: 10px 20px !important;
-    margin: 5px auto !important; /* Centers button */
+    width: 200px !important; /* Fixed smaller width */
+    padding: 10px !important;
+    margin: 5px auto !important; /* Centers it */
     display: block !important;
     text-align: center !important;
-    position: static !important;
-    background: transparent !important;
     border: 1px solid #ff3344 !important;
-    color: #ffffff !important;
-    cursor: pointer !important;
+    color: #ff3344 !important;
+    background: transparent !important;
+    text-decoration: none !important;
+    font-weight: bold !important;
+    font-size: 0.9rem !important; /* Smaller text */
 }
 
 .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
