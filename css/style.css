@@ -301,77 +301,81 @@ h1, h2 {
 
 <style>
 
-   <style>
-        /* Modal Overlay - Background */
-        #modal-overlay {
-            position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
-            background: rgba(0,0,0,0.85) !important; display: flex !important; align-items: center !important; justify-content: center !important;
-            z-index: 9999 !important; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
-        }
-        #modal-overlay.show { opacity: 1 !important; visibility: visible !important; }
+  <style>
+    /* 1. Modal Overlay - Fixed Background */
+    #modal-overlay {
+        position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
+        background: rgba(0,0,0,0.85) !important; display: flex !important; align-items: center !important; justify-content: center !important;
+        z-index: 9999 !important; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+    }
+    #modal-overlay.show { opacity: 1 !important; visibility: visible !important; }
 
-        /* Modal Card */
-        .modal-content {
-            background: #1a1a1a !important;
-            border: 1px solid #333 !important;
-            border-radius: 12px !important;
-            width: 500px !important;
-            max-width: 95vw !important;
-            overflow: hidden !important;
-            height: auto !important;
-            transform: scale(0.8);
-            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-            position: relative !important;
-        }
-        #modal-overlay.show .modal-content { transform: scale(1) !important; }
+    /* 2. The Modal Box - Stacking content vertically */
+    .modal-content {
+        background: #1a1a1a !important;
+        border: 1px solid #333 !important;
+        border-radius: 12px !important;
+        width: 500px !important;
+        max-width: 95vw !important;
+        display: flex !important;
+        flex-direction: column !important; /* Forces items to stack top-to-bottom */
+        overflow: hidden !important;
+        transform: scale(0.8);
+        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    }
+    #modal-overlay.show .modal-content { transform: scale(1) !important; }
 
-        /* IMAGE AREA */
-        .modal-img-container { 
-            width: 100% !important; height: 300px !important; background: #000 !important; 
-            display: flex !important; align-items: center !important; justify-content: center !important; 
-        }
-        #modal-controller-img { width: 100% !important; height: 100% !important; object-fit: contain !important; padding: 20px !important; }
+    /* 3. Image Area */
+    .modal-img-container { 
+        width: 100% !important; height: 300px !important; background: #000 !important; 
+        display: flex !important; align-items: center !important; justify-content: center !important; 
+    }
+    #modal-controller-img { width: 100% !important; height: 100% !important; object-fit: contain !important; padding: 20px !important; }
 
-        /* TEXT AREA - THIS IS WHERE THE GAP IS */
-        .text-container { 
-            padding: 5px 30px 30px 30px !important; /* REDUCED TOP PADDING FROM 25px TO 5px */
-            display: block !important; 
-            text-align: center !important; 
-        }
-        
-        .modal-logo { 
-            width: 280px !important; 
-            margin: 0 auto !important; /* Removed bottom margin */
-            display: block !important; 
-        }
-        
-        .text-container h3 { 
-            font-size: 1.3rem !important; 
-            margin: 5px 0 10px 0 !important; 
-            color: #fff !important;
-        }
-        
-        .controller-description {
-            color: #a0a0aa !important;
-            font-size: 0.9rem !important;
-            line-height: 1.3 !important;
-            margin: 0 0 15px 0 !important; /* Tightened spacing */
-        }
+    /* 4. Text Area - Using Flexbox to stack logo, text, and button */
+    .text-container { 
+        padding: 10px 30px 30px 30px !important; /* Minimal top padding */
+        display: flex !important; 
+        flex-direction: column !important; /* Stack items vertically */
+        align-items: center !important; /* Center horizontally */
+        text-align: center !important; 
+    }
+    
+    .modal-logo { 
+        width: 250px !important; 
+        margin: 0 auto 5px auto !important; /* Small bottom margin */
+        display: block !important; 
+    }
+    
+    .text-container h3 { 
+        font-size: 1.3rem !important; 
+        margin: 0 0 10px 0 !important; 
+        color: #fff !important;
+    }
+    
+    .controller-description {
+        color: #a0a0aa !important;
+        font-size: 0.9rem !important;
+        line-height: 1.3 !important;
+        margin: 0 0 20px 0 !important; 
+    }
 
-        .download-btn-pulse {
-            display: inline-block !important;
-            margin: 0 auto !important;
-            padding: 8px 20px !important;
-            background: transparent !important; 
-            border: 2px solid #ff3344 !important; 
-            color: #ff3344 !important;
-            font-size: 0.8rem !important; 
-            font-weight: bold !important; 
-            cursor: pointer !important; 
-            text-transform: uppercase !important;
-            border-radius: 4px !important;
-        }
-    </style>
+    /* 5. The Button - STATIC position fixes the overlap */
+    .download-btn-pulse {
+        position: static !important; /* THIS IS THE FIX - Removes the 'floating' effect */
+        display: block !important;
+        margin: 0 auto !important;
+        background: transparent !important; 
+        border: 2px solid #ff3344 !important; 
+        color: #ff3344 !important;
+        padding: 10px 20px !important; 
+        font-size: 0.85rem !important; 
+        font-weight: bold !important; 
+        cursor: pointer !important; 
+        text-transform: uppercase !important;
+        border-radius: 4px !important;
+    }
+</style>
         
         .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
     </style>
