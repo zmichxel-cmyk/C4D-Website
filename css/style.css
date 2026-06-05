@@ -339,3 +339,10 @@ h1, h2 {
 .platform-section .color-selector { display: flex; gap: 10px; margin: 15px 0; justify-content: center; }
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
+
+/* Add this to the bottom of style.css */
+.pulse-btn:hover {
+    background: var(--accent-color);
+    color: #000;
+    animation: none; 
+}
