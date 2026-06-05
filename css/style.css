@@ -299,7 +299,7 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- Final Clean Modal Styling --- */
+/* --- FINAL CLEAN MODAL STYLING --- */
 
 /* 1. Modal Container */
 #modal-overlay {
@@ -317,11 +317,20 @@ h1, h2 {
 
 /* --- Tightened Modal Layout --- */
 .modal-content {
-    padding: 10px 20px !important; /* Reduced vertical space */
-    gap: 5px !important;           /* Tighter spacing between elements */
-    height: auto !important;       /* Removes extra empty space */
+    position: relative !important;
+    padding: 10px 20px !important; 
+    gap: 5px !important;            
+    height: auto !important;        
+    background: #1a1a1a !important;
+    width: 400px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    border-radius: 12px !important;
+    text-align: center !important;
 }
-/* 2. KILL THE BLACK BOX */
+
+/* 2. KILL THE BLACK BOXES */
 .controller-preview, 
 .controller-preview-placeholder, 
 .modal-img-container { 
@@ -348,13 +357,20 @@ h1, h2 {
     width: 100% !important;
     margin: 0 !important;
 }
+.text-container h3, .text-container h2 {
+    white-space: nowrap !important;
+    margin: 0 !important;
+}
 
 /* --- Centered, Single-Line Button --- */
 .download-btn-pulse {
-    white-space: nowrap !important; /* Forces text to stay on one line */
-    width: auto !important;         /* Fits the button to the text */
-    padding: 8px 16px !important;   /* Comfortable padding */
-    margin: 10px auto !important;   /* Centers the button horizontally */
+    white-space: nowrap !important; 
+    width: auto !important;         
+    padding: 8px 16px !important;   
+    margin: 10px auto !important;   
     display: block !important;
+    background: transparent !important;
+    border: 1px solid var(--accent-color) !important;
+    color: var(--accent-color) !important;
+    cursor: pointer !important;
 }
-.modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
