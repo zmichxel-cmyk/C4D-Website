@@ -237,8 +237,6 @@ h1, h2 {
 }
 @keyframes pulse-glow { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.4; } }
 
-.modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
-
 /* --- Premium Showroom Layout --- */
 .platform-section { margin-bottom: 30px; margin-left: auto; margin-right: auto; max-width: 1200px; }
 .showroom-logo-container { display: flex; justify-content: center; margin: 20px auto 30px auto; padding: 0; }
@@ -298,50 +296,3 @@ h1, h2 {
 .platform-section .color-selector { display: flex; gap: 10px; margin: 15px 0; justify-content: center; }
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
-
-/* --- TIGHTENED MODAL STYLING (The "Minimal Height" Fix) --- */
-
-/* --- STRICT MODAL OVERRIDE (Use this to fix the layout) --- */
-
-/* 1. FORCE HIDE THE BLACK BOXES */
-.controller-preview, 
-.controller-preview-placeholder, 
-.modal-img-container,
-.image-placeholder { 
-    display: none !important; 
-}
-
-/* 2. TIGHTENED MODAL CONTAINER */
-.modal-content {
-    position: relative !important;
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    justify-content: center !important;
-    width: 350px !important;
-    padding: 10px !important;
-    gap: 0px !important;      /* Removes space between elements */
-    background: #1a1a1a !important;
-    border-radius: 12px !important;
-    text-align: center !important;
-}
-
-/* 3. ZERO OUT MARGINS ON ALL ELEMENTS INSIDE TO SHRINK HEIGHT */
-.modal-content > * {
-    margin: 0 !important;
-    padding: 2px 0 !important; /* Only tiny padding for separation */
-}
-
-/* 4. Logo sizing */
-.modal-logo {
-    width: 180px !important;
-    height: auto !important;
-}
-
-/* 5. Button sizing */
-.download-btn-pulse {
-    width: auto !important;
-    padding: 4px 12px !important;
-    font-size: 0.8rem !important;
-    margin-top: 5px !important;
-}
