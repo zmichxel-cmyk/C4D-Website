@@ -315,19 +315,12 @@ h1, h2 {
     z-index: 9999 !important;
 }
 
+/* --- Tightened Modal Layout --- */
 .modal-content {
-    position: relative !important;
-    background: #1a1a1a !important;
-    width: 400px !important; 
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    padding: 30px 20px !important;
-    gap: 15px !important;
-    border-radius: 12px !important;
-    text-align: center !important;
+    padding: 10px 20px !important; /* Reduced vertical space */
+    gap: 5px !important;           /* Tighter spacing between elements */
+    height: auto !important;       /* Removes extra empty space */
 }
-
 /* 2. KILL THE BLACK BOX */
 .controller-preview, 
 .controller-preview-placeholder, 
@@ -356,15 +349,12 @@ h1, h2 {
     margin: 0 !important;
 }
 
-/* 6. Download Button (Centered at bottom) */
+/* --- Centered, Single-Line Button --- */
 .download-btn-pulse {
-    width: 150px !important;
-    padding: 8px !important;
-    margin-top: 10px !important;
-    background: transparent !important;
-    border: 1px solid #ff3344 !important;
-    color: #ff3344 !important;
-    font-size: 0.8rem !important;
-    cursor: pointer !important;
+    white-space: nowrap !important; /* Forces text to stay on one line */
+    width: auto !important;         /* Fits the button to the text */
+    padding: 8px 16px !important;   /* Comfortable padding */
+    margin: 10px auto !important;   /* Centers the button horizontally */
+    display: block !important;
 }
 .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
