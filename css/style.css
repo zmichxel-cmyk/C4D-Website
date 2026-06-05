@@ -249,7 +249,8 @@ h1, h2 {
 
 .modal-logo {
     width: 120px; 
-    margin: 5px auto; 
+    /* The first value (25px) is the top margin. Increase this to add more space. */
+    margin: 25px auto 10px auto; 
     display: block;
 }
 
