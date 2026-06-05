@@ -388,3 +388,18 @@ h1, h2 {
     object-fit: contain; /* Keeps the controller from looking stretched */
     display: block; 
 }
+
+/* --- Modal Description Section --- */
+.modal-desc {
+    padding: 0 20px 15px 20px; /* Padding for readability */
+    color: var(--text-muted);  /* Muted color to differentiate from headline */
+    font-size: 0.9rem;
+    text-align: center;
+    line-height: 1.4;
+}
+
+#modal-description {
+    /* If you want to limit the text width so it doesn't hit the edges */
+    max-width: 90%;
+    margin: 0 auto;
+}
