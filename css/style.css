@@ -299,8 +299,7 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- Tightened Modal Fixes --- */
-
+/* --- Modal Layout Adjustments --- */
 #modal-overlay {
     position: fixed !important; 
     top: 0 !important; 
@@ -312,49 +311,55 @@ h1, h2 {
     align-items: center !important; 
     justify-content: center !important;
     z-index: 9999 !important; 
-    opacity: 0; 
-    visibility: hidden; 
-    transition: opacity 0.3s ease;
 }
-
-#modal-overlay.show { opacity: 1 !important; visibility: visible !important; }
 
 .modal-content {
     background: #1a1a1a !important;
-    width: 400px !important; /* Smaller modal width */
+    width: 400px !important; 
     display: flex !important;
     flex-direction: column !important;
-    padding: 15px 10px !important; /* Tight padding */
-    gap: 10px !important; /* Tight space between elements */
+    padding: 20px !important;
+    gap: 10px !important; /* Tightens space between items */
     border-radius: 12px !important;
     text-align: center !important;
 }
 
-.modal-img-container { display: none !important; }
-
+/* Logo Stays Same */
 .modal-logo {
-    width: 220px !important; /* Smaller logo */
+    width: 280px !important; 
     margin: 0 auto !important;
+    display: block !important;
 }
 
-/* Reduces gap between logo and text */
+/* Text Sizing & Spacing */
 .text-container {
-    padding: 0 20px !important;
-    margin: 0 !important;
+    padding: 0 !important;
+    margin: -10px 0 0 0 !important; /* Pulls text closer to logo */
 }
 
+.text-container h3 {
+    font-size: 1.2rem !important; /* Reduced heading size */
+    margin: 0 0 5px 0 !important;
+}
+
+.controller-description {
+    font-size: 0.8rem !important; /* Smaller body text */
+    margin: 0 0 10px 0 !important;
+    color: #cccccc !important;
+}
+
+/* Download Button Smaller */
 .download-btn-pulse {
-    width: 200px !important; /* Fixed smaller width */
-    padding: 10px !important;
-    margin: 5px auto !important; /* Centers it */
+    width: 160px !important; /* Smaller button width */
+    padding: 8px 10px !important; /* Reduced padding */
+    margin: 0 auto !important;
+    font-size: 0.8rem !important; /* Smaller text */
     display: block !important;
     text-align: center !important;
     border: 1px solid #ff3344 !important;
-    color: #ff3344 !important;
     background: transparent !important;
-    text-decoration: none !important;
-    font-weight: bold !important;
-    font-size: 0.9rem !important; /* Smaller text */
+    color: #ff3344 !important;
+    cursor: pointer !important;
 }
 
 .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
