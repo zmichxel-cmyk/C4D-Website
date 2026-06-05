@@ -315,14 +315,15 @@ h1, h2 {
     z-index: 9999 !important;
 }
 
-/* --- Tightened Modal Layout --- */
+/* --- Updated Modal Layout (Fixed Clipping) --- */
 .modal-content {
     position: relative !important;
-    padding: 10px 20px !important; 
-    gap: 5px !important;            
-    height: auto !important;        
+    padding: 20px !important; 
+    gap: 10px !important;
+    height: auto !important;
     background: #1a1a1a !important;
-    width: 400px !important;
+    width: 90% !important;        /* Changed from fixed 400px to percentage */
+    max-width: 500px !important;  /* Allows the box to grow up to 500px */
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
