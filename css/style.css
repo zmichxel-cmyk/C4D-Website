@@ -301,7 +301,7 @@ h1, h2 {
 
 /* --- FINAL CLEAN MODAL STYLING --- */
 
-/* 1. Modal Container */
+/* 1. Modal Container - Shrinked vertical padding */
 #modal-overlay {
     position: fixed !important; 
     top: 0 !important; 
@@ -315,15 +315,13 @@ h1, h2 {
     z-index: 9999 !important;
 }
 
-/* --- Updated Modal Layout (Fixed Clipping) --- */
 .modal-content {
     position: relative !important;
-    padding: 20px !important; 
-    gap: 10px !important;
-    height: auto !important;
+    padding: 15px 20px !important; /* Reduced vertical padding */
+    gap: 0px !important;           /* Removes gap between logo and text */
+    height: auto !important;        
     background: #1a1a1a !important;
-    width: 90% !important;        /* Changed from fixed 400px to percentage */
-    max-width: 500px !important;  /* Allows the box to grow up to 500px */
+    width: 400px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
@@ -331,47 +329,50 @@ h1, h2 {
     text-align: center !important;
 }
 
-/* 2. KILL THE BLACK BOXES */
+/* 2. Hide Black Boxes */
 .controller-preview, 
 .controller-preview-placeholder, 
 .modal-img-container { 
     display: none !important; 
 }
 
-/* 3. Back Arrow (Top Left) */
+/* 3. Back Arrow */
 .back-arrow { 
     position: absolute !important;
-    top: 20px !important;
-    left: 20px !important;
+    top: 15px !important;
+    left: 15px !important;
     cursor: pointer !important;
 }
 
-/* 4. Logo (Centered) */
+/* 4. Logo - Flush with text */
 .modal-logo {
-    width: 250px !important;
+    width: 220px !important; /* Slightly smaller logo */
     height: auto !important;
-    margin: 0 auto !important;
+    margin: 0 auto 5px auto !important; /* Tight margin */
 }
 
-/* 5. Text (Centered) */
+/* 5. Text - Tighter spacing */
 .text-container {
     width: 100% !important;
     margin: 0 !important;
+    padding: 0 10px !important;
 }
 .text-container h3, .text-container h2 {
     white-space: nowrap !important;
     margin: 0 !important;
+    font-size: 1.1rem !important; /* Slightly smaller text */
 }
 
-/* --- Centered, Single-Line Button --- */
+/* 6. Button - Smaller and tighter */
 .download-btn-pulse {
     white-space: nowrap !important; 
     width: auto !important;         
-    padding: 8px 16px !important;   
-    margin: 10px auto !important;   
+    padding: 6px 12px !important;   /* Thinner button */
+    margin: 15px auto 5px auto !important;   
     display: block !important;
     background: transparent !important;
     border: 1px solid var(--accent-color) !important;
     color: var(--accent-color) !important;
     cursor: pointer !important;
+    font-size: 0.85rem !important;  /* Smaller button text */
 }
