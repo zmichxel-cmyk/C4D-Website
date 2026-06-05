@@ -34,7 +34,7 @@
                     <div class="card-info">
                         <h3>C4D PS5 Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('assets/images/custom4daez-ps5.png')">GRAB CONTROLLER</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -48,7 +48,7 @@
                             <button onclick="changeColor('ps5', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('ps5', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('ps5-display')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div> 
@@ -62,7 +62,7 @@
                     <div class="card-info">
                         <h3>C4D XBOX Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('assets/images/xbox-default.png')">GRAB CONTROLLER</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -76,7 +76,7 @@
                             <button onclick="changeColor('xbox', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('xbox', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('xbox-display')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div>
@@ -90,7 +90,7 @@
                     <div class="card-info">
                         <h3>C4D PS4 Edition</h3>
                         <p class="price">FREE</p>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('assets/images/ps4-default.png')">GRAB CONTROLLER</button>
                     </div>
                 </div>
                 <div class="product-card">
@@ -104,18 +104,55 @@
                             <button onclick="changeColor('ps4', 'red')" class="color-dot" style="background: red;"></button>
                             <button onclick="changeColor('ps4', 'green')" class="color-dot" style="background: green;"></button>
                         </div>
-                        <button class="unlock-btn">GRAB CONTROLLER</button>
+                        <button class="unlock-btn" onclick="openModal('ps4-display')">GRAB CONTROLLER</button>
                     </div>
                 </div>
             </div>
         </section>
     </main>
 
+    <div id="controller-modal" class="modal-overlay">
+        <div class="modal-card">
+            <span class="back-arrow" onclick="closeModal()">&#8592;</span>
+            <img id="modal-img-display" src="" alt="Controller Preview">
+            <div class="modal-info">
+                <h3>Download your FREE Controller!</h3>
+                <button class="pulse-btn" onclick="downloadController()">DOWNLOAD NOW</button>
+            </div>
+        </div>
+    </div>
+
     <script>
-        // Only the color-swapping function remains
+        // Color Swapping
         function changeColor(platform, color) {
             const displayImg = document.getElementById(`${platform}-display`);
             if (displayImg) { displayImg.src = `assets/images/${platform}-${color}.png`; }
+        }
+
+        // Modal Functions
+        function openModal(input) {
+            const modal = document.getElementById('controller-modal');
+            const modalImg = document.getElementById('modal-img-display');
+            
+            // Check if input is an ID of an image on the page, or a direct file path
+            const element = document.getElementById(input);
+            modalImg.src = element ? element.src : input;
+            
+            modal.classList.add('show');
+        }
+
+        function closeModal() {
+            document.getElementById('controller-modal').classList.remove('show');
+        }
+
+        function downloadController() {
+            const imgSrc = document.getElementById('modal-img-display').src;
+            const link = document.createElement('a');
+            link.href = imgSrc;
+            link.download = 'C4D-Controller.png';
+            document.body.appendChild(link);
+            link.click();
+            document.body.removeChild(link);
         }
     </script>
     <script src="js/embers.js"></script>
