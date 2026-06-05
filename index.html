@@ -101,28 +101,5 @@
             container.appendChild(ember);
         }
 
-        // 2. NEW SCRIPT: This "watches" the modal to force your custom CSS
-        const styleObserver = new MutationObserver((mutations) => {
-            const modal = document.querySelector('.modal-content');
-            const textContainer = document.querySelector('.text-container');
-            const button = document.querySelector('.download-btn-pulse');
-            
-            if (modal) {
-                modal.style.setProperty('padding', '0', 'important');
-                modal.style.setProperty('margin', '0', 'important');
-            }
-            if (textContainer) {
-                textContainer.style.setProperty('padding-top', '10px', 'important');
-            }
-            if (button) {
-                button.style.setProperty('display', 'block', 'important');
-                button.style.setProperty('margin', '0 auto', 'important');
-            }
-        });
-
-        // Start watching the page
-        styleObserver.observe(document.body, { childList: true, subtree: true });
-    </script>
-    
 </body>
 </html>
