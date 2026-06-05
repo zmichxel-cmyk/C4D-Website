@@ -316,9 +316,11 @@ h1, h2 {
     min-height: 0 !important;
     overflow: hidden !important;
     border-radius: 12px !important;
+    padding: 15px !important; /* Tight padding */
+    gap: 5px !important; /* Tight spacing */
 }
 
-/* Kills the ghost gap at the top */
+/* Hides the empty image gap entirely */
 .modal-img-container {
     display: none !important;
 }
@@ -327,9 +329,9 @@ h1, h2 {
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 20px 30px !important;
-    gap: 10px !important;
-    flex-grow: 1 !important;
+    padding: 5px !important; /* Minimal padding */
+    gap: 5px !important;
+    flex-grow: 0 !important; /* Prevents stretching */
 }
 
 .modal-logo {
@@ -348,13 +350,18 @@ h1, h2 {
     font-size: 0.9rem !important;
 }
 
+/* Button Refinements */
 .download-btn-pulse {
-    width: 250px !important;
-    margin: 10px auto !important;
-    padding: 12px 0 !important;
+    width: fit-content !important; /* Shrinks button to text */
+    padding: 10px 20px !important;
+    margin: 5px auto !important; /* Centers button */
     display: block !important;
     text-align: center !important;
     position: static !important;
+    background: transparent !important;
+    border: 1px solid #ff3344 !important;
+    color: #ffffff !important;
+    cursor: pointer !important;
 }
 
 .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
