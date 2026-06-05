@@ -227,9 +227,10 @@ h1, h2 {
 .modal-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 0; /* Removed padding */
+    padding: 0; 
     border-radius: 12px;
-    width: 90%; max-width: 400px;
+    width: 90%; 
+    max-width: 500px; /* Increased from 400px */
     text-align: center;
     position: relative;
     transform: scale(0.8);
@@ -248,9 +249,8 @@ h1, h2 {
 #modal-img-display { width: 100%; display: block; }
 
 .modal-logo {
-    width: 120px; 
-    /* The first value (25px) is the top margin. Increase this to add more space. */
-    margin: 25px auto 10px auto; 
+    width: 150px; /* Increased from 120px */
+    margin: 15px auto 10px auto; 
     display: block;
 }
 
@@ -359,10 +359,9 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- Updated Black Preview Box --- */
 .modal-preview-box {
     width: 100%;
-    height: 250px; /* This forces the box to be the size you want */
+    height: 300px; /* Increased from 250px */
     background: #000;
     display: flex;
     justify-content: center;
