@@ -299,88 +299,91 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- Modal Overlay & Content --- */
-#modal-overlay {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
-    z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
-}
-#modal-overlay.show { opacity: 1; visibility: visible; }
+<style>
+        /* Modal Overlay - Background */
+        #modal-overlay {
+            position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.85); display: flex; align-items: center; justify-content: center;
+            z-index: 9999; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+        }
+        #modal-overlay.show { opacity: 1; visibility: visible; }
 
-.modal-content {
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    border-radius: 12px;
-    width: 500px !important;
-    display: block !important;
-    overflow: hidden;
-    position: relative;
-    height: auto !important;
-}
+        /* Modal Card - Responsive Block Layout */
+        .modal-content {
+            background: #1a1a1a;
+            border: 1px solid #333;
+            border-radius: 12px;
+            width: 500px;
+            max-width: 95vw;
+            display: block;
+            overflow: hidden;
+            transform: scale(0.8);
+            transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            position: relative;
+        }
+        #modal-overlay.show .modal-content { transform: scale(1); }
 
-.modal-img-container {
-    width: 100%;
-    height: 300px !important;
-    background: #000;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    position: relative;
-}
+        /* Top Section: Image */
+        .modal-img-container { 
+            width: 100%; height: 300px; background: #000; 
+            display: flex; align-items: center; justify-content: center; 
+            position: relative;
+        }
+        #modal-controller-img { width: 100%; height: 100%; object-fit: contain; padding: 20px; display: block; }
+        .back-arrow { color: white; font-size: 2.5rem; cursor: pointer; padding: 15px; position: absolute; top: 10px; left: 10px; z-index: 10; line-height: 1; }
 
-#modal-controller-img {
-    width: 100%; height: 100%; object-fit: contain; padding: 20px; display: block;
-}
+        /* Bottom Section: Text Container */
+        .text-container { 
+            padding: 20px 30px 30px 30px; 
+            display: block; 
+            text-align: center; 
+        }
+        
+        /* LOGO: Gap removed */
+        .modal-logo { 
+            width: 260px; 
+            max-width: 80%;
+            margin: 0 auto 5px auto; /* 5px bottom margin pulls text up tightly */
+            display: block; 
+        }
+        
+        /* TEXT: Gap removed */
+        .text-container h3 { 
+            font-size: 1.4rem; 
+            margin: 0; /* Completely kills the browser gap */
+            padding: 0;
+            color: #fff;
+        }
+        
+        .controller-description {
+            color: #a0a0aa;
+            font-size: 0.95rem;
+            line-height: 1.4;
+            margin: 10px 0 25px 0; /* Space between title and the button */
+        }
 
-.back-arrow {
-    position: absolute; top: 20px; left: 20px; color: #ffffff;
-    font-size: 2.5rem; cursor: pointer; z-index: 10;
-}
-
-/* --- THE FIX AREA --- */
-.text-container {
-    padding: 0px 30px 25px 30px !important; /* Zeroed top padding */
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-}
-
-.modal-logo {
-    width: 260px !important;
-    margin: 10px auto -15px auto !important; /* NEGATIVE BOTTOM MARGIN pulls text UP */
-    display: block !important;
-    position: relative !important;
-    z-index: 2;
-}
-
-.text-container h3 {
-    font-size: 1.4rem !important;
-    margin: 0 !important; 
-    padding: 0 !important;
-    color: #fff !important;
-    position: relative !important;
-    z-index: 1;
-}
-
-.text-container p {
-    color: var(--text-muted) !important;
-    font-size: 0.95rem !important;
-    margin: 10px 0 25px 0 !important;
-}
-
-.download-btn-pulse {
-    display: block !important;
-    margin: 0 auto !important;
-    width: fit-content !important;
-    min-width: 200px !important;
-    padding: 10px 24px !important;
-    border: 2px solid var(--accent-color) !important;
-    color: var(--accent-color) !important;
-    font-weight: bold !important;
-    text-transform: uppercase !important;
-    border-radius: 4px !important;
-}
-.download-btn-pulse:hover {
-    background: var(--accent-color) !important;
-    color: #000 !important;
-}
+        /* BUTTON: Centered at the bottom */
+        .download-btn-pulse {
+            display: block;
+            margin: 0 auto;
+            width: fit-content;
+            min-width: 200px;
+            background: transparent; 
+            border: 2px solid #ff3344; 
+            color: #ff3344;
+            padding: 10px 24px; 
+            font-size: 0.9rem; 
+            font-weight: bold; 
+            cursor: pointer; 
+            text-transform: uppercase;
+            border-radius: 4px;
+            transition: all 0.3s ease;
+        }
+        
+        .download-btn-pulse:hover {
+            background: #ff3344;
+            color: #000;
+        }
+        
+        .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
+    </style>
