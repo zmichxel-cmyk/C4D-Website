@@ -310,8 +310,7 @@ h1, h2 {
     }
     #modal-overlay.show { opacity: 1 !important; visibility: visible !important; }
 
-   <style>
-    /* Reset and force container layout */
+  <style>
     .modal-content {
         background: #1a1a1a !important;
         width: 500px !important;
@@ -327,33 +326,30 @@ h1, h2 {
         display: flex !important;
         flex-direction: column !important;
         align-items: center !important;
-        padding: 15px 30px 20px 30px !important; /* Top padding small to pull logo up */
+        padding: 5px 30px 20px 30px !important; /* Top padding reduced to 5px */
+        gap: 5px !important; /* Controls spacing between logo, text, and button */
         flex-grow: 1 !important;
-        justify-content: flex-start !important;
     }
 
     .modal-logo {
         width: 280px !important;
-        margin: 0 auto 10px auto !important; /* Tiny margin-bottom for spacing */
+        margin: 0 auto !important; /* Reset margins */
         display: block !important;
     }
 
     .text-container h3 {
-        margin: 0 0 10px 0 !important;
+        margin: 0 !important; /* No extra gaps */
         padding: 0 !important;
-        font-size: 1.3rem !important;
     }
 
     .controller-description {
-        margin: 0 0 20px 0 !important;
+        margin: 0 0 10px 0 !important;
         font-size: 0.9rem !important;
     }
 
     .download-btn-pulse {
         width: fit-content !important;
-        padding: 8px 16px !important;
-        font-size: 0.8rem !important;
-        margin-top: auto !important; /* Pushes button to bottom if space allows */
+        margin-top: auto !important; /* This forces the button to the bottom */
         position: static !important;
     }
 </style>
