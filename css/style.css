@@ -299,60 +299,62 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-<style>
+/* --- Modal Layout Fixes --- */
+#modal-overlay {
+    position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
+    background: rgba(0,0,0,0.85) !important; display: flex !important; align-items: center !important; justify-content: center !important;
+    z-index: 9999 !important; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
+}
+#modal-overlay.show { opacity: 1 !important; visibility: visible !important; }
 
-<style>
-    /* 1. Modal Overlay - Fixed Background */
-    #modal-overlay {
-        position: fixed !important; top: 0 !important; left: 0 !important; width: 100% !important; height: 100% !important;
-        background: rgba(0,0,0,0.85) !important; display: flex !important; align-items: center !important; justify-content: center !important;
-        z-index: 9999 !important; opacity: 0; visibility: hidden; transition: opacity 0.3s ease;
-    }
-    #modal-overlay.show { opacity: 1 !important; visibility: visible !important; }
+.modal-content {
+    background: #1a1a1a !important;
+    width: 500px !important;
+    display: flex !important;
+    flex-direction: column !important;
+    height: auto !important;
+    min-height: 0 !important;
+    overflow: hidden !important;
+    border-radius: 12px !important;
+}
 
-  <style>
-    .modal-content {
-        background: #1a1a1a !important;
-        width: 500px !important;
-        display: flex !important;
-        flex-direction: column !important;
-        height: auto !important;
-        min-height: 0 !important;
-        overflow: hidden !important;
-        border-radius: 12px !important;
-    }
+/* Kills the ghost gap at the top */
+.modal-img-container {
+    display: none !important;
+}
 
-    .text-container {
-        display: flex !important;
-        flex-direction: column !important;
-        align-items: center !important;
-        padding: 5px 30px 20px 30px !important; /* Top padding reduced to 5px */
-        gap: 5px !important; /* Controls spacing between logo, text, and button */
-        flex-grow: 1 !important;
-    }
+.text-container {
+    display: flex !important;
+    flex-direction: column !important;
+    align-items: center !important;
+    padding: 20px 30px !important;
+    gap: 10px !important;
+    flex-grow: 1 !important;
+}
 
-    .modal-logo {
-        width: 280px !important;
-        margin: 0 auto !important; /* Reset margins */
-        display: block !important;
-    }
+.modal-logo {
+    width: 280px !important;
+    margin: 0 auto !important;
+    display: block !important;
+}
 
-    .text-container h3 {
-        margin: 0 !important; /* No extra gaps */
-        padding: 0 !important;
-    }
+.text-container h3 {
+    margin: 0 !important;
+    padding: 0 !important;
+}
 
-    .controller-description {
-        margin: 0 0 10px 0 !important;
-        font-size: 0.9rem !important;
-    }
+.controller-description {
+    margin: 0 0 10px 0 !important;
+    font-size: 0.9rem !important;
+}
 
-    .download-btn-pulse {
-        width: fit-content !important;
-        margin-top: auto !important; /* This forces the button to the bottom */
-        position: static !important;
-    }
-</style>
-        
-        .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
-    </style>
+.download-btn-pulse {
+    width: 250px !important;
+    margin: 10px auto !important;
+    padding: 12px 0 !important;
+    display: block !important;
+    text-align: center !important;
+    position: static !important;
+}
+
+.modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
