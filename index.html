@@ -6,6 +6,28 @@
     <title>Controller Overlays</title>
     <link rel="stylesheet" href="css/style.css">
 </head>
+
+    <script>
+    // This script watches for the modal appearing and forces the styles you want
+    const observer = new MutationObserver((mutations) => {
+        const modal = document.querySelector('.modal-content');
+        if (modal) {
+            // Force the styles that were being ignored
+            modal.style.setProperty('height', 'auto', 'important');
+            modal.style.setProperty('min-height', '0', 'important');
+            modal.style.setProperty('padding', '0', 'important');
+            
+            const textContainer = document.querySelector('.text-container');
+            if (textContainer) {
+                textContainer.style.setProperty('padding', '10px', 'important');
+            }
+        }
+    });
+
+    // Start watching the body for changes
+    observer.observe(document.body, { childList: true, subtree: true });
+</script>
+    
 <body>
 
     <div class="ember-container"></div>
