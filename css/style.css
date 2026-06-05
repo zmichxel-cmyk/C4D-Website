@@ -310,70 +310,51 @@ h1, h2 {
     }
     #modal-overlay.show { opacity: 1 !important; visibility: visible !important; }
 
-    /* 2. The Modal Box - Stacking content vertically */
+   <style>
+    /* Reset and force container layout */
     .modal-content {
         background: #1a1a1a !important;
-        border: 1px solid #333 !important;
-        border-radius: 12px !important;
         width: 500px !important;
-        max-width: 95vw !important;
         display: flex !important;
-        flex-direction: column !important; /* Forces items to stack top-to-bottom */
+        flex-direction: column !important;
+        height: auto !important;
+        min-height: 0 !important;
         overflow: hidden !important;
-        transform: scale(0.8);
-        transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
-    }
-    #modal-overlay.show .modal-content { transform: scale(1) !important; }
-
-    /* 3. Image Area */
-    .modal-img-container { 
-        width: 100% !important; height: 300px !important; background: #000 !important; 
-        display: flex !important; align-items: center !important; justify-content: center !important; 
-    }
-    #modal-controller-img { width: 100% !important; height: 100% !important; object-fit: contain !important; padding: 20px !important; }
-
-    /* 4. Text Area - Using Flexbox to stack logo, text, and button */
-    .text-container { 
-        padding: 10px 30px 30px 30px !important; /* Minimal top padding */
-        display: flex !important; 
-        flex-direction: column !important; /* Stack items vertically */
-        align-items: center !important; /* Center horizontally */
-        text-align: center !important; 
-    }
-    
-    .modal-logo { 
-        width: 250px !important; 
-        margin: 0 auto 5px auto !important; /* Small bottom margin */
-        display: block !important; 
-    }
-    
-    .text-container h3 { 
-        font-size: 1.3rem !important; 
-        margin: 0 0 10px 0 !important; 
-        color: #fff !important;
-    }
-    
-    .controller-description {
-        color: #a0a0aa !important;
-        font-size: 0.9rem !important;
-        line-height: 1.3 !important;
-        margin: 0 0 20px 0 !important; 
+        border-radius: 12px !important;
     }
 
-    /* 5. The Button - STATIC position fixes the overlap */
-    .download-btn-pulse {
-        position: static !important; /* THIS IS THE FIX - Removes the 'floating' effect */
+    .text-container {
+        display: flex !important;
+        flex-direction: column !important;
+        align-items: center !important;
+        padding: 15px 30px 20px 30px !important; /* Top padding small to pull logo up */
+        flex-grow: 1 !important;
+        justify-content: flex-start !important;
+    }
+
+    .modal-logo {
+        width: 280px !important;
+        margin: 0 auto 10px auto !important; /* Tiny margin-bottom for spacing */
         display: block !important;
-        margin: 0 auto !important;
-        background: transparent !important; 
-        border: 2px solid #ff3344 !important; 
-        color: #ff3344 !important;
-        padding: 10px 20px !important; 
-        font-size: 0.85rem !important; 
-        font-weight: bold !important; 
-        cursor: pointer !important; 
-        text-transform: uppercase !important;
-        border-radius: 4px !important;
+    }
+
+    .text-container h3 {
+        margin: 0 0 10px 0 !important;
+        padding: 0 !important;
+        font-size: 1.3rem !important;
+    }
+
+    .controller-description {
+        margin: 0 0 20px 0 !important;
+        font-size: 0.9rem !important;
+    }
+
+    .download-btn-pulse {
+        width: fit-content !important;
+        padding: 8px 16px !important;
+        font-size: 0.8rem !important;
+        margin-top: auto !important; /* Pushes button to bottom if space allows */
+        position: static !important;
     }
 </style>
         
