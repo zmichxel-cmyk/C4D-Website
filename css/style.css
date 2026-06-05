@@ -299,7 +299,9 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- Corrected Modal Layout --- */
+/* --- Simple, Clean Modal Fix --- */
+
+/* Modal Backdrop */
 #modal-overlay {
     position: fixed !important;
     top: 0 !important;
@@ -313,59 +315,59 @@ h1, h2 {
     z-index: 9999 !important;
 }
 
+/* Main Container */
 .modal-content {
     background: #1a1a1a !important;
     width: 400px !important;
     display: flex !important;
     flex-direction: column !important;
     align-items: center !important;
-    padding: 25px !important;
-    gap: 15px !important; /* Consistent spacing */
+    padding: 20px !important;
+    gap: 15px !important;
     border-radius: 12px !important;
     text-align: center !important;
 }
 
-/* Removes the broken image container entirely */
-.modal-img-container, 
-.controller-preview-placeholder { 
-    display: none !important; 
-}
-
-/* Logo */
+/* Logo (Same size) */
 .modal-logo {
     width: 280px !important;
     height: auto !important;
-}
-
-/* Text */
-.text-container {
-    display: flex !important;
-    flex-direction: column !important;
-    align-items: center !important;
-    gap: 5px !important;
-}
-
-.text-container h3 {
-    font-size: 1.2rem !important;
     margin: 0 !important;
 }
 
+/* Text (Below logo, smaller) */
+.text-container {
+    padding: 0 !important;
+    margin: 0 !important;
+}
+
+.text-container h3 {
+    font-size: 1.1rem !important; /* Smaller text */
+    margin-bottom: 5px !important;
+}
+
 .controller-description {
-    font-size: 0.85rem !important;
+    font-size: 0.8rem !important; /* Smaller text */
     margin: 0 !important;
     color: #cccccc !important;
 }
 
-/* Download Button */
+/* Download Button (Smaller) */
 .download-btn-pulse {
     width: 160px !important;
-    padding: 8px 10px !important;
+    padding: 8px !important;
     font-size: 0.8rem !important;
     background: transparent !important;
     border: 1px solid #ff3344 !important;
     color: #ff3344 !important;
     cursor: pointer !important;
-    text-align: center !important;
-    margin-top: 5px !important;
+    margin: 5px auto 0 auto !important;
+    display: block !important;
 }
+
+/* Kill any extra containers that might exist */
+.modal-img-container, .controller-preview-placeholder {
+    display: none !important;
+}
+
 .modal-active-bg { filter: blur(8px); transition: filter 0.3s ease; }
