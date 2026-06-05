@@ -111,16 +111,20 @@
         </section>
     </main>
 
-    <div id="controller-modal" class="modal-overlay">
-        <div class="modal-card">
-            <span class="back-arrow" onclick="closeModal()">&#8592;</span>
-            <img id="modal-img-display" src="" alt="Controller Preview">
-            <div class="modal-info">
-                <h3>Download your FREE Controller!</h3>
-                <button class="pulse-btn" onclick="downloadController()">DOWNLOAD NOW</button>
-            </div>
+   <!-- Modal Structure -->
+<div id="controller-modal" class="modal-overlay">
+    <div class="modal-card">
+        <span class="back-arrow" onclick="closeModal()">&#8592;</span>
+        <img id="modal-img-display" src="" alt="Controller Preview">
+        <div class="modal-info">
+            <h3>Download your FREE Controller!</h3>
+            <button class="pulse-btn" onclick="downloadController()">DOWNLOAD NOW</button>
+            
+            <!-- Added Logo Below -->
+            <img src="assets/images/logo.png" alt="Customs4Daez Logo" class="modal-logo">
         </div>
     </div>
+</div>
 
     <script>
         // Color Swapping
