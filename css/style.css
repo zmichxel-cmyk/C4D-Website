@@ -346,3 +346,13 @@ h1, h2 {
     color: #000;
     animation: none; 
 }
+
+/* --- Modal Logo Style --- */
+.modal-logo {
+    width: 150px; 
+    margin-top: 20px; 
+    display: block; 
+    margin-left: auto; 
+    margin-right: auto; 
+    opacity: 0.8;
+}
