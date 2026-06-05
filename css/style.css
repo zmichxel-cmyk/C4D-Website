@@ -270,7 +270,7 @@ h1, h2 {
     font-weight: bold; 
     
     /* Updated styling */
-    width: 80%;           /* Reduces the width to 80% of the container */
+    width: 60%;           /* Reduces the width to 80% of the container */
     margin: 0 auto;       /* Centers the button horizontally */
     display: block;       /* Required for auto margins to center the button */
     
