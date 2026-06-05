@@ -227,23 +227,35 @@ h1, h2 {
 .modal-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 30px;
+    padding: 0; /* Removed padding */
     border-radius: 12px;
     width: 90%; max-width: 400px;
     text-align: center;
     position: relative;
     transform: scale(0.8);
     transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
 }
 .modal-overlay.show .modal-card { transform: scale(1); }
 
 .back-arrow {
     position: absolute; top: 15px; left: 15px; font-size: 1.5rem;
     color: var(--text-main); cursor: pointer; transition: color 0.2s;
+    z-index: 10;
 }
 .back-arrow:hover { color: var(--accent-color); }
 
-#modal-img-display { width: 100%; margin-bottom: 20px; border-radius: 8px; }
+#modal-img-display { width: 100%; display: block; }
+
+.modal-logo {
+    width: 120px; 
+    margin: 10px auto; 
+    display: block;
+}
+
+.modal-info {
+    padding: 10px 20px 20px 20px; /* Padding moved here */
+}
 
 .modal-info h3 { margin-bottom: 20px; color: var(--text-main); }
 
@@ -252,6 +264,12 @@ h1, h2 {
     color: var(--accent-color); padding: 12px 24px; cursor: pointer;
     text-transform: uppercase; font-weight: bold; width: 100%;
     animation: pulse-red 2s infinite; border-radius: 4px;
+}
+
+.pulse-btn:hover {
+    background: var(--accent-color);
+    color: #000;
+    animation: none; 
 }
 
 /* --- Effects --- */
@@ -339,20 +357,3 @@ h1, h2 {
 .platform-section .color-selector { display: flex; gap: 10px; margin: 15px 0; justify-content: center; }
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
-
-/* Add this to the bottom of style.css */
-.pulse-btn:hover {
-    background: var(--accent-color);
-    color: #000;
-    animation: none; 
-}
-
-/* --- Modal Logo Style --- */
-.modal-logo {
-    width: 150px; 
-    margin-top: 20px; 
-    display: block; 
-    margin-left: auto; 
-    margin-right: auto; 
-    opacity: 0.8;
-}
