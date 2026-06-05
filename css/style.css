@@ -249,7 +249,7 @@ h1, h2 {
 
 .modal-logo {
     width: 120px; 
-    margin: 0px auto; 
+    margin: 5px auto; 
     display: block;
 }
 
@@ -358,20 +358,22 @@ h1, h2 {
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
 
-/* --- Black Preview Box --- */
+/* --- Updated Black Preview Box --- */
 .modal-preview-box {
     width: 100%;
-    background: #000; /* The black background */
+    height: 250px; /* This forces the box to be the size you want */
+    background: #000;
     display: flex;
     justify-content: center;
     align-items: center;
-    padding: 15px; /* Matches the spacing seen in image_cf87ab.png */
-    border-bottom: 1px solid var(--border-color); /* Optional: adds a clean line */
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
 }
 
-/* Ensure the image scales correctly within the black box */
+/* Ensure the image fills the space but maintains its aspect ratio */
 #modal-img-display { 
     width: 100%; 
-    height: auto;
+    height: 100%; /* Ensures the image fills the 250px height */
+    object-fit: contain; /* Keeps the controller from looking stretched */
     display: block; 
 }
