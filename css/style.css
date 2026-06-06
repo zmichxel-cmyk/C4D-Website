@@ -389,24 +389,30 @@ h1, h2 {
     display: block; 
 }
 
-/* --- FIXED Mobile Layout Fixes --- */
-@media (max-width: 900px) {
-    /* 1. Fix the Nav Bar: Keep it in a row */
-    .main-nav {
-        flex-direction: row !important; /* Overrides the column rule */
-        justify-content: space-between !important;
-        padding: 10px 15px !important;
-    }
-    
-    /* Optional: Shrink nav links slightly if they get too crowded */
-    .main-nav nav a {
-        margin-left: 10px !important;
-        font-size: 0.85rem;
+/* --- Aggressive Mobile Shrink --- */
+@media (max-width: 600px) {
+    /* 1. Shrink Nav links so they don't wrap */
+    .main-nav { padding: 10px !important; }
+    .main-nav nav a { 
+        margin-left: 5px !important; 
+        font-size: 0.7rem !important; 
+        padding: 4px 8px !important; 
     }
 
-    /* 2. Fix the Text Overlap: Reset the negative margin */
-    .hero p {
-        margin-top: 20px !important; /* Moves the text below the logo */
-        margin-bottom: 30px !important;
+    /* 2. Shrink the main logos */
+    .header-logo-img { max-width: 70% !important; }
+    
+    /* 3. Shrink Heading text */
+    h1, h2 { font-size: 1.4rem !important; margin-bottom: 10px !important; }
+    
+    /* 4. Shrink the 'Level Up' text and spacing */
+    .hero p { 
+        margin-top: 10px !important; 
+        margin-bottom: 20px !important; 
+        font-size: 0.9rem !important; 
     }
+
+    /* 5. Shrink the Step Cards */
+    .step-card { padding: 15px !important; width: 90% !important; }
+    .step-num { font-size: 2rem !important; }
 }
