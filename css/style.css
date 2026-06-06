@@ -390,34 +390,51 @@ h1, h2 {
 }
 
 @media (max-width: 600px) {
-    /* 1. Tighten the space under the Pro-Grade logo */
+    /* 1. Navigation Fix: Force row layout and shrink items to fit */
+    .main-nav {
+        flex-direction: row !important;
+        padding: 5px !important;
+        gap: 5px !important;
+    }
+    .main-nav nav a {
+        margin-left: 2px !important;
+        font-size: 0.65rem !important; /* Smaller font to keep it on one line */
+        padding: 2px 4px !important;
+    }
+
+    /* 2. Hero Text: Limit width and position tighter to logo */
     .hero p {
-        margin-top: 10px !important; /* Reduced from 40px */
-        margin-bottom: 20px !important;
-        font-size: 0.8rem !important; /* Smaller description text */
+        margin-top: 5px !important;
+        margin-bottom: 15px !important;
+        font-size: 0.75rem !important;
+        max-width: 280px !important; /* Restricts width so it isn't too wide */
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 
-    /* 2. Shrink the 'LEVEL UP' heading size significantly */
+    /* 3. Headings: Shrink to prevent wrapping */
     h1, h2 {
-        font-size: 1.1rem !important; /* Much smaller to fit mobile */
-        margin-bottom: 10px !important;
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
     }
 
-    /* 3. Reduce overall section padding to remove the large gaps */
-    .steps-container {
-        padding: 10px 20px !important;
-    }
-
-    /* 4. Shrink the Video Banner */
+    /* 4. Video Banner: Shrink height */
     .banner-video-container {
-        height: 120px !important; /* Even smaller video height */
-        width: 80% !important;
+        height: 100px !important;
+        width: 85% !important;
     }
 
-    /* 5. Shrink Step Cards */
+    /* 5. Step Cards: Make them much smaller */
     .step-card {
-        width: 70% !important;
-        padding: 8px !important;
+        width: 50% !important;     /* Much narrower */
+        padding: 5px !important;   /* Less internal space */
         margin: 5px auto !important;
+    }
+    .step-num { 
+        font-size: 1.1rem !important; /* Smaller step number */
+        margin-bottom: 0 !important;
+    }
+    .step-card p {
+        font-size: 0.7rem !important; /* Smaller text inside cards */
     }
 }
