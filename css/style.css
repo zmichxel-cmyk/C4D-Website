@@ -146,45 +146,50 @@ h1, h2 {
     pointer-events: none;
 }
 
-/* --- 3-Step Section & Staggered Animation --- */
+/* --- Optimized 3-Step Section --- */
 .steps-container { 
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 40px 20px; 
+    padding: 60px 20px; /* Increased top/bottom padding */
     background: transparent !important; 
 }
 
 .steps-grid { 
-    display: grid; 
-    grid-template-columns: repeat(auto-fit, 400px); /* Expanded for bigger cards */
-    justify-content: center; /* Robust centering */
-    justify-items: center;   /* Centers cards in their grid cells */
-    gap: 60px;               /* Increased spacing between cards */
-    margin: 20px auto; 
-    max-width: 1400px;
+    display: flex; 
+    flex-direction: column; /* Forces vertical stack */
+    align-items: center;    /* Ensures they stay centered */
     width: 100%;
+    max-width: 800px;       /* Constrains total width */
 }
 
 .step-card {
     display: flex;             
     align-items: flex-start;   
-    gap: 25px;                 
+    gap: 30px;                 
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 40px;            /* Increased padding for larger size */
-    border-radius: 12px;
-    width: 400px;             /* Bigger width */
+    padding: 50px;            /* More internal space */
+    border-radius: 16px;
+    width: 100%;              /* Responsive width */
+    max-width: 600px;         /* Specific size limit */
     text-align: left; 
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
-    margin: 0 auto;
+    
+    /* The Fix for your spacing issue */
+    margin-bottom: 50px !important; 
+}
+
+/* Ensure the last card doesn't have a massive bottom margin */
+.step-card:last-child {
+    margin-bottom: 0 !important;
 }
 
 .step-side-num {
-    font-size: 4rem;
+    font-size: 5rem; /* Bigger number */
     font-weight: 900;
     line-height: 1;
     flex-shrink: 0;
@@ -193,8 +198,8 @@ h1, h2 {
     -webkit-text-fill-color: transparent;
 }
 
-.step-text h3 { color: #fff; margin-bottom: 5px; font-size: 1.25rem; }
-.step-text p { color: var(--text-muted); font-size: 1rem; }
+.step-text h3 { color: #fff; margin-bottom: 10px; font-size: 1.5rem; }
+.step-text p { color: var(--text-muted); font-size: 1.1rem; line-height: 1.5; }
 
 .step-1 { animation-delay: 0s; } 
 .step-2 { animation-delay: 1s; } 
