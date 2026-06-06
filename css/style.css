@@ -412,7 +412,16 @@ h1, h2 {
         font-size: 0.9rem !important; 
     }
 
-    /* 5. Shrink the Step Cards */
-    .step-card { padding: 15px !important; width: 90% !important; }
-    .step-num { font-size: 2rem !important; }
+  @media (max-width: 600px) {
+    /* 1. Shrink the Video Banner */
+    .banner-video-container {
+        height: 180px !important; /* Reduced from 250px to fit better */
+        width: 85% !important;
+    }
+
+    /* 2. Shrink the Step Cards */
+    .step-card {
+        width: 85% !important; /* Forces them to stay within mobile screen bounds */
+        padding: 15px !important;
+    }
 }
