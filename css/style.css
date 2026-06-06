@@ -146,39 +146,43 @@ h1, h2 {
     pointer-events: none;
 }
 
-/* --- 3-Step Section Centering Fix --- */
+/* --- 3-Step Section & Staggered Animation --- */
 .steps-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
     width: 100%;
     padding: 40px 20px; 
     background: transparent !important; 
-    text-align: center; /* This forces the inline-grid to center */
 }
 
 .steps-grid { 
-    display: inline-grid; /* Inline-grid centers the entire block */
-    grid-template-columns: repeat(auto-fit, 320px); /* Forces items to stay 320px wide */
-    justify-content: center; /* Centers the columns within the grid */
-    gap: 30px; 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, 400px); /* Expanded for bigger cards */
+    justify-content: center; /* Robust centering */
+    justify-items: center;   /* Centers cards in their grid cells */
+    gap: 60px;               /* Increased spacing between cards */
     margin: 20px auto; 
-    max-width: 1200px;
+    max-width: 1400px;
     width: 100%;
 }
 
 .step-card {
     display: flex;             
     align-items: flex-start;   
-    gap: 20px;                 
+    gap: 25px;                 
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 30px;
-    border-radius: 8px;
-    width: 320px;              
+    padding: 40px;            /* Increased padding for larger size */
+    border-radius: 12px;
+    width: 400px;             /* Bigger width */
     text-align: left; 
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
-    margin: 0 auto; /* Added extra security to center individual cards */
+    margin: 0 auto;
 }
+
 .step-side-num {
     font-size: 4rem;
     font-weight: 900;
@@ -189,8 +193,8 @@ h1, h2 {
     -webkit-text-fill-color: transparent;
 }
 
-.step-text h3 { color: #fff; margin-bottom: 5px; }
-.step-text p { color: var(--text-muted); font-size: 0.9rem; }
+.step-text h3 { color: #fff; margin-bottom: 5px; font-size: 1.25rem; }
+.step-text p { color: var(--text-muted); font-size: 1rem; }
 
 .step-1 { animation-delay: 0s; } 
 .step-2 { animation-delay: 1s; } 
