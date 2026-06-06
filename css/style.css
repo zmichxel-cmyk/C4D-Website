@@ -145,13 +145,35 @@ h1, h2 {
 /* --- 3-Step Section & Staggered Animation --- */
 .steps-container { padding: 40px 20px; background: transparent !important; }
 .steps-grid { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
+/* 1. Update the card container */
 .step-card {
-    background: var(--bg-card); border: 1px solid var(--border-color); padding: 30px; border-radius: 8px; width: 300px;
-    text-align: center; opacity: 0; animation: fadeIn 9s infinite;
+    position: relative; /* This keeps the number attached to the card */
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 9s infinite;
+    /* Add this to make room for the side number if it clips */
+    margin-left: 40px !important; 
 }
 .step-1 { animation-delay: 0s; } .step-2 { animation-delay: 1s; } .step-3 { animation-delay: 2s; }
-.step-num { display: block; font-size: 3rem; font-weight: 900; color: var(--accent-color); margin-bottom: 10px; }
-
+/* 1. Update the card container */
+.step-card {
+    position: relative; /* This keeps the number attached to the card */
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 30px;
+    border-radius: 8px;
+    width: 300px;
+    text-align: center;
+    opacity: 0;
+    animation: fadeIn 9s infinite;
+    /* Add this to make room for the side number if it clips */
+    margin-left: 40px !important; 
+}
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
     10% { opacity: 1; transform: translateY(0); }
