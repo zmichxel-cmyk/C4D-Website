@@ -391,6 +391,11 @@ h1, h2 {
 
 /* --- Aggressive Mobile Shrink --- */
 @media (max-width: 600px) {
+    .hero p {
+        margin-top: 40px !important; /* Pushes text below the image */
+        margin-bottom: 20px !important;
+        font-size: 0.85rem !important; /* Slightly smaller text for better fit */
+    }
     /* 1. Shrink Nav links so they don't wrap */
     .main-nav { padding: 10px !important; }
     .main-nav nav a { 
