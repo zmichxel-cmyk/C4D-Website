@@ -389,7 +389,15 @@ h1, h2 {
     display: block; 
 }
 
+/* --- Aggressive Mobile Shrink --- */
 @media (max-width: 600px) {
+    /* 1. Shrink Nav links so they don't wrap */
+    .main-nav { padding: 10px !important; }
+    .main-nav nav a { 
+        margin-left: 5px !important; 
+        font-size: 0.7rem !important; 
+        padding: 4px 8px !important; 
+    }
     /* 1. Shrink the Video Banner even further */
     .banner-video-container {
         height: 140px !important; /* Made significantly shorter */
