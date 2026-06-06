@@ -150,18 +150,20 @@ h1, h2 {
 .steps-container { 
     display: flex;
     flex-direction: column;
-    align-items: center; /* Centering the grid horizontally */
+    align-items: center;
+    width: 100%;
     padding: 40px 20px; 
     background: transparent !important; 
 }
 
 .steps-grid { 
     display: flex; 
-    justify-content: center; /* Centering items within the grid */
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
     align-items: center;
     gap: 30px; 
-    margin: 20px auto; 
-    flex-wrap: wrap; 
+    margin: 0 auto;
     max-width: 1200px;
     width: 100%;
 }
