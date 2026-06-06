@@ -420,10 +420,10 @@ h1, h2 {
         margin-top: -10px !important; 
         margin-bottom: 15px !important;
         font-size: 0.8rem !important;
-        width: 90% !important; /* Ensures it spans the width */
+        width: 90% !important;
         margin-left: auto !important;
         margin-right: auto !important;
-        text-align: center !important; /* Force center alignment */
+        text-align: center !important;
     }
 
     /* 3. Headings: Force center alignment */
@@ -431,7 +431,7 @@ h1, h2 {
         font-size: 1rem !important;
         margin-bottom: 8px !important;
         width: 100% !important;
-        text-align: center !important; /* Force center alignment */
+        text-align: center !important;
     }
 
     /* 4. Video Banner */
@@ -452,5 +452,11 @@ h1, h2 {
     }
     .step-card p {
         font-size: 0.85rem !important;
+    }
+
+    /* 6. Button: Reduced size for mobile */
+    .btn-primary {
+        padding: 8px 16px !important;
+        font-size: 0.8rem !important;
     }
 }
