@@ -146,54 +146,57 @@ h1, h2 {
     pointer-events: none;
 }
 
-/* --- Optimized 3-Step Section (Simplified) --- */
+/* --- Definitive Step-by-Step Layout --- */
+
+/* The main container holding the cards */
 .steps-container { 
+    width: 100%;
     display: flex;
     flex-direction: column;
     align-items: center;
-    width: 100%;
-    padding: 60px 20px; 
-    background: transparent;
+    padding: 60px 20px !important;
+    background: transparent !important;
 }
 
+/* The wrapper to limit how wide the cards can get */
 .steps-grid { 
     display: flex; 
-    flex-direction: column; 
-    align-items: center;
+    flex-direction: column;
+    align-items: center; /* Forces cards to center */
     width: 100%;
-    max-width: 600px; /* Controls total width of the stack */
-    gap: 50px;        /* Controls spacing between cards */
+    max-width: 650px;    /* Constrains the cards to a nice readable size */
 }
 
+/* The card itself */
 .step-card {
-    display: flex;             
-    align-items: flex-start;   
-    gap: 30px;                 
+    display: flex;
+    align-items: center;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 40px;            /* Size of the card */
+    padding: 40px !important; /* Plenty of breathing room inside */
     border-radius: 16px;
-    width: 100%;              /* Expands to fit the 600px grid limit */
-    text-align: left; 
-    opacity: 0;
-    animation: fadeIn 9s infinite;
-    position: relative;
-    /* Removed margin-bottom hacks to let the 'gap' property handle spacing */
+    width: 100% !important;   /* Fills the 650px container */
+    margin-bottom: 40px !important; /* Force space between cards */
+    opacity: 1 !important;    /* Ensured visibility */
 }
 
-/* Ensure consistent text size */
+/* Cleanup for the last card so it doesn't have extra bottom margin */
+.step-card:last-child {
+    margin-bottom: 0 !important;
+}
+
+/* Adjustments to make elements inside the card look good */
 .step-side-num {
     font-size: 4rem;
     font-weight: 900;
-    line-height: 1;
-    flex-shrink: 0;
+    margin-right: 30px; /* Space between number and text */
     background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.step-text h3 { color: #fff; margin-bottom: 10px; font-size: 1.4rem; }
-.step-text p { color: var(--text-muted); font-size: 1rem; line-height: 1.5; }
+.step-text h3 { color: #fff; margin-bottom: 8px; font-size: 1.5rem; }
+.step-text p { color: var(--text-muted); font-size: 1.1rem; }
 
 .step-1 { animation-delay: 0s; } 
 .step-2 { animation-delay: 1s; } 
