@@ -390,7 +390,7 @@ h1, h2 {
 }
 
 @media (max-width: 600px) {
-    /* 1. Navigation Fix: Stack logo and nav links, center them */
+    /* 1. Navigation Fix */
     .main-nav {
         flex-direction: column !important;
         padding: 15px 10px !important;
@@ -415,32 +415,32 @@ h1, h2 {
         margin-bottom: 5px !important;
     }
 
-    /* Hero Text: Pulled up closer to logo and text width constrained */
+    /* Centering the hero text and pulling it up */
     .hero p {
-        margin-top: -10px !important; /* Negative margin pulls it up */
+        margin-top: -10px !important; 
         margin-bottom: 15px !important;
         font-size: 0.8rem !important;
-        max-width: 280px !important;
+        width: 90% !important; /* Ensures it spans the width */
         margin-left: auto !important;
         margin-right: auto !important;
+        text-align: center !important; /* Force center alignment */
     }
 
-    /* 3. Headings: Shrink and constrain width to prevent excessive stretching */
+    /* 3. Headings: Force center alignment */
     h1, h2 {
         font-size: 1rem !important;
         margin-bottom: 8px !important;
-        max-width: 90% !important; /* Constrains width */
-        margin-left: auto !important;
-        margin-right: auto !important;
+        width: 100% !important;
+        text-align: center !important; /* Force center alignment */
     }
 
-    /* 4. Video Banner: Height increased */
+    /* 4. Video Banner */
     .banner-video-container {
         height: 150px !important; 
         width: 85% !important;
     }
 
-    /* 5. Step Cards: Width set to 85% */
+    /* 5. Step Cards */
     .step-card {
         width: 85% !important;
         padding: 15px !important;
