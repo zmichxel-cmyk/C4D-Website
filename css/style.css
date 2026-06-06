@@ -392,21 +392,21 @@ h1, h2 {
 @media (max-width: 600px) {
     /* 1. Navigation Fix: Stack logo and nav links, center them */
     .main-nav {
-        flex-direction: column !important; /* Stacks logo above links */
+        flex-direction: column !important;
         padding: 15px 10px !important;
         gap: 10px !important;
-        align-items: center !important; /* Centers logo horizontally */
+        align-items: center !important;
     }
 
     .main-nav nav {
         display: flex !important;
-        flex-direction: row !important; /* Keeps links in a single line */
-        justify-content: center !important; /* Centers the links */
+        flex-direction: row !important;
+        justify-content: center !important;
         width: 100%;
     }
 
     .main-nav nav a {
-        margin: 0 10px !important; /* Even spacing for links */
+        margin: 0 10px !important;
         font-size: 0.8rem !important;
     }
 
@@ -415,31 +415,35 @@ h1, h2 {
         margin-bottom: 5px !important;
     }
 
+    /* Hero Text: Pulled up closer to logo and text width constrained */
     .hero p {
-        margin-top: 5px !important;
+        margin-top: -10px !important; /* Negative margin pulls it up */
         margin-bottom: 15px !important;
         font-size: 0.8rem !important;
-        max-width: 300px !important;
+        max-width: 280px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
 
-    /* 3. Headings: Shrink to prevent wrapping */
+    /* 3. Headings: Shrink and constrain width to prevent excessive stretching */
     h1, h2 {
         font-size: 1rem !important;
         margin-bottom: 8px !important;
+        max-width: 90% !important; /* Constrains width */
+        margin-left: auto !important;
+        margin-right: auto !important;
     }
 
-   /* 4. Video Banner: Increased slightly */
+    /* 4. Video Banner: Height increased */
     .banner-video-container {
-        height: 150px !important; /* Bumped up from 120px */
+        height: 150px !important; 
         width: 85% !important;
     }
 
-    /* 5. Step Cards: Increased width to 85% */
+    /* 5. Step Cards: Width set to 85% */
     .step-card {
-        width: 85% !important;     /* Much better presence on mobile */
-        padding: 15px !important;  /* Added breathing room */
+        width: 85% !important;
+        padding: 15px !important;
         margin: 10px auto !important;
     }
     .step-num { 
