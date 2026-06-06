@@ -389,37 +389,24 @@ h1, h2 {
     display: block; 
 }
 
-/* --- Modal Description Section --- */
-.modal-desc {
-    padding: 0 20px 15px 20px; /* Padding for readability */
-    color: var(--text-muted);  /* Muted color to differentiate from headline */
-    font-size: 0.9rem;
-    text-align: center;
-    line-height: 1.4;
-}
-
-#modal-description {
-    /* If you want to limit the text width so it doesn't hit the edges */
-    max-width: 90%;
-    margin: 0 auto;
-}
-/* --- Mobile Layout Fixes --- */
-@media (max-width: 768px) {
+/* --- FIXED Mobile Layout Fixes --- */
+@media (max-width: 900px) {
+    /* 1. Fix the Nav Bar: Keep it in a row */
+    .main-nav {
+        flex-direction: row !important; /* Overrides the column rule */
+        justify-content: space-between !important;
+        padding: 10px 15px !important;
+    }
     
-    /* 1. Force the Nav Bar into a single line */
-    .nav-links {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center;
-        gap: 20px; /* Adds space between Showroom and Free Overlays */
-        width: 100%;
-        margin-bottom: 10px;
+    /* Optional: Shrink nav links slightly if they get too crowded */
+    .main-nav nav a {
+        margin-left: 10px !important;
+        font-size: 0.85rem;
     }
 
-    /* 2. Lower the text underneath the PRO-GRADE logo */
-    .hero-paragraph {
-        margin-top: 100px; /* Adjust this value until it clears the logo */
-        position: relative; /* Ensure it stays in the flow of the document */
-        padding: 0 15px;
+    /* 2. Fix the Text Overlap: Reset the negative margin */
+    .hero p {
+        margin-top: 20px !important; /* Moves the text below the logo */
+        margin-bottom: 30px !important;
     }
 }
