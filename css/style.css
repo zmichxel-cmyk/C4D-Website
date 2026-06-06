@@ -430,9 +430,9 @@ h1, h2 {
         margin-bottom: 8px !important;
     }
 
-    /* 4. Video Banner */
+   /* 4. Video Banner: Increased slightly */
     .banner-video-container {
-        height: 120px !important;
+        height: 150px !important; /* Bumped up from 120px */
         width: 85% !important;
     }
 
