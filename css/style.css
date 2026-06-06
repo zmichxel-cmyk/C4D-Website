@@ -390,29 +390,36 @@ h1, h2 {
 }
 
 @media (max-width: 600px) {
-    /* 1. Navigation Fix: Force row layout and shrink items to fit */
+    /* 1. Navigation Fix: Stack logo and nav links, center them */
     .main-nav {
-        flex-direction: row !important;
-        padding: 5px !important;
-        gap: 5px !important;
+        flex-direction: column !important; /* Stacks logo above links */
+        padding: 15px 10px !important;
+        gap: 10px !important;
+        align-items: center !important; /* Centers logo horizontally */
     }
+
+    .main-nav nav {
+        display: flex !important;
+        flex-direction: row !important; /* Keeps links in a single line */
+        justify-content: center !important; /* Centers the links */
+        width: 100%;
+    }
+
     .main-nav nav a {
-        margin-left: 2px !important;
-        font-size: 0.65rem !important; /* Smaller font to keep it on one line */
-        padding: 2px 4px !important;
+        margin: 0 10px !important; /* Even spacing for links */
+        font-size: 0.8rem !important;
     }
 
-   /* 1. Reduce the gap under the logo image */
+    /* 2. Header Gap & Hero Text */
     .header-img-container {
-        margin-bottom: 5px !important; /* Drastically reduces the gap */
+        margin-bottom: 5px !important;
     }
 
-    /* 2. Remove top margin from the text so it sits right under the logo */
     .hero p {
         margin-top: 5px !important;
         margin-bottom: 15px !important;
-        font-size: 0.75rem !important;
-        max-width: 280px !important;
+        font-size: 0.8rem !important;
+        max-width: 300px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
@@ -423,23 +430,23 @@ h1, h2 {
         margin-bottom: 8px !important;
     }
 
-    /* 4. Video Banner: Shrink height */
+    /* 4. Video Banner */
     .banner-video-container {
-        height: 100px !important;
+        height: 120px !important;
         width: 85% !important;
     }
 
-    /* 5. Step Cards: Make them much smaller */
+    /* 5. Step Cards: Increased width to 85% */
     .step-card {
-        width: 50% !important;     /* Much narrower */
-        padding: 5px !important;   /* Less internal space */
-        margin: 5px auto !important;
+        width: 85% !important;     /* Much better presence on mobile */
+        padding: 15px !important;  /* Added breathing room */
+        margin: 10px auto !important;
     }
     .step-num { 
-        font-size: 1.1rem !important; /* Smaller step number */
-        margin-bottom: 0 !important;
+        font-size: 1.5rem !important; 
+        margin-bottom: 5px !important;
     }
     .step-card p {
-        font-size: 0.7rem !important; /* Smaller text inside cards */
+        font-size: 0.85rem !important;
     }
 }
