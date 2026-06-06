@@ -402,12 +402,17 @@ h1, h2 {
         padding: 2px 4px !important;
     }
 
-    /* 2. Hero Text: Limit width and position tighter to logo */
+   /* 1. Reduce the gap under the logo image */
+    .header-img-container {
+        margin-bottom: 5px !important; /* Drastically reduces the gap */
+    }
+
+    /* 2. Remove top margin from the text so it sits right under the logo */
     .hero p {
         margin-top: 5px !important;
         margin-bottom: 15px !important;
         font-size: 0.75rem !important;
-        max-width: 280px !important; /* Restricts width so it isn't too wide */
+        max-width: 280px !important;
         margin-left: auto !important;
         margin-right: auto !important;
     }
