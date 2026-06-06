@@ -15,9 +15,6 @@ html, body {
     min-height: 100vh;
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;
-}
-
-body {
     background-color: var(--bg-dark);
     color: var(--text-main);
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
@@ -144,24 +141,27 @@ h1, h2 {
 
 /* --- 3-Step Section & Staggered Animation --- */
 .steps-container { padding: 40px 20px; background: transparent !important; }
-/* --- 3-Step Section Cards --- */
+
 .steps-grid { 
     display: flex; 
-    justify-content: center; 
+    justify-content: center; /* Centering the grid items */
+    align-items: stretch;
     gap: 30px; 
-    margin-top: 20px; 
+    margin: 20px auto; /* Centering the grid container itself */
     flex-wrap: wrap; 
+    max-width: 1200px;
 }
 
 .step-card {
-    display: flex;             /* Aligns number and text side-by-side */
-    align-items: flex-start;   /* Keeps number at the top */
-    gap: 20px;                 /* Space between number and text */
+    display: flex;             
+    align-items: flex-start;   
+    gap: 20px;                 
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 20px;
+    padding: 30px;
     border-radius: 8px;
-    width: 320px;              /* Width of the card */
+    width: 320px;              
+    text-align: left; /* Aligns text left */
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
@@ -172,23 +172,18 @@ h1, h2 {
     font-weight: 900;
     line-height: 1;
     flex-shrink: 0;
-    
-    /* The Fade Effect: Solid at top, transparent at bottom */
     background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
 
-.step-text {
-    text-align: left; /* Keeps text aligned left */
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    height: 100%;
-}
-
 .step-text h3 { color: #fff; margin-bottom: 5px; }
 .step-text p { color: var(--text-muted); font-size: 0.9rem; }
+
+.step-1 { animation-delay: 0s; } 
+.step-2 { animation-delay: 1s; } 
+.step-3 { animation-delay: 2s; }
+
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
     10% { opacity: 1; transform: translateY(0); }
@@ -267,7 +262,7 @@ h1, h2 {
     padding: 0; 
     border-radius: 12px;
     width: 90%; 
-    max-width: 500px; /* Increased from 400px */
+    max-width: 500px;
     text-align: center;
     position: relative;
     transform: scale(0.8);
@@ -286,13 +281,13 @@ h1, h2 {
 #modal-img-display { width: 100%; display: block; }
 
 .modal-logo {
-    width: 150px; /* Increased from 120px */
+    width: 150px; 
     margin: 15px auto 10px auto; 
     display: block;
 }
 
 .modal-info {
-    padding: 10px 20px 20px 20px; /* Padding moved here */
+    padding: 10px 20px 20px 20px; 
 }
 
 .modal-info h3 { margin-bottom: 20px; color: var(--text-main); }
@@ -306,10 +301,9 @@ h1, h2 {
     text-transform: uppercase; 
     font-weight: bold; 
     
-    /* Updated styling */
-    width: 60%;           /* Reduces the width to 80% of the container */
-    margin: 0 auto;       /* Centers the button horizontally */
-    display: block;       /* Required for auto margins to center the button */
+    width: 60%;          
+    margin: 0 auto;       
+    display: block;       
     
     animation: pulse-red 2s infinite; 
     border-radius: 4px;
@@ -409,7 +403,7 @@ h1, h2 {
 
 .modal-preview-box {
     width: 100%;
-    height: 300px; /* Increased from 250px */
+    height: 300px; 
     background: #000;
     display: flex;
     justify-content: center;
@@ -418,16 +412,14 @@ h1, h2 {
     border-bottom: 1px solid var(--border-color);
 }
 
-/* Ensure the image fills the space but maintains its aspect ratio */
 #modal-img-display { 
     width: 100%; 
-    height: 100%; /* Ensures the image fills the 250px height */
-    object-fit: contain; /* Keeps the controller from looking stretched */
+    height: 100%; 
+    object-fit: contain; 
     display: block; 
 }
 
 @media (max-width: 600px) {
-    /* 1. Navigation Fix */
     .main-nav {
         flex-direction: column !important;
         padding: 15px 10px !important;
@@ -447,12 +439,6 @@ h1, h2 {
         font-size: 0.8rem !important;
     }
 
-    /* 2. Header Gap & Hero Text */
-    .header-img-container {
-        margin-bottom: 5px !important;
-    }
-
-    /* Centering the hero text and pulling it up */
     .hero p {
         margin-top: -10px !important; 
         margin-bottom: 15px !important;
@@ -463,7 +449,6 @@ h1, h2 {
         text-align: center !important;
     }
 
-    /* 3. Headings: Force center alignment */
     h1, h2 {
         font-size: 1rem !important;
         margin-bottom: 8px !important;
@@ -471,27 +456,26 @@ h1, h2 {
         text-align: center !important;
     }
 
-    /* 4. Video Banner */
     .banner-video-container {
         height: 150px !important; 
         width: 85% !important;
     }
 
-    /* 5. Step Cards */
+    .steps-grid { gap: 15px !important; }
+    
     .step-card {
-        width: 85% !important;
+        width: 90% !important;
         padding: 15px !important;
         margin: 10px auto !important;
     }
-    .step-num { 
-        font-size: 1.5rem !important; 
+    .step-side-num { 
+        font-size: 2.5rem !important; 
         margin-bottom: 5px !important;
     }
-    .step-card p {
+    .step-text p {
         font-size: 0.85rem !important;
     }
 
-    /* 6. Button: Reduced size for mobile */
     .btn-primary {
         padding: 8px 16px !important;
         font-size: 0.8rem !important;
