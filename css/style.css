@@ -180,7 +180,7 @@ h1, h2 {
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
-    margin: 0 auto;
+    margin-bottom: 25px !important; /* Adjust this number to change the space size */
 }
 
 .step-side-num {
