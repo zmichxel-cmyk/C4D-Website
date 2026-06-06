@@ -389,41 +389,35 @@ h1, h2 {
     display: block; 
 }
 
-/* --- Aggressive Mobile Shrink --- */
 @media (max-width: 600px) {
+    /* 1. Tighten the space under the Pro-Grade logo */
     .hero p {
-        margin-top: 40px !important; /* Pushes text below the image */
+        margin-top: 10px !important; /* Reduced from 40px */
         margin-bottom: 20px !important;
-        font-size: 0.85rem !important; /* Slightly smaller text for better fit */
+        font-size: 0.8rem !important; /* Smaller description text */
     }
-    /* 1. Shrink Nav links so they don't wrap */
-    .main-nav { padding: 10px !important; }
-    .main-nav nav a { 
-        margin-left: 5px !important; 
-        font-size: 0.7rem !important; 
-        padding: 4px 8px !important; 
+
+    /* 2. Shrink the 'LEVEL UP' heading size significantly */
+    h1, h2 {
+        font-size: 1.1rem !important; /* Much smaller to fit mobile */
+        margin-bottom: 10px !important;
     }
-    /* 1. Shrink the Video Banner even further */
+
+    /* 3. Reduce overall section padding to remove the large gaps */
+    .steps-container {
+        padding: 10px 20px !important;
+    }
+
+    /* 4. Shrink the Video Banner */
     .banner-video-container {
-        height: 140px !important; /* Made significantly shorter */
+        height: 120px !important; /* Even smaller video height */
         width: 80% !important;
     }
 
-    /* 2. Shrink Step Cards a lot more */
+    /* 5. Shrink Step Cards */
     .step-card {
-        width: 70% !important;    /* Tighter width */
-        padding: 10px !important; /* Less internal padding */
-        margin: 10px auto !important; /* Better vertical spacing */
-    }
-    
-    /* 3. Shrink the Step Numbers so the cards don't feel bulky */
-    .step-num { 
-        font-size: 1.5rem !important; 
-        margin-bottom: 5px !important;
-    }
-    
-    /* 4. Optional: Reduce the font inside the cards slightly for better fit */
-    .step-card p {
-        font-size: 0.85rem !important;
+        width: 70% !important;
+        padding: 8px !important;
+        margin: 5px auto !important;
     }
 }
