@@ -146,24 +146,20 @@ h1, h2 {
     pointer-events: none;
 }
 
-/* --- 3-Step Section & Staggered Animation --- */
+/* --- 3-Step Section Centering Fix --- */
 .steps-container { 
-    display: flex;
-    flex-direction: column;
-    align-items: center;
     width: 100%;
     padding: 40px 20px; 
     background: transparent !important; 
+    text-align: center; /* This forces the inline-grid to center */
 }
 
 .steps-grid { 
-    display: flex; 
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: center;
-    align-items: center;
+    display: inline-grid; /* Inline-grid centers the entire block */
+    grid-template-columns: repeat(auto-fit, 320px); /* Forces items to stay 320px wide */
+    justify-content: center; /* Centers the columns within the grid */
     gap: 30px; 
-    margin: 0 auto;
+    margin: 20px auto; 
     max-width: 1200px;
     width: 100%;
 }
@@ -181,8 +177,8 @@ h1, h2 {
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
+    margin: 0 auto; /* Added extra security to center individual cards */
 }
-
 .step-side-num {
     font-size: 4rem;
     font-weight: 900;
