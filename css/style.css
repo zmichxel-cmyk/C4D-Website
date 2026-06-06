@@ -146,57 +146,58 @@ h1, h2 {
     pointer-events: none;
 }
 
-/* --- Definitive Step-by-Step Layout --- */
+/* --- Corrected Step-Section Layout --- */
 
-/* The main container holding the cards */
-.steps-container { 
-    width: 100%;
+.steps-container {
     display: flex;
     flex-direction: column;
     align-items: center;
-    padding: 60px 20px !important;
-    background: transparent !important;
-}
-
-/* The wrapper to limit how wide the cards can get */
-.steps-grid { 
-    display: flex; 
-    flex-direction: column;
-    align-items: center; /* Forces cards to center */
     width: 100%;
-    max-width: 650px;    /* Constrains the cards to a nice readable size */
+    padding: 60px 20px;
+    background: transparent;
 }
 
-/* The card itself */
+/* This 'max-width' constraint fixes the "too wide" issue */
+.steps-grid {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    max-width: 600px; 
+    gap: 40px; /* Increased space between cards */
+    margin: 0 auto;
+}
+
 .step-card {
     display: flex;
-    align-items: center;
+    align-items: flex-start;
+    gap: 25px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 40px !important; /* Plenty of breathing room inside */
-    border-radius: 16px;
-    width: 100% !important;   /* Fills the 650px container */
-    margin-bottom: 40px !important; /* Force space between cards */
-    opacity: 1 !important;    /* Ensured visibility */
+    padding: 45px; /* Increased padding makes cards bigger */
+    border-radius: 12px;
+    width: 100%;
+    
+    /* Animation restored */
+    opacity: 0;
+    animation: fadeIn 1s ease-out forwards;
 }
 
-/* Cleanup for the last card so it doesn't have extra bottom margin */
-.step-card:last-child {
-    margin-bottom: 0 !important;
+/* Keyframes for the animation */
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
 }
 
-/* Adjustments to make elements inside the card look good */
+/* Styling for the numbers inside the cards */
 .step-side-num {
     font-size: 4rem;
     font-weight: 900;
-    margin-right: 30px; /* Space between number and text */
+    line-height: 1;
+    flex-shrink: 0;
     background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
 }
-
-.step-text h3 { color: #fff; margin-bottom: 8px; font-size: 1.5rem; }
-.step-text p { color: var(--text-muted); font-size: 1.1rem; }
 
 .step-1 { animation-delay: 0s; } 
 .step-2 { animation-delay: 1s; } 
