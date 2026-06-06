@@ -144,36 +144,51 @@ h1, h2 {
 
 /* --- 3-Step Section & Staggered Animation --- */
 .steps-container { padding: 40px 20px; background: transparent !important; }
-.steps-grid { display: flex; justify-content: center; gap: 30px; margin-top: 20px; flex-wrap: wrap; }
-/* 1. Update the card container */
+/* --- 3-Step Section Cards --- */
+.steps-grid { 
+    display: flex; 
+    justify-content: center; 
+    gap: 30px; 
+    margin-top: 20px; 
+    flex-wrap: wrap; 
+}
+
 .step-card {
-    position: relative; /* This keeps the number attached to the card */
+    display: flex;             /* Aligns number and text side-by-side */
+    align-items: flex-start;   /* Keeps number at the top */
+    gap: 20px;                 /* Space between number and text */
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 30px;
+    padding: 20px;
     border-radius: 8px;
-    width: 300px;
-    text-align: center;
+    width: 320px;              /* Width of the card */
     opacity: 0;
     animation: fadeIn 9s infinite;
-    /* Add this to make room for the side number if it clips */
-    margin-left: 40px !important; 
+    position: relative;
 }
-.step-1 { animation-delay: 0s; } .step-2 { animation-delay: 1s; } .step-3 { animation-delay: 2s; }
-/* 1. Update the card container */
-.step-card {
-    position: relative; /* This keeps the number attached to the card */
-    background: var(--bg-card);
-    border: 1px solid var(--border-color);
-    padding: 30px;
-    border-radius: 8px;
-    width: 300px;
-    text-align: center;
-    opacity: 0;
-    animation: fadeIn 9s infinite;
-    /* Add this to make room for the side number if it clips */
-    margin-left: 40px !important; 
+
+.step-side-num {
+    font-size: 4rem;
+    font-weight: 900;
+    line-height: 1;
+    flex-shrink: 0;
+    
+    /* The Fade Effect: Solid at top, transparent at bottom */
+    background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
 }
+
+.step-text {
+    text-align: left; /* Keeps text aligned left */
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+}
+
+.step-text h3 { color: #fff; margin-bottom: 5px; }
+.step-text p { color: var(--text-muted); font-size: 0.9rem; }
 @keyframes fadeIn {
     0% { opacity: 0; transform: translateY(20px); }
     10% { opacity: 1; transform: translateY(0); }
