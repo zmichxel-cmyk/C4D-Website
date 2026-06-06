@@ -389,39 +389,28 @@ h1, h2 {
     display: block; 
 }
 
-/* --- Aggressive Mobile Shrink --- */
 @media (max-width: 600px) {
-    /* 1. Shrink Nav links so they don't wrap */
-    .main-nav { padding: 10px !important; }
-    .main-nav nav a { 
-        margin-left: 5px !important; 
-        font-size: 0.7rem !important; 
-        padding: 4px 8px !important; 
-    }
-
-    /* 2. Shrink the main logos */
-    .header-logo-img { max-width: 70% !important; }
-    
-    /* 3. Shrink Heading text */
-    h1, h2 { font-size: 1.4rem !important; margin-bottom: 10px !important; }
-    
-    /* 4. Shrink the 'Level Up' text and spacing */
-    .hero p { 
-        margin-top: 10px !important; 
-        margin-bottom: 20px !important; 
-        font-size: 0.9rem !important; 
-    }
-
-  @media (max-width: 600px) {
-    /* 1. Shrink the Video Banner */
+    /* 1. Shrink the Video Banner even further */
     .banner-video-container {
-        height: 180px !important; /* Reduced from 250px to fit better */
-        width: 85% !important;
+        height: 140px !important; /* Made significantly shorter */
+        width: 80% !important;
     }
 
-    /* 2. Shrink the Step Cards */
+    /* 2. Shrink Step Cards a lot more */
     .step-card {
-        width: 85% !important; /* Forces them to stay within mobile screen bounds */
-        padding: 15px !important;
+        width: 70% !important;    /* Tighter width */
+        padding: 10px !important; /* Less internal padding */
+        margin: 10px auto !important; /* Better vertical spacing */
+    }
+    
+    /* 3. Shrink the Step Numbers so the cards don't feel bulky */
+    .step-num { 
+        font-size: 1.5rem !important; 
+        margin-bottom: 5px !important;
+    }
+    
+    /* 4. Optional: Reduce the font inside the cards slightly for better fit */
+    .step-card p {
+        font-size: 0.85rem !important;
     }
 }
