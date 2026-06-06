@@ -11,7 +11,11 @@
 
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
-html, body {
+html {
+    background-color: var(--bg-dark); /* Set base background early to prevent white flash */
+}
+
+body {
     min-height: 100vh;
     padding-bottom: 0 !important;
     margin-bottom: 0 !important;
@@ -21,6 +25,13 @@ html, body {
     line-height: 1.6;
     overflow-x: hidden;
     overflow-y: auto;
+    /* Smooth fade-in transition */
+    animation: fadeInPage 0.2s ease-in-out;
+}
+
+@keyframes fadeInPage {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
 }
 
 /* --- Layout --- */
