@@ -146,49 +146,47 @@ h1, h2 {
     pointer-events: none;
 }
 
-/* --- Corrected Step-Section Layout --- */
+/* --- Final Stable Layout --- */
 
+/* 1. Container: Aligns everything to the center */
 .steps-container {
     display: flex;
     flex-direction: column;
     align-items: center;
     width: 100%;
     padding: 60px 20px;
-    background: transparent;
 }
 
-/* This 'max-width' constraint fixes the "too wide" issue */
+/* 2. Grid Wrapper: Limits width to stop "too wide" issue */
 .steps-grid {
     display: flex;
     flex-direction: column;
-    width: 100%;
-    max-width: 600px; 
-    gap: 40px; /* Increased space between cards */
-    margin: 0 auto;
+    width: 90%;          /* Responsive width */
+    max-width: 600px;    /* Locks the max size */
+    margin: 0 auto;      /* Centers the whole block */
+    gap: 40px;           /* Sets the exact spacing between cards */
 }
 
+/* 3. The Cards: Standardized size and animation */
 .step-card {
     display: flex;
     align-items: flex-start;
     gap: 25px;
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 45px; /* Increased padding makes cards bigger */
+    padding: 40px;
     border-radius: 12px;
     width: 100%;
-    
-    /* Animation restored */
-    opacity: 0;
     animation: fadeIn 1s ease-out forwards;
 }
 
-/* Keyframes for the animation */
+/* 4. Animation Keyframes */
 @keyframes fadeIn {
     from { opacity: 0; transform: translateY(20px); }
     to { opacity: 1; transform: translateY(0); }
 }
 
-/* Styling for the numbers inside the cards */
+/* 5. Content Styling */
 .step-side-num {
     font-size: 4rem;
     font-weight: 900;
@@ -197,6 +195,7 @@ h1, h2 {
     background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+}
 }
 
 .step-1 { animation-delay: 0s; } 
