@@ -12,7 +12,7 @@
 * { box-sizing: border-box; margin: 0; padding: 0; }
 
 html {
-    background-color: var(--bg-dark); /* Set base background early to prevent white flash */
+    background-color: var(--bg-dark);
 }
 
 body {
@@ -25,7 +25,6 @@ body {
     line-height: 1.6;
     overflow-x: hidden;
     overflow-y: auto;
-    /* Smooth fade-in transition */
     animation: fadeInPage 0.2s ease-in-out;
 }
 
@@ -148,16 +147,23 @@ h1, h2 {
 }
 
 /* --- 3-Step Section & Staggered Animation --- */
-.steps-container { padding: 40px 20px; background: transparent !important; }
+.steps-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Centering the grid horizontally */
+    padding: 40px 20px; 
+    background: transparent !important; 
+}
 
 .steps-grid { 
     display: flex; 
-    justify-content: center; 
-    align-items: stretch;
+    justify-content: center; /* Centering items within the grid */
+    align-items: center;
     gap: 30px; 
     margin: 20px auto; 
     flex-wrap: wrap; 
     max-width: 1200px;
+    width: 100%;
 }
 
 .step-card {
