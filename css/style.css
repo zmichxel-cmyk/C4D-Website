@@ -403,3 +403,23 @@ h1, h2 {
     max-width: 90%;
     margin: 0 auto;
 }
+/* --- Mobile Layout Fixes --- */
+@media (max-width: 768px) {
+    
+    /* 1. Force the Nav Bar into a single line */
+    .nav-links {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center;
+        gap: 20px; /* Adds space between Showroom and Free Overlays */
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    /* 2. Lower the text underneath the PRO-GRADE logo */
+    .hero-paragraph {
+        margin-top: 100px; /* Adjust this value until it clears the logo */
+        position: relative; /* Ensure it stays in the flow of the document */
+        padding: 0 15px;
+    }
+}
