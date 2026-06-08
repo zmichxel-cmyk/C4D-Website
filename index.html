@@ -1,112 +1,103 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Controller Overlays</title>
-    <link rel="stylesheet" href="css/style.css">
-</head>
-
-</script>
-    
 <body>
-
     <div class="ember-container"></div>
     <div class="glow-container"></div>
 
-    <header class="main-nav">
-        <a href="index.html" class="logo-link">
-            <div class="logo">
-                <img src="assets/images/logo.png" alt="My Brand Logo">
+    <div class="main-content-wrapper">
+        
+        <header class="main-nav">
+            <a href="index.html" class="logo-link">
+                <div class="logo">
+                    <img src="assets/images/logo.png" alt="My Brand Logo">
+                </div>
+            </a>
+            <nav>
+                <a href="showroom.html">Showroom</a>
+                <a href="overlays.html">Free Overlays</a>
+                <a href="custom.html" class="nav-cta">Custom Request</a>
+            </nav>
+        </header>
+
+        <section class="hero">
+            <div class="header-logo-container">
+                <img src="assets/images/Prograde.png" alt="PRO-GRADE CSS CONTROLLERS" class="header-logo-img">
             </div>
-        </a>
-        <nav>
-            <a href="showroom.html">Showroom</a>
-            <a href="overlays.html">Free Overlays</a>
-            <a href="custom.html" class="nav-cta">Custom Request</a>
-        </nav>
-    </header>
+            <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
+        </section>
 
-    <section class="hero">
-        <div class="header-logo-container">
-            <img src="assets/images/Prograde.png" alt="PRO-GRADE CSS CONTROLLERS" class="header-logo-img">
-        </div>
-        <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
-    </section>
+        <div class="divider-line"></div>
 
-  <div class="divider-line"></div>
+        <h2 class="steps-headline">
+            Level up your stream in <span class="text-accent">3</span> easy steps
+        </h2>
 
-   <h2 class="steps-headline">
-        Level up your stream in <span class="text-accent">3</span> easy steps
-    </h2>
+        <section class="banner-video-container">
+            <video autoplay muted loop playsinline>
+                <source src="assets/videos/bannervid.mp4" type="video/mp4">
+            </video>
+            <div class="video-overlay"></div>
+        </section>
 
-    <section class="banner-video-container">
-        <video autoplay muted loop playsinline>
-            <source src="assets/videos/bannervid.mp4" type="video/mp4">
-        </video>
-        <div class="video-overlay"></div>
-    </section>
+        <div class="steps-grid">
+            <div class="step-card step-1">
+                <div class="step-side-num">1</div>
+                <div class="step-text">
+                    <h3>Choose Style</h3>
+                    <p>Pick your favorite controller aesthetic from our showroom.</p>
+                </div>
+            </div>
 
-    <div class="steps-grid">
-        <div class="step-card step-1">
-            <div class="step-side-num">1</div>
-            <div class="step-text">
-                <h3>Choose Style</h3>
-                <p>Pick your favorite controller aesthetic from our showroom.</p>
+            <div class="step-card step-2">
+                <div class="step-side-num">2</div>
+                <div class="step-text">
+                    <h3>Customize</h3>
+                    <p>Add your branding, colors, and unique dynamic effects.</p>
+                </div>
+            </div>
+
+            <div class="step-card step-3">
+                <div class="step-side-num">3</div>
+                <div class="step-text">
+                    <h3>Go Live</h3>
+                    <p>Plug into OBS/Streamlabs and go live instantly.</p>
+                </div>
             </div>
         </div>
+        
+        <div class="divider-line"></div>
 
-        <div class="step-card step-2">
-            <div class="step-side-num">2</div>
-            <div class="step-text">
-                <h3>Customize</h3>
-                <p>Add your branding, colors, and unique dynamic effects.</p>
-            </div>
-        </div>
+        <section class="custom-cta-faded">
+            <h2>Ready to level up?</h2>
+            <p>Start your custom controller journey today.</p>
+            <a href="custom.html" class="btn-primary">Get Custom Request</a>
+        </section>
 
-        <div class="step-card step-3">
-            <div class="step-side-num">3</div>
-            <div class="step-text">
-                <h3>Go Live</h3>
-                <p>Plug into OBS/Streamlabs and go live instantly.</p>
-            </div>
-        </div>
-    </div>
-    
-    <div class="divider-line"></div>
+    </div> <script>
+        document.addEventListener("DOMContentLoaded", () => {
+            const container = document.querySelector('.ember-container');
+            if (!container) return;
+            container.innerHTML = ''; // Clear previous embers
 
-    <section class="custom-cta-faded">
-        <h2>Ready to level up?</h2>
-        <p>Start your custom controller journey today.</p>
-        <a href="custom.html" class="btn-primary">Get Custom Request</a>
-    </section>
+            // Fire color palette
+            const colors = ['#ff3344', '#ff6600', '#ff9900']; 
 
-   <script>
-    document.addEventListener("DOMContentLoaded", () => {
-        const container = document.querySelector('.ember-container');
-        if (!container) return;
-        container.innerHTML = ''; // Clear previous embers
+            for (let i = 0; i < 30; i++) {
+                const ember = document.createElement('div');
+                ember.className = 'ember';
+                
+                // Randomize color
+                const randomColor = colors[Math.floor(Math.random() * colors.length)];
+                ember.style.backgroundColor = randomColor;
 
-        // Fire color palette
-        const colors = ['#ff3344', '#ff6600', '#ff9900']; 
-
-        for (let i = 0; i < 30; i++) {
-            const ember = document.createElement('div');
-            ember.className = 'ember';
-            
-            // Randomize color
-            const randomColor = colors[Math.floor(Math.random() * colors.length)];
-            ember.style.backgroundColor = randomColor;
-
-            // Randomize size and timing
-            const size = Math.random() * 4 + 1;
-            ember.style.width = size + 'px';
-            ember.style.height = size + 'px';
-            ember.style.left = Math.random() * 100 + '%';
-            ember.style.animationDuration = (Math.random() * 10 + 10) + 's';
-            ember.style.animationDelay = Math.random() * 10 + 's';
-            
-            container.appendChild(ember);
-        }
-    });
-</script>
+                // Randomize size and timing
+                const size = Math.random() * 4 + 1;
+                ember.style.width = size + 'px';
+                ember.style.height = size + 'px';
+                ember.style.left = Math.random() * 100 + '%';
+                ember.style.animationDuration = (Math.random() * 10 + 10) + 's';
+                ember.style.animationDelay = Math.random() * 10 + 's';
+                
+                container.appendChild(ember);
+            }
+        });
+    </script>
+</body>
