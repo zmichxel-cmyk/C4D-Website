@@ -507,7 +507,7 @@ h1, h2 {
 /* 2. Top Text (Big) */
 .footer-promo .step-text {
     font-size: 1.5rem;
-    margin: 0; /* Changed from margin-bottom: 0 to margin: 0 to be safe */
+    margin: 5; /* Changed from margin-bottom: 0 to margin: 0 to be safe */
     font-family: inherit;
 }
 
