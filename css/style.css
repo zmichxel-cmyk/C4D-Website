@@ -526,4 +526,5 @@ h1, h2 {
     font-family: inherit; /* Matches global font */
     opacity: 0.8;
     margin-top: 0px;
+    margin-bottom: 40px; /* Change this number to make the gap larger or smaller */
 }
