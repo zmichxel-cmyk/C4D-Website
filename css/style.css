@@ -533,3 +533,13 @@ h1, h2 {
 .laugh-red { color: #ff3344; }
 .family-pink { color: #ff1493; }
 .okay-green { color: #33ff55; }
+
+.footer-promo {
+    background-color: #1a1a1a; /* A dark gray box color */
+    border: 1px solid #333;    /* A subtle outline */
+    border-radius: 20px;       /* Nice rounded corners */
+    padding: 40px 20px;        /* Breathing room inside the box */
+    margin: 60px auto;         /* Centers the box and adds space from content above */
+    max-width: 900px;          /* Makes sure it's not too wide on big monitors */
+    text-align: center;        /* Ensures everything inside stays centered */
+}
