@@ -501,7 +501,7 @@ h1, h2 {
 /* --- Effects --- */
 .ember-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: -100; overflow: hidden;
+    pointer-events: none; z-index: 1; overflow: hidden;
 }
 .ember {
     position: absolute; background: #ff3344;
@@ -518,7 +518,7 @@ h1, h2 {
 
 .glow-container {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none; z-index: -100;
+    pointer-events: none; z-index: 0;
     background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 80%);
     animation: pulse-glow 3s infinite ease-in-out;
 }
