@@ -501,7 +501,7 @@ h1, h2 {
     flex-direction: column;
     align-items: center;
     gap: 15px;
-    margin-top: 70px;
+    margin-top: 80px;
 }
 
 /* 2. Top Text (Big) */
@@ -525,5 +525,5 @@ h1, h2 {
     font-size: 0.8rem; /* Makes it smaller than the top text */
     font-family: inherit; /* Matches global font */
     opacity: 0.8;
-    margin-top: 5px;
+    margin-top: 15px;
 }
