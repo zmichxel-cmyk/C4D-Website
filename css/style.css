@@ -34,6 +34,11 @@ body {
 }
 
 /* --- Layout --- */
+.main-content-wrapper {
+    position: relative;
+    z-index: 1; /* Creates stacking context for the -100 effects */
+}
+
 .section-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px 20px 20px; }
 
 h1, h2 { 
@@ -160,22 +165,22 @@ h1, h2 {
     display: grid; 
     grid-template-columns: repeat(auto-fit, 400px); 
     justify-content: center; 
-    justify-items: center;   
-    gap: 60px;               
+    justify-items: center;    
+    gap: 60px;                
     margin: 20px auto; 
     max-width: 1400px;
     width: 100%;
 }
 
 .step-card {
-    display: flex;             
-    align-items: flex-start;   
-    gap: 25px;                 
+    display: flex;              
+    align-items: flex-start;    
+    gap: 25px;                  
     background: var(--bg-card);
     border: 1px solid var(--border-color);
     padding: 40px;            
     border-radius: 12px;
-    width: 400px;             
+    width: 400px;               
     text-align: left; 
     opacity: 0;
     animation: fadeIn 9s infinite;
@@ -316,11 +321,9 @@ h1, h2 {
     cursor: pointer;
     text-transform: uppercase; 
     font-weight: bold; 
-    
-    width: 60%;          
+    width: 60%;           
     margin: 0 auto;       
     display: block;       
-    
     animation: pulse-red 2s infinite; 
     border-radius: 4px;
 }
@@ -332,30 +335,31 @@ h1, h2 {
 }
 
 /* --- Effects --- */
-.ember-container {
+.ember-container, .glow-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: -100; overflow: hidden;
 }
+
 .ember {
     position: absolute; background: #ff3344;
     border-radius: 50% 10% 50% 10%; filter: blur(1px); 
     opacity: 0; pointer-events: none; animation: float-random 15s infinite linear;
 }
+
 @keyframes float-random {
     0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
-    20% { opacity: 0.6; }
+    20% { opacity: 0.6; } 
     50% { transform: translateY(50vh) translateX(50px) scale(1); }
     80% { opacity: 0.6; }
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
 .glow-container {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none; z-index: -100;
-    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 80%);
+    background: radial-gradient(ellipse 100% 100% at bottom, rgba(255, 102, 0, 0.3) 0%, rgba(255, 51, 68, 0.1) 50%, transparent 80%);
     animation: pulse-glow 3s infinite ease-in-out;
 }
-@keyframes pulse-glow { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.4; } }
+
+@keyframes pulse-glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.02); } }
 
 /* --- Premium Showroom Layout --- */
 .platform-section { margin-bottom: 30px; margin-left: auto; margin-right: auto; max-width: 1200px; }
@@ -428,13 +432,6 @@ h1, h2 {
     border-bottom: 1px solid var(--border-color);
 }
 
-#modal-img-display { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; 
-    display: block; 
-}
-
 @media (max-width: 600px) {
     .main-nav {
         flex-direction: column !important;
@@ -496,39 +493,4 @@ h1, h2 {
         padding: 8px 16px !important;
         font-size: 0.8rem !important;
     }
-}
-
-/* --- Effects --- */
-.ember-container {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: -1; overflow: hidden;
-}
-
-.ember {
-    position: absolute;
-    border-radius: 50% 10% 50% 10%; 
-    filter: blur(1px); 
-    opacity: 0; 
-    pointer-events: none; 
-    animation: float-random 15s infinite linear;
-}
-
-@keyframes float-random {
-    0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
-    20% { opacity: 0.8; } 
-    50% { transform: translateY(50vh) translateX(50px) scale(1); }
-    80% { opacity: 0.8; }
-    100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
-}
-
-.glow-container {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none; z-index: -1;
-    background: radial-gradient(ellipse 100% 100% at bottom, rgba(255, 102, 0, 0.3) 0%, rgba(255, 51, 68, 0.1) 50%, transparent 80%);
-    animation: pulse-glow 3s infinite ease-in-out;
-}
-
-@keyframes pulse-glow { 
-    0%, 100% { opacity: 0.3; transform: scale(1); } 
-    50% { opacity: 0.6; transform: scale(1.02); } 
 }
