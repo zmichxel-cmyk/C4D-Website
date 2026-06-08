@@ -525,5 +525,5 @@ h1, h2 {
     font-size: 0.8rem; /* Makes it smaller than the top text */
     font-family: inherit; /* Matches global font */
     opacity: 0.8;
-    margin-top: 15px;
+    margin-top: 0px;
 }
