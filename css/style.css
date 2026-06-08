@@ -506,7 +506,7 @@ h1, h2 {
 
 /* 2. Top Text (Big) */
 .footer-promo .step-text {
-    font-size: 2rem;
+    font-size: 8rem;
     margin-bottom: 0;
     font-family: inherit; /* This forces it to match your global font */
 }
