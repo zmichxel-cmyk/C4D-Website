@@ -528,3 +528,8 @@ h1, h2 {
     margin-top: 0px;
     margin-bottom: 40px; /* Change this number to make the gap larger or smaller */
 }
+
+/* Defines the specific colors */
+.laugh-red { color: #ff3344; }
+.family-pink { color: #ff99cc; }
+.okay-green { color: #33ff55; }
