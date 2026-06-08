@@ -536,7 +536,7 @@ h1, h2 {
 
 .footer-promo {
     /* "Skinnier" - reduces the width of the box */
-    max-width: 600px; 
+    max-width: 500px; 
     margin: 60px auto;
     padding: 30px 20px;
     text-align: center;
@@ -545,7 +545,9 @@ h1, h2 {
 
     /* Transparent light-gray fade-out effect */
     background: linear-gradient(90deg, 
+      background: linear-gradient(90deg, 
         rgba(255, 255, 255, 0) 0%, 
-        rgba(255, 255, 255, 0.08) 50%, 
+        rgba(255, 255, 255, 0.08) 20%,  /* Start the color here */
+        rgba(255, 255, 255, 0.08) 80%,  /* End the color here */
         rgba(255, 255, 255, 0) 100%);
 }
