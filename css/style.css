@@ -495,20 +495,20 @@ h1, h2 {
     }
 }
 
-/* 1. Footer Container */
+/* 1. Footer Container - Removed the gap */
 .footer-wrapper {
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 15px;
+    gap: 0px; /* Changed from 15px to 0px to pull everything tight */
     margin-top: 60px;
 }
 
 /* 2. Top Text (Big) */
 .footer-promo .step-text {
     font-size: 1.5rem;
-    margin-bottom: 0;
-    font-family: inherit; /* This forces it to match your global font */
+    margin: 0; /* Changed from margin-bottom: 0 to margin: 0 to be safe */
+    font-family: inherit;
 }
 
 /* 3. Spinning Logo */
@@ -518,19 +518,19 @@ h1, h2 {
     object-fit: contain;
     border-radius: 0;
     cursor: pointer;
+    margin: 0; /* Added to ensure no default spacing on the video tag */
 }
 
 /* 4. Bottom Text (Small) */
 .footer-promo .footer-caption {
-    font-size: 0.8rem; /* Makes it smaller than the top text */
-    font-family: inherit; /* Matches global font */
+    font-size: 0.8rem;
+    font-family: inherit;
     opacity: 0.8;
-    margin-top: 0px;
-    margin-bottom: 40px; /* Change this number to make the gap larger or smaller */
+    margin: 0; /* Zeroed out all margins here */
+    padding-top: 5px; /* Added a tiny bit of padding if they feel too stuck together */
 }
 
 /* Defines the specific colors */
 .laugh-red { color: #e60000; }
 .family-pink { color: #ff1493; }
 .okay-green { color: #33ff55; }
-
