@@ -34,6 +34,12 @@ body {
 }
 
 /* --- Layout --- */
+.main-content-wrapper {
+    position: relative;
+    z-index: 1;
+    background: transparent;
+}
+
 .section-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px 20px 20px; }
 
 h1, h2 { 
@@ -69,7 +75,7 @@ h1, h2 {
     align-items: center; 
     text-align: center; 
     padding: 10px 20px !important; 
-    background: transparent !important; 
+    background: var(--bg-dark) !important; 
 }
 
 .header-logo-container {
@@ -116,6 +122,7 @@ h1, h2 {
 /* --- Banner Video Styles --- */
 .banner-video-container {
     display: block !important;
+    background: var(--bg-dark) !important;
     margin: 20px auto 40px auto !important; 
     width: 90% !important;
     max-width: 800px !important;
@@ -153,18 +160,19 @@ h1, h2 {
     align-items: center;
     width: 100%;
     padding: 40px 20px; 
-    background: transparent !important; 
+    background: var(--bg-dark) !important; 
 }
 
 .steps-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, 400px); /* Expanded for bigger cards */
-    justify-content: center; /* Robust centering */
-    justify-items: center;   /* Centers cards in their grid cells */
-    gap: 60px;               /* Increased spacing between cards */
+    grid-template-columns: repeat(auto-fit, 400px); 
+    justify-content: center; 
+    justify-items: center;   
+    gap: 60px;               
     margin: 20px auto; 
     max-width: 1400px;
     width: 100%;
+    background: var(--bg-dark);
 }
 
 .step-card {
@@ -173,14 +181,14 @@ h1, h2 {
     gap: 25px;                 
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 40px;            /* Increased padding for larger size */
+    padding: 40px;            
     border-radius: 12px;
-    width: 400px;             /* Bigger width */
+    width: 400px;             
     text-align: left; 
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
-    margin-bottom: 25px !important; /* Adjust this number to change the space size */
+    margin-bottom: 25px !important; 
 }
 
 .step-side-num {
@@ -219,7 +227,7 @@ h1, h2 {
 }
 
 .custom-cta-faded {
-    background: transparent !important;
+    background: var(--bg-dark) !important;
     border: none !important;
     padding: 20px 0;
     text-align: center;
@@ -331,10 +339,10 @@ h1, h2 {
     animation: none; 
 }
 
-/* --- Effects --- */
+/* --- Effects Layer --- */
 .ember-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: -100; overflow: hidden;
+    pointer-events: none; z-index: -1; overflow: hidden;
 }
 .ember {
     position: absolute; background: #ff3344;
@@ -343,19 +351,19 @@ h1, h2 {
 }
 @keyframes float-random {
     0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
-    20% { opacity: 0.6; }
+    20% { opacity: 0.8; }
     50% { transform: translateY(50vh) translateX(50px) scale(1); }
-    80% { opacity: 0.6; }
+    80% { opacity: 0.8; }
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
 .glow-container {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none; z-index: -100;
-    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 80%);
+    pointer-events: none; z-index: -1;
+    background: radial-gradient(ellipse 100% 100% at bottom, rgba(255, 102, 0, 0.3) 0%, rgba(255, 51, 68, 0.1) 50%, transparent 80%);
     animation: pulse-glow 3s infinite ease-in-out;
 }
-@keyframes pulse-glow { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.4; } }
+@keyframes pulse-glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.02); } }
 
 /* --- Premium Showroom Layout --- */
 .platform-section { margin-bottom: 30px; margin-left: auto; margin-right: auto; max-width: 1200px; }
@@ -496,41 +504,4 @@ h1, h2 {
         padding: 8px 16px !important;
         font-size: 0.8rem !important;
     }
-}
-
-/* --- Effects --- */
-.ember-container {
-    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
-    pointer-events: none; z-index: 1; overflow: hidden;
-}
-
-.ember {
-    position: absolute;
-    /* Remove background color here; JS handles it now */
-    border-radius: 50% 10% 50% 10%; 
-    filter: blur(1px); 
-    opacity: 0; 
-    pointer-events: none; 
-    animation: float-random 15s infinite linear;
-}
-
-@keyframes float-random {
-    0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
-    20% { opacity: 0.8; } /* Higher opacity for fire look */
-    50% { transform: translateY(50vh) translateX(50px) scale(1); }
-    80% { opacity: 0.8; }
-    100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
-}
-
-.glow-container {
-    position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
-    pointer-events: none; z-index: 0;
-    /* Fiery Orange-Red Gradient */
-    background: radial-gradient(ellipse 100% 100% at bottom, rgba(255, 102, 0, 0.3) 0%, rgba(255, 51, 68, 0.1) 50%, transparent 80%);
-    animation: pulse-glow 3s infinite ease-in-out;
-}
-
-@keyframes pulse-glow { 
-    0%, 100% { opacity: 0.3; transform: scale(1); } 
-    50% { opacity: 0.6; transform: scale(1.02); } 
 }
