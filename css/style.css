@@ -513,7 +513,7 @@ h1, h2 {
 
 /* 3. Spinning Logo */
 .spinning-logo {
-    width: 300px;
+    width: 250px;
     height: auto;
     object-fit: contain;
     border-radius: 0;
