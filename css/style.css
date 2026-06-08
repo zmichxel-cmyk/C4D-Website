@@ -503,23 +503,34 @@ h1, h2 {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: 1; overflow: hidden;
 }
+
 .ember {
-    position: absolute; background: #ff3344;
-    border-radius: 50% 10% 50% 10%; filter: blur(1px); 
-    opacity: 0; pointer-events: none; animation: float-random 15s infinite linear;
+    position: absolute;
+    /* Remove background color here; JS handles it now */
+    border-radius: 50% 10% 50% 10%; 
+    filter: blur(1px); 
+    opacity: 0; 
+    pointer-events: none; 
+    animation: float-random 15s infinite linear;
 }
+
 @keyframes float-random {
     0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
-    20% { opacity: 0.6; }
+    20% { opacity: 0.8; } /* Higher opacity for fire look */
     50% { transform: translateY(50vh) translateX(50px) scale(1); }
-    80% { opacity: 0.6; }
+    80% { opacity: 0.8; }
     100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
 }
 
 .glow-container {
     position: fixed; top: 0; left: 0; width: 100vw; height: 100vh;
     pointer-events: none; z-index: 0;
-    background: radial-gradient(ellipse 100% 100% at bottom, var(--accent-glow) 0%, transparent 80%);
+    /* Fiery Orange-Red Gradient */
+    background: radial-gradient(ellipse 100% 100% at bottom, rgba(255, 102, 0, 0.3) 0%, rgba(255, 51, 68, 0.1) 50%, transparent 80%);
     animation: pulse-glow 3s infinite ease-in-out;
 }
-@keyframes pulse-glow { 0%, 100% { opacity: 0.1; } 50% { opacity: 0.4; } }
+
+@keyframes pulse-glow { 
+    0%, 100% { opacity: 0.3; transform: scale(1); } 
+    50% { opacity: 0.6; transform: scale(1.02); } 
+}
