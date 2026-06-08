@@ -535,11 +535,17 @@ h1, h2 {
 .okay-green { color: #33ff55; }
 
 .footer-promo {
-    background-color: #1a1a1a; /* A dark gray box color */
-    border: 1px solid #333;    /* A subtle outline */
-    border-radius: 20px;       /* Nice rounded corners */
-    padding: 40px 20px;        /* Breathing room inside the box */
-    margin: 60px auto;         /* Centers the box and adds space from content above */
-    max-width: 900px;          /* Makes sure it's not too wide on big monitors */
-    text-align: center;        /* Ensures everything inside stays centered */
+    /* "Skinnier" - reduces the width of the box */
+    max-width: 600px; 
+    margin: 60px auto;
+    padding: 30px 20px;
+    text-align: center;
+    border: none;
+    border-radius: 10px;
+
+    /* Transparent light-gray fade-out effect */
+    background: linear-gradient(90deg, 
+        rgba(255, 255, 255, 0) 0%, 
+        rgba(255, 255, 255, 0.08) 50%, 
+        rgba(255, 255, 255, 0) 100%);
 }
