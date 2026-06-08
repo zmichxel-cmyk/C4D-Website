@@ -503,7 +503,7 @@ h1, h2 {
 }
 
 .spinning-logo {
-    width: 200px; /* Increased from 100px to make it larger */
+    width: 400px; /* Increased from 100px to make it larger */
     height: auto; /* Changed to auto so it keeps the original aspect ratio */
     object-fit: contain; /* Keeps the whole logo visible without cropping */
     border-radius: 0; /* Removes the circle cropping, keeping your rectangular shape */
