@@ -1,21 +1,29 @@
-document.addEventListener("DOMContentLoaded", () => {
-    const container = document.createElement('div');
-    container.className = 'ember-container';
-    document.body.prepend(container);
+<script>
+    document.addEventListener("DOMContentLoaded", () => {
+        // Prevent duplicates if already in HTML
+        if (document.querySelector('.ember-container')) return;
 
-    // Reduce count to 15 for a subtle, premium look
-    for (let i = 0; i < 30; i++) {
-        const ember = document.createElement('div');
-        ember.className = 'ember';
-        
-        // Randomize size, position, and speed
-       const size = Math.random() * 4 + 1; // Reduces size range to 1px - 5px
-ember.style.width = size + 'px';
-ember.style.height = size + 'px';
-        ember.style.left = Math.random() * 100 + '%';
-        ember.style.animationDuration = (Math.random() * 10 + 10) + 's';
-        ember.style.animationDelay = Math.random() * 10 + 's';
-        
-        container.appendChild(ember);
-    }
-});
+        const emberCont = document.createElement('div');
+        emberCont.className = 'ember-container';
+        const glowCont = document.createElement('div');
+        glowCont.className = 'glow-container';
+
+        document.body.appendChild(glowCont);
+        document.body.appendChild(emberCont);
+
+        // Ember Logic
+        const colors = ['#ff3344', '#ff6600', '#ff9900']; 
+        for (let i = 0; i < 30; i++) {
+            const ember = document.createElement('div');
+            ember.className = 'ember';
+            ember.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+            const size = Math.random() * 4 + 1;
+            ember.style.width = size + 'px';
+            ember.style.height = size + 'px';
+            ember.style.left = Math.random() * 100 + '%';
+            ember.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            ember.style.animationDelay = Math.random() * 10 + 's';
+            emberCont.appendChild(ember);
+        }
+    });
+</script>
