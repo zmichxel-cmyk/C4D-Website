@@ -81,18 +81,32 @@
         <a href="custom.html" class="btn-primary">Get Custom Request</a>
     </section>
 
-    <script>
+   <script>
+    document.addEventListener("DOMContentLoaded", () => {
         const container = document.querySelector('.ember-container');
-        for (let i = 0; i < 20; i++) {
+        if (!container) return;
+        container.innerHTML = ''; // Clear previous embers
+
+        // Fire color palette
+        const colors = ['#ff3344', '#ff6600', '#ff9900']; 
+
+        for (let i = 0; i < 30; i++) {
             const ember = document.createElement('div');
             ember.className = 'ember';
-            ember.style.left = Math.random() * 100 + 'vw';
-            ember.style.animationDelay = Math.random() * 15 + 's';
-            ember.style.width = Math.random() * 5 + 2 + 'px';
-            ember.style.height = ember.style.width;
+            
+            // Randomize color
+            const randomColor = colors[Math.floor(Math.random() * colors.length)];
+            ember.style.backgroundColor = randomColor;
+
+            // Randomize size and timing
+            const size = Math.random() * 4 + 1;
+            ember.style.width = size + 'px';
+            ember.style.height = size + 'px';
+            ember.style.left = Math.random() * 100 + '%';
+            ember.style.animationDuration = (Math.random() * 10 + 10) + 's';
+            ember.style.animationDelay = Math.random() * 10 + 's';
+            
             container.appendChild(ember);
         }
-    </script>
-
-</body>
-</html>
+    });
+</script>
