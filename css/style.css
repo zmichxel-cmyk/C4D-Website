@@ -525,14 +525,14 @@ h1, h2 {
 .footer-promo .footer-caption {
     font-size: 0.8rem;
     font-family: inherit;
-    opacity: 0.8;
-    margin: 0; /* Zeroed out all margins here */
-    padding-top: 5px; /* Added a tiny bit of padding if they feel too stuck together */
-    margin-bottom: 40px; /* Change this number to make the gap larger or smaller */
-}
+    /* REMOVED opacity: 0.8; so the colors appear vibrant */
+    color: #cccccc; /* Use this to keep the "muted" look without washing out the colors */
+    margin: 0;
+    padding-top: 5px;
+    margin-bottom: 40px;
 }
 
-/* Defines the specific colors */
-.laugh-red { color: #e60000; }
-.family-pink { color: #ff1493; }
-.okay-green { color: #33ff55; }
+/* Defines the specific colors - added !important to ensure they override anything else */
+.laugh-red { color: #e60000 !important; }
+.family-pink { color: #ff1493 !important; }
+.okay-green { color: #33ff55 !important; }
