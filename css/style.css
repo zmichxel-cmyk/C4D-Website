@@ -166,36 +166,49 @@ h1, h2 {
     grid-template-columns: repeat(auto-fit, 400px); 
     justify-content: center; 
     justify-items: center;    
-    gap: 60px;                
+    gap: 60px;                  
     margin: 20px auto; 
     max-width: 1400px;
     width: 100%;
 }
 
 .step-card {
-    display: flex;              
+    display: flex;                
     align-items: flex-start;    
-    gap: 25px;                  
+    gap: 25px;                    
     background: var(--bg-card);
     border: 1px solid var(--border-color);
-    padding: 40px;            
+    padding: 40px;              
     border-radius: 12px;
-    width: 400px;               
+    width: 400px;                
     text-align: left; 
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
+    overflow: hidden; /* Keeps the big number contained */
     margin-bottom: 25px !important; 
 }
 
 .step-side-num {
-    font-size: 4rem;
+    position: absolute; /* Allows it to sit behind */
+    top: 0px;
+    left: 10px;
+    font-size: 8rem; /* Large size */
     font-weight: 900;
     line-height: 1;
-    flex-shrink: 0;
-    background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0) 100%);
+    z-index: 0; /* Behind the text */
+    pointer-events: none; /* Allows clicking through */
+    
+    /* Gradient Fade */
+    background: linear-gradient(180deg, var(--accent-color) 20%, rgba(255, 51, 68, 0) 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
+    opacity: 0.4; /* Subtle fade */
+}
+
+.step-text {
+    position: relative; /* Stacks above the number */
+    z-index: 1;
 }
 
 .step-text h3 { color: #fff; margin-bottom: 5px; font-size: 1.25rem; }
@@ -321,9 +334,9 @@ h1, h2 {
     cursor: pointer;
     text-transform: uppercase; 
     font-weight: bold; 
-    width: 60%;           
-    margin: 0 auto;       
-    display: block;       
+    width: 60%;            
+    margin: 0 auto;        
+    display: block;        
     animation: pulse-red 2s infinite; 
     border-radius: 4px;
 }
