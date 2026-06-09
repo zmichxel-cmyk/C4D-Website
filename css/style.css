@@ -189,24 +189,23 @@ h1, h2 {
     margin-bottom: 25px !important; 
 }
 
-/* --- UPDATED: Number Styling (Positioned to bleed edge, less fade) --- */
+/* --- UPDATED: Number Styling (Shifted left & More fade) --- */
 .step-side-num {
     position: absolute; 
-    top: -15px;        /* Pull up to top edge */
-    right: -15px;      /* Push out to right edge */
-    font-size: 11rem;  /* Larger size */
+    top: -15px;
+    right: -10px;      /* Shifted slightly left from -15px to -10px */
+    font-size: 11rem;
     font-weight: 900;
     line-height: 1;
     z-index: 0; 
     pointer-events: none; 
     
-    /* Less Fade: Keeps color strong for longer */
-    background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0.4) 100%);
+    /* Increased Fade: Gradient starts fading earlier and ends at a lower opacity */
+    background: linear-gradient(180deg, var(--accent-color) 20%, rgba(255, 51, 68, 0.2) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 0.65; /* Brighter */
+    opacity: 0.55; /* Slightly more transparent */
 }
-
 /* --- UPDATED: Text Styling --- */
 .step-text {
     position: relative; 
