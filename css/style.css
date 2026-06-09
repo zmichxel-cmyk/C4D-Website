@@ -504,13 +504,11 @@ h1, h2 {
     margin-top: 60px;
 }
 
-/* 2. Top Text (Big) */
 .footer-promo .step-text {
     font-size: 1.5rem;
-    margin: 5; /* Changed from margin-bottom: 0 to margin: 0 to be safe */
+    margin-bottom: 20px; /* Adjust this number to make the gap bigger or smaller */
     font-family: inherit;
 }
-
 /* 3. Spinning Logo */
 .spinning-logo {
     width: 250px;
