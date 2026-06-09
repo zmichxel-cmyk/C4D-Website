@@ -185,26 +185,26 @@ h1, h2 {
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
-    overflow: hidden;
+    overflow: hidden; /* This keeps the number inside the card boundary */
     margin-bottom: 25px !important; 
 }
 
-/* --- UPDATED: Number Styling (Top-Right & Increased Fade) --- */
+/* --- UPDATED: Number Styling (Positioned to bleed edge, less fade) --- */
 .step-side-num {
     position: absolute; 
-    top: 0px;
-    right: 15px; /* Positioned to the right */
-    font-size: 10rem;
+    top: -15px;        /* Pull up to top edge */
+    right: -15px;      /* Push out to right edge */
+    font-size: 11rem;  /* Larger size */
     font-weight: 900;
     line-height: 1;
     z-index: 0; 
     pointer-events: none; 
     
-    /* Increased Fade Effect: Tighter gradient and lower opacity */
-    background: linear-gradient(180deg, var(--accent-color) 20%, rgba(255, 51, 68, 0) 80%);
+    /* Less Fade: Keeps color strong for longer */
+    background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0.4) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 0.3; /* Further reduced for more fade */
+    opacity: 0.65; /* Brighter */
 }
 
 /* --- UPDATED: Text Styling --- */
