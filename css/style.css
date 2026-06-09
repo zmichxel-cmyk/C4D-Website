@@ -187,25 +187,24 @@ h1, h2 {
     position: relative;
     overflow: hidden;
     margin-bottom: 25px !important; 
-    padding-right: 80px;
 }
 
-/* --- UPDATED: Number Styling (More Fade) --- */
+/* --- UPDATED: Number Styling (Top-Right & Increased Fade) --- */
 .step-side-num {
     position: absolute; 
     top: 0px;
-    right: 20px;
+    right: 15px; /* Positioned to the right */
     font-size: 10rem;
     font-weight: 900;
     line-height: 1;
     z-index: 0; 
     pointer-events: none; 
     
-    /* Increased Fade Effect: Softer gradient and lower opacity */
-    background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0) 100%);
+    /* Increased Fade Effect: Tighter gradient and lower opacity */
+    background: linear-gradient(180deg, var(--accent-color) 20%, rgba(255, 51, 68, 0) 80%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 0.4;
+    opacity: 0.3; /* Further reduced for more fade */
 }
 
 /* --- UPDATED: Text Styling --- */
