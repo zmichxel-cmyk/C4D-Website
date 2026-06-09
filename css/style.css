@@ -187,24 +187,25 @@ h1, h2 {
     position: relative;
     overflow: hidden;
     margin-bottom: 25px !important; 
+    padding-right: 80px;
 }
 
-/* --- UPDATED: Number Styling --- */
+/* --- UPDATED: Number Styling (More Fade) --- */
 .step-side-num {
     position: absolute; 
     top: 0px;
-    left: 10px;
-    font-size: 10rem; /* Increased size */
+    right: 20px;
+    font-size: 10rem;
     font-weight: 900;
     line-height: 1;
     z-index: 0; 
     pointer-events: none; 
     
-    /* Reduced Fade Effect */
+    /* Increased Fade Effect: Softer gradient and lower opacity */
     background: linear-gradient(180deg, var(--accent-color) 40%, rgba(255, 51, 68, 0) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 0.6; /* Increased visibility */
+    opacity: 0.4;
 }
 
 /* --- UPDATED: Text Styling --- */
@@ -213,8 +214,8 @@ h1, h2 {
     z-index: 1;
 }
 
-.step-text h3 { color: #fff; margin-bottom: 5px; font-size: 1.1rem; } /* Made smaller */
-.step-text p { color: var(--text-muted); font-size: 0.9rem; } /* Made smaller */
+.step-text h3 { color: #fff; margin-bottom: 5px; font-size: 1.1rem; }
+.step-text p { color: var(--text-muted); font-size: 0.9rem; }
 
 .step-1 { animation-delay: 0s; } 
 .step-2 { animation-delay: 1s; } 
