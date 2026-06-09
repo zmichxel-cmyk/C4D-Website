@@ -511,7 +511,7 @@ h1, h2 {
 }
 /* 3. Spinning Logo */
 .spinning-logo {
-    width: 150px;
+    width: 175px;
     height: auto;
     object-fit: contain;
     border-radius: 0;
@@ -521,7 +521,7 @@ h1, h2 {
 
 /* 4. Bottom Text (Small) */
 .footer-promo .footer-caption {
-    font-size: 0.8rem;
+    font-size: 0.5rem;
     font-family: inherit;
     /* REMOVED opacity: 0.8; so the colors appear vibrant */
     color: #cccccc; /* Use this to keep the "muted" look without washing out the colors */
