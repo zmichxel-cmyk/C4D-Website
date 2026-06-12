@@ -1117,3 +1117,12 @@ h1, h2 {
 .footer-social-bar a:hover {
     color: #ff3344;
 }
+
+.footer-heading {
+    text-align: center;
+    color: #ffffff; /* Adjust this to your desired text color */
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
