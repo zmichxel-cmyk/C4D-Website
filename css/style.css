@@ -547,3 +547,23 @@ h1, h2 {
 .laugh-red { color: #e60000 !important; }
 .family-pink { color: #ff1493 !important; }
 .okay-green { color: #33ff55 !important; }
+
+/* --- Top Social Bar --- */
+.top-social-bar {
+    background-color: #0f0f12; /* Matches your site background */
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid #24242b; /* Matches your border color */
+}
+
+.top-social-bar a {
+    color: #a0a0aa; /* Muted text color */
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.top-social-bar a:hover {
+    color: #ff3344; /* Your accent red color */
+}
