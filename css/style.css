@@ -546,3 +546,33 @@ h1, h2 {
 .laugh-red { color: #e60000 !important; }
 .family-pink { color: #ff1493 !important; }
 .okay-green { color: #33ff55 !important; }
+
+/* --- Footer Social Bar (Clean/No Box) --- */
+.footer-social-bar {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 0;
+    width: 100%;
+    /* No background-color or border added here */
+}
+
+.footer-social-bar a {
+    color: #a0a0aa; /* Adjust this color to match your preference */
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social-bar a:hover {
+    color: #ff3344;
+}
+
+.footer-heading {
+    text-align: center;
+    color: #ffffff; /* Adjust this to your desired text color */
+    font-size: 1.1rem;
+    margin-bottom: 15px;
+    letter-spacing: 1px;
+    text-transform: uppercase;
+}
+
