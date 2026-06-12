@@ -436,30 +436,24 @@ h1, h2 {
     border-bottom: 1px solid var(--border-color);
 }
 
-/* --- Footer --- */
-.footer-wrapper {
+/* --- Footer Social Bar (Clean/No Box) --- */
+.footer-social-bar {
     display: flex;
-    flex-direction: column;
-    align-items: center;
-    gap: 0px; 
-    margin-top: 60px;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 0;
+    width: 100%;
+    /* No background-color or border added here */
 }
-.footer-promo .step-text { font-size: 1.5rem; margin-bottom: 20px; font-family: inherit; }
-.spinning-logo {
-    width: 175px;
-    height: auto;
-    object-fit: contain;
-    border-radius: 0;
-    cursor: pointer;
-    margin: 0; 
+
+.footer-social-bar a {
+    color: #a0a0aa; /* Adjust this color to match your preference */
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
 }
-.footer-promo .footer-caption {
-    font-size: 0.5rem;
-    font-family: inherit;
-    color: #cccccc; 
-    margin: 0;
-    padding-top: 5px;
-    margin-bottom: 40px;
+
+.footer-social-bar a:hover {
+    color: #ff3344;
 }
 .laugh-red { color: #e60000 !important; }
 .family-pink { color: #ff1493 !important; }
