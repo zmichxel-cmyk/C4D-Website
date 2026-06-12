@@ -541,11 +541,6 @@ h1, h2 {
     margin: 0;
     padding-top: 5px;
     margin-bottom: 40px;
-
-    /* Reduce size of the footer heading */
-.footer-promo h2 {
-    font-size: 1.2rem !important; 
-    margin-bottom: 15px !important;
 }
 
 .laugh-red { color: #e60000 !important; }
@@ -575,7 +570,7 @@ h1, h2 {
 .footer-heading {
     text-align: center;
     color: #ffffff; /* Adjust this to your desired text color */
-    font-size: 1.1rem;
+    font-size: 0.85rem;
     margin-bottom: 15px;
     letter-spacing: 1px;
     text-transform: uppercase;
