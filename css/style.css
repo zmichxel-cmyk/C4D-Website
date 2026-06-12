@@ -33,31 +33,28 @@ body {
     100% { opacity: 1; }
 }
 
-/* --- Top Social Bar --- */
-.top-social-bar {
+/* --- Footer Social Bar --- */
+.footer-social-bar {
     background-color: #0f0f12;
     display: flex;
     justify-content: center;
-    gap: 20px;
-    padding: 8px 0;
-    border-bottom: 1px solid #24242b;
+    gap: 25px;
+    padding: 30px 0;
+    /* Changed border to top for footer */
+    border-top: 1px solid #24242b; 
+    border-bottom: none;
     width: 100%;
+    margin-top: 60px; /* Adds space between your main content and the footer */
 }
 
-.top-social-bar a {
+.footer-social-bar a {
     color: #a0a0aa;
-    font-size: 1.1rem;
+    font-size: 1.3rem; /* Slightly larger for footer prominence */
     transition: color 0.3s ease;
 }
 
-.top-social-bar a:hover {
+.footer-social-bar a:hover {
     color: #ff3344;
-}
-
-/* --- Layout --- */
-.main-content-wrapper {
-    position: relative;
-    z-index: 1;
 }
 
 .section-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px 20px 20px; }
