@@ -520,7 +520,7 @@ h1, h2 {
 }
 
 .footer-promo .step-text {
-    font-size: 1.5rem;
+    font-size: 1.0rem;
     margin-bottom: 20px; 
     font-family: inherit;
 }
@@ -535,7 +535,7 @@ h1, h2 {
 }
 
 .footer-promo .footer-caption {
-    font-size: 0.6rem;
+    font-size: 0.7rem;
     font-family: inherit;
     color: #cccccc; 
     margin: 0;
