@@ -33,6 +33,27 @@ body {
     100% { opacity: 1; }
 }
 
+/* --- Top Social Bar --- */
+.top-social-bar {
+    background-color: #0f0f12;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    padding: 8px 0;
+    border-bottom: 1px solid #24242b;
+    width: 100%;
+}
+
+.top-social-bar a {
+    color: #a0a0aa;
+    font-size: 1.1rem;
+    transition: color 0.3s ease;
+}
+
+.top-social-bar a:hover {
+    color: #ff3344;
+}
+
 /* --- Layout --- */
 .main-content-wrapper {
     position: relative;
@@ -151,7 +172,7 @@ h1, h2 {
     pointer-events: none;
 }
 
-/* --- 3-Step Section & Staggered Animation --- */
+/* --- 3-Step Section --- */
 .steps-container { 
     display: flex;
     flex-direction: column;
@@ -166,7 +187,7 @@ h1, h2 {
     grid-template-columns: repeat(auto-fit, 400px); 
     justify-content: center; 
     justify-items: center;    
-    gap: 60px;                  
+    gap: 60px;                
     margin: 20px auto; 
     max-width: 1400px;
     width: 100%;
@@ -185,11 +206,10 @@ h1, h2 {
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
-    overflow: hidden; /* This keeps the number inside the card boundary */
+    overflow: hidden; 
     margin-bottom: 25px !important; 
 }
 
-/* --- UPDATED: Number Styling (Even more fade) --- */
 .step-side-num {
     position: absolute; 
     top: -15px;
@@ -199,14 +219,12 @@ h1, h2 {
     line-height: 1;
     z-index: 0; 
     pointer-events: none; 
-    
-    /* Increased Fade: Gradient now fades to 0% opacity at the bottom */
     background: linear-gradient(180deg, var(--accent-color) 20%, rgba(255, 51, 68, 0) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 0.35; /* Lower opacity for a subtler look */
+    opacity: 0.35; 
 }
-/* --- UPDATED: Text Styling --- */
+
 .step-text {
     position: relative; 
     z-index: 1;
@@ -227,7 +245,7 @@ h1, h2 {
     100% { opacity: 0; }
 }
 
-/* --- Divider Line --- */
+/* --- Divider & CTA --- */
 .divider-line {
     width: 60%; 
     max-width: 600px;
@@ -251,14 +269,13 @@ h1, h2 {
     margin-top: 25px;
 }
 
-/* --- Animations --- */
 @keyframes pulse-red {
     0% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0.7); }
     70% { box-shadow: 0 0 0 15px rgba(255, 51, 68, 0); }
     100% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0); }
 }
 
-/* --- Store & Form --- */
+/* --- Store & Forms --- */
 .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
 .btn-primary { 
     background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color);
@@ -314,17 +331,8 @@ h1, h2 {
 .back-arrow:hover { color: var(--accent-color); }
 
 #modal-img-display { width: 100%; display: block; }
-
-.modal-logo {
-    width: 150px; 
-    margin: 15px auto 10px auto; 
-    display: block;
-}
-
-.modal-info {
-    padding: 10px 20px 20px 20px; 
-}
-
+.modal-logo { width: 150px; margin: 15px auto 10px auto; display: block; }
+.modal-info { padding: 10px 20px 20px 20px; }
 .modal-info h3 { margin-bottom: 20px; color: var(--text-main); }
 
 .pulse-btn {
@@ -335,20 +343,15 @@ h1, h2 {
     cursor: pointer;
     text-transform: uppercase; 
     font-weight: bold; 
-    width: 60%;            
-    margin: 0 auto;        
-    display: block;        
+    width: 60%;           
+    margin: 0 auto;       
+    display: block;       
     animation: pulse-red 2s infinite; 
     border-radius: 4px;
 }
+.pulse-btn:hover { background: var(--accent-color); color: #000; animation: none; }
 
-.pulse-btn:hover {
-    background: var(--accent-color);
-    color: #000;
-    animation: none; 
-}
-
-/* --- Effects --- */
+/* --- Visual Effects --- */
 .ember-container, .glow-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: -100; overflow: hidden;
@@ -375,7 +378,7 @@ h1, h2 {
 
 @keyframes pulse-glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.02); } }
 
-/* --- Premium Showroom Layout --- */
+/* --- Showroom Layout --- */
 .platform-section { margin-bottom: 30px; margin-left: auto; margin-right: auto; max-width: 1200px; }
 .showroom-logo-container { display: flex; justify-content: center; margin: 20px auto 30px auto; padding: 0; }
 .showroom-logo-img { max-width: 100%; width: 550px; height: auto; object-fit: contain; }
@@ -385,7 +388,6 @@ h1, h2 {
 }
 .platform-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%); }
 
-/* --- Scoped Grids --- */
 .showroom-grid { display: grid; gap: 30px; padding: 20px; justify-content: center; margin: 0 auto; max-width: 1200px; }
 .page-showroom .showroom-grid { grid-template-columns: repeat(3, minmax(300px, 400px)); }
 .page-overlays .showroom-grid { grid-template-columns: repeat(2, minmax(400px, 500px)); }
@@ -404,14 +406,13 @@ h1, h2 {
 .unlock-btn { padding: 10px 16px; background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); font-weight: bold; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; border-radius: 4px; }
 .unlock-btn:hover, .unlock-btn.active { background: var(--accent-color); color: #000; }
 
-/* --- See-More Design --- */
+/* --- See-More & Extras --- */
 .see-more-container { display: flex; flex-direction: column; align-items: center; margin: 15px auto; width: 100%; max-width: 350px; cursor: pointer; position: relative; padding: 5px 0; }
 .see-more-container::before, .see-more-container::after { content: ''; position: absolute; top: 15px; width: 60px; height: 1px; z-index: 1; }
 .see-more-container::before { right: 50%; margin-right: 50px; background: linear-gradient(90deg, transparent, #ffffff); }
 .see-more-container::after { left: 50%; margin-left: 50px; background: linear-gradient(90deg, #ffffff, transparent); }
 .see-more-text { color: #ffffff; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; z-index: 2; position: relative; }
 
-/* --- Arrows --- */
 .arrow-container { position: relative; width: 40px; height: 30px; margin: 10px auto 0 auto; display: flex; justify-content: center; align-items: center; transition: transform 0.4s ease; }
 .arrow-container.active { transform: rotate(180deg); }
 .arrow-container::before, .arrow-container::after { content: ''; position: absolute; width: 12px; height: 12px; border-bottom: 2px solid #ffffff; border-right: 2px solid #ffffff; border-radius: 1px; transform: rotate(45deg); animation: fade-down 2s infinite; opacity: 0; }
@@ -419,18 +420,10 @@ h1, h2 {
 .arrow-container::after { top: 4px; animation-delay: 0.5s; }
 @keyframes fade-down { 0% { opacity: 0; transform: translateY(0) rotate(45deg); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateY(12px) rotate(45deg); } }
 
-@media (max-width: 900px) {
-    .showroom-grid { grid-template-columns: 1fr !important; }
-    .main-nav { flex-direction: column; gap: 15px; }
-    .header-logo-img { width: 100% !important; max-width: 500px; }
-    .hero { padding: 20px 10px !important; }
-}
-
 .more-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out; }
 .more-content.active { max-height: 2000px; opacity: 1; }
 .more-content .showroom-grid { margin-top: 30px; }
 
-/* --- Color Selector --- */
 .platform-section .color-selector { display: flex; gap: 10px; margin: 15px 0; justify-content: center; }
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
@@ -446,70 +439,7 @@ h1, h2 {
     border-bottom: 1px solid var(--border-color);
 }
 
-@media (max-width: 600px) {
-    .main-nav {
-        flex-direction: column !important;
-        padding: 15px 10px !important;
-        gap: 10px !important;
-        align-items: center !important;
-    }
-
-    .main-nav nav {
-        display: flex !important;
-        flex-direction: row !important;
-        justify-content: center !important;
-        width: 100%;
-    }
-
-    .main-nav nav a {
-        margin: 0 10px !important;
-        font-size: 0.8rem !important;
-    }
-
-    .hero p {
-        margin-top: -10px !important; 
-        margin-bottom: 15px !important;
-        font-size: 0.8rem !important;
-        width: 90% !important;
-        margin-left: auto !important;
-        margin-right: auto !important;
-        text-align: center !important;
-    }
-
-    h1, h2 {
-        font-size: 1rem !important;
-        margin-bottom: 8px !important;
-        width: 100% !important;
-        text-align: center !important;
-    }
-
-    .banner-video-container {
-        height: 150px !important; 
-        width: 85% !important;
-    }
-
-    .steps-grid { gap: 15px !important; }
-    
-    .step-card {
-        width: 90% !important;
-        padding: 15px !important;
-        margin: 10px auto !important;
-    }
-    .step-side-num { 
-        font-size: 2.5rem !important; 
-        margin-bottom: 5px !important;
-    }
-    .step-text p {
-        font-size: 0.85rem !important;
-    }
-
-    .btn-primary {
-        padding: 8px 16px !important;
-        font-size: 0.8rem !important;
-    }
-}
-
-/* 1. Footer Container - Removed the gap */
+/* --- Footer --- */
 .footer-wrapper {
     display: flex;
     flex-direction: column;
@@ -517,13 +447,7 @@ h1, h2 {
     gap: 0px; 
     margin-top: 60px;
 }
-
-.footer-promo .step-text {
-    font-size: 1.5rem;
-    margin-bottom: 20px; 
-    font-family: inherit;
-}
-/* 3. Spinning Logo */
+.footer-promo .step-text { font-size: 1.5rem; margin-bottom: 20px; font-family: inherit; }
 .spinning-logo {
     width: 175px;
     height: auto;
@@ -532,8 +456,6 @@ h1, h2 {
     cursor: pointer;
     margin: 0; 
 }
-
-/* 4. Bottom Text (Small) */
 .footer-promo .footer-caption {
     font-size: 0.5rem;
     font-family: inherit;
@@ -542,28 +464,28 @@ h1, h2 {
     padding-top: 5px;
     margin-bottom: 40px;
 }
-
-/* Defines the specific colors - added !important to ensure they override anything else */
 .laugh-red { color: #e60000 !important; }
 .family-pink { color: #ff1493 !important; }
 .okay-green { color: #33ff55 !important; }
 
-/* --- Top Social Bar --- */
-.top-social-bar {
-    background-color: #0f0f12; /* Matches your site background */
-    display: flex;
-    justify-content: center;
-    gap: 20px;
-    padding: 8px 0;
-    border-bottom: 1px solid #24242b; /* Matches your border color */
+/* --- Media Queries --- */
+@media (max-width: 900px) {
+    .showroom-grid { grid-template-columns: 1fr !important; }
+    .main-nav { flex-direction: column; gap: 15px; }
+    .header-logo-img { width: 100% !important; max-width: 500px; }
+    .hero { padding: 20px 10px !important; }
 }
 
-.top-social-bar a {
-    color: #a0a0aa; /* Muted text color */
-    font-size: 1.1rem;
-    transition: color 0.3s ease;
-}
-
-.top-social-bar a:hover {
-    color: #ff3344; /* Your accent red color */
+@media (max-width: 600px) {
+    .main-nav { flex-direction: column !important; padding: 15px 10px !important; gap: 10px !important; align-items: center !important; }
+    .main-nav nav { display: flex !important; flex-direction: row !important; justify-content: center !important; width: 100%; }
+    .main-nav nav a { margin: 0 10px !important; font-size: 0.8rem !important; }
+    .hero p { margin-top: -10px !important; margin-bottom: 15px !important; font-size: 0.8rem !important; width: 90% !important; margin-left: auto !important; margin-right: auto !important; text-align: center !important; }
+    h1, h2 { font-size: 1rem !important; margin-bottom: 8px !important; width: 100% !important; text-align: center !important; }
+    .banner-video-container { height: 150px !important; width: 85% !important; }
+    .steps-grid { gap: 15px !important; }
+    .step-card { width: 90% !important; padding: 15px !important; margin: 10px auto !important; }
+    .step-side-num { font-size: 2.5rem !important; margin-bottom: 5px !important; }
+    .step-text p { font-size: 0.85rem !important; }
+    .btn-primary { padding: 8px 16px !important; font-size: 0.8rem !important; }
 }
