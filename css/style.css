@@ -33,25 +33,14 @@ body {
     100% { opacity: 1; }
 }
 
-/* --- Footer Social Bar (Clean/No Box) --- */
-.footer-social-bar {
-    display: flex;
-    justify-content: center;
-    gap: 25px;
-    padding: 20px 0;
-    width: 100%;
-    /* No background-color or border added here */
+/* --- Layout --- */
+.main-content-wrapper {
+    position: relative;
+    z-index: 1;
 }
 
-.footer-social-bar a {
-    color: #a0a0aa; /* Adjust this color to match your preference */
-    font-size: 1.3rem;
-    transition: color 0.3s ease;
-}
+.section-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px 20px 20px; }
 
-.footer-social-bar a:hover {
-    color: #ff3344;
-}
 h1, h2 { 
     font-size: 2rem; 
     margin-bottom: 20px; 
@@ -162,7 +151,7 @@ h1, h2 {
     pointer-events: none;
 }
 
-/* --- 3-Step Section --- */
+/* --- 3-Step Section & Staggered Animation --- */
 .steps-container { 
     display: flex;
     flex-direction: column;
@@ -177,7 +166,7 @@ h1, h2 {
     grid-template-columns: repeat(auto-fit, 400px); 
     justify-content: center; 
     justify-items: center;    
-    gap: 60px;                
+    gap: 60px;                  
     margin: 20px auto; 
     max-width: 1400px;
     width: 100%;
@@ -196,10 +185,11 @@ h1, h2 {
     opacity: 0;
     animation: fadeIn 9s infinite;
     position: relative;
-    overflow: hidden; 
+    overflow: hidden; /* This keeps the number inside the card boundary */
     margin-bottom: 25px !important; 
 }
 
+/* --- UPDATED: Number Styling (Even more fade) --- */
 .step-side-num {
     position: absolute; 
     top: -15px;
@@ -209,12 +199,14 @@ h1, h2 {
     line-height: 1;
     z-index: 0; 
     pointer-events: none; 
+    
+    /* Increased Fade: Gradient now fades to 0% opacity at the bottom */
     background: linear-gradient(180deg, var(--accent-color) 20%, rgba(255, 51, 68, 0) 100%);
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
-    opacity: 0.35; 
+    opacity: 0.35; /* Lower opacity for a subtler look */
 }
-
+/* --- UPDATED: Text Styling --- */
 .step-text {
     position: relative; 
     z-index: 1;
@@ -235,7 +227,7 @@ h1, h2 {
     100% { opacity: 0; }
 }
 
-/* --- Divider & CTA --- */
+/* --- Divider Line --- */
 .divider-line {
     width: 60%; 
     max-width: 600px;
@@ -259,13 +251,14 @@ h1, h2 {
     margin-top: 25px;
 }
 
+/* --- Animations --- */
 @keyframes pulse-red {
     0% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0.7); }
     70% { box-shadow: 0 0 0 15px rgba(255, 51, 68, 0); }
     100% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0); }
 }
 
-/* --- Store & Forms --- */
+/* --- Store & Form --- */
 .store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
 .btn-primary { 
     background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color);
@@ -321,8 +314,17 @@ h1, h2 {
 .back-arrow:hover { color: var(--accent-color); }
 
 #modal-img-display { width: 100%; display: block; }
-.modal-logo { width: 150px; margin: 15px auto 10px auto; display: block; }
-.modal-info { padding: 10px 20px 20px 20px; }
+
+.modal-logo {
+    width: 150px; 
+    margin: 15px auto 10px auto; 
+    display: block;
+}
+
+.modal-info {
+    padding: 10px 20px 20px 20px; 
+}
+
 .modal-info h3 { margin-bottom: 20px; color: var(--text-main); }
 
 .pulse-btn {
@@ -333,15 +335,20 @@ h1, h2 {
     cursor: pointer;
     text-transform: uppercase; 
     font-weight: bold; 
-    width: 60%;           
-    margin: 0 auto;       
-    display: block;       
+    width: 60%;            
+    margin: 0 auto;        
+    display: block;        
     animation: pulse-red 2s infinite; 
     border-radius: 4px;
 }
-.pulse-btn:hover { background: var(--accent-color); color: #000; animation: none; }
 
-/* --- Visual Effects --- */
+.pulse-btn:hover {
+    background: var(--accent-color);
+    color: #000;
+    animation: none; 
+}
+
+/* --- Effects --- */
 .ember-container, .glow-container {
     position: fixed; top: 0; left: 0; width: 100%; height: 100%;
     pointer-events: none; z-index: -100; overflow: hidden;
@@ -368,7 +375,7 @@ h1, h2 {
 
 @keyframes pulse-glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.02); } }
 
-/* --- Showroom Layout --- */
+/* --- Premium Showroom Layout --- */
 .platform-section { margin-bottom: 30px; margin-left: auto; margin-right: auto; max-width: 1200px; }
 .showroom-logo-container { display: flex; justify-content: center; margin: 20px auto 30px auto; padding: 0; }
 .showroom-logo-img { max-width: 100%; width: 550px; height: auto; object-fit: contain; }
@@ -378,6 +385,7 @@ h1, h2 {
 }
 .platform-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%); }
 
+/* --- Scoped Grids --- */
 .showroom-grid { display: grid; gap: 30px; padding: 20px; justify-content: center; margin: 0 auto; max-width: 1200px; }
 .page-showroom .showroom-grid { grid-template-columns: repeat(3, minmax(300px, 400px)); }
 .page-overlays .showroom-grid { grid-template-columns: repeat(2, minmax(400px, 500px)); }
@@ -396,13 +404,14 @@ h1, h2 {
 .unlock-btn { padding: 10px 16px; background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); font-weight: bold; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; border-radius: 4px; }
 .unlock-btn:hover, .unlock-btn.active { background: var(--accent-color); color: #000; }
 
-/* --- See-More & Extras --- */
+/* --- See-More Design --- */
 .see-more-container { display: flex; flex-direction: column; align-items: center; margin: 15px auto; width: 100%; max-width: 350px; cursor: pointer; position: relative; padding: 5px 0; }
 .see-more-container::before, .see-more-container::after { content: ''; position: absolute; top: 15px; width: 60px; height: 1px; z-index: 1; }
 .see-more-container::before { right: 50%; margin-right: 50px; background: linear-gradient(90deg, transparent, #ffffff); }
 .see-more-container::after { left: 50%; margin-left: 50px; background: linear-gradient(90deg, #ffffff, transparent); }
 .see-more-text { color: #ffffff; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; z-index: 2; position: relative; }
 
+/* --- Arrows --- */
 .arrow-container { position: relative; width: 40px; height: 30px; margin: 10px auto 0 auto; display: flex; justify-content: center; align-items: center; transition: transform 0.4s ease; }
 .arrow-container.active { transform: rotate(180deg); }
 .arrow-container::before, .arrow-container::after { content: ''; position: absolute; width: 12px; height: 12px; border-bottom: 2px solid #ffffff; border-right: 2px solid #ffffff; border-radius: 1px; transform: rotate(45deg); animation: fade-down 2s infinite; opacity: 0; }
@@ -410,10 +419,18 @@ h1, h2 {
 .arrow-container::after { top: 4px; animation-delay: 0.5s; }
 @keyframes fade-down { 0% { opacity: 0; transform: translateY(0) rotate(45deg); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateY(12px) rotate(45deg); } }
 
+@media (max-width: 900px) {
+    .showroom-grid { grid-template-columns: 1fr !important; }
+    .main-nav { flex-direction: column; gap: 15px; }
+    .header-logo-img { width: 100% !important; max-width: 500px; }
+    .hero { padding: 20px 10px !important; }
+}
+
 .more-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out; }
 .more-content.active { max-height: 2000px; opacity: 1; }
 .more-content .showroom-grid { margin-top: 30px; }
 
+/* --- Color Selector --- */
 .platform-section .color-selector { display: flex; gap: 10px; margin: 15px 0; justify-content: center; }
 .platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
 .platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
@@ -429,11 +446,529 @@ h1, h2 {
     border-bottom: 1px solid var(--border-color);
 }
 
+@media (max-width: 600px) {
+    .main-nav {
+        flex-direction: column !important;
+        padding: 15px 10px !important;
+        gap: 10px !important;
+        align-items: center !important;
+    }
+
+    .main-nav nav {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        width: 100%;
+    }
+
+    .main-nav nav a {
+        margin: 0 10px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .hero p {
+        margin-top: -10px !important; 
+        margin-bottom: 15px !important;
+        font-size: 0.8rem !important;
+        width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
+    }
+
+    h1, h2 {
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .banner-video-container {
+        height: 150px !important; 
+        width: 85% !important;
+    }
+
+    .steps-grid { gap: 15px !important; }
+    
+    .step-card {
+        width: 90% !important;
+        padding: 15px !important;
+        margin: 10px auto !important;
+    }
+    .step-side-num { 
+        font-size: 2.5rem !important; 
+        margin-bottom: 5px !important;
+    }
+    .step-text p {
+        font-size: 0.85rem !important;
+    }
+
+    .btn-primary {
+        padding: 8px 16px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* 1. Footer Container - Removed the gap */
+.footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px; 
+    margin-top: 60px;
+}
+
+.footer-promo .step-text {
+    font-size: 1.5rem;
+    margin-bottom: 20px; 
+    font-family: inherit;
+}
+/* 3. Spinning Logo */
+.spinning-logo {
+    width: 175px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    cursor: pointer;
+    margin: 0; 
+}
+
+/* 4. Bottom Text (Small) */
+.footer-promo .footer-caption {
+    font-size: 0.5rem;
+    font-family: inherit;
+    color: #cccccc; 
+    margin: 0;
+    padding-top: 5px;
+    margin-bottom: 40px;
+}
+
+/* Defines the specific colors - added !important to ensure they override anything else */
 .laugh-red { color: #e60000 !important; }
 .family-pink { color: #ff1493 !important; }
 .okay-green { color: #33ff55 !important; }
 
-/* --- Media Queries --- */
+/* --- Global Variables & Resets --- */
+:root {
+    --bg-dark: #0f0f12;
+    --bg-card: #16161a;
+    --text-main: #ffffff;
+    --text-muted: #a0a0aa;
+    --accent-color: #ff3344;
+    --accent-glow: rgba(255, 51, 68, 0.2);
+    --border-color: #24242b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+html {
+    background-color: var(--bg-dark);
+}
+
+body {
+    min-height: 100vh;
+    padding-bottom: 0 !important;
+    margin-bottom: 0 !important;
+    background-color: transparent;
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+    overflow-x: hidden;
+    overflow-y: auto;
+    animation: fadeInPage 0.2s ease-in-out;
+}
+
+@keyframes fadeInPage {
+    0% { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+/* --- Layout --- */
+.main-content-wrapper {
+    position: relative;
+    z-index: 1;
+}
+
+.section-container { max-width: 1200px; margin: 0 auto; padding: 40px 20px 20px 20px; }
+
+h1, h2 { 
+    font-size: 2rem; 
+    margin-bottom: 20px; 
+    text-transform: uppercase; 
+    letter-spacing: 1px; 
+    text-align: center; 
+}
+
+.accent-num { color: var(--accent-color); }
+.text-accent { color: var(--accent-color); }
+
+/* --- Navigation Bar --- */
+.main-nav {
+    display: flex; justify-content: space-between; align-items: center;
+    padding: 20px 40px; background: rgba(15, 15, 18, 0.85); backdrop-filter: blur(10px);
+    position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color);
+}
+.logo-link { text-decoration: none; display: block; cursor: pointer; }
+.logo { display: flex; align-items: center; width: 210px; height: 100px; overflow: hidden; }
+.logo img { width: 100%; height: auto; display: block; object-fit: contain; }
+
+.main-nav nav a { color: var(--text-muted); text-decoration: none; margin-left: 24px; font-weight: 500; transition: color 0.2s; }
+.main-nav nav a:hover { color: var(--text-main); }
+.main-nav nav a.nav-cta { color: var(--accent-color); border: 1px solid var(--accent-color); padding: 6px 16px; border-radius: 4px; }
+.main-nav nav a.nav-cta:hover { background: var(--accent-color); color: #000; }
+
+/* --- Hero & Image Header --- */
+.hero {
+    display: flex;
+    flex-direction: column;
+    align-items: center; 
+    text-align: center; 
+    padding: 10px 20px !important; 
+    background: transparent !important; 
+}
+
+.header-logo-container {
+    display: flex !important;
+    justify-content: center !important;
+    margin: 0 auto !important; 
+    padding: 0 !important;
+    line-height: 0 !important;
+    font-size: 0 !important;
+}
+
+.header-img-container {
+    display: flex;
+    justify-content: center;
+    margin: 20px auto 40px auto; 
+    width: 100%;
+}
+
+.header-img {
+    max-width: 600px; 
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+}
+
+.hero p {
+    display: block !important;
+    margin-top: -80px !important; 
+    margin-bottom: 70px !important; 
+    line-height: 1.2 !important;
+    position: relative !important;
+    z-index: 10 !important;
+}
+
+.header-logo-img {
+    display: block !important;
+    max-width: 95%;
+    width: 1000px; 
+    height: auto;
+    object-fit: contain;
+    margin-bottom: 0 !important;
+}
+
+/* --- Banner Video Styles --- */
+.banner-video-container {
+    display: block !important;
+    margin: 20px auto 40px auto !important; 
+    width: 90% !important;
+    max-width: 800px !important;
+    height: 250px !important;
+    position: relative !important;
+    z-index: 5 !important;
+    border-radius: 8px !important;
+    overflow: hidden !important;
+    flex-shrink: 0 !important;
+    -webkit-mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
+    mask-image: linear-gradient(to right, transparent, black 25%, black 75%, transparent);
+}
+
+.banner-video-container video {
+    width: 100% !important;
+    height: 100% !important;
+    object-fit: cover !important;
+    object-position: center !important;
+}
+
+.video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(15, 15, 18, 0.4);
+    pointer-events: none;
+}
+
+/* --- 3-Step Section & Staggered Animation --- */
+.steps-container { 
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+    padding: 40px 20px; 
+    background: transparent !important; 
+}
+
+.steps-grid { 
+    display: grid; 
+    grid-template-columns: repeat(auto-fit, 400px); 
+    justify-content: center; 
+    justify-items: center;    
+    gap: 60px;                  
+    margin: 20px auto; 
+    max-width: 1400px;
+    width: 100%;
+}
+
+.step-card {
+    display: flex;                
+    align-items: flex-start;    
+    gap: 25px;                    
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 40px;              
+    border-radius: 12px;
+    width: 400px;                
+    text-align: left; 
+    opacity: 0;
+    animation: fadeIn 9s infinite;
+    position: relative;
+    overflow: hidden; /* This keeps the number inside the card boundary */
+    margin-bottom: 25px !important; 
+}
+
+/* --- UPDATED: Number Styling (Even more fade) --- */
+.step-side-num {
+    position: absolute; 
+    top: -15px;
+    right: -10px;      
+    font-size: 11rem;
+    font-weight: 900;
+    line-height: 1;
+    z-index: 0; 
+    pointer-events: none; 
+    
+    /* Increased Fade: Gradient now fades to 0% opacity at the bottom */
+    background: linear-gradient(180deg, var(--accent-color) 20%, rgba(255, 51, 68, 0) 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    opacity: 0.35; /* Lower opacity for a subtler look */
+}
+/* --- UPDATED: Text Styling --- */
+.step-text {
+    position: relative; 
+    z-index: 1;
+}
+
+.step-text h3 { color: #fff; margin-bottom: 5px; font-size: 1.1rem; }
+.step-text p { color: var(--text-muted); font-size: 0.9rem; }
+
+.step-1 { animation-delay: 0s; } 
+.step-2 { animation-delay: 1s; } 
+.step-3 { animation-delay: 2s; }
+
+@keyframes fadeIn {
+    0% { opacity: 0; transform: translateY(20px); }
+    10% { opacity: 1; transform: translateY(0); }
+    70% { opacity: 1; transform: translateY(0); }
+    90% { opacity: 0; transform: translateY(0); }
+    100% { opacity: 0; }
+}
+
+/* --- Divider Line --- */
+.divider-line {
+    width: 60%; 
+    max-width: 600px;
+    margin: 20px auto; 
+    height: 1px;
+    background: linear-gradient(90deg, transparent 0%, #ffffff 50%, transparent 100%);
+    border: none;
+}
+
+.custom-cta-faded {
+    background: transparent !important;
+    border: none !important;
+    padding: 20px 0;
+    text-align: center;
+}
+.custom-cta-faded h2, .custom-cta-faded p { margin: 0 !important; }
+.custom-cta-faded .btn-primary { 
+    animation: pulse-red 2s infinite !important; 
+    position: relative !important; 
+    display: inline-block !important; 
+    margin-top: 25px;
+}
+
+/* --- Animations --- */
+@keyframes pulse-red {
+    0% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0.7); }
+    70% { box-shadow: 0 0 0 15px rgba(255, 51, 68, 0); }
+    100% { box-shadow: 0 0 0 0 rgba(255, 51, 68, 0); }
+}
+
+/* --- Store & Form --- */
+.store-grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 30px; }
+.btn-primary { 
+    background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color);
+    padding: 10px 24px; border-radius: 4px; text-decoration: none; font-weight: 700;
+    transition: all 0.3s ease; display: inline-block;
+}
+.btn-primary:hover { background: var(--accent-color); color: #000; }
+.form-container { max-width: 600px; margin: 20px auto; padding: 20px; display: flex; flex-direction: column; align-items: center; text-align: center; }
+.brief-form { width: 100%; display: flex; flex-direction: column; gap: 20px; background: var(--bg-card); padding: 30px; border: 1px solid var(--border-color); border-radius: 8px; }
+.form-group { display: flex; flex-direction: column; gap: 8px; }
+.form-group label { font-weight: 700; text-transform: uppercase; font-size: 0.85rem; }
+.form-group input, .form-group select, .form-group textarea { padding: 12px; background-color: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 4px; }
+.btn-submit { 
+    background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color);
+    padding: 12px; border-radius: 4px; font-weight: 900; text-transform: uppercase;
+    cursor: pointer; transition: all 0.3s ease; animation: pulse-red 2s infinite;
+    position: relative; display: inline-block;
+}
+.btn-submit:hover { background: var(--accent-color); color: #000; animation: none; }
+
+/* --- Modal Styles --- */
+.modal-overlay {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    background: rgba(0, 0, 0, 0.85);
+    backdrop-filter: blur(8px);
+    display: flex; align-items: center; justify-content: center;
+    z-index: 2000;
+    opacity: 0; visibility: hidden;
+    transition: opacity 0.3s ease, visibility 0.3s ease;
+}
+.modal-overlay.show { opacity: 1; visibility: visible; }
+
+.modal-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    padding: 0; 
+    border-radius: 12px;
+    width: 90%; 
+    max-width: 500px;
+    text-align: center;
+    position: relative;
+    transform: scale(0.8);
+    transition: transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+    overflow: hidden;
+}
+.modal-overlay.show .modal-card { transform: scale(1); }
+
+.back-arrow {
+    position: absolute; top: 15px; left: 15px; font-size: 1.5rem;
+    color: var(--text-main); cursor: pointer; transition: color 0.2s;
+    z-index: 10;
+}
+.back-arrow:hover { color: var(--accent-color); }
+
+#modal-img-display { width: 100%; display: block; }
+
+.modal-logo {
+    width: 150px; 
+    margin: 15px auto 10px auto; 
+    display: block;
+}
+
+.modal-info {
+    padding: 10px 20px 20px 20px; 
+}
+
+.modal-info h3 { margin-bottom: 20px; color: var(--text-main); }
+
+.pulse-btn {
+    background: transparent; 
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color); 
+    padding: 12px 24px; 
+    cursor: pointer;
+    text-transform: uppercase; 
+    font-weight: bold; 
+    width: 60%;            
+    margin: 0 auto;        
+    display: block;        
+    animation: pulse-red 2s infinite; 
+    border-radius: 4px;
+}
+
+.pulse-btn:hover {
+    background: var(--accent-color);
+    color: #000;
+    animation: none; 
+}
+
+/* --- Effects --- */
+.ember-container, .glow-container {
+    position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+    pointer-events: none; z-index: -100; overflow: hidden;
+}
+
+.ember {
+    position: absolute; background: #ff3344;
+    border-radius: 50% 10% 50% 10%; filter: blur(1px); 
+    opacity: 0; pointer-events: none; animation: float-random 15s infinite linear;
+}
+
+@keyframes float-random {
+    0% { transform: translateY(100vh) translateX(0) scale(0.5); opacity: 0; }
+    20% { opacity: 0.6; } 
+    50% { transform: translateY(50vh) translateX(50px) scale(1); }
+    80% { opacity: 0.6; }
+    100% { transform: translateY(-10vh) translateX(-50px) scale(0.5); opacity: 0; }
+}
+
+.glow-container {
+    background: radial-gradient(ellipse 100% 100% at bottom, rgba(255, 102, 0, 0.3) 0%, rgba(255, 51, 68, 0.1) 50%, transparent 80%);
+    animation: pulse-glow 3s infinite ease-in-out;
+}
+
+@keyframes pulse-glow { 0%, 100% { opacity: 0.3; transform: scale(1); } 50% { opacity: 0.6; transform: scale(1.02); } }
+
+/* --- Premium Showroom Layout --- */
+.platform-section { margin-bottom: 30px; margin-left: auto; margin-right: auto; max-width: 1200px; }
+.showroom-logo-container { display: flex; justify-content: center; margin: 20px auto 30px auto; padding: 0; }
+.showroom-logo-img { max-width: 100%; width: 550px; height: auto; object-fit: contain; }
+.platform-title {
+    color: var(--text-main); font-size: 1.5rem; margin-bottom: 20px; padding-bottom: 10px; 
+    text-align: left !important; position: relative; border-bottom: none; width: 100%;
+}
+.platform-title::after { content: ''; position: absolute; left: 0; bottom: 0; width: 100%; height: 2px; background: linear-gradient(90deg, transparent 0%, #ff3344 50%, transparent 100%); }
+
+/* --- Scoped Grids --- */
+.showroom-grid { display: grid; gap: 30px; padding: 20px; justify-content: center; margin: 0 auto; max-width: 1200px; }
+.page-showroom .showroom-grid { grid-template-columns: repeat(3, minmax(300px, 400px)); }
+.page-overlays .showroom-grid { grid-template-columns: repeat(2, minmax(400px, 500px)); }
+
+.product-card {
+    background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; overflow: hidden;
+    display: flex !important; flex-direction: column !important; width: 100% !important; transition: transform 0.3s ease;
+}
+.product-card:hover { border-color: var(--accent-color); transform: translateY(-5px); }
+.product-card img { width: 100%; aspect-ratio: 16 / 9; background: #000; object-fit: contain; padding: 15px; }
+
+.card-info { padding: 20px; display: flex; flex-direction: column; justify-content: space-between; height: 100%; gap: 10px; }
+.product-card h3 { color: var(--text-main); font-size: 1.1rem; }
+.price { color: var(--text-muted); font-weight: bold; }
+
+.unlock-btn { padding: 10px 16px; background: transparent; color: var(--accent-color); border: 1px solid var(--accent-color); font-weight: bold; cursor: pointer; transition: all 0.3s ease; text-transform: uppercase; border-radius: 4px; }
+.unlock-btn:hover, .unlock-btn.active { background: var(--accent-color); color: #000; }
+
+/* --- See-More Design --- */
+.see-more-container { display: flex; flex-direction: column; align-items: center; margin: 15px auto; width: 100%; max-width: 350px; cursor: pointer; position: relative; padding: 5px 0; }
+.see-more-container::before, .see-more-container::after { content: ''; position: absolute; top: 15px; width: 60px; height: 1px; z-index: 1; }
+.see-more-container::before { right: 50%; margin-right: 50px; background: linear-gradient(90deg, transparent, #ffffff); }
+.see-more-container::after { left: 50%; margin-left: 50px; background: linear-gradient(90deg, #ffffff, transparent); }
+.see-more-text { color: #ffffff; font-weight: 700; font-size: 0.75rem; letter-spacing: 1px; text-transform: uppercase; z-index: 2; position: relative; }
+
+/* --- Arrows --- */
+.arrow-container { position: relative; width: 40px; height: 30px; margin: 10px auto 0 auto; display: flex; justify-content: center; align-items: center; transition: transform 0.4s ease; }
+.arrow-container.active { transform: rotate(180deg); }
+.arrow-container::before, .arrow-container::after { content: ''; position: absolute; width: 12px; height: 12px; border-bottom: 2px solid #ffffff; border-right: 2px solid #ffffff; border-radius: 1px; transform: rotate(45deg); animation: fade-down 2s infinite; opacity: 0; }
+.arrow-container::before { top: -4px; animation-delay: 0s; }
+.arrow-container::after { top: 4px; animation-delay: 0.5s; }
+@keyframes fade-down { 0% { opacity: 0; transform: translateY(0) rotate(45deg); } 50% { opacity: 1; } 100% { opacity: 0; transform: translateY(12px) rotate(45deg); } }
+
 @media (max-width: 900px) {
     .showroom-grid { grid-template-columns: 1fr !important; }
     .main-nav { flex-direction: column; gap: 15px; }
@@ -441,16 +976,144 @@ h1, h2 {
     .hero { padding: 20px 10px !important; }
 }
 
+.more-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.6s ease-in-out, opacity 0.6s ease-in-out; }
+.more-content.active { max-height: 2000px; opacity: 1; }
+.more-content .showroom-grid { margin-top: 30px; }
+
+/* --- Color Selector --- */
+.platform-section .color-selector { display: flex; gap: 10px; margin: 15px 0; justify-content: center; }
+.platform-section .color-dot { width: 22px; height: 22px; border-radius: 50%; border: 1px solid var(--border-color); cursor: pointer; transition: transform 0.2s, border-color 0.2s; }
+.platform-section .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
+
+.modal-preview-box {
+    width: 100%;
+    height: 300px; 
+    background: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 15px;
+    border-bottom: 1px solid var(--border-color);
+}
+
 @media (max-width: 600px) {
-    .main-nav { flex-direction: column !important; padding: 15px 10px !important; gap: 10px !important; align-items: center !important; }
-    .main-nav nav { display: flex !important; flex-direction: row !important; justify-content: center !important; width: 100%; }
-    .main-nav nav a { margin: 0 10px !important; font-size: 0.8rem !important; }
-    .hero p { margin-top: -10px !important; margin-bottom: 15px !important; font-size: 0.8rem !important; width: 90% !important; margin-left: auto !important; margin-right: auto !important; text-align: center !important; }
-    h1, h2 { font-size: 1rem !important; margin-bottom: 8px !important; width: 100% !important; text-align: center !important; }
-    .banner-video-container { height: 150px !important; width: 85% !important; }
+    .main-nav {
+        flex-direction: column !important;
+        padding: 15px 10px !important;
+        gap: 10px !important;
+        align-items: center !important;
+    }
+
+    .main-nav nav {
+        display: flex !important;
+        flex-direction: row !important;
+        justify-content: center !important;
+        width: 100%;
+    }
+
+    .main-nav nav a {
+        margin: 0 10px !important;
+        font-size: 0.8rem !important;
+    }
+
+    .hero p {
+        margin-top: -10px !important; 
+        margin-bottom: 15px !important;
+        font-size: 0.8rem !important;
+        width: 90% !important;
+        margin-left: auto !important;
+        margin-right: auto !important;
+        text-align: center !important;
+    }
+
+    h1, h2 {
+        font-size: 1rem !important;
+        margin-bottom: 8px !important;
+        width: 100% !important;
+        text-align: center !important;
+    }
+
+    .banner-video-container {
+        height: 150px !important; 
+        width: 85% !important;
+    }
+
     .steps-grid { gap: 15px !important; }
-    .step-card { width: 90% !important; padding: 15px !important; margin: 10px auto !important; }
-    .step-side-num { font-size: 2.5rem !important; margin-bottom: 5px !important; }
-    .step-text p { font-size: 0.85rem !important; }
-    .btn-primary { padding: 8px 16px !important; font-size: 0.8rem !important; }
+    
+    .step-card {
+        width: 90% !important;
+        padding: 15px !important;
+        margin: 10px auto !important;
+    }
+    .step-side-num { 
+        font-size: 2.5rem !important; 
+        margin-bottom: 5px !important;
+    }
+    .step-text p {
+        font-size: 0.85rem !important;
+    }
+
+    .btn-primary {
+        padding: 8px 16px !important;
+        font-size: 0.8rem !important;
+    }
+}
+
+/* 1. Footer Container - Removed the gap */
+.footer-wrapper {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0px; 
+    margin-top: 60px;
+}
+
+.footer-promo .step-text {
+    font-size: 1.5rem;
+    margin-bottom: 20px; 
+    font-family: inherit;
+}
+/* 3. Spinning Logo */
+.spinning-logo {
+    width: 175px;
+    height: auto;
+    object-fit: contain;
+    border-radius: 0;
+    cursor: pointer;
+    margin: 0; 
+}
+
+/* 4. Bottom Text (Small) */
+.footer-promo .footer-caption {
+    font-size: 0.5rem;
+    font-family: inherit;
+    color: #cccccc; 
+    margin: 0;
+    padding-top: 5px;
+    margin-bottom: 40px;
+}
+
+/* Defines the specific colors - added !important to ensure they override anything else */
+.laugh-red { color: #e60000 !important; }
+.family-pink { color: #ff1493 !important; }
+.okay-green { color: #33ff55 !important; }
+
+/* --- Footer Social Bar (Clean/No Box) --- */
+.footer-social-bar {
+    display: flex;
+    justify-content: center;
+    gap: 25px;
+    padding: 20px 0;
+    width: 100%;
+    /* No background-color or border added here */
+}
+
+.footer-social-bar a {
+    color: #a0a0aa; /* Adjust this color to match your preference */
+    font-size: 1.3rem;
+    transition: color 0.3s ease;
+}
+
+.footer-social-bar a:hover {
+    color: #ff3344;
 }
