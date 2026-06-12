@@ -9,16 +9,17 @@
 </head>
 <body>
 
+    <div class="top-social-bar">
+        <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
+        <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+        <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
+        <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
+        <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
+    </div>
+
     <div class="main-content-wrapper">
         <div class="ember-container"></div>
         <div class="glow-container"></div>
-
-        <div class="top-social-bar">
-    <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
-    <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
-    <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
-    <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
-    <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a> </div>
         
         <header class="main-nav">
             <a href="index.html" class="logo-link">
@@ -79,14 +80,12 @@
             </div>
         </div>
         
-       <section class="custom-cta-faded">
-    <h2>Ready to <span class="text-accent">level</span> up?</h2>
-    <p>Start your custom controller journey today.</p>
-    <a href="custom.html" class="btn-primary">Get Custom Request</a>
-</section>
-
-   
-    <script>
+        <section class="custom-cta-faded">
+            <h2>Ready to <span class="text-accent">level</span> up?</h2>
+            <p>Start your custom controller journey today.</p>
+            <a href="custom.html" class="btn-primary">Get Custom Request</a>
+        </section>
+    </div> <script>
         document.addEventListener("DOMContentLoaded", () => {
             const container = document.querySelector('.ember-container');
             if (!container) return;
@@ -110,25 +109,22 @@
         });
     </script>
 
-<footer class="footer-promo">
-    <div class="footer-wrapper">
-        <div class="divider-line"></div>
-        <h2>See what else is cooking!</h2>
-
-
-         <a href="https://your-other-website-url.com" target="_blank" rel="noopener noreferrer">
-            <video class="spinning-logo" autoplay loop muted playsinline>
-                <source src="assets/images/okayest.webm" type="video/webm">
-            </video>
-        </a>
-
-        <p class="footer-caption">
-            <span class="laugh-red">Real laughs.</span> 
-            <span class="family-pink">Built by family.</span> 
-            <span class="okay-green">Better than okay.</span>
-        </p>
-    </div>
-</footer>
+    <footer class="footer-promo">
+        <div class="footer-wrapper">
+            <div class="divider-line"></div>
+            <h2>See what else is cooking!</h2>
+            <a href="https://your-other-website-url.com" target="_blank" rel="noopener noreferrer">
+                <video class="spinning-logo" autoplay loop muted playsinline>
+                    <source src="assets/images/okayest.webm" type="video/webm">
+                </video>
+            </a>
+            <p class="footer-caption">
+                <span class="laugh-red">Real laughs.</span> 
+                <span class="family-pink">Built by family.</span> 
+                <span class="okay-green">Better than okay.</span>
+            </p>
+        </div>
+    </footer>
 
 </body>
 </html>
