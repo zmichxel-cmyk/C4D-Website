@@ -161,18 +161,16 @@ h1, h2 {
     background: transparent !important; 
 }
 
-.steps-grid { 
-    display: grid; 
-    /* Forces exactly 3 equal columns */
-    grid-template-columns: repeat(3, 1fr); 
-    /* Centers the card within its grid cell */
-    justify-items: center; 
-    /* Centers the entire grid container on the page */
-    justify-content: center; 
-    gap: 30px; 
-    margin: 40px auto; 
+.steps-grid {
+    display: flex;
+    flex-direction: row;        /* Keeps them in a row */
+    justify-content: center;    /* Centers the cards horizontally */
+    flex-wrap: wrap;            /* Allows them to wrap if screen is too small */
+    gap: 30px;
+    margin: 40px auto;
     max-width: 1200px;
-    width: 95%;
+    width: 100%;
+    padding: 0 20px;
 }
 
 .step-card {
