@@ -576,3 +576,12 @@ h1, h2 {
     text-transform: uppercase;
 }
 
+.step-card-img {
+    width: 120px;        /* Sets the width of the image */
+    height: 120px;       /* Sets the height; keep same as width for square */
+    object-fit: contain; /* Ensures the image doesn't get squished */
+    margin-top: 15px;    /* Adds space under the large number */
+    margin-bottom: 10px; /* Adds space above the text */
+    z-index: 1;          /* Keeps it in front of the background */
+    pointer-events: none;
+}
