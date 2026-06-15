@@ -163,14 +163,16 @@ h1, h2 {
 
 .steps-grid { 
     display: grid; 
-    /* This forces exactly 3 columns regardless of screen size until the media query takes over */
+    /* Forces exactly 3 equal columns */
     grid-template-columns: repeat(3, 1fr); 
+    /* Centers the card within its grid cell */
+    justify-items: center; 
+    /* Centers the entire grid container on the page */
     justify-content: center; 
-    justify-items: center;    
-    gap: 30px; /* Reduced gap slightly to ensure they fit */
-    margin: 20px auto; 
-    max-width: 1400px;
-    width: 100%;
+    gap: 30px; 
+    margin: 40px auto; 
+    max-width: 1200px;
+    width: 95%;
 }
 
 .step-card {
