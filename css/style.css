@@ -163,10 +163,11 @@ h1, h2 {
 
 .steps-grid { 
     display: grid; 
-    grid-template-columns: repeat(auto-fit, 300px); 
+    /* This forces exactly 3 columns regardless of screen size until the media query takes over */
+    grid-template-columns: repeat(3, 1fr); 
     justify-content: center; 
     justify-items: center;    
-    gap: 60px;                
+    gap: 30px; /* Reduced gap slightly to ensure they fit */
     margin: 20px auto; 
     max-width: 1400px;
     width: 100%;
