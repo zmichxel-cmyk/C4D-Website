@@ -596,14 +596,14 @@ h1, h2 {
 
 /* Specifically target the image in the second card */
 .step-card:nth-child(2) .step-card-img {
-    width: 110px;  /* Adjust this size (e.g., 80px or 90px) */
-    height: 110px;
-    margin-top: 25px; /* Added a little extra top margin to keep it centered vertically */
+    width: 113px;  /* Adjust this size (e.g., 80px or 90px) */
+    height: 113px;
+    margin-top: 27px; /* Added a little extra top margin to keep it centered vertically */
 }
 
 /* Specifically target the image in the first card */
 .step-card:nth-child(1) .step-card-img {
     width: 105px;  /* Adjust this size (e.g., 80px or 90px) */
     height: 105px;
-    margin-top: 25px; /* Added a little extra top margin to keep it centered vertically */
+    margin-top: 27px; /* Added a little extra top margin to keep it centered vertically */
 }
