@@ -59,8 +59,23 @@ h1, h2 {
     position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color);
 }
 .logo-link { text-decoration: none; display: block; cursor: pointer; }
-.logo { display: flex; align-items: center; width: 210px; height: 100px; overflow: hidden; }
-.logo-video { width: 100%; height: 100%; object-fit: contain; display: block; }
+/* --- Optimized Logo Container --- */
+.logo { 
+    display: flex; 
+    align-items: center; 
+    justify-content: flex-start;
+    width: 350px;  /* Increased width for more room */
+    height: 120px; /* Increased height */
+    overflow: visible; /* Prevents clipping */
+}
+
+/* --- Optimized Video Logo --- */
+.logo-video { 
+    width: 100%; 
+    height: 100%; 
+    object-fit: contain; /* Keeps aspect ratio so it doesn't distort */
+    display: block; 
+}
 
 /* Hiding desktop nav links as requested */
 .desktop-nav-links { display: none !important; }
