@@ -607,3 +607,52 @@ h1, h2 {
     height: 100px;
     margin-top: 35px; /* Added a little extra top margin to keep it centered vertically */
 }
+
+/* --- Hamburger Menu Button --- */
+.menu-toggle {
+    display: none; /* Only show on mobile */
+    cursor: pointer;
+    flex-direction: column;
+    gap: 5px;
+}
+.bar {
+    width: 25px;
+    height: 3px;
+    background-color: var(--text-main);
+    border-radius: 2px;
+}
+
+/* --- Sliding Side Panel --- */
+.side-panel {
+    position: fixed;
+    top: 0;
+    right: -250px; /* Hidden off-screen */
+    width: 250px;
+    height: 100%;
+    background: var(--bg-dark);
+    border-left: 1px solid var(--border-color);
+    z-index: 2000;
+    display: flex;
+    flex-direction: column;
+    padding-top: 80px;
+    transition: right 0.3s ease;
+}
+
+.side-panel.active { right: 0; } /* Slides in when active */
+
+.side-panel a {
+    color: var(--text-main);
+    text-decoration: none;
+    padding: 20px 30px;
+    font-size: 1.2rem;
+    font-weight: 600;
+}
+
+.side-panel a:hover { color: var(--accent-color); }
+
+/* --- Responsive adjustment --- */
+@media (max-width: 768px) {
+    .menu-toggle { display: flex; }
+    /* Hide your existing desktop nav links here */
+    .desktop-nav-links { display: none; } 
+}
