@@ -659,3 +659,11 @@ h1, h2 {
     /* Hide your existing desktop nav links here */
     .desktop-nav-links { display: none; } 
 }
+
+/* --- Icon Spacing in Side Panel --- */
+.side-panel a i {
+    margin-right: 12px;
+    width: 20px;
+    text-align: center;
+    font-size: 1rem;
+}
