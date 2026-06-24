@@ -19,7 +19,14 @@
                     <img src="assets/images/logo.png" alt="My Brand Logo">
                 </div>
             </a>
-            <nav>
+            
+            <div class="menu-toggle" id="mobile-menu">
+                <span class="bar"></span>
+                <span class="bar"></span>
+                <span class="bar"></span>
+            </div>
+
+            <nav class="desktop-nav-links">
                 <a href="showroom.html">Showroom</a>
                 <a href="overlays.html">Free Overlays</a>
                 <a href="custom.html" class="nav-cta">Custom Request</a>
@@ -86,29 +93,13 @@
         </section>
     </div> 
 
-    <script>
-        document.addEventListener("DOMContentLoaded", () => {
-            const container = document.querySelector('.ember-container');
-            if (!container) return;
-            container.innerHTML = ''; 
+    <div class="side-panel" id="side-panel">
+        <a href="showroom.html">Showroom</a>
+        <a href="overlays.html">Free Overlays</a>
+        <a href="custom.html">Custom Request</a>
+    </div>
 
-            const colors = ['#ff3344', '#ff6600', '#ff9900']; 
-
-            for (let i = 0; i < 30; i++) {
-                const ember = document.createElement('div');
-                ember.className = 'ember';
-                const randomColor = colors[Math.floor(Math.random() * colors.length)];
-                ember.style.backgroundColor = randomColor;
-                const size = Math.random() * 4 + 1;
-                ember.style.width = size + 'px';
-                ember.style.height = size + 'px';
-                ember.style.left = Math.random() * 100 + '%';
-                ember.style.animationDuration = (Math.random() * 10 + 10) + 's';
-                ember.style.animationDelay = Math.random() * 10 + 's';
-                container.appendChild(ember);
-            }
-        });
-    </script>
+    <script src="js/main.js"></script>
 
     <footer class="footer-promo">
         <div class="footer-wrapper">
