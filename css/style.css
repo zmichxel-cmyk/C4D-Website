@@ -72,7 +72,7 @@ h1, h2 {
 }
 
 .logo-video { 
-    max-height: 110px;    /* ADJUST THIS: This controls the size. 60px is a starting point. */
+    max-height: 120px;    /* ADJUST THIS: This controls the size. 60px is a starting point. */
     width: auto;         /* Maintains aspect ratio */
     object-fit: contain;
     display: block; 
