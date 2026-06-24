@@ -610,7 +610,7 @@ h1, h2 {
 
 /* --- Hamburger Menu Button --- */
 .menu-toggle {
-    display: none; /* Only show on mobile */
+    display: flex; /* Changed from none to flex to ensure it shows */
     cursor: pointer;
     flex-direction: column;
     gap: 5px;
