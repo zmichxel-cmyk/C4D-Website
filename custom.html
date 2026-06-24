@@ -10,13 +10,26 @@
     
     <div class="glow-container"></div>
 
+    <div class="side-panel" id="side-panel">
+        <a href="showroom.html">Showroom</a>
+        <a href="overlays.html">Free Overlays</a>
+        <a href="custom.html">Custom Request</a>
+    </div>
+
     <header class="main-nav">
         <a href="index.html" class="logo-link">
             <div class="logo">
                 <img src="assets/images/logo.png" alt="My Brand Logo">
             </div>
         </a>
-        <nav>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav class="desktop-nav-links">
             <a href="showroom.html">Showroom</a>
             <a href="overlays.html">Free Overlays</a>
             <a href="custom.html" class="nav-cta">Custom Request</a>
@@ -24,10 +37,10 @@
     </header>
 
     <main class="form-container">
-      <!-- Replace your current H1 or section title with this -->
-<div class="header-logo-container">
-    <img src="assets/images/Comission.png" alt="Customs4Daez Logo" class="header-logo-img">
-</div>
+        
+        <div class="header-logo-container">
+            <img src="assets/images/Comission.png" alt="Customs4Daez Logo" class="header-logo-img">
+        </div>
         
         <form id="design-brief-form" action="https://formspree.io/f/mdajwzky" method="POST" class="brief-form">
             
@@ -92,6 +105,6 @@
         form.addEventListener("submit", handleSubmit);
     </script>
 
-<!-- This runs the ember generator -->
-    <script src="js/embers.js"></script>
+    <script src="js/main.js"></script>
 </body>
+</html>
