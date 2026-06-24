@@ -60,20 +60,21 @@ h1, h2 {
 }
 .logo-link { text-decoration: none; display: block; cursor: pointer; }
 
-/* --- Navigation Bar Logo Fix --- */
+/* --- Optimized Logo and Video Scaling --- */
 .logo { 
     display: flex; 
     align-items: center; 
-    justify-content: center; /* Ensures content inside is centered */
-    height: 80px;            /* Set height to match your header height */
-    width: auto;             /* Let width be flexible based on logo aspect ratio */
-    overflow: visible;       /* Prevents clipping */
+    justify-content: flex-start; /* Keeps it left-aligned */
+    height: 100%;                /* Takes full height of .main-nav */
+    max-height: 100px;           /* INCREASE THIS NUMBER to make the logo taller */
+    width: auto;                 /* Let it scale width automatically */
+    overflow: visible;           /* Ensures no cropping */
 }
 
 .logo-video { 
-    height: 100%;            /* Fills the container height */
-    width: auto;             /* Maintains original aspect ratio */
-    object-fit: contain;     /* Prevents stretching/pixelation */
+    height: 100%;                /* Forces video to match the container height */
+    width: auto;                 /* Prevents pixelation by letting it keep aspect ratio */
+    object-fit: contain;         /* Ensures it's not stretched */
     display: block; 
 }
 
