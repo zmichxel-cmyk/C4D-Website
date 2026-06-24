@@ -653,6 +653,14 @@ h1, h2 {
 
 .side-panel a:hover { color: var(--accent-color); }
 
+/* --- Specific Style for Home Icon --- */
+.side-panel a.home-icon {
+    text-align: center;
+    font-size: 1.5rem;
+    padding: 20px 0;
+    margin-bottom: 10px;
+}
+
 /* --- Responsive adjustment --- */
 @media (max-width: 768px) {
     .menu-toggle { display: flex; }
@@ -666,4 +674,10 @@ h1, h2 {
     width: 20px;
     text-align: center;
     font-size: 1rem;
+}
+
+/* Override spacing for home icon link if no text is present */
+.side-panel a.home-icon i {
+    margin-right: 0;
+    width: auto;
 }
