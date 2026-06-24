@@ -59,21 +59,21 @@ h1, h2 {
     position: sticky; top: 0; z-index: 1000; border-bottom: 1px solid var(--border-color);
 }
 .logo-link { text-decoration: none; display: block; cursor: pointer; }
-/* --- Optimized Logo Container --- */
+
+/* --- Navigation Bar Logo Fix --- */
 .logo { 
     display: flex; 
     align-items: center; 
-    justify-content: flex-start;
-    width: 350px;  /* Increased width for more room */
-    height: 120px; /* Increased height */
-    overflow: visible; /* Prevents clipping */
+    justify-content: center; /* Ensures content inside is centered */
+    height: 80px;            /* Set height to match your header height */
+    width: auto;             /* Let width be flexible based on logo aspect ratio */
+    overflow: visible;       /* Prevents clipping */
 }
 
-/* --- Optimized Video Logo --- */
 .logo-video { 
-    width: 100%; 
-    height: 100%; 
-    object-fit: contain; /* Keeps aspect ratio so it doesn't distort */
+    height: 100%;            /* Fills the container height */
+    width: auto;             /* Maintains original aspect ratio */
+    object-fit: contain;     /* Prevents stretching/pixelation */
     display: block; 
 }
 
