@@ -196,7 +196,7 @@ h1, h2 {
 .step-side-num {
     position: absolute; 
     top: -15px;
-    left: 10px;      /* Moved from right to left */
+    left: 10px;     /* Moved from right to left */
     font-size: 11rem;
     font-weight: 900;
     line-height: 1;
