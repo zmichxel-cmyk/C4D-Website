@@ -61,20 +61,20 @@ h1, h2 {
 .logo-link { text-decoration: none; display: block; cursor: pointer; }
 
 /* --- Optimized Logo and Video Scaling --- */
+/* --- Corrected Logo Size --- */
 .logo { 
     display: flex; 
     align-items: center; 
-    justify-content: flex-start; /* Keeps it left-aligned */
-    height: 100%;                /* Takes full height of .main-nav */
-    max-height: 100px;           /* INCREASE THIS NUMBER to make the logo taller */
-    width: auto;                 /* Let it scale width automatically */
-    overflow: visible;           /* Ensures no cropping */
+    justify-content: flex-start; 
+    height: 80px;        /* Keeps your nav bar height consistent */
+    width: auto;
+    overflow: visible;
 }
 
 .logo-video { 
-    height: 100%;                /* Forces video to match the container height */
-    width: auto;                 /* Prevents pixelation by letting it keep aspect ratio */
-    object-fit: contain;         /* Ensures it's not stretched */
+    max-height: 60px;    /* ADJUST THIS: This controls the size. 60px is a starting point. */
+    width: auto;         /* Maintains aspect ratio */
+    object-fit: contain;
     display: block; 
 }
 
