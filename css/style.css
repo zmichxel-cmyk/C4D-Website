@@ -78,6 +78,14 @@ h1, h2 {
     display: block; 
 }
 
+/* This targets the image on all other pages */
+.logo img { 
+    max-height: 120px;    /* MUST MATCH the video height so they don't jump */
+    width: auto; 
+    object-fit: contain;
+    display: block; 
+}
+
 /* Hiding desktop nav links as requested */
 .desktop-nav-links { display: none !important; }
 
