@@ -8,13 +8,24 @@
 </head>
 <body class="page-overlays">
 
-    <div class="glow-container"></div>
+    <div class="side-panel" id="side-panel">
+        <a href="showroom.html">Showroom</a>
+        <a href="overlays.html">Free Overlays</a>
+        <a href="custom.html">Custom Request</a>
+    </div>
 
     <header class="main-nav">
         <a href="index.html" class="logo-link">
             <div class="logo"><img src="assets/images/logo.png" alt="My Brand Logo"></div>
         </a>
-        <nav>
+
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+
+        <nav class="desktop-nav-links">
             <a href="showroom.html">Showroom</a>
             <a href="overlays.html">Free Overlays</a>
             <a href="custom.html" class="nav-cta">Custom Request</a>
@@ -111,28 +122,26 @@
         </section>
     </main>
 
-<!-- Modal Structure -->
-<div id="controller-modal" class="modal-overlay">
-    <div class="modal-card">
-        <span class="back-arrow" onclick="closeModal()">&#8592;</span>
-        
-        <div class="modal-preview-box">
-            <img id="modal-img-display" src="" alt="Controller Preview">
-        </div>
+    <div id="controller-modal" class="modal-overlay">
+        <div class="modal-card">
+            <span class="back-arrow" onclick="closeModal()">&#8592;</span>
+            
+            <div class="modal-preview-box">
+                <img id="modal-img-display" src="" alt="Controller Preview">
+            </div>
 
-        <img src="assets/images/downloadnowlogo.png" alt="Customs4Daez Logo" class="modal-logo">
-        
-        <!-- Description Container -->
-        <div class="modal-desc">
-            <p id="modal-description">Select a controller to see details.</p>
-        </div>
-        
-        <div class="modal-info">
-            <h3>Download your FREE Controller!</h3>
-            <button class="pulse-btn" onclick="downloadController()">DOWNLOAD NOW</button>
+            <img src="assets/images/downloadnowlogo.png" alt="Customs4Daez Logo" class="modal-logo">
+            
+            <div class="modal-desc">
+                <p id="modal-description">Select a controller to see details.</p>
+            </div>
+            
+            <div class="modal-info">
+                <h3>Download your FREE Controller!</h3>
+                <button class="pulse-btn" onclick="downloadController()">DOWNLOAD NOW</button>
+            </div>
         </div>
     </div>
-</div>
 
     <script>
         // Color Swapping
@@ -146,7 +155,6 @@
             const modal = document.getElementById('controller-modal');
             const modalImg = document.getElementById('modal-img-display');
             
-            // Check if input is an ID of an image on the page, or a direct file path
             const element = document.getElementById(input);
             modalImg.src = element ? element.src : input;
             
@@ -167,6 +175,7 @@
             document.body.removeChild(link);
         }
     </script>
-    <script src="js/embers.js"></script>
+    
+    <script src="js/main.js"></script>
 </body>
 </html>
