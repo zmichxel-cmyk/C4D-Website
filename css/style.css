@@ -62,6 +62,9 @@ h1, h2 {
 .logo { display: flex; align-items: center; width: 210px; height: 100px; overflow: hidden; }
 .logo img { width: 100%; height: auto; display: block; object-fit: contain; }
 
+/* Hiding desktop nav links as requested */
+.desktop-nav-links { display: none !important; }
+
 .main-nav nav a { color: var(--text-muted); text-decoration: none; margin-left: 24px; font-weight: 500; transition: color 0.2s; }
 .main-nav nav a:hover { color: var(--text-main); }
 .main-nav nav a.nav-cta { color: var(--accent-color); border: 1px solid var(--accent-color); padding: 6px 16px; border-radius: 4px; }
