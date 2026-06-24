@@ -8,13 +8,24 @@
 </head>
 <body class="page-showroom">
 
-  <header class="main-nav">
+    <div class="side-panel" id="side-panel">
+        <a href="showroom.html">Showroom</a>
+        <a href="overlays.html">Free Overlays</a>
+        <a href="custom.html">Custom Request</a>
+    </div>
+
+    <header class="main-nav">
         <a href="index.html" class="logo-link">
             <div class="logo">
                 <img src="assets/images/logo.png" alt="My Brand Logo">
             </div>
         </a>
-        <nav>
+        <div class="menu-toggle" id="mobile-menu">
+            <span class="bar"></span>
+            <span class="bar"></span>
+            <span class="bar"></span>
+        </div>
+        <nav class="desktop-nav-links">
             <a href="showroom.html">Showroom</a>
             <a href="overlays.html">Free Overlays</a>
             <a href="custom.html" class="nav-cta">Custom Request</a>
@@ -27,7 +38,6 @@
             <img src="assets/images/showroom.png" alt="The Premium Showroom" class="showroom-logo-img">
         </div>
 
-        <!-- PS5 Section -->
         <section class="platform-section">
             <h2 class="platform-title">C4D.5</h2>
             <div class="showroom-grid" id="ps5-grid">
@@ -50,7 +60,6 @@
             </div>
         </section>
 
-        <!-- XBOX Section -->
         <section class="platform-section">
             <h2 class="platform-title">C4D.1</h2>
             <div class="showroom-grid" id="xbox-grid">
@@ -71,7 +80,6 @@
             </div>
         </section>
 
-        <!-- PS4 Section -->
         <section class="platform-section">
             <h2 class="platform-title">C4D.4</h2>
             <div class="showroom-grid" id="ps4-grid">
@@ -92,7 +100,6 @@
             </div>
         </section>
 
-        <!-- PC Section -->
         <section class="platform-section">
             <h2 class="platform-title">C4D.MKB</h2>
             <div class="showroom-grid" id="pc-grid">
@@ -137,8 +144,8 @@
                 arrow.classList.remove('active'); 
             }
         }
-        </script>
-   
-        <!-- This runs the ember generator -->
-    <script src="js/embers.js"></script>
+    </script>
+    
+    <script src="js/main.js"></script>
 </body>
+</html>
