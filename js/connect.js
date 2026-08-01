@@ -102,7 +102,6 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     async function loadPosts() {
-        feed.innerHTML = '<p class="comments-empty">Loading posts…</p>';
         let query = supabase
             .from("community_posts")
             .select("id, name, category, title, body, likes_count, created_at")
@@ -119,13 +118,15 @@ document.addEventListener("DOMContentLoaded", () => {
     }
 
     // --- Category filter ---
+    const CATEGORY_ORDER = ["all", "lfg", "game_chat", "general"];
     categoryFilter.addEventListener("click", (e) => {
         const btn = e.target.closest(".category-btn");
         if (!btn || btn.classList.contains("active")) return;
         categoryFilter.querySelectorAll(".category-btn").forEach(b => b.classList.remove("active"));
         btn.classList.add("active");
+        const direction = CATEGORY_ORDER.indexOf(btn.dataset.category) > CATEGORY_ORDER.indexOf(currentCategory) ? 1 : -1;
         currentCategory = btn.dataset.category;
-        loadPosts();
+        slideSwap(feed, direction, loadPosts);
     });
 
     // --- Feed interactions: like, expand/collapse thread, reply submit ---
