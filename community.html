@@ -17,6 +17,7 @@
     <a href="overlays.html">Free Overlays</a>
     <a href="community.html">Community</a>
     <a href="about.html">About Us</a>
+    <a href="legal.html">Legal</a>
 </div>
 
     <header class="main-nav">
@@ -41,17 +42,63 @@
 
     <main class="section-container">
 
-        <div class="header-logo-container">
-            <img src="assets/images/Comission.png" alt="Customs4Daez Community" class="header-logo-img">
-        </div>
-
         <section class="platform-section">
             <h2 class="platform-title">Join the <span class="text-accent">Community</span></h2>
-            <p>This is where the Customs4Daez community lives — showcases, feedback, and everything happening around the brand. More coming soon.</p>
+            <p>Leave a suggestion, rate what you'd like to see, and like the comments you agree with most.</p>
+        </section>
+
+        <section class="platform-section comments-section">
+
+            <form id="comment-form" class="comment-form">
+                <div class="form-group">
+                    <label for="comment-name">Name</label>
+                    <input type="text" id="comment-name" name="name" maxlength="40" placeholder="e.g., StreamerNameTV" required>
+                </div>
+
+                <div class="form-group">
+                    <label>Rating <span class="text-muted-inline">(optional)</span></label>
+                    <div class="star-picker" id="star-picker" data-rating="0">
+                        <button type="button" class="star-btn" data-value="1" aria-label="1 star">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="2" aria-label="2 stars">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="3" aria-label="3 stars">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="4" aria-label="4 stars">&#9733;</button>
+                        <button type="button" class="star-btn" data-value="5" aria-label="5 stars">&#9733;</button>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="comment-text">Suggestion / Comment</label>
+                    <textarea id="comment-text" name="comment" rows="4" maxlength="500" placeholder="What would you like to see more of?" required></textarea>
+                </div>
+
+                <!-- Honeypot: hidden from real users, bots tend to fill every field -->
+                <div class="form-group hp-field" aria-hidden="true">
+                    <label for="comment-website">Website</label>
+                    <input type="text" id="comment-website" name="website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <button type="submit" class="btn-submit">Post Comment</button>
+                <p id="comment-form-status" class="comment-form-status"></p>
+            </form>
+
+            <div class="comments-header">
+                <h3>Comments</h3>
+                <div class="sort-toggle" id="sort-toggle">
+                    <button type="button" class="sort-btn active" data-sort="likes">Most Liked</button>
+                    <button type="button" class="sort-btn" data-sort="newest">Newest</button>
+                </div>
+            </div>
+
+            <div id="comments-list" class="comments-list">
+                <p class="comments-empty" id="comments-loading">Loading comments…</p>
+            </div>
+
         </section>
 
     </main>
 
+    <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="js/community.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
