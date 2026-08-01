@@ -741,3 +741,49 @@ h1, h2 {
 .like-btn { align-self: flex-start; display: flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 14px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease; font-size: 0.85rem; }
 .like-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
 .like-btn.liked { border-color: var(--accent-color); color: var(--accent-color); background: var(--accent-glow); }
+
+/* --- Community Tabs --- */
+.community-heading-row { display: flex; align-items: flex-end; justify-content: space-between; gap: 24px; flex-wrap: wrap; }
+.community-heading-text { flex: 1; min-width: 260px; }
+
+.community-tabs { display: flex; gap: 18px; flex-wrap: wrap; }
+.tab-btn { background: transparent; border: none; border-bottom: 2px solid transparent; color: var(--text-muted); padding: 6px 2px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: color 0.2s ease, border-color 0.2s ease; white-space: nowrap; }
+.tab-btn:hover { color: var(--accent-color); }
+.tab-btn.active { color: var(--accent-color); border-bottom-color: var(--accent-color); }
+
+.tab-panel { display: none; }
+.tab-panel.active { display: block; }
+
+/* --- Connect (forum) --- */
+.category-filter { display: flex; gap: 8px; flex-wrap: wrap; }
+.category-btn { background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 14px; border-radius: 4px; font-size: 0.8rem; font-weight: 700; text-transform: uppercase; cursor: pointer; transition: all 0.2s ease; }
+.category-btn.active, .category-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
+.category-badge { align-self: flex-start; font-size: 0.7rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; color: var(--accent-color); border: 1px solid var(--accent-color); border-radius: 4px; padding: 2px 8px; }
+
+.post-card { background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 18px 20px; display: flex; flex-direction: column; gap: 8px; }
+.post-title { font-size: 1.05rem; }
+.post-actions { display: flex; gap: 10px; }
+
+.reply-toggle-btn { display: flex; align-items: center; gap: 8px; background: transparent; border: 1px solid var(--border-color); color: var(--text-muted); padding: 6px 14px; border-radius: 4px; cursor: pointer; transition: all 0.2s ease; font-size: 0.85rem; }
+.reply-toggle-btn:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
+.post-thread { border-top: 1px solid var(--border-color); margin-top: 8px; padding-top: 14px; display: flex; flex-direction: column; gap: 14px; }
+.reply-list { display: flex; flex-direction: column; gap: 12px; }
+.reply-item { background: var(--bg-dark); border: 1px solid var(--border-color); border-radius: 6px; padding: 12px 14px; }
+
+.reply-form { display: flex; flex-direction: column; gap: 10px; }
+.reply-form input, .reply-form textarea { padding: 10px; background-color: var(--bg-dark); border: 1px solid var(--border-color); color: var(--text-main); border-radius: 4px; }
+.reply-form .reply-hp { position: absolute; left: -9999px; width: 1px; height: 1px; overflow: hidden; }
+.reply-submit-btn { align-self: flex-start; padding: 8px 20px; animation: none; }
+
+/* --- Clip of the Week --- */
+.clip-card { max-width: 700px; margin: 0 auto; background: var(--bg-card); border: 1px solid var(--border-color); border-radius: 8px; padding: 24px; display: flex; flex-direction: column; gap: 16px; align-items: center; text-align: center; }
+.clip-title { font-size: 1.2rem; }
+.clip-embed { width: 100%; aspect-ratio: 16 / 9; }
+.clip-embed iframe { width: 100%; height: 100%; border-radius: 4px; }
+.clip-watch-btn { animation: none; }
+
+@media (max-width: 900px) {
+    .community-heading-row { flex-direction: column; align-items: flex-start; }
+}

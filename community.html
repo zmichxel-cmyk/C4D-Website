@@ -42,12 +42,20 @@
 
     <main class="section-container">
 
-        <section class="platform-section">
-            <h2 class="platform-title">Join the <span class="text-accent">Community</span></h2>
-            <p>Leave a suggestion, rate what you'd like to see, and like the comments you agree with most.</p>
+        <section class="platform-section community-heading-row">
+            <div class="community-heading-text">
+                <h2 class="platform-title">Join the <span class="text-accent">Community</span></h2>
+                <p>Leave a suggestion, connect with other members, or check out this week's featured clip.</p>
+            </div>
+            <div class="community-tabs" id="community-tabs">
+                <button type="button" class="tab-btn active" data-tab="suggestions">Suggestions</button>
+                <button type="button" class="tab-btn" data-tab="connect">Connect</button>
+                <button type="button" class="tab-btn" data-tab="clip">Clip of the Week</button>
+            </div>
         </section>
 
-        <section class="platform-section comments-section">
+        <!-- Suggestions tab -->
+        <section class="platform-section comments-section tab-panel active" data-tab="suggestions">
 
             <form id="comment-form" class="comment-form">
                 <div class="form-group">
@@ -95,10 +103,75 @@
 
         </section>
 
+        <!-- Connect tab -->
+        <section class="platform-section comments-section tab-panel" data-tab="connect">
+
+            <form id="post-form" class="comment-form">
+                <div class="form-group">
+                    <label for="post-name">Name</label>
+                    <input type="text" id="post-name" maxlength="40" placeholder="e.g., StreamerNameTV" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="post-category">Category</label>
+                    <select id="post-category" required>
+                        <option value="" disabled selected>Select a category…</option>
+                        <option value="lfg">Looking For Group</option>
+                        <option value="game_chat">Game Chat</option>
+                        <option value="general">General</option>
+                    </select>
+                </div>
+
+                <div class="form-group">
+                    <label for="post-title">Title</label>
+                    <input type="text" id="post-title" maxlength="100" placeholder="What's this about?" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="post-body">Post</label>
+                    <textarea id="post-body" rows="4" maxlength="1000" placeholder="Say something to the community…" required></textarea>
+                </div>
+
+                <!-- Honeypot: hidden from real users, bots tend to fill every field -->
+                <div class="form-group hp-field" aria-hidden="true">
+                    <label for="post-website">Website</label>
+                    <input type="text" id="post-website" tabindex="-1" autocomplete="off">
+                </div>
+
+                <button type="submit" class="btn-submit">Post</button>
+                <p id="post-form-status" class="comment-form-status"></p>
+            </form>
+
+            <div class="comments-header">
+                <h3>Posts</h3>
+                <div class="category-filter" id="category-filter">
+                    <button type="button" class="category-btn active" data-category="all">All</button>
+                    <button type="button" class="category-btn" data-category="lfg">LFG</button>
+                    <button type="button" class="category-btn" data-category="game_chat">Game Chat</button>
+                    <button type="button" class="category-btn" data-category="general">General</button>
+                </div>
+            </div>
+
+            <div id="post-feed" class="comments-list">
+                <p class="comments-empty">Loading posts…</p>
+            </div>
+
+        </section>
+
+        <!-- Clip of the Week tab -->
+        <section class="platform-section tab-panel" data-tab="clip">
+            <div id="clip-of-week">
+                <p class="comments-empty">Loading clip…</p>
+            </div>
+        </section>
+
     </main>
 
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
+    <script src="js/supabase-client.js"></script>
+    <script src="js/community-utils.js"></script>
     <script src="js/community.js"></script>
+    <script src="js/connect.js"></script>
     <script src="js/main.js"></script>
 </body>
 </html>
