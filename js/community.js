@@ -11,6 +11,7 @@ document.addEventListener("DOMContentLoaded", () => {
         const statusEl = document.getElementById("comment-form-status");
         const starPicker = document.getElementById("star-picker");
         const sortToggle = document.getElementById("sort-toggle");
+        const loadMoreBtn = document.getElementById("load-more-comments");
 
         if (!form || !list) return;
 
@@ -20,8 +21,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
+        const PAGE_SIZE = 10;
         let currentSort = "likes"; // "likes" | "newest"
         let submitting = false;
+        let offset = 0;
         const LIKED_KEY = "c4d-liked-comments";
 
         function renderStars(rating) {
@@ -33,13 +36,8 @@ document.addEventListener("DOMContentLoaded", () => {
             return html + "</div>";
         }
 
-        function renderComments(comments) {
-            if (comments.length === 0) {
-                list.innerHTML = '<p class="comments-empty">No comments yet — be the first to share your thoughts.</p>';
-                return;
-            }
-            const liked = getLikedSet(LIKED_KEY);
-            list.innerHTML = comments.map(c => `
+        function commentCardHtml(c, liked) {
+            return `
                 <div class="comment-card" data-id="${c.id}">
                     <div class="comment-card-header">
                         <span class="comment-name">${escapeHtml(c.name)}</span>
@@ -51,21 +49,42 @@ document.addEventListener("DOMContentLoaded", () => {
                         <i class="fa-solid fa-heart"></i> <span class="like-count">${c.likes_count}</span>
                     </button>
                 </div>
-            `).join("");
+            `;
         }
 
-        async function loadComments() {
+        function renderComments(comments, append) {
+            if (!append && comments.length === 0) {
+                list.innerHTML = '<p class="comments-empty">No comments yet — be the first to share your thoughts.</p>';
+                return;
+            }
+            const liked = getLikedSet(LIKED_KEY);
+            const html = comments.map(c => commentCardHtml(c, liked)).join("");
+            if (append) list.insertAdjacentHTML("beforeend", html);
+            else list.innerHTML = html;
+        }
+
+        // reset=true starts over from the first page (new sort, new submission);
+        // reset=false appends the next page (Load More click).
+        async function loadComments(reset = true) {
+            if (reset) offset = 0;
+
             const { data, error } = await supabase
                 .from("community_comments")
                 .select("id, name, comment, rating, likes_count, created_at")
-                .order(currentSort === "likes" ? "likes_count" : "created_at", { ascending: false });
+                .order(currentSort === "likes" ? "likes_count" : "created_at", { ascending: false })
+                .range(offset, offset + PAGE_SIZE - 1);
 
             if (error) {
-                list.innerHTML = '<p class="comments-empty">Couldn\'t load comments right now.</p>';
+                if (reset) list.innerHTML = '<p class="comments-empty">Couldn\'t load comments right now.</p>';
                 return;
             }
-            renderComments(data);
+
+            renderComments(data, !reset);
+            offset += data.length;
+            loadMoreBtn.style.display = data.length === PAGE_SIZE ? "" : "none";
         }
+
+        loadMoreBtn.addEventListener("click", () => loadComments(false));
 
         starPicker.addEventListener("click", (e) => {
             const btn = e.target.closest(".star-btn");
@@ -169,6 +188,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const CLIP_LIKED_KEY = "c4d-liked-clip-comments";
+        let clipCommentsOffset = 0;
 
         function getYouTubeEmbedUrl(url) {
             const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
@@ -185,15 +205,10 @@ document.addEventListener("DOMContentLoaded", () => {
                 : `<a class="btn-primary clip-watch-btn" href="${escapeHtml(clip.url)}" target="_blank" rel="noopener noreferrer">Watch Clip</a>`;
         }
 
-        function renderClipComments(comments) {
-            const list = container.querySelector("#clip-comments-list");
-            if (!list) return;
-            if (comments.length === 0) {
-                list.innerHTML = '<p class="comments-empty">No comments yet — be the first to share your thoughts.</p>';
-                return;
-            }
-            const liked = getLikedSet(CLIP_LIKED_KEY);
-            list.innerHTML = comments.map(c => `
+        const CLIP_PAGE_SIZE = 10;
+
+        function clipCommentCardHtml(c, liked) {
+            return `
                 <div class="comment-card" data-id="${c.id}">
                     <div class="comment-card-header">
                         <span class="comment-name">${escapeHtml(c.name)}</span>
@@ -204,31 +219,53 @@ document.addEventListener("DOMContentLoaded", () => {
                         <i class="fa-solid fa-heart"></i> <span class="like-count">${c.likes_count}</span>
                     </button>
                 </div>
-            `).join("");
+            `;
         }
 
-        async function loadClipComments(clipId) {
+        function renderClipComments(comments, append) {
             const list = container.querySelector("#clip-comments-list");
-            if (list) list.innerHTML = '<p class="comments-empty">Loading comments…</p>';
+            if (!list) return;
+            if (!append && comments.length === 0) {
+                list.innerHTML = '<p class="comments-empty">No comments yet — be the first to share your thoughts.</p>';
+                return;
+            }
+            const liked = getLikedSet(CLIP_LIKED_KEY);
+            const html = comments.map(c => clipCommentCardHtml(c, liked)).join("");
+            if (append) list.insertAdjacentHTML("beforeend", html);
+            else list.innerHTML = html;
+        }
+
+        async function loadClipComments(clipId, reset = true) {
+            const list = container.querySelector("#clip-comments-list");
+            const loadMoreBtn = container.querySelector("#clip-load-more");
+            if (reset) clipCommentsOffset = 0;
+
             const { data, error } = await supabase
                 .from("community_clip_comments")
                 .select("id, name, comment, likes_count, created_at")
                 .eq("clip_id", clipId)
-                .order("created_at", { ascending: false });
+                .order("created_at", { ascending: false })
+                .range(clipCommentsOffset, clipCommentsOffset + CLIP_PAGE_SIZE - 1);
 
             if (error) {
-                if (list) list.innerHTML = '<p class="comments-empty">Couldn\'t load comments right now.</p>';
+                if (reset && list) list.innerHTML = '<p class="comments-empty">Couldn\'t load comments right now.</p>';
                 return;
             }
-            renderClipComments(data);
+            renderClipComments(data, !reset);
+            clipCommentsOffset += data.length;
+            if (loadMoreBtn) loadMoreBtn.style.display = data.length === CLIP_PAGE_SIZE ? "" : "none";
         }
 
         function wireClipCommentSection(clipId) {
             const form = container.querySelector("#clip-comment-form");
             const list = container.querySelector("#clip-comments-list");
             const statusEl = container.querySelector("#clip-comment-form-status");
+            const loadMoreBtn = container.querySelector("#clip-load-more");
             if (!form || !list) return;
             let submitting = false;
+            clipCommentsOffset = 0;
+
+            loadMoreBtn.addEventListener("click", () => loadClipComments(clipId, false));
 
             list.addEventListener("click", async (e) => {
                 const btn = e.target.closest(".like-btn");
@@ -340,6 +377,9 @@ document.addEventListener("DOMContentLoaded", () => {
 
                         <div id="clip-comments-list" class="comments-list">
                             <p class="comments-empty">Loading comments…</p>
+                        </div>
+                        <div class="load-more-wrap">
+                            <button type="button" id="clip-load-more" class="btn-load-more" style="display:none">Load More</button>
                         </div>
                     </div>
                 ` : ""}

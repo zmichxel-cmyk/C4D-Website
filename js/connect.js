@@ -8,6 +8,7 @@ document.addEventListener("DOMContentLoaded", () => {
     const feed = document.getElementById("post-feed");
     const statusEl = document.getElementById("post-form-status");
     const categoryFilter = document.getElementById("category-filter");
+    const loadMoreBtn = document.getElementById("load-more-posts");
 
     if (!form || !feed) return;
 
@@ -19,9 +20,11 @@ document.addEventListener("DOMContentLoaded", () => {
 
     const CATEGORY_LABELS = { lfg: "Looking For Group", game_chat: "Game Chat", general: "General" };
     const LIKED_KEY = "c4d-liked-posts";
+    const PAGE_SIZE = 10;
 
     let currentCategory = "all";
     let submittingPost = false;
+    let offset = 0;
     const expandedPosts = new Set();
 
     function categoryBadge(category) {
@@ -56,13 +59,8 @@ document.addEventListener("DOMContentLoaded", () => {
             `).join("");
     }
 
-    function renderPosts(posts) {
-        if (posts.length === 0) {
-            feed.innerHTML = '<p class="comments-empty">No posts yet — be the first to say something.</p>';
-            return;
-        }
-        const liked = getLikedSet(LIKED_KEY);
-        feed.innerHTML = posts.map(p => `
+    function postCardHtml(p, liked) {
+        return `
             <div class="post-card" data-id="${p.id}">
                 <div class="comment-card-header">
                     <span class="comment-name">${escapeHtml(p.name)}</span>
@@ -89,7 +87,22 @@ document.addEventListener("DOMContentLoaded", () => {
                     </form>
                 </div>
             </div>
-        `).join("");
+        `;
+    }
+
+    function renderPosts(posts, append) {
+        if (!append && posts.length === 0) {
+            feed.innerHTML = '<p class="comments-empty">No posts yet — be the first to say something.</p>';
+            return;
+        }
+        const liked = getLikedSet(LIKED_KEY);
+        const html = posts.map(p => postCardHtml(p, liked)).join("");
+
+        if (append) {
+            feed.insertAdjacentHTML("beforeend", html);
+            return;
+        }
+        feed.innerHTML = html;
 
         // Re-expand any threads the user already had open before this re-render.
         expandedPosts.forEach(postId => {
@@ -101,21 +114,30 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 
-    async function loadPosts() {
+    // reset=true starts over from the first page (new category, new post);
+    // reset=false appends the next page (Load More click).
+    async function loadPosts(reset = true) {
+        if (reset) offset = 0;
+
         let query = supabase
             .from("community_posts")
             .select("id, name, category, title, body, likes_count, created_at")
-            .order("created_at", { ascending: false });
+            .order("created_at", { ascending: false })
+            .range(offset, offset + PAGE_SIZE - 1);
 
         if (currentCategory !== "all") query = query.eq("category", currentCategory);
 
         const { data, error } = await query;
         if (error) {
-            feed.innerHTML = '<p class="comments-empty">Couldn\'t load posts right now.</p>';
+            if (reset) feed.innerHTML = '<p class="comments-empty">Couldn\'t load posts right now.</p>';
             return;
         }
-        renderPosts(data);
+        renderPosts(data, !reset);
+        offset += data.length;
+        loadMoreBtn.style.display = data.length === PAGE_SIZE ? "" : "none";
     }
+
+    loadMoreBtn.addEventListener("click", () => loadPosts(false));
 
     // --- Category filter ---
     const CATEGORY_ORDER = ["all", "lfg", "game_chat", "general"];

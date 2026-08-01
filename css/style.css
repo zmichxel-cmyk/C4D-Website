@@ -790,6 +790,10 @@ h1, h2 {
 
 .clip-comments-section { max-width: 700px; }
 
+.load-more-wrap { display: flex; justify-content: center; margin-top: 20px; }
+.btn-load-more { background: transparent; color: var(--text-muted); border: 1px solid var(--border-color); padding: 10px 28px; border-radius: 4px; font-weight: 700; text-transform: uppercase; font-size: 0.8rem; letter-spacing: 0.5px; cursor: pointer; transition: all 0.2s ease; }
+.btn-load-more:hover { border-color: var(--accent-color); color: var(--accent-color); }
+
 @media (max-width: 900px) {
     .community-heading-row { flex-direction: column; align-items: flex-start; }
 }
