@@ -6,55 +6,60 @@
     <title>Community | Customs4Daez</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/redesign-preview.css">
 </head>
 <body>
 
-    <div class="glow-container"></div>
-
-   <div class="side-panel" id="side-panel">
-    <a href="index.html" class="home-icon"><i class="fa-solid fa-house"></i></a>
-    <a href="showroom.html">Showroom</a>
-    <a href="overlays.html">Free Overlays</a>
-    <a href="community.html">Community</a>
-    <a href="about.html">About Us</a>
-    <a href="legal.html">Legal</a>
-</div>
-
-    <header class="main-nav">
+    <header class="rd-nav">
         <a href="index.html" class="logo-link">
-            <div class="logo">
-                <video class="logo-video" autoplay muted playsinline>
-                    <source src="assets/videos/logoanimation.webm" type="video/webm">
-                </video>
-            </div>
+            <video class="rd-logo-video" autoplay muted playsinline>
+                <source src="assets/videos/logoanimation.webm" type="video/webm">
+            </video>
         </a>
 
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
-        </div>
+        <ul class="rd-nav-links">
+            <li><a href="showroom.html">Showroom</a></li>
+            <li><a href="overlays.html">Bundles</a></li>
+            <li><a href="#">Software &amp; Development</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
 
-        <nav class="desktop-nav-links">
-            <a href="showroom.html">Showroom</a>
-            <a href="overlays.html">Free Overlays</a>
-            <a href="community.html" class="nav-cta">Community</a>
-        </nav>
+        <div class="rd-nav-icons">
+            <a href="#" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="#" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
     </header>
 
-    <main class="section-container">
+    <section class="rd-hero rd-community-hero">
+        <video class="rd-community-hero-video" autoplay muted loop playsinline>
+            <source src="assets/videos/community-banner.mp4" type="video/mp4">
+        </video>
+        <div class="rd-hero-content">
+            <h1><span>Join</span> the</h1>
+        </div>
+        <p class="rd-community-subtext">Leave a suggestion, connect with other members, or check out this week's featured clip.</p>
 
-        <section class="platform-section community-heading-row">
-            <div class="community-heading-text">
-                <h2 class="platform-title">Join the <span class="text-accent">Community</span></h2>
-                <p>Leave a suggestion, connect with other members, or check out this week's featured clip.</p>
-            </div>
+        <div class="rd-tab-strip">
             <div class="community-tabs" id="community-tabs">
                 <button type="button" class="tab-btn active" data-tab="suggestions">Suggestions</button>
                 <button type="button" class="tab-btn" data-tab="connect">Connect</button>
                 <button type="button" class="tab-btn" data-tab="clip">Clip of the Week</button>
             </div>
-        </section>
+        </div>
+
+        <div class="rd-clip-featured-info" id="clip-featured-info">
+            <h2 class="rd-clip-featured-title">Want your clip featured?</h2>
+            <ul class="rd-clip-featured-list" id="clip-featured-list">
+                <li><i class="fa-solid fa-check"></i> Clips must be 1080p or higher</li>
+                <li><i class="fa-solid fa-check"></i> C4D Overlay must be visible</li>
+                <li><i class="fa-solid fa-check"></i> Clips no longer than 60 seconds</li>
+                <li><i class="fa-solid fa-check"></i> Clips must be sent to Customs4daez@gmail.com</li>
+                <li><i class="fa-solid fa-check"></i> Follow all social media platforms listed below</li>
+            </ul>
+        </div>
+    </section>
+
+    <main class="section-container">
 
         <div class="tab-panels" id="tab-panels">
 
@@ -179,11 +184,134 @@
 
     </main>
 
+    <footer class="rd-footer">
+        <ul class="rd-footer-links">
+            <li><a href="community.html">Contact</a></li>
+            <li><a href="legal.html">Legal</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+
+        <div class="rd-footer-social">
+            <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
+            <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
+        </div>
+    </footer>
+
     <script src="https://cdn.jsdelivr.net/npm/@supabase/supabase-js@2/dist/umd/supabase.min.js"></script>
     <script src="js/supabase-client.js"></script>
     <script src="js/community-utils.js"></script>
     <script src="js/community.js"></script>
     <script src="js/connect.js"></script>
-    <script src="js/main.js"></script>
+
+    <script>
+        // "Want your clip featured?" checklist -- shown only on the Clip of
+        // the Week tab, re-animating its stagger every time you switch to
+        // it. Listens for tab clicks separately from js/community-utils.js's
+        // own tab-switch listener (both fire fine on the same click).
+        const clipFeaturedInfo = document.getElementById("clip-featured-info");
+        const clipFeaturedList = document.getElementById("clip-featured-list");
+
+        document.getElementById("community-tabs").addEventListener("click", (e) => {
+            const btn = e.target.closest(".tab-btn");
+            if (!btn) return;
+
+            const isClipTab = btn.dataset.tab === "clip";
+            clipFeaturedInfo.classList.toggle("visible", isClipTab);
+
+            if (isClipTab) {
+                // Remove + force reflow + re-add so the stagger animation
+                // replays from the start every time, not just the first time.
+                clipFeaturedList.classList.remove("animate");
+                void clipFeaturedList.offsetWidth;
+                clipFeaturedList.classList.add("animate");
+            }
+        });
+    </script>
+
+    <script>
+        // Auto-plays the Clip of the Week embed, but ONLY while that tab is
+        // actually selected -- js/community.js fetches + renders the clip
+        // immediately on page load (regardless of which tab is showing), so
+        // without this the video would start playing muted in the
+        // background the instant the page loads. Switching to any other
+        // tab strips the autoplay param and reloads the iframe at its
+        // clean src, which stops playback (there's no other reliable way
+        // to pause a bare YouTube embed without the JS Player API).
+        const clipOfWeek = document.getElementById("clip-of-week");
+        let clipTabIsActive = false;
+        let clipBaseSrc = null;
+
+        function applyClipPlaybackState() {
+            const iframe = clipOfWeek.querySelector("iframe");
+            if (!iframe) return;
+            if (clipBaseSrc === null) clipBaseSrc = iframe.src.split("?")[0];
+
+            const targetSrc = clipTabIsActive ? `${clipBaseSrc}?autoplay=1` : clipBaseSrc;
+            if (iframe.src !== targetSrc) iframe.src = targetSrc;
+        }
+
+        document.getElementById("community-tabs").addEventListener("click", (e) => {
+            const btn = e.target.closest(".tab-btn");
+            if (!btn) return;
+            clipTabIsActive = btn.dataset.tab === "clip";
+            applyClipPlaybackState();
+        });
+
+        new MutationObserver(() => {
+            applyClipPlaybackState();
+
+            // js/community.js renders the streamer-name line under
+            // .clip-header, above the video -- move it into .clip-frame so
+            // it can sit on the frame artwork's bottom bar instead (styled
+            // in redesign-preview.css). Guarded so it only moves once per
+            // clip, not on every mutation.
+            const streamer = clipOfWeek.querySelector(".clip-header .clip-streamer");
+            const frame = clipOfWeek.querySelector(".clip-frame");
+            if (streamer && frame) {
+                // js/community.js renders this as "Featuring {name}" -- swap
+                // in a colon to match the wanted "Featuring: {name}" format,
+                // and wrap just the name in a span so it can be colored
+                // separately from the "Featuring:" label.
+                const name = streamer.textContent.replace(/^Featuring /, "");
+                streamer.innerHTML = `Featuring: <span class="clip-streamer-name">${name}</span>`;
+                frame.appendChild(streamer);
+            }
+        }).observe(clipOfWeek, { childList: true, subtree: true });
+    </script>
+
+    <script>
+        // Scroll-scrubbed reveal for comment/post cards: each card fades in
+        // while sliding in from a side (alternating left/right) as it enters
+        // the viewport on the way down, and mirrors back out on the way back
+        // up -- driven directly by live scroll position every frame, not a
+        // one-time trigger, so it works for cards that load in later
+        // (Supabase fetch) too.
+        const SLIDE_DISTANCE = 70; // px
+
+        function getCardProgress(rect) {
+            const windowH = window.innerHeight;
+            const start = windowH * 0.92;
+            const end = windowH * 0.55;
+            const progress = (start - rect.top) / (start - end);
+            return Math.min(1, Math.max(0, progress));
+        }
+
+        function tickCardReveal() {
+            const cards = document.querySelectorAll(".comment-card, .post-card");
+            cards.forEach((card, i) => {
+                const rect = card.getBoundingClientRect();
+                const progress = getCardProgress(rect);
+                const fromLeft = i % 2 === 0;
+                const offset = (1 - progress) * SLIDE_DISTANCE * (fromLeft ? -1 : 1);
+                card.style.opacity = progress;
+                card.style.transform = `translateX(${offset}px)`;
+            });
+            requestAnimationFrame(tickCardReveal);
+        }
+        requestAnimationFrame(tickCardReveal);
+    </script>
 </body>
 </html>

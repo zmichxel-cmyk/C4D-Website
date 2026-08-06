@@ -1,0 +1,625 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Showroom | Customs4Daez</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/redesign-preview.css">
+</head>
+<body>
+
+    <header class="rd-nav">
+        <a href="index.html" class="logo-link">
+            <video class="rd-logo-video" autoplay muted playsinline>
+                <source src="assets/videos/logoanimation.webm" type="video/webm">
+            </video>
+        </a>
+
+        <ul class="rd-nav-links">
+            <li><a href="showroom.html">Showroom</a></li>
+            <li><a href="overlays.html">Bundles</a></li>
+            <li><a href="#">Software &amp; Development</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="rd-nav-icons">
+            <a href="#" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="#" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+    </header>
+
+    <section class="rd-featured-hero">
+        <div class="rd-platform-dropdown" id="platform-dropdown">
+            <button type="button" class="rd-platform-btn" id="platform-btn">
+                <span id="platform-btn-label">Trending Now</span>
+                <i class="fa-solid fa-chevron-down"></i>
+            </button>
+            <div class="rd-platform-menu" id="platform-menu">
+                <button type="button" class="rd-platform-option active" data-platform="all">Trending Now</button>
+                <button type="button" class="rd-platform-option" data-platform="c4d5">C4D.5</button>
+                <button type="button" class="rd-platform-option" data-platform="c4d1">C4D.1</button>
+                <button type="button" class="rd-platform-option" data-platform="c4d4">C4D.4</button>
+                <button type="button" class="rd-platform-option" data-platform="c4dmkb">C4D Mouse &amp; Keyboard</button>
+                <button type="button" class="rd-platform-option" data-platform="overlays">Free Overlays</button>
+            </div>
+        </div>
+
+        <div class="rd-featured-video" id="featured-video-wrap">
+            <canvas class="rd-featured-video-canvas pos-center" id="featured-alpha-canvas-a"></canvas>
+            <canvas class="rd-featured-video-canvas pos-right" id="featured-alpha-canvas-b"></canvas>
+        </div>
+
+        <div class="rd-featured-info">
+            <span class="rd-eyebrow">Featured Design</span>
+            <h1 id="featured-title">Pro-Grade Overlays: Red District Suite</h1>
+            <p class="rd-featured-price" id="featured-price">$49.99 USD</p>
+
+            <ul class="rd-featured-list">
+                <li>Optimized for OBS &amp; Streamlabs</li>
+                <li>Zero high-CPU performance impact</li>
+                <li>Custom skin + logo overlay</li>
+                <li>Instant digital download</li>
+                <li>Home button brand protection</li>
+                <li>Multiple platform support</li>
+            </ul>
+
+            <div class="rd-featured-buttons">
+                <button type="button" class="rd-btn-cart">Add to Cart</button>
+                <div class="rd-style-dropdown" id="style-dropdown">
+                    <button type="button" class="rd-btn-unlock" id="style-btn">
+                        <i class="fa-solid fa-sliders"></i> <span id="style-btn-label">Customize</span>
+                    </button>
+                    <div class="rd-style-menu" id="style-menu">
+                        <button type="button" class="color-dot color-dot-c4d" data-color="c4d-edition" style="background-image: url('assets/images/NEW%20C4D%20LOGO.png');" onclick="changeOverlayColor('c4d-edition')" title="C4D Edition"></button>
+                        <button type="button" class="color-dot" data-color="blue" style="background: #2b6dff;" onclick="changeOverlayColor('blue')" title="Blue"></button>
+                        <button type="button" class="color-dot" data-color="green" style="background: #2fbf3a;" onclick="changeOverlayColor('green')" title="Green"></button>
+                        <button type="button" class="color-dot" data-color="red" style="background: #ff3344;" onclick="changeOverlayColor('red')" title="Red"></button>
+                        <button type="button" class="color-dot" data-color="purple" style="background: #9b30ff;" onclick="changeOverlayColor('purple')" title="Purple"></button>
+                        <button type="button" class="color-dot" data-color="yellow" style="background: #ffd21a;" onclick="changeOverlayColor('yellow')" title="Yellow"></button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="rd-related-section">
+        <div class="rd-related-inner">
+            <h2 class="rd-related-title">Related Products</h2>
+            <div class="rd-related-grid" id="related-grid">
+                <!-- C4D.5 -->
+                <div class="rd-related-card" data-platform="c4d5" data-trending="true" data-title="Neon Storm C4D.5" data-price="$39.99 USD"><img src="assets/images/ps5-1.png" alt="Neon Storm"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Carbon Fiber Elite C4D.5" data-price="$34.99 USD"><img src="assets/images/ps5-2.png" alt="Carbon Fiber Elite"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Cyberpunk Red C4D.5" data-price="$44.99 USD"><img src="assets/images/ps5-3.png" alt="Cyberpunk Red"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Arctic Frost C4D.5" data-price="$32.99 USD"><img src="assets/images/ps5-4.png" alt="Arctic Frost"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Toxic Wave C4D.5" data-price="$36.99 USD"><img src="assets/images/ps5-5.png" alt="Toxic Wave"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Midnight Chrome C4D.5" data-price="$41.99 USD"><img src="assets/images/ps5-6.png" alt="Midnight Chrome"></div>
+
+                <!-- C4D.1 -->
+                <div class="rd-related-card" data-platform="c4d1" data-trending="true" data-title="Military Stealth C4D.1" data-price="$37.99 USD"><img src="assets/images/xbox-1.png" alt="Military Stealth"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Crimson Ghost C4D.1" data-price="$41.99 USD"><img src="assets/images/xbox-2.png" alt="Crimson Ghost"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Forza Horizon C4D.1" data-price="$39.99 USD"><img src="assets/images/xbox-3.png" alt="Forza Horizon"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Arctic Recon C4D.1" data-price="$35.99 USD"><img src="assets/images/xbox-4.png" alt="Arctic Recon"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Volt Surge C4D.1" data-price="$38.99 USD"><img src="assets/images/xbox-5.png" alt="Volt Surge"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Blackout Ops C4D.1" data-price="$42.99 USD"><img src="assets/images/xbox-6.png" alt="Blackout Ops"></div>
+
+                <!-- C4D.4 -->
+                <div class="rd-related-card" data-platform="c4d4" data-trending="true" data-title="Glacier White C4D.4" data-price="$29.99 USD"><img src="assets/images/ps4-1.png" alt="Glacier White"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Urban Camo C4D.4" data-price="$32.99 USD"><img src="assets/images/ps4-2.png" alt="Urban Camo"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Sunset Orange C4D.4" data-price="$27.99 USD"><img src="assets/images/ps4-3.png" alt="Sunset Orange"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Deep Space C4D.4" data-price="$30.99 USD"><img src="assets/images/ps4-4.png" alt="Deep Space"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Ember Red C4D.4" data-price="$28.99 USD"><img src="assets/images/ps4-5.png" alt="Ember Red"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Static Grey C4D.4" data-price="$26.99 USD"><img src="assets/images/ps4-6.png" alt="Static Grey"></div>
+
+                <!-- C4D.MKB -->
+                <div class="rd-related-card" data-platform="c4dmkb" data-trending="true" data-title="Techno Ghost C4D.MKB" data-price="$19.99 USD"><img src="assets/images/pc-1.png" alt="Techno Ghost"></div>
+                <div class="rd-related-card" data-platform="c4dmkb" data-title="Cyber Punish C4D.MKB" data-price="$21.99 USD"><img src="assets/images/pc-2.png" alt="Cyber Punish"></div>
+                <div class="rd-related-card" data-platform="c4dmkb" data-title="Fractal Reign C4D.MKB" data-price="$18.99 USD"><img src="assets/images/pc-3.png" alt="Fractal Reign"></div>
+                <div class="rd-related-card" data-platform="c4dmkb" data-title="Neon Pulse C4D.MKB" data-price="$20.99 USD"><img src="assets/images/pc-4.png" alt="Neon Pulse"></div>
+                <div class="rd-related-card" data-platform="c4dmkb" data-title="Voidwalker C4D.MKB" data-price="$22.99 USD"><img src="assets/images/pc-5.png" alt="Voidwalker"></div>
+                <div class="rd-related-card" data-platform="c4dmkb" data-title="Static Rebellion C4D.MKB" data-price="$17.99 USD"><img src="assets/images/pc-6.png" alt="Static Rebellion"></div>
+
+                <!-- Free Overlays -->
+                <div class="rd-related-card" data-platform="overlays" data-title="C4D.5 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d5"><img id="overlay-c4d5-img" src="assets/images/c4d5%20thumbnail.png" alt="Free Overlay C4D.5"><span class="rd-overlay-thumb-label">C4D.5</span></div>
+                <div class="rd-related-card" data-platform="overlays" data-title="C4D.1 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d1"><img id="overlay-c4d1-img" src="assets/images/c4d1%20thumbnail.png" alt="Free Overlay C4D.1"><span class="rd-overlay-thumb-label">C4D.1</span></div>
+                <div class="rd-related-card" data-platform="overlays" data-title="C4D.4 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d4"><img id="overlay-c4d4-img" src="assets/images/c4d4%20thumbnail.png" alt="Free Overlay C4D.4"><span class="rd-overlay-thumb-label">C4D.4</span></div>
+            </div>
+        </div>
+    </section>
+
+    <footer class="rd-footer">
+        <ul class="rd-footer-links">
+            <li><a href="community.html">Contact</a></li>
+            <li><a href="legal.html">Legal</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+
+        <div class="rd-footer-social">
+            <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
+            <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Clicking a related-product thumbnail swaps it into the featured
+        // hero above (title + price). Feature list/background stay as-is
+        // for now since there's no per-product photo/copy data yet.
+        const featuredTitle = document.getElementById("featured-title");
+        const featuredPrice = document.getElementById("featured-price");
+        const relatedGrid = document.getElementById("related-grid");
+        const allCards = [...relatedGrid.querySelectorAll(".rd-related-card")];
+
+        // Tracks which overlay card (if any) is currently featured, so the
+        // "Select Style" dropdown knows which card's image to swap --
+        // null whenever a non-overlay product is featured, which also
+        // switches the button back to plain "Customize" with no dropdown.
+        let currentColorKey = null;
+        const styleBtnLabel = document.getElementById("style-btn-label");
+
+// Tracks the selected color for whichever overlay card is featured, so
+        // the big alpha video (below) knows which clip to play -- only C4D.5
+        // has videos so far ("c4d5 blue.webm" / "c4d5 edition.webm").
+        let currentOverlayColor = null;
+
+        function selectCard(card) {
+            featuredTitle.textContent = card.dataset.title;
+            featuredPrice.textContent = card.dataset.price;
+            allCards.forEach(c => c.classList.remove("active"));
+            card.classList.add("active");
+
+            currentColorKey = card.dataset.colorKey || null;
+            // Cards default to the "C4D Edition" look (see their data-title/
+            // img src above), so the video should match that on first select.
+            currentOverlayColor = currentColorKey ? "c4d-edition" : null;
+            styleBtnLabel.textContent = currentColorKey ? "Select Style" : "Customize";
+            styleDropdown.classList.remove("open");
+            updateActiveSwatch();
+            updateFeaturedVideo();
+        }
+
+        const OVERLAY_PLATFORM_LABELS = { c4d5: "C4D.5", c4d1: "C4D.1", c4d4: "C4D.4" };
+        const OVERLAY_COLOR_LABELS = { blue: "Blue", green: "Green", red: "Red", purple: "Purple", yellow: "Yellow", "c4d-edition": "Edition" };
+
+        // NOTE: the actual per-color watermarked images at
+        // assets/images/overlays/{platform}-{color}.png don't exist yet
+        // (same situation as overlays.html's own color swapper) -- drop
+        // those files in once they're ready and this will "just work".
+        function changeOverlayColor(color) {
+            if (!currentColorKey) return;
+            // The thumbnail stays on its static platform image (see the
+            // card markup above) -- there's no separate PNG per color, the
+            // actual color preview is the big alpha video in the hero.
+            featuredTitle.textContent = `${OVERLAY_PLATFORM_LABELS[currentColorKey]} ${OVERLAY_COLOR_LABELS[color]}`;
+            // Stays open (no closing here) so you can keep flipping through
+            // colors without reopening the dropdown each time.
+            currentOverlayColor = color;
+            updateActiveSwatch();
+            updateFeaturedVideo();
+        }
+
+        function updateActiveSwatch() {
+            document.querySelectorAll("#style-menu .color-dot").forEach(dot => {
+                dot.classList.toggle("active", dot.dataset.color === currentOverlayColor);
+            });
+        }
+
+        relatedGrid.addEventListener("click", (e) => {
+            const card = e.target.closest(".rd-related-card");
+            if (!card || card.style.display === "none") return;
+            selectCard(card);
+        });
+
+        // "all" (Trending Now) shows just the one trending pick per platform
+        // (4 total), not every product from every section.
+        function isVisibleForPlatform(card, platform) {
+            return platform === "all" ? card.dataset.trending === "true" : card.dataset.platform === platform;
+        }
+
+        // Apply the default "Trending Now" filter immediately on load, so the
+        // page doesn't flash all 24 products before settling to 4.
+        allCards.forEach(c => { c.style.display = isVisibleForPlatform(c, "all") ? "" : "none"; });
+
+        // --- Platform dropdown ---
+        const platformDropdown = document.getElementById("platform-dropdown");
+        const platformBtn = document.getElementById("platform-btn");
+        const platformMenu = document.getElementById("platform-menu");
+        const platformBtnLabel = document.getElementById("platform-btn-label");
+
+        platformBtn.addEventListener("click", () => {
+            platformDropdown.classList.toggle("open");
+        });
+
+        // Close the dropdown if you click anywhere outside it.
+        document.addEventListener("click", (e) => {
+            if (!platformDropdown.contains(e.target)) platformDropdown.classList.remove("open");
+        });
+
+        platformMenu.addEventListener("click", (e) => {
+            const option = e.target.closest(".rd-platform-option");
+            if (!option) return;
+
+            platformMenu.querySelectorAll(".rd-platform-option").forEach(o => o.classList.remove("active"));
+            option.classList.add("active");
+            platformBtnLabel.textContent = option.textContent;
+            platformDropdown.classList.remove("open");
+
+            const platform = option.dataset.platform;
+
+            // Fade/slide the grid out, swap which cards are visible for the
+            // selected platform, then fade/slide the new set back in (removing
+            // "swapping" re-triggers the base rule's transition back to normal).
+            relatedGrid.classList.add("swapping");
+            setTimeout(() => {
+                allCards.forEach(c => { c.style.display = isVisibleForPlatform(c, platform) ? "" : "none"; });
+                const visibleCards = allCards.filter(c => isVisibleForPlatform(c, platform));
+
+                if (visibleCards.length) selectCard(visibleCards[0]);
+
+                relatedGrid.classList.remove("swapping");
+            }, 200);
+        });
+
+        // --- "Select Style" / "Customize" dropdown ---
+        const styleDropdown = document.getElementById("style-dropdown");
+        const styleBtn = document.getElementById("style-btn");
+
+        styleBtn.addEventListener("click", () => {
+            // Plain "Customize" (non-overlay product featured) has no menu to open.
+            if (!currentColorKey) return;
+            styleDropdown.classList.toggle("open");
+        });
+
+        // Close the dropdown if you click anywhere outside it.
+        document.addEventListener("click", (e) => {
+            if (!styleDropdown.contains(e.target)) styleDropdown.classList.remove("open");
+        });
+    </script>
+
+    <script>
+        // --- Big transparent alpha-channel controller video over the hero ---
+        // Same WebGL + WebCodecs/Insertable-Streams technique as the Index
+        // page's hero video (plain <video>/2D canvas can't render real
+        // per-pixel alpha -- see that page's script for the full writeup).
+        // Nested by platform, then color -- C4D.5 and C4D.4 both have full
+        // sets now. Any platform/color combo not listed here (or any other
+        // product entirely) just fades the canvas out and leaves the plain
+        // background photo showing.
+        const FEATURED_VIDEO_MAP = {
+            "c4d5": {
+                "blue": "assets/videos/c4d5%20blue.webm",
+                "c4d-edition": "assets/videos/c4d5%20edition.webm",
+                "red": "assets/videos/c4d5%20red.webm",
+                "yellow": "assets/videos/c4d5%20yellow.webm",
+                "green": "assets/videos/c4d5%20green.webm",
+                "purple": "assets/videos/c4d5%20purple.webm",
+            },
+            "c4d4": {
+                "blue": "assets/videos/c4d4%20blue.webm",
+                "c4d-edition": "assets/videos/c4d4%20edition.webm",
+                "red": "assets/videos/c4d4%20red.webm",
+                "yellow": "assets/videos/c4d4%20yellow.webm",
+                "green": "assets/videos/c4d4%20green.webm",
+                "purple": "assets/videos/c4d4%20purple.webm",
+            },
+        };
+
+        const featuredVideoWrap = document.getElementById("featured-video-wrap");
+
+        // Keyed by "{platform}-{color}" (e.g. "c4d5-blue") rather than just
+        // color, since C4D.5 and C4D.4's clips are framed independently of
+        // each other and may need their own tuning. Clips are 1920x1080,
+        // but the controller itself takes up a different amount of each
+        // frame (more empty padding baked into one than the other), so
+        // "contain" alone renders them at visibly different sizes -- SCALE
+        // zooms each clip in individually to compensate. Each clip also
+        // frames its controller at a different position within its own
+        // frame, not just a different size, so OFFSET nudges it back into
+        // the same spot on top of the scale. Positive x = right, positive
+        // y = up (clip-space units, roughly -1..1 each way). NOTE: since
+        // scale is already close to 1 (little "contain" headroom left), a
+        // large offset can push content back off the canvas edge -- nudge
+        // in small steps.
+        // C4D.4 (and every C4D.5 color beyond blue/c4d-edition) defaults to
+        // the same scale/offset as C4D.5's "blue" as a starting point (no
+        // reference screenshot yet) -- nudge each entry once you see how it
+        // actually lands.
+        const DEFAULT_SCALE = 1.05;
+        const DEFAULT_OFFSET = { x: 0.015, y: -0.015 };
+        const FEATURED_VIDEO_SCALE = {
+            "c4d5-blue": 1.015,
+            "c4d5-c4d-edition": 1.07,
+            "c4d5-red": DEFAULT_SCALE,
+            "c4d5-yellow": DEFAULT_SCALE,
+            "c4d5-green": DEFAULT_SCALE,
+            "c4d5-purple": DEFAULT_SCALE,
+            "c4d4-blue": DEFAULT_SCALE,
+            "c4d4-c4d-edition": DEFAULT_SCALE,
+            "c4d4-red": DEFAULT_SCALE,
+            "c4d4-yellow": DEFAULT_SCALE,
+            "c4d4-green": DEFAULT_SCALE,
+            "c4d4-purple": DEFAULT_SCALE,
+        };
+        const FEATURED_VIDEO_OFFSET = {
+            "c4d5-blue": { x: 0.015, y: -0.015 },
+            "c4d5-c4d-edition": { x: 0.03, y: -0.03 },
+            "c4d5-red": DEFAULT_OFFSET,
+            "c4d5-yellow": DEFAULT_OFFSET,
+            "c4d5-green": DEFAULT_OFFSET,
+            "c4d5-purple": DEFAULT_OFFSET,
+            "c4d4-blue": DEFAULT_OFFSET,
+            "c4d4-c4d-edition": DEFAULT_OFFSET,
+            "c4d4-red": DEFAULT_OFFSET,
+            "c4d4-yellow": DEFAULT_OFFSET,
+            "c4d4-green": DEFAULT_OFFSET,
+            "c4d4-purple": DEFAULT_OFFSET,
+        };
+
+        // One instance of this per canvas -- each gets its own WebGL
+        // context, video element, and read-loop, so the two can play
+        // independently during the slide transition (one sliding out while
+        // the other slides in already playing its new clip).
+        function makeVideoLayer(canvas) {
+            const layer = { canvas, gl: null, program: null, texture: null, positionBuffer: null,
+                             srcVideo: null, videoAspect: 1, generation: 0, colorKey: null };
+
+            function initGL() {
+                if (layer.gl || typeof MediaStreamTrackProcessor === "undefined") return layer.gl;
+                const gl = canvas.getContext("webgl", { alpha: true });
+                if (!gl) { console.warn("WebGL not available -- featured video skipped."); return null; }
+                gl.clearColor(0, 0, 0, 0);
+
+                const vertexSrc = `
+                    attribute vec2 a_position;
+                    attribute vec2 a_texCoord;
+                    varying vec2 v_texCoord;
+                    void main() {
+                        gl_Position = vec4(a_position, 0.0, 1.0);
+                        v_texCoord = a_texCoord;
+                    }
+                `;
+                const fragmentSrc = `
+                    precision mediump float;
+                    varying vec2 v_texCoord;
+                    uniform sampler2D u_texture;
+                    void main() {
+                        vec4 color = texture2D(u_texture, v_texCoord);
+                        vec3 rgb = color.rgb;
+
+                        // Source clips read hazy/washed-out on their own --
+                        // baked straight into the shader (like the Index
+                        // hero video) since a CSS filter on the canvas isn't
+                        // reliable here.
+                        float gray = dot(rgb, vec3(0.299, 0.587, 0.114));
+                        rgb = mix(vec3(gray), rgb, 1.35); // saturation
+                        rgb = (rgb - 0.5) * 1.25 + 0.5;   // contrast
+                        rgb = clamp(rgb, 0.0, 1.0);
+
+                        // Premultiply: matches the context's default premultipliedAlpha:true.
+                        gl_FragColor = vec4(rgb * color.a, color.a);
+                    }
+                `;
+                function compileShader(type, source) {
+                    const shader = gl.createShader(type);
+                    gl.shaderSource(shader, source);
+                    gl.compileShader(shader);
+                    if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                        console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+                    }
+                    return shader;
+                }
+                const program = gl.createProgram();
+                gl.attachShader(program, compileShader(gl.VERTEX_SHADER, vertexSrc));
+                gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fragmentSrc));
+                gl.linkProgram(program);
+                gl.useProgram(program);
+
+                const positionBuffer = gl.createBuffer();
+                const positionLoc = gl.getAttribLocation(program, "a_position");
+                gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+                gl.enableVertexAttribArray(positionLoc);
+                gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
+
+                const texCoordBuffer = gl.createBuffer();
+                gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 1, 1, 1, 0, 0, 1, 0]), gl.STATIC_DRAW);
+                const texCoordLoc = gl.getAttribLocation(program, "a_texCoord");
+                gl.enableVertexAttribArray(texCoordLoc);
+                gl.vertexAttribPointer(texCoordLoc, 2, gl.FLOAT, false, 0, 0);
+
+                const texture = gl.createTexture();
+                gl.bindTexture(gl.TEXTURE_2D, texture);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+                gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+                gl.enable(gl.BLEND);
+                gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+                layer.gl = gl;
+                layer.program = program;
+                layer.texture = texture;
+                layer.positionBuffer = positionBuffer;
+                return gl;
+            }
+
+            // Fits the video at its native aspect ratio within the canvas
+            // ("contain"), then applies this layer's current color's zoom +
+            // offset -- computed in clip-space (-1 to 1). Scaling past
+            // "contain" just crops against the canvas edges (WebGL clips
+            // outside -1..1 automatically), which is exactly the zoomed-in
+            // look we want.
+            function updateQuad() {
+                const gl = layer.gl;
+                const canvasAspect = canvas.width / canvas.height;
+                let drawWidthNorm, drawHeightNorm;
+                if (canvasAspect > layer.videoAspect) {
+                    drawHeightNorm = 2;
+                    drawWidthNorm = drawHeightNorm * (layer.videoAspect / canvasAspect);
+                } else {
+                    drawWidthNorm = 2;
+                    drawHeightNorm = drawWidthNorm * (canvasAspect / layer.videoAspect);
+                }
+                const scale = FEATURED_VIDEO_SCALE[layer.colorKey] || 1.0;
+                drawWidthNorm *= scale;
+                drawHeightNorm *= scale;
+                const offset = FEATURED_VIDEO_OFFSET[layer.colorKey] || { x: 0, y: 0 };
+                const left = offset.x - drawWidthNorm / 2, right = offset.x + drawWidthNorm / 2;
+                const top = offset.y + drawHeightNorm / 2, bottom = offset.y - drawHeightNorm / 2;
+                gl.bindBuffer(gl.ARRAY_BUFFER, layer.positionBuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([left, bottom, right, bottom, left, top, right, top]), gl.STATIC_DRAW);
+            }
+
+            function resize() {
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = Math.round(rect.width * (window.devicePixelRatio || 1));
+                canvas.height = Math.round(rect.height * (window.devicePixelRatio || 1));
+                if (layer.gl) { layer.gl.viewport(0, 0, canvas.width, canvas.height); updateQuad(); }
+            }
+            window.addEventListener("resize", resize);
+
+            layer.play = async function (src, colorKey) {
+                const gl = initGL();
+                if (!gl) return;
+                layer.colorKey = colorKey;
+                const myGen = ++layer.generation; // invalidates this layer's own previous read-loop
+
+                if (!layer.srcVideo) {
+                    const v = document.createElement("video");
+                    v.muted = true;
+                    v.loop = true;
+                    v.playsInline = true;
+                    v.style.display = "none";
+                    document.body.appendChild(v);
+                    layer.srcVideo = v;
+                }
+                layer.srcVideo.src = src;
+                await new Promise((resolve, reject) => {
+                    layer.srcVideo.addEventListener("loadeddata", resolve, { once: true });
+                    layer.srcVideo.addEventListener("error", () => reject(new Error("featured video failed to load")), { once: true });
+                });
+                if (myGen !== layer.generation) return; // a newer source was requested on this layer while loading
+
+                layer.videoAspect = layer.srcVideo.videoWidth / layer.srcVideo.videoHeight;
+                await layer.srcVideo.play();
+                resize();
+
+                const stream = layer.srcVideo.captureStream();
+                const track = stream.getVideoTracks()[0];
+                const processor = new MediaStreamTrackProcessor({ track });
+                const reader = processor.readable.getReader();
+
+                (async function renderLoop() {
+                    while (myGen === layer.generation) {
+                        const { value: frame, done } = await reader.read();
+                        if (done) break;
+                        gl.bindTexture(gl.TEXTURE_2D, layer.texture);
+                        gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, frame);
+                        gl.clear(gl.COLOR_BUFFER_BIT);
+                        gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                        frame.close();
+                    }
+                    reader.cancel().catch(() => {});
+                })();
+            };
+
+            layer.stop = function () {
+                layer.generation++; // stops the render loop on its next iteration
+                if (layer.srcVideo) layer.srcVideo.pause();
+            };
+
+            return layer;
+        }
+
+        const videoLayers = [
+            makeVideoLayer(document.getElementById("featured-alpha-canvas-a")),
+            makeVideoLayer(document.getElementById("featured-alpha-canvas-b")),
+        ];
+        let frontLayerIndex = 0; // which of videoLayers is currently in "pos-center"
+        let currentVideoSrc = null;
+
+        // Only one slide transition runs at a time -- clicking a new color
+        // mid-slide used to reuse the same still-animating layer pair,
+        // which made the CSS classes a no-op (already at their target) and
+        // the new video would just pop in with no visible transition at
+        // all. Rapid clicks now queue: whichever color was requested most
+        // recently plays next, right after the current slide finishes.
+        let transitionInProgress = false;
+        let pendingUpdate = null; // { src, key }
+
+        function updateFeaturedVideo() {
+            const src = (FEATURED_VIDEO_MAP[currentColorKey] || {})[currentOverlayColor];
+            if (!src) {
+                featuredVideoWrap.classList.remove("visible");
+                pendingUpdate = null;
+                return;
+            }
+            featuredVideoWrap.classList.add("visible");
+            if (src === currentVideoSrc && !transitionInProgress) return; // already showing this one
+
+            // Combined "{platform}-{color}" key so SCALE/OFFSET (and the
+            // shader's per-layer state) can be tuned per platform, not just
+            // per color -- C4D.5 and C4D.4's clips aren't framed the same.
+            const key = `${currentColorKey}-${currentOverlayColor}`;
+            if (transitionInProgress) {
+                pendingUpdate = { src, key };
+                return;
+            }
+            startFeaturedVideoTransition(src, key);
+        }
+
+        function startFeaturedVideoTransition(src, key) {
+            currentVideoSrc = src;
+            transitionInProgress = true;
+
+            const frontLayer = videoLayers[frontLayerIndex];
+            const backLayer = videoLayers[1 - frontLayerIndex];
+
+            backLayer.play(src, key)
+                .then(() => {
+                    // Slide simultaneously: the new clip enters from the
+                    // right while the old one exits to the left. "sliding"
+                    // drives the motion-blur keyframes for the duration of
+                    // the move (removed once it's done).
+                    frontLayer.canvas.classList.add("sliding");
+                    backLayer.canvas.classList.add("sliding");
+                    frontLayer.canvas.classList.remove("pos-center");
+                    frontLayer.canvas.classList.add("pos-left");
+                    backLayer.canvas.classList.remove("pos-right");
+                    backLayer.canvas.classList.add("pos-center");
+
+                    frontLayerIndex = 1 - frontLayerIndex;
+
+                    setTimeout(() => {
+                        frontLayer.canvas.classList.remove("sliding");
+                        backLayer.canvas.classList.remove("sliding");
+                        frontLayer.stop();
+                        // Park the old front off-screen right (no transition
+                        // -- instant) so it's ready to be the next "incoming" side.
+                        frontLayer.canvas.style.transition = "none";
+                        frontLayer.canvas.classList.remove("pos-left");
+                        frontLayer.canvas.classList.add("pos-right");
+                        // Force layout so the instant jump is applied before
+                        // transitions are re-enabled for its next slide-in.
+                        frontLayer.canvas.offsetHeight;
+                        frontLayer.canvas.style.transition = "";
+
+                        transitionInProgress = false;
+                        if (pendingUpdate) {
+                            const next = pendingUpdate;
+                            pendingUpdate = null;
+                            startFeaturedVideoTransition(next.src, next.key);
+                        }
+                    }, 720); // slightly longer than the 0.7s CSS transition
+                })
+                .catch(err => {
+                    console.warn("Featured video error:", err);
+                    transitionInProgress = false;
+                });
+        }
+    </script>
+</body>
+</html>

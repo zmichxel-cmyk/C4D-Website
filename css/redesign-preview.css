@@ -1,0 +1,989 @@
+/* Standalone stylesheet for index-redesign-preview.html only.
+   Does not touch css/style.css or any live page. */
+
+:root {
+    --bg-dark: #0f0f12;
+    --bg-card: #16161a;
+    --text-main: #ffffff;
+    --text-muted: #a0a0aa;
+    --accent-color: #ff3344;
+    --border-color: #24242b;
+}
+
+* { box-sizing: border-box; margin: 0; padding: 0; }
+
+body {
+    background: var(--bg-dark);
+    color: var(--text-main);
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Helvetica, Arial, sans-serif;
+    line-height: 1.6;
+}
+
+/* --- Nav --- */
+.rd-nav {
+    /* Matches the logo video's own frame background (#111, not pure black)
+       so its bounding box doesn't show up as a faint gray box once the
+       animation settles on its final frame. */
+    background: #111111;
+    display: grid;
+    /* 3 equal-ish columns (not flex space-between) so the middle nav-links
+       group sits at the true horizontal center of the bar, regardless of
+       the logo and icon cluster being different widths. */
+    grid-template-columns: 1fr auto 1fr;
+    align-items: center;
+    padding: 14px 40px;
+    border-bottom: 1px solid var(--border-color);
+}
+.rd-nav .logo-link { display: block; justify-self: start; }
+.rd-logo-video { height: 90px; width: auto; object-fit: contain; display: block; }
+
+.rd-nav-links {
+    display: flex;
+    gap: 36px;
+    list-style: none;
+    justify-self: center;
+    transform: translateX(-30px);
+}
+.rd-nav-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    text-transform: uppercase;
+    transition: color 0.2s ease;
+}
+.rd-nav-links a:hover { color: var(--accent-color); }
+
+.rd-nav-icons { display: flex; gap: 24px; justify-self: end; }
+.rd-nav-icons a { color: var(--text-main); font-size: 1.2rem; transition: color 0.2s ease; }
+.rd-nav-icons a:hover { color: var(--accent-color); }
+
+/* --- Hero --- */
+.rd-hero {
+    position: relative;
+    min-height: 640px;
+    display: flex;
+    align-items: center;
+    background: url('../assets/images/gaming-room.png') center 20% / cover no-repeat;
+}
+.rd-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    z-index: 1;
+    background: linear-gradient(90deg, rgba(0,0,0,0.85) 0%, rgba(0,0,0,0.55) 45%, rgba(0,0,0,0.15) 100%);
+}
+
+/* Plain looping background video for the Community hero (no alpha channel
+   needed here, unlike the Index hero) -- sits behind the ::before gradient
+   overlay so the text above it stays readable. */
+.rd-community-hero-video {
+    position: absolute;
+    inset: 0;
+    z-index: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center 10%;
+}
+.rd-hero-video {
+    /* Spans the full hero; the WebGL draw call itself positions the video's
+       content (correct aspect ratio, anchored to the right, vertically
+       centered) within this full-size canvas -- a plain <canvas> has no
+       object-fit, so that positioning has to happen in the render code
+       rather than CSS. See the alpha-video script at the bottom of the page. */
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    pointer-events: none;
+    /* Color grading (contrast/saturation/brightness) is baked directly into
+       the WebGL shader instead of a CSS filter here -- see the render
+       script at the bottom of the page for why. */
+}
+
+.rd-hero-content {
+    position: relative;
+    z-index: 1;
+    max-width: 620px;
+    padding: 0 40px;
+}
+.rd-hero-content h1 {
+    font-size: 3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.15;
+    margin-bottom: 20px;
+}
+.rd-hero-content h1 span { color: var(--accent-color); }
+.rd-hero-content p {
+    color: #e4e4e8;
+    font-size: 1.05rem;
+    max-width: 480px;
+    margin-bottom: 30px;
+}
+.rd-hero-cta {
+    display: inline-block;
+    background: var(--accent-color);
+    color: #000;
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 16px 34px;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+.rd-hero-cta:hover { opacity: 0.85; }
+
+/* --- Steps grid (replaces product tiles) --- */
+.rd-steps-section {
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255, 51, 68, 0.06) 0px,
+            rgba(255, 51, 68, 0.06) 1px,
+            transparent 1px,
+            transparent 13px,
+            rgba(0, 0, 0, 0.05) 13px,
+            rgba(0, 0, 0, 0.05) 14px,
+            transparent 14px,
+            transparent 27px
+        ),
+        linear-gradient(180deg, #474747 0%, #333333 100%);
+    color: var(--text-main);
+    padding: 60px 40px;
+}
+.rd-steps-heading {
+    text-align: center;
+    font-size: 1.8rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 40px;
+}
+.rd-steps-heading span { color: var(--accent-color); }
+
+.rd-steps-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+    max-width: 1200px;
+    margin: 0 auto;
+}
+.rd-step-card {
+    position: relative;
+    background: #e5e5e5;
+    overflow: hidden;
+    border-radius: 4px;
+    display: flex;
+    flex-direction: column;
+    /* opacity/transform are driven directly by scroll position in JS below,
+       not a CSS transition -- so the reveal scrubs with the scroll instead
+       of firing once and staying revealed. */
+    will-change: opacity, transform;
+}
+/* Card 2 sits on top so cards 1 and 3 can visually tuck in behind it. */
+.rd-step-card:nth-child(2) { z-index: 2; }
+.rd-step-card:nth-child(1), .rd-step-card:nth-child(3) { z-index: 1; }
+.rd-step-card img {
+    display: block;
+    width: 55%;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+    margin: 24px auto;
+}
+.rd-step-label {
+    background: #000;
+    color: #fff;
+    padding: 14px 18px;
+    display: flex;
+    align-items: baseline;
+    gap: 10px;
+}
+.rd-step-label .num { color: var(--accent-color); font-weight: 900; font-size: 1.1rem; }
+.rd-step-label h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.rd-step-card p {
+    padding: 14px 18px 20px;
+    font-size: 0.9rem;
+    color: #444;
+}
+
+/* --- Footer --- */
+.rd-footer {
+    background: #000;
+    padding: 40px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    gap: 20px;
+    border-top: 1px solid var(--border-color);
+}
+.rd-footer-links {
+    display: flex;
+    gap: 40px;
+    list-style: none;
+}
+.rd-footer-links a {
+    color: var(--text-main);
+    text-decoration: none;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+}
+.rd-footer-links a:hover { color: var(--accent-color); }
+
+.rd-footer-social { display: flex; gap: 16px; }
+.rd-footer-social a {
+    width: 38px; height: 38px;
+    border-radius: 50%;
+    background: var(--accent-color);
+    color: #000;
+    display: flex; align-items: center; justify-content: center;
+    text-decoration: none;
+    transition: opacity 0.2s ease;
+}
+.rd-footer-social a:hover { opacity: 0.85; }
+
+/* --- Page banner (Showroom, etc.) --- */
+.rd-page-banner {
+    background: #111111;
+    padding: 60px 40px;
+    text-align: center;
+    border-bottom: 1px solid var(--border-color);
+}
+.rd-page-banner h1 {
+    font-size: 2.4rem;
+    font-weight: 900;
+    text-transform: uppercase;
+}
+.rd-page-banner h1 span { color: var(--accent-color); }
+.rd-page-banner p { color: var(--text-muted); margin-top: 12px; }
+
+/* --- Community page hero + tab strip --- */
+.rd-community-hero {
+    background-image: url('../assets/images/community-page.png');
+    background-position: center 8%;
+}
+
+.rd-community-hero .rd-hero-content h1 {
+    margin-left: 20px;
+    margin-top: -250px;
+    font-size: 3.3rem;
+}
+
+/* Positioned as a percentage of the hero itself (not the shrink-wrapped
+   .rd-hero-content) so it tracks the neon sign in the photo consistently
+   and can be nudged independently of "Join the" -- .rd-hero is already
+   position:relative. */
+.rd-community-subtext {
+    position: absolute;
+    top: 72%;
+    left: 18%;
+    max-width: 420px;
+    margin: 0;
+    color: #e4e4e8;
+    font-size: 1.15rem;
+    z-index: 1;
+}
+
+/* "Want your clip featured?" checklist -- right side of the hero, shown
+   only on the Clip of the Week tab (toggled by the script at the bottom
+   of the page). Each item animates in top-to-bottom, replayed every time
+   the tab is opened (see the script re-triggering .animate). */
+.rd-clip-featured-info {
+    position: absolute;
+    top: 50%;
+    right: 3%;
+    transform: translateY(-50%);
+    width: 560px;
+    max-width: 560px;
+    z-index: 2;
+    padding: 36px 40px;
+    /* opacity/visibility instead of display:none so this (and the
+       heading + ::before background inside it) can fade in smoothly --
+       display can't be transitioned. pointer-events keeps it non-
+       interactive while hidden. */
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    transition: opacity 0.6s ease, visibility 0s linear 0.6s;
+}
+.rd-clip-featured-info.visible {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+    transition: opacity 0.6s ease, visibility 0s linear 0s;
+}
+/* Soft dark panel behind the heading + checklist so they stay readable
+   over the busy photo -- a ::before instead of a background on the info
+   box itself so it can fade/blur past the edges rather than being a hard
+   rectangle. */
+.rd-clip-featured-info::before {
+    content: "";
+    position: absolute;
+    inset: -60px;
+    background: radial-gradient(ellipse at center, rgba(0, 0, 0, 0.85) 0%, rgba(0, 0, 0, 0.7) 35%, rgba(0, 0, 0, 0.35) 65%, transparent 100%);
+    z-index: -1;
+    filter: blur(6px);
+}
+.rd-clip-featured-title {
+    color: var(--accent-color);
+    font-size: 1.9rem;
+    font-weight: 800;
+    margin: 0 0 22px 0;
+    white-space: nowrap;
+}
+.rd-clip-featured-list {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+/* Icon sits in its own fixed-width column to the left of the text (rather
+   than inline via flex gap), so the TEXT itself starts at the same x
+   position as the heading above it instead of being pushed right by the
+   icon+gap. */
+.rd-clip-featured-list li {
+    position: relative;
+    padding-left: 36px;
+    color: #fff;
+    font-size: 1.25rem;
+    line-height: 1.3;
+    opacity: 0;
+    transform: translateY(-14px);
+}
+.rd-clip-featured-list li i {
+    position: absolute;
+    left: 0;
+    top: 0.2em;
+    color: var(--accent-color);
+}
+.rd-clip-featured-list.animate li {
+    animation: rd-checklist-in 0.6s ease forwards;
+}
+.rd-clip-featured-list.animate li:nth-child(1) { animation-delay: 0.2s; }
+.rd-clip-featured-list.animate li:nth-child(2) { animation-delay: 0.55s; }
+.rd-clip-featured-list.animate li:nth-child(3) { animation-delay: 0.9s; }
+.rd-clip-featured-list.animate li:nth-child(4) { animation-delay: 1.25s; }
+.rd-clip-featured-list.animate li:nth-child(5) { animation-delay: 1.6s; }
+@keyframes rd-checklist-in {
+    from { opacity: 0; transform: translateY(-14px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Sits directly on the hero photo now (nested inside .rd-hero, which is
+   position:relative) instead of in its own block below it, so the brick
+   background shows straight through -- #community-tabs itself is
+   untouched, so the existing tab-switch JS and .tab-btn styling from
+   css/style.css keep working exactly as before. */
+.rd-tab-strip {
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 25px;
+    background: transparent;
+    padding: 20px 40px !important;
+    margin: 0 !important;
+    border-bottom: none;
+    display: flex;
+    justify-content: center;
+    z-index: 2;
+}
+.rd-tab-strip .tab-btn { color: #fff; }
+.rd-tab-strip .tab-btn:hover { color: var(--accent-color); }
+.rd-tab-strip .tab-btn.active { color: var(--accent-color); }
+
+/* Gray stays flush right at the hero's bottom edge, full width, untouched
+   -- only the panel content itself (#tab-panels) is pulled up on top of
+   it to overlap the hero photo, so the gray never intrudes up into the
+   tab bar's space. */
+main.section-container {
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255, 51, 68, 0.06) 0px,
+            rgba(255, 51, 68, 0.06) 1px,
+            transparent 1px,
+            transparent 13px,
+            rgba(0, 0, 0, 0.05) 13px,
+            rgba(0, 0, 0, 0.05) 14px,
+            transparent 14px,
+            transparent 27px
+        ),
+        linear-gradient(180deg, #474747 0%, #333333 100%);
+    max-width: none;
+    padding: 40px 40px 60px;
+}
+#tab-panels {
+    position: relative;
+    z-index: 3;
+    margin-top: -70px;
+}
+
+/* Drop shadow under the hero photo, separating it from the content below
+   -- Showroom's hero uses its own class (.rd-featured-hero) instead of
+   .rd-hero, so it needs to be listed separately here. */
+.rd-hero,
+.rd-featured-hero {
+    box-shadow: 0 10px 24px rgba(0, 0, 0, 0.5);
+}
+
+/* Drop shadow on every card-style box across all three pages (comments/
+   posts on Community, step cards on Index, product cards on Showroom). */
+.comment-form,
+.comment-card,
+.post-card,
+.rd-step-card,
+.rd-related-card,
+.rd-product-card {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4);
+}
+
+/* --- Clip of the Week --- */
+#clip-of-week { margin-top: -120px; }
+/* Moved into .clip-frame by script (it's rendered as a sibling under
+   .clip-header by js/community.js) and repositioned onto the frame
+   artwork's bottom bar instead of its original spot above the video --
+   pulling the whole clip block up (see #clip-of-week above) relied on that
+   original spot being empty, so this only works because the script also
+   removes the line from its old position rather than duplicating it. */
+.clip-frame .clip-streamer {
+    position: absolute;
+    left: 50%;
+    bottom: 0.2%;
+    transform: translateX(-50%);
+    margin: 0;
+    color: #fff;
+    font-size: 1.3rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-align: center;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    pointer-events: none;
+}
+.clip-streamer-name { color: var(--accent-color); }
+
+/* Swap the plain accent border + pulse animation for the "clip of the
+   week.png" decorative frame overlay (transparent center, ~16:9 to match
+   the box) instead of styling the box's own border directly. */
+.clip-header,
+.clip-frame {
+    max-width: 1300px;
+}
+/* --- LOCKED: Clip of the Week frame + video, fitted as one matched pair ---
+   .clip-frame stays native undistorted 16:9. The video below is shrunk to
+   true, undistorted 16:9 (zero YouTube letterboxing) and centered. The
+   border's background-size/position (in ::after) is tuned specifically to
+   wrap that exact video box, with a small deliberate trim off the bottom
+   only. These two rules are a single fitted unit now -- do not adjust one
+   without re-checking the other; if the video box ever moves/resizes,
+   ::after's background-size/position must be re-derived to match it again. */
+.clip-frame {
+    position: relative;
+    border: none;
+    border-radius: 0;
+    animation: none;
+    background: transparent;
+}
+.clip-frame::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url('../assets/images/clip%20of%20the%20week.png') 50% 43.48% / 80% 88.5% no-repeat;
+    pointer-events: none;
+    z-index: 1;
+    /* drop-shadow (not box-shadow) follows the PNG's actual alpha shape --
+       the notched, angled border art, not a plain rectangle -- so the
+       shadow hugs the visible artwork instead of framing empty space. */
+    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+}
+.clip-frame iframe,
+.clip-frame .clip-placeholder-text,
+.clip-frame .clip-watch-btn {
+    position: absolute;
+    top: 10.67%;
+    left: 10.67%;
+    width: 78.66%;
+    height: 78.66%;
+}
+
+/* --- Category-coded post/comment cards --- */
+.category-badge.category-lfg { color: #ff8c1a; border-color: #ff8c1a; }
+.category-badge.category-game_chat { color: #ffd21a; border-color: #ffd21a; }
+.category-badge.category-general { color: #ff3344; border-color: #ff3344; }
+
+.comment-card,
+.post-card {
+    border-left: 3px solid var(--accent-color);
+}
+.post-card:has(.category-badge.category-lfg) { border-left-color: #ff8c1a; }
+.post-card:has(.category-badge.category-game_chat) { border-left-color: #ffd21a; }
+.post-card:has(.category-badge.category-general) { border-left-color: #ff3344; }
+
+/* Scroll-in state for .comment-card/.post-card, driven by JS below --
+   opacity/transform are set inline per-frame, not via a CSS transition, so
+   the reveal scrubs with scroll position instead of firing once. */
+.comment-card, .post-card { will-change: opacity, transform; }
+
+/* --- Platform dropdown (top-left of Showroom hero) --- */
+.rd-platform-dropdown {
+    position: absolute;
+    top: 30px;
+    left: 40px;
+    z-index: 2;
+}
+.rd-platform-btn {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    background: rgba(17, 17, 17, 0.85);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    padding: 12px 18px;
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+.rd-platform-btn:hover { border-color: var(--accent-color); }
+.rd-platform-btn i { font-size: 0.75rem; transition: transform 0.25s ease; }
+.rd-platform-dropdown.open .rd-platform-btn i { transform: rotate(180deg); }
+
+.rd-platform-menu {
+    position: absolute;
+    top: calc(100% + 8px);
+    left: 0;
+    min-width: 100%;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    display: flex;
+    flex-direction: column;
+    /* Collapsed by default -- smoothly reveals via max-height/opacity when
+       the dropdown's "open" class is toggled, rather than snapping open. */
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: max-height 0.3s ease, opacity 0.25s ease;
+}
+.rd-platform-dropdown.open .rd-platform-menu { max-height: 300px; opacity: 1; }
+
+.rd-platform-option {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid var(--border-color);
+    color: var(--text-main);
+    text-align: left;
+    padding: 12px 18px;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    white-space: nowrap;
+    transition: background 0.15s ease, color 0.15s ease;
+}
+.rd-platform-option:last-child { border-bottom: none; }
+.rd-platform-option:hover { background: rgba(255, 51, 68, 0.1); color: var(--accent-color); }
+.rd-platform-option.active { color: var(--accent-color); }
+
+/* --- Featured product hero (Showroom) --- */
+.rd-featured-hero {
+    position: relative;
+    min-height: 620px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    background: url('../assets/images/showroom-room.png') center 30% / cover no-repeat;
+}
+.rd-featured-hero::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(90deg, rgba(0,0,0,0.15) 0%, rgba(0,0,0,0.75) 45%, rgba(0,0,0,0.94) 100%);
+}
+/* Big transparent alpha-channel controller video, shown only when a Free
+   Overlay C4D.5 style with a matching video is selected (see script below)
+   -- hidden/faded out otherwise so the plain background photo shows
+   through as normal for every other product. */
+.rd-featured-video {
+    position: absolute;
+    top: 6%;
+    left: 20%;
+    width: 58%;
+    height: 88%;
+    z-index: 1;
+    pointer-events: none;
+    opacity: 0;
+    overflow: hidden; /* clips the sliding canvases to this box instead of spilling into the photo */
+    transition: opacity 0.35s ease;
+}
+.rd-featured-video.visible { opacity: 1; }
+
+/* The two canvases ping-pong: whichever is "front" plays pos-center, the
+   other sits parked pos-right waiting for its turn -- swapping a color
+   slides the old one out pos-left while the new one slides in from
+   pos-right, at the same time. */
+.rd-featured-video-canvas {
+    position: absolute;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    /* cubic-bezier with a y > 1 control point overshoots past the target
+       before settling back -- that's the "rebound" on landing. */
+    transition: transform 0.7s cubic-bezier(0.34, 1.22, 0.64, 1);
+}
+.rd-featured-video-canvas.pos-right { transform: translateX(110%); }
+.rd-featured-video-canvas.pos-center { transform: translateX(0); }
+.rd-featured-video-canvas.pos-left { transform: translateX(-110%); }
+
+/* Fake motion blur: a blur that ramps up then back down over the same
+   span as the slide, applied only while actively sliding (see script). */
+.rd-featured-video-canvas.sliding { animation: rd-video-slide-blur 0.7s ease; }
+@keyframes rd-video-slide-blur {
+    0% { filter: blur(0); }
+    35% { filter: blur(7px); }
+    100% { filter: blur(0); }
+}
+.rd-featured-info {
+    position: relative;
+    z-index: 1;
+    /* Fixed width, not max-width -- as a flex item with no explicit width
+       this was shrinking to fit its widest line of text, so shorter product
+       titles made the whole panel (and the buttons stretching to fill it)
+       visibly narrower. A fixed width keeps it constant regardless of
+       content length. */
+    width: 480px;
+    padding: 0 60px 0 20px;
+}
+.rd-featured-info .rd-eyebrow {
+    color: var(--accent-color);
+    font-weight: 800;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    font-size: 0.8rem;
+    margin-bottom: 10px;
+    display: block;
+}
+.rd-featured-info h1 {
+    font-size: 2rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    line-height: 1.2;
+    margin-bottom: 14px;
+    /* Reserves a fixed 2-line-tall box regardless of how many lines the
+       current title actually needs, and pins its first line to the SAME
+       top position every time (no flex/align-items -- that was making the
+       text itself jump to the bottom of the box for short 1-line titles).
+       overflow:hidden is a safety clamp in case a title somehow exceeds 2
+       lines. Combined, nothing in or below this box moves between products. */
+    height: 2.4em;
+    overflow: hidden;
+}
+.rd-featured-price { font-size: 1.4rem; font-weight: 900; color: var(--accent-color); margin-bottom: 20px; }
+
+.rd-featured-list { list-style: none; margin-bottom: 30px; }
+.rd-featured-list li {
+    color: #e4e4e8;
+    font-size: 0.9rem;
+    padding-left: 24px;
+    position: relative;
+    margin-bottom: 10px;
+}
+.rd-featured-list li::before {
+    content: "\f00c";
+    font-family: "Font Awesome 6 Free";
+    font-weight: 900;
+    color: var(--accent-color);
+    position: absolute;
+    left: 0;
+    top: 1px;
+    font-size: 0.75rem;
+}
+
+.rd-featured-buttons { display: flex; flex-direction: column; gap: 12px; }
+.rd-btn-cart {
+    padding: 14px;
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    color: var(--text-main);
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.85rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.rd-btn-cart:hover { border-color: var(--text-main); }
+.rd-btn-unlock {
+    padding: 14px;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+    display: flex; align-items: center; justify-content: center; gap: 10px;
+}
+.rd-btn-unlock:hover { background: var(--accent-color); color: #000; }
+
+/* --- Related products strip --- */
+.rd-related-section {
+    background:
+        repeating-linear-gradient(
+            45deg,
+            rgba(255, 51, 68, 0.06) 0px,
+            rgba(255, 51, 68, 0.06) 1px,
+            transparent 1px,
+            transparent 13px,
+            rgba(0, 0, 0, 0.05) 13px,
+            rgba(0, 0, 0, 0.05) 14px,
+            transparent 14px,
+            transparent 27px
+        ),
+        linear-gradient(180deg, #474747 0%, #333333 100%);
+    padding: 50px 40px;
+}
+.rd-related-inner { max-width: 1300px; margin: 0 auto; }
+.rd-related-title {
+    color: var(--text-main);
+    font-size: 1.1rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    margin-bottom: 24px;
+}
+.rd-related-grid {
+    display: grid;
+    /* Fixed-width auto-fit columns (not 1fr) so unused tracks collapse
+       instead of staying reserved -- with 1fr, 4 cards in a 6-column grid
+       would fill the row width and just sit left-aligned with a gap on the
+       right. auto-fit + justify-content:center collapses to however many
+       columns are actually present and centers that set, at any count. */
+    grid-template-columns: repeat(auto-fit, minmax(160px, 200px));
+    justify-content: center;
+    gap: 16px;
+    transition: opacity 0.2s ease, transform 0.2s ease;
+}
+.rd-related-grid.swapping { opacity: 0; transform: translateY(8px); }
+.rd-related-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    overflow: hidden;
+    aspect-ratio: 4 / 3;
+    cursor: pointer;
+    transition: border-color 0.2s ease;
+}
+.rd-related-card:hover { border-color: var(--accent-color); }
+.rd-related-card.active { border-color: var(--accent-color); }
+
+.rd-related-card img { width: 100%; height: 100%; object-fit: cover; }
+/* Overlay thumbnails (the only related-cards with data-color-key) shrink
+   down and float centered instead of filling the card edge-to-edge. */
+.rd-related-card[data-color-key] {
+    position: relative;
+}
+.rd-related-card[data-color-key] img {
+    position: relative;
+    width: 90%;
+    height: 90%;
+    object-fit: contain;
+    margin: 5%;
+}
+/* C4D.4's thumbnail reads a touch smaller than the other two at the same
+   size -- nudged up individually rather than resizing all three. */
+#overlay-c4d4-img {
+    width: 97%;
+    height: 97%;
+    margin: 1.5%;
+}
+/* Same dark gradient darkening treatment as the hero banners, so the
+   platform label below reads clearly over the thumbnail photo. */
+.rd-related-card[data-color-key]::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
+    z-index: 1;
+    pointer-events: none;
+}
+.rd-overlay-thumb-label {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    color: #fff;
+    font-weight: 900;
+    font-size: 1.6rem;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    text-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+    z-index: 2;
+    pointer-events: none;
+}
+
+/* "Select Style" -- only opens when an overlay item is featured (see
+   currentColorKey in the script below); for any other product the button
+   is plain "Customize" with no swatches. Rather than dropping a menu
+   below the button, the swatches take over the button's own slot: the
+   button stays in normal flow (so it still sets the dropdown's height),
+   and slides down + fades out while the swatch row -- absolutely
+   positioned over that same box -- slides down from above and fades in,
+   landing exactly where the button was. overflow:hidden clips both
+   mid-slide so neither peeks outside the box. */
+.rd-style-dropdown {
+    position: relative;
+    display: block;
+    width: 100%;
+    overflow: hidden;
+}
+.rd-style-dropdown #style-btn {
+    display: flex;
+    width: 100%;
+    transition: transform 0.35s ease, opacity 0.3s ease;
+}
+.rd-style-dropdown.open #style-btn {
+    transform: translateY(100%);
+    opacity: 0;
+    pointer-events: none;
+}
+.rd-style-menu {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    opacity: 0;
+    transform: translateY(-100%);
+    pointer-events: none;
+    transition: opacity 0.35s ease, transform 0.35s ease;
+    z-index: 2;
+}
+.rd-style-dropdown.open .rd-style-menu {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+.rd-style-menu .color-dot {
+    width: 32px;
+    height: 32px;
+    border-radius: 50%;
+    border: 1px solid var(--border-color);
+    padding: 0;
+    cursor: pointer;
+    transition: transform 0.2s ease, border-color 0.2s ease;
+}
+.rd-style-menu .color-dot:hover { transform: scale(1.15); border-color: var(--accent-color); }
+.rd-style-menu .color-dot-c4d {
+    background-color: #000;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-color: rgba(255, 255, 255, 0.5);
+}
+/* Stays highlighted once picked, instead of only showing feedback on hover. */
+.rd-style-menu .color-dot.active {
+    border-color: var(--accent-color);
+    border-width: 2px;
+    box-shadow: 0 0 0 2px rgba(255, 51, 68, 0.35);
+}
+
+/* --- Product grid (Showroom) --- */
+.rd-platform-section { padding: 50px 40px 10px; max-width: 1300px; margin: 0 auto; }
+.rd-platform-title {
+    font-size: 1.5rem;
+    font-weight: 900;
+    text-transform: uppercase;
+    margin-bottom: 24px;
+    padding-bottom: 10px;
+    border-bottom: 2px solid var(--accent-color);
+    display: inline-block;
+}
+
+.rd-product-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+.rd-product-card {
+    background: var(--bg-card);
+    border: 1px solid var(--border-color);
+    border-radius: 8px;
+    overflow: hidden;
+    display: flex;
+    flex-direction: column;
+    transition: border-color 0.2s ease, transform 0.2s ease;
+}
+.rd-product-card:hover { border-color: var(--accent-color); transform: translateY(-4px); }
+.rd-product-card img {
+    display: block;
+    width: 55%;
+    height: 200px;
+    object-fit: contain;
+    object-position: center;
+    margin: 24px auto 10px;
+}
+.rd-product-label {
+    padding: 14px 18px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 10px;
+    border-top: 1px solid var(--border-color);
+}
+.rd-product-label h3 { color: var(--text-main); font-size: 0.95rem; text-transform: uppercase; letter-spacing: 0.5px; }
+.rd-product-label .price { color: var(--accent-color); font-weight: 900; white-space: nowrap; }
+
+.rd-unlock-btn {
+    margin: 0 18px 20px;
+    padding: 12px;
+    background: transparent;
+    border: 1px solid var(--accent-color);
+    color: var(--accent-color);
+    font-weight: 800;
+    text-transform: uppercase;
+    font-size: 0.8rem;
+    letter-spacing: 0.5px;
+    cursor: pointer;
+    transition: all 0.2s ease;
+}
+.rd-unlock-btn:hover, .rd-unlock-btn.active { background: var(--accent-color); color: #000; }
+
+.rd-more-content { max-height: 0; opacity: 0; overflow: hidden; transition: max-height 0.5s ease, opacity 0.5s ease; }
+.rd-more-content.active { max-height: 2000px; opacity: 1; margin-top: 24px; }
+
+.rd-see-more {
+    display: flex; flex-direction: column; align-items: center;
+    margin: 24px auto 0; max-width: 300px; cursor: pointer;
+    color: var(--text-muted); font-weight: 700; font-size: 0.8rem;
+    text-transform: uppercase; letter-spacing: 1px;
+    transition: color 0.2s ease;
+}
+.rd-see-more:hover { color: var(--accent-color); }
+.rd-see-more i { margin-top: 6px; transition: transform 0.3s ease; }
+.rd-see-more.active i { transform: rotate(180deg); }
+
+@media (max-width: 900px) {
+    .rd-nav { display: flex; flex-direction: column; gap: 16px; padding: 16px 20px; }
+    .rd-nav-links { flex-wrap: wrap; justify-content: center; gap: 18px; }
+    .rd-hero-content h1 { font-size: 2.1rem; }
+    .rd-steps-grid { grid-template-columns: 1fr; }
+    .rd-product-grid { grid-template-columns: 1fr; }
+    .rd-featured-hero { justify-content: center; padding: 40px 20px; }
+    .rd-featured-info { max-width: 100%; padding: 0; }
+    .rd-footer { flex-direction: column; text-align: center; }
+    .rd-footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+}

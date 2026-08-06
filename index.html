@@ -5,128 +5,361 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Controller Overlays</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/redesign-preview.css">
 </head>
 <body>
 
-    <div class="main-content-wrapper">
-        <div class="ember-container"></div>
-        <div class="glow-container"></div>
-        
-        <header class="main-nav">
-            <a href="index.html" class="logo-link">
-                <div class="logo">
-                    <video class="logo-video" autoplay muted playsinline>
-                        <source src="assets/videos/logoanimation.webm" type="video/webm">
-                    </video>
-                </div>
-            </a>
-            
-            <div class="menu-toggle" id="mobile-menu">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
-            </div>
-        </header>
-
-        <section class="hero">
-            <div class="header-logo-container">
-                <img src="assets/images/Prograde.png" alt="PRO-GRADE CSS CONTROLLERS" class="header-logo-img">
-            </div>
-            <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
-        </section>
-
-        <div class="divider-line"></div>
-
-        <h2 class="steps-headline">
-            Level up your stream in <span class="text-accent">3</span> easy steps
-        </h2>
-
-        <section class="banner-video-container">
-            <video autoplay muted loop playsinline>
-                <source src="assets/videos/bannervid.mp4" type="video/mp4">
+    <header class="rd-nav">
+        <a href="index.html" class="logo-link">
+            <video class="rd-logo-video" autoplay muted playsinline>
+                <source src="assets/videos/logoanimation.webm" type="video/webm">
             </video>
-            <div class="video-overlay"></div>
-        </section>
+        </a>
 
-        <div class="steps-grid">
-            
-            <div class="step-card step-1">
-                <div class="step-side-num">1</div>
-                <div class="step-text">
-                    <h3>Choose Style</h3>
-                    <p>Select from our showroom or request a custom controller.</p>
-                </div>
-                <img src="assets/images/choosestyle.png" alt="Step 1" class="step-card-img">
-            </div>
+        <ul class="rd-nav-links">
+            <li><a href="showroom.html">Showroom</a></li>
+            <li><a href="overlays.html">Bundles</a></li>
+            <li><a href="#">Software &amp; Development</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
 
-            <div class="step-card step-2">
-                <div class="step-side-num">2</div>
-                <div class="step-text">
-                    <h3>Download</h3>
-                    <p>Receive your design package via email after confirmation.</p>
-                </div>
-                <img src="assets/images/downloadcontroller.png" alt="Step 2" class="step-card-img">
-            </div>
-
-            <div class="step-card step-3">
-                <div class="step-side-num">3</div>
-                <div class="step-text">
-                    <h3>Go Live</h3>
-                    <p>Add the downloaded HTML file as a local browser source in OBS or Streamlabs</p>
-                </div>
-                <img src="assets/images/golive.png" alt="Step 3" class="step-card-img">
-            </div>
-
+        <div class="rd-nav-icons">
+            <a href="#" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="#" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
+    </header>
 
-        <div class="divider-line"></div>
-        
-        <section class="custom-cta-faded">
-            <h2>Ready to <span class="text-accent">level</span> up?</h2>
-            <p>Join the community and see what's next.</p>
-            <a href="community.html" class="btn-primary">Visit Community</a>
-        </section>
-    </div> 
+    <section class="rd-hero">
+        <canvas class="rd-hero-video" id="hero-alpha-canvas"></canvas>
+        <div class="rd-hero-content">
+            <h1>Pro-Grade Overlays.<br>Engineered for <span>Your Stream</span>.</h1>
+            <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
+            <a href="showroom.html" class="rd-hero-cta">See What's Trending</a>
+        </div>
+    </section>
 
-    <div class="side-panel" id="side-panel">
-        <a href="showroom.html">Showroom</a>
-        <a href="overlays.html">Free Overlays</a>
-        <a href="community.html">Community</a>
-        <a href="about.html">About Us</a>
-        <a href="legal.html">Legal</a>
-    </div>
+    <section class="rd-steps-section">
+        <h2 class="rd-steps-heading">Level up your stream in <span>3</span> easy steps</h2>
 
-    <script src="js/main.js"></script>
-
-    <footer class="footer-promo">
-        <div class="footer-wrapper">
-            
-            <h3 class="footer-heading">Follow/Contact Us!</h3>
-            
-            <div class="footer-social-bar">
-                <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
-                <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
-                <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
-                <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
-                <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
+        <div class="rd-steps-grid">
+            <div class="rd-step-card">
+                <img src="assets/images/choosestyle.png" alt="Choose Style">
+                <div class="rd-step-label">
+                    <span class="num">01</span>
+                    <h3>Choose Style</h3>
+                </div>
+                <p>Select from our free controller room, or buy and customize one from our premium showroom.</p>
             </div>
-            
-            <div class="divider-line"></div>
 
-            <h2 class="footer-heading">See what else is cooking!</h2>
-            <a href="https://your-other-website-url.com" target="_blank" rel="noopener noreferrer">
-                <video class="spinning-logo" autoplay loop muted playsinline>
-                    <source src="assets/images/okayest.webm" type="video/webm">
-                </video>
-            </a>
-            <p class="footer-caption">
-                <span class="laugh-red">Real laughs.</span> 
-                <span class="family-pink">Built by family.</span> 
-                <span class="okay-green">Better than okay.</span>
-            </p>
+            <div class="rd-step-card">
+                <img src="assets/images/downloadcontroller.png" alt="Download">
+                <div class="rd-step-label">
+                    <span class="num">02</span>
+                    <h3>Download</h3>
+                </div>
+                <p>Receive your design package via email after confirmation.</p>
+            </div>
+
+            <div class="rd-step-card">
+                <img src="assets/images/golive.png" alt="Go Live">
+                <div class="rd-step-label">
+                    <span class="num">03</span>
+                    <h3>Go Live</h3>
+                </div>
+                <p>Add the downloaded HTML file as a local browser source in OBS or Streamlabs.</p>
+            </div>
+        </div>
+    </section>
+
+    <footer class="rd-footer">
+        <ul class="rd-footer-links">
+            <li><a href="community.html">Contact</a></li>
+            <li><a href="legal.html">Legal</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+
+        <div class="rd-footer-social">
+            <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
+            <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
         </div>
     </footer>
 
+    <script>
+        // Alpha-channel video player for the hero banner.
+        //
+        // Plain <video> playback always composites as fully opaque in every
+        // browser, even when the source file has a real encoded alpha
+        // channel. The WebCodecs / Insertable Streams API can expose the raw
+        // decoded VideoFrame (format "I420A" confirms this file's alpha
+        // survived export), and WebGL -- unlike 2D canvas -- can composite
+        // that alpha correctly onto the page, PROVIDED the premultiplied-
+        // alpha handling matches between the WebGL context and the shader.
+        // Using the context's default (premultipliedAlpha: true) and
+        // premultiplying color-by-alpha in the fragment shader is the
+        // standard, most broadly-compatible way to do this -- the previous
+        // attempt used premultipliedAlpha:false with a non-premultiplying
+        // shader, which is a common source of exactly this "renders as
+        // opaque despite real alpha in the buffer" symptom on some
+        // browser/GPU combinations.
+        async function initAlphaHeroVideo() {
+            const canvas = document.getElementById("hero-alpha-canvas");
+            if (!canvas || typeof MediaStreamTrackProcessor === "undefined") {
+                console.warn("Alpha video not supported in this browser -- canvas will stay empty.");
+                return;
+            }
+
+            const gl = canvas.getContext("webgl", { alpha: true });
+            if (!gl) {
+                console.warn("WebGL not available -- alpha hero video skipped.");
+                return;
+            }
+            gl.clearColor(0, 0, 0, 0);
+
+            const vertexSrc = `
+                attribute vec2 a_position;
+                attribute vec2 a_texCoord;
+                varying vec2 v_texCoord;
+                void main() {
+                    gl_Position = vec4(a_position, 0.0, 1.0);
+                    v_texCoord = a_texCoord;
+                }
+            `;
+            const fragmentSrc = `
+                precision mediump float;
+                varying vec2 v_texCoord;
+                uniform sampler2D u_texture;
+                void main() {
+                    vec4 color = texture2D(u_texture, v_texCoord);
+                    vec3 rgb = color.rgb;
+
+                    // Color grading baked directly into the rendered pixels
+                    // (rather than a CSS filter on the canvas) -- the
+                    // source video reads washed-out/pale on its own, and a
+                    // CSS filter wasn't visibly affecting this canvas on
+                    // some browser/GPU setups, so this guarantees the
+                    // adjustment actually takes effect.
+                    float gray = dot(rgb, vec3(0.299, 0.587, 0.114));
+                    rgb = mix(vec3(gray), rgb, 1.5); // saturation
+                    rgb = (rgb - 0.5) * 1.4 + 0.5;   // contrast
+                    rgb *= 0.82;                      // brightness
+                    rgb = clamp(rgb, 0.0, 1.0);
+
+                    // Premultiply: matches the context's default
+                    // premultipliedAlpha:true compositing behavior.
+                    gl_FragColor = vec4(rgb * color.a, color.a);
+                }
+            `;
+
+            function compileShader(type, source) {
+                const shader = gl.createShader(type);
+                gl.shaderSource(shader, source);
+                gl.compileShader(shader);
+                if (!gl.getShaderParameter(shader, gl.COMPILE_STATUS)) {
+                    console.error("Shader compile error:", gl.getShaderInfoLog(shader));
+                }
+                return shader;
+            }
+
+            const program = gl.createProgram();
+            gl.attachShader(program, compileShader(gl.VERTEX_SHADER, vertexSrc));
+            gl.attachShader(program, compileShader(gl.FRAGMENT_SHADER, fragmentSrc));
+            gl.linkProgram(program);
+            gl.useProgram(program);
+
+            const positionBuffer = gl.createBuffer();
+            const positionLoc = gl.getAttribLocation(program, "a_position");
+            gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+            gl.enableVertexAttribArray(positionLoc);
+            gl.vertexAttribPointer(positionLoc, 2, gl.FLOAT, false, 0, 0);
+
+            const texCoordBuffer = gl.createBuffer();
+            gl.bindBuffer(gl.ARRAY_BUFFER, texCoordBuffer);
+            // Flipped vertically (video frames are top-down, WebGL texture
+            // space is bottom-up) so the image doesn't render upside down.
+            gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([0, 1, 1, 1, 0, 0, 1, 0]), gl.STATIC_DRAW);
+            const texCoordLoc = gl.getAttribLocation(program, "a_texCoord");
+            gl.enableVertexAttribArray(texCoordLoc);
+            gl.vertexAttribPointer(texCoordLoc, 2, gl.FLOAT, false, 0, 0);
+
+            const texture = gl.createTexture();
+            gl.bindTexture(gl.TEXTURE_2D, texture);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_S, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_WRAP_T, gl.CLAMP_TO_EDGE);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MIN_FILTER, gl.LINEAR);
+            gl.texParameteri(gl.TEXTURE_2D, gl.TEXTURE_MAG_FILTER, gl.LINEAR);
+
+            gl.enable(gl.BLEND);
+            gl.blendFunc(gl.ONE, gl.ONE_MINUS_SRC_ALPHA);
+
+            const srcVideo = document.createElement("video");
+            srcVideo.src = "assets/videos/timeline%202.webm";
+            srcVideo.muted = true;
+            srcVideo.loop = true;
+            srcVideo.playsInline = true;
+            srcVideo.style.display = "none";
+            document.body.appendChild(srcVideo);
+
+            await new Promise((resolve, reject) => {
+                srcVideo.addEventListener("loadeddata", resolve, { once: true });
+                srcVideo.addEventListener("error", () => reject(new Error("hero video failed to load")), { once: true });
+            });
+            const videoAspect = srcVideo.videoWidth / srcVideo.videoHeight;
+            await srcVideo.play();
+
+            // Fits the video at its native aspect ratio within the full
+            // canvas ("contain"), anchored to the right edge and vertically
+            // centered -- computed in clip-space (-1 to 1) so it updates
+            // correctly if the canvas gets resized.
+            function updateQuad() {
+                const canvasAspect = canvas.width / canvas.height;
+                let drawWidthNorm, drawHeightNorm;
+                if (canvasAspect > videoAspect) {
+                    drawHeightNorm = 2; // full clip-space height
+                    drawWidthNorm = drawHeightNorm * (videoAspect / canvasAspect);
+                } else {
+                    drawWidthNorm = 2; // full clip-space width
+                    drawHeightNorm = drawWidthNorm * (canvasAspect / videoAspect);
+                }
+                const rightShift = 0.2; // nudges the video further right (crops slightly off the edge)
+                const right = 1 + rightShift;
+                const left = right - drawWidthNorm;
+                const top = drawHeightNorm / 2;
+                const bottom = -drawHeightNorm / 2;
+                gl.bindBuffer(gl.ARRAY_BUFFER, positionBuffer);
+                gl.bufferData(gl.ARRAY_BUFFER, new Float32Array([left, bottom, right, bottom, left, top, right, top]), gl.STATIC_DRAW);
+            }
+
+            function resizeCanvas() {
+                const rect = canvas.getBoundingClientRect();
+                canvas.width = Math.round(rect.width * (window.devicePixelRatio || 1));
+                canvas.height = Math.round(rect.height * (window.devicePixelRatio || 1));
+                gl.viewport(0, 0, canvas.width, canvas.height);
+                updateQuad();
+            }
+            resizeCanvas();
+            window.addEventListener("resize", resizeCanvas);
+
+            const stream = srcVideo.captureStream();
+            const [track] = stream.getVideoTracks();
+            const processor = new MediaStreamTrackProcessor({ track });
+            const reader = processor.readable.getReader();
+
+            (async function renderLoop() {
+                while (true) {
+                    const { value: frame, done } = await reader.read();
+                    if (done) break;
+                    gl.bindTexture(gl.TEXTURE_2D, texture);
+                    gl.texImage2D(gl.TEXTURE_2D, 0, gl.RGBA, gl.RGBA, gl.UNSIGNED_BYTE, frame);
+                    gl.clear(gl.COLOR_BUFFER_BIT);
+                    gl.drawArrays(gl.TRIANGLE_STRIP, 0, 4);
+                    frame.close();
+                }
+            })();
+        }
+
+        initAlphaHeroVideo();
+    </script>
+
+    <script>
+        // Scroll-scrubbed reveal: cards 1 and 3 sit tucked behind card 2
+        // (which sits on top via z-index) and slide out sideways into their
+        // grid slots as you scroll down, then slide back behind card 2 as
+        // you scroll back up -- driven directly by scroll position, not a
+        // one-time trigger.
+        const stepCards = [...document.querySelectorAll(".rd-step-card")];
+        const stepsGrid = document.querySelector(".rd-steps-grid");
+
+        // Where the scroll position says the reveal SHOULD be (0-1), computed
+        // fresh from the center card's position every frame.
+        function getTargetProgress() {
+            const windowH = window.innerHeight;
+            const rect = stepCards[1].getBoundingClientRect();
+            const start = windowH * 0.95;
+            const end = windowH * 0.55;
+            const progress = (start - rect.top) / (start - end);
+            return Math.min(1, Math.max(0, progress));
+        }
+
+        // Once fully exposed, cards pop in sequence: 1 grows and shrinks
+        // back, then 2, then 3. Resets (and can replay) once you scroll back
+        // out of the fully-revealed state.
+        const PULSE_DURATION_PER_CARD = 900; // ms
+        let pulseStartTime = null;
+        let hasTriggeredPulse = false;
+
+        function getPulseScale(cardIndex, elapsed) {
+            const segStart = cardIndex * PULSE_DURATION_PER_CARD;
+            const segEnd = segStart + PULSE_DURATION_PER_CARD;
+            if (elapsed < segStart || elapsed > segEnd) return 1;
+            const localT = (elapsed - segStart) / PULSE_DURATION_PER_CARD; // 0..1
+            // Raised-cosine bump: zero velocity at both the start and end of
+            // the pulse (unlike plain sin, which snaps into motion instantly),
+            // so the grow/shrink eases in and out smoothly instead of kicking.
+            const growth = (1 - Math.cos(2 * Math.PI * localT)) / 2;
+            return 1 + 0.08 * growth;
+        }
+
+        function applyProgress(progress) {
+            // Measured fresh every frame (cheap) rather than cached, since a
+            // cached value can go stale across viewport-width changes --
+            // translateX doesn't affect offsetWidth, so this is safe to read
+            // regardless of the cards' current transform.
+            const gap = parseFloat(getComputedStyle(stepsGrid).columnGap) || 0;
+            const shiftAmount = stepCards[0].offsetWidth + gap;
+
+            let pulseScales = [1, 1, 1];
+            if (pulseStartTime !== null) {
+                const elapsed = performance.now() - pulseStartTime;
+                if (elapsed <= PULSE_DURATION_PER_CARD * 3) {
+                    pulseScales = [0, 1, 2].map(i => getPulseScale(i, elapsed));
+                } else {
+                    pulseStartTime = null; // sequence finished
+                }
+            }
+
+            // Center card: simple fade + slide up, plus its turn in the pulse.
+            stepCards[1].style.opacity = progress;
+            stepCards[1].style.transform = `translateY(${(1 - progress) * 40}px) scale(${pulseScales[1]})`;
+
+            // Left card: fully hidden behind card 2 at progress 0 (opacity 0,
+            // same position), fades in solid while sliding left into its slot.
+            stepCards[0].style.opacity = progress;
+            stepCards[0].style.transform = `translateX(${(1 - progress) * shiftAmount}px) scale(${pulseScales[0]})`;
+
+            // Right card: mirrored, fades in solid while sliding right.
+            stepCards[2].style.opacity = progress;
+            stepCards[2].style.transform = `translateX(${-(1 - progress) * shiftAmount}px) scale(${pulseScales[2]})`;
+        }
+
+        // Displayed progress eases toward the scroll-driven target every
+        // frame instead of snapping straight to it, so fast/jumpy scrolling
+        // (mouse wheel steps, trackpad flicks) reads as a smooth catch-up
+        // rather than a rigid 1:1 jump.
+        let currentProgress = getTargetProgress();
+        function tick() {
+            const target = getTargetProgress();
+            currentProgress += (target - currentProgress) * 0.12;
+            if (Math.abs(target - currentProgress) < 0.001) currentProgress = target;
+
+            if (currentProgress >= 0.999) {
+                if (!hasTriggeredPulse) {
+                    hasTriggeredPulse = true;
+                    pulseStartTime = performance.now();
+                }
+            } else if (currentProgress < 0.95) {
+                hasTriggeredPulse = false;
+                pulseStartTime = null;
+            }
+
+            applyProgress(currentProgress);
+            requestAnimationFrame(tick);
+        }
+
+        applyProgress(currentProgress);
+        requestAnimationFrame(tick);
+    </script>
 </body>
 </html>
