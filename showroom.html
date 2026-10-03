@@ -6,8 +6,47 @@
     <title>Showroom | Customs4Daez</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
     <link rel="stylesheet" href="css/redesign-preview.css">
+    <style>
+        /* Customizer intro splash — plays over THIS page (showroom blurs
+           behind it) while the actual destination loads fully in a hidden
+           iframe behind the scenes. Only once that iframe reports it has
+           real content painted (not just an empty shell) AND the logo has
+           looped twice do we fade the splash out and reveal the
+           already-loaded customizer — so what appears is a finished page,
+           never a half-loaded one. */
+        #customizer-splash {
+            position: fixed; inset: 0; z-index: 9999;
+            background: rgba(5, 5, 7, 0.35);
+            display: none; align-items: center; justify-content: center;
+            pointer-events: none;
+        }
+        #customizer-splash.splash-active { display: flex; }
+        #customizer-splash video { width: min(390px, 52vw); height: auto; }
+
+        #customizer-preload {
+            position: fixed; inset: 0; width: 100%; height: 100%; border: 0;
+            z-index: 9998; opacity: 0; pointer-events: none;
+            transition: opacity 0.35s ease;
+        }
+        #customizer-preload.revealed { opacity: 1; pointer-events: auto; }
+
+        /* Blurs every top-level piece of THIS page's own content while the
+           splash is up — never the splash or the preloading iframe. */
+        body.customizer-loading > *:not(#customizer-splash):not(#customizer-preload) {
+            filter: blur(4px);
+            transition: filter 0.3s ease;
+        }
+    </style>
 </head>
 <body>
+
+    <div id="customizer-splash">
+        <video muted playsinline>
+            <source src="assets/videos/loadingc4d.webm" type="video/webm">
+        </video>
+    </div>
+
+    <iframe id="customizer-preload" title="Controller Customizer (preloading)"></iframe>
 
     <header class="rd-nav">
         <a href="index.html" class="logo-link">
@@ -18,8 +57,8 @@
 
         <ul class="rd-nav-links">
             <li><a href="showroom.html">Showroom</a></li>
-            <li><a href="overlays.html">Bundles</a></li>
-            <li><a href="#">Software &amp; Development</a></li>
+            <li><a href="bundles.html">Bundles</a></li>
+            <li><a href="software.html">Software &amp; Development</a></li>
             <li><a href="community.html">Community</a></li>
         </ul>
 
@@ -66,6 +105,13 @@
 
             <div class="rd-featured-buttons">
                 <button type="button" class="rd-btn-cart">Add to Cart</button>
+                <!-- TEMP DEV LINK — navigates to the real customize.html page
+                     (same header/footer as this page, customizer embedded
+                     in-flow between them). Remove once this is wired to the
+                     real product/cart flow instead of a flat link. -->
+                <a href="customize.html?product=RGB&productBase=http://localhost:4173" id="try-customizer-link" class="rd-btn-unlock" style="background:#1a1a20;border:1px solid #ff3344;text-decoration:none;display:inline-flex;align-items:center;gap:8px;">
+                    <i class="fa-solid fa-flask"></i> Try New Customizer
+                </a>
                 <div class="rd-style-dropdown" id="style-dropdown">
                     <button type="button" class="rd-btn-unlock" id="style-btn">
                         <i class="fa-solid fa-sliders"></i> <span id="style-btn-label">Customize</span>
@@ -88,28 +134,28 @@
             <h2 class="rd-related-title">Related Products</h2>
             <div class="rd-related-grid" id="related-grid">
                 <!-- C4D.5 -->
-                <div class="rd-related-card" data-platform="c4d5" data-trending="true" data-title="Neon Storm C4D.5" data-price="$39.99 USD"><img src="assets/images/ps5-1.png" alt="Neon Storm"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Carbon Fiber Elite C4D.5" data-price="$34.99 USD"><img src="assets/images/ps5-2.png" alt="Carbon Fiber Elite"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Cyberpunk Red C4D.5" data-price="$44.99 USD"><img src="assets/images/ps5-3.png" alt="Cyberpunk Red"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Arctic Frost C4D.5" data-price="$32.99 USD"><img src="assets/images/ps5-4.png" alt="Arctic Frost"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Toxic Wave C4D.5" data-price="$36.99 USD"><img src="assets/images/ps5-5.png" alt="Toxic Wave"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Midnight Chrome C4D.5" data-price="$41.99 USD"><img src="assets/images/ps5-6.png" alt="Midnight Chrome"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-trending="true" data-title="Neon Storm C4D.5" data-price="$39.99 USD"><img src="assets/images/c4d5-1.png" alt="Neon Storm"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Carbon Fiber Elite C4D.5" data-price="$34.99 USD"><img src="assets/images/c4d5-2.png" alt="Carbon Fiber Elite"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Cyberpunk Red C4D.5" data-price="$44.99 USD"><img src="assets/images/c4d5-3.png" alt="Cyberpunk Red"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Arctic Frost C4D.5" data-price="$32.99 USD"><img src="assets/images/c4d5-4.png" alt="Arctic Frost"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Toxic Wave C4D.5" data-price="$36.99 USD"><img src="assets/images/c4d5-5.png" alt="Toxic Wave"></div>
+                <div class="rd-related-card" data-platform="c4d5" data-title="Midnight Chrome C4D.5" data-price="$41.99 USD"><img src="assets/images/c4d5-6.png" alt="Midnight Chrome"></div>
 
                 <!-- C4D.1 -->
-                <div class="rd-related-card" data-platform="c4d1" data-trending="true" data-title="Military Stealth C4D.1" data-price="$37.99 USD"><img src="assets/images/xbox-1.png" alt="Military Stealth"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Crimson Ghost C4D.1" data-price="$41.99 USD"><img src="assets/images/xbox-2.png" alt="Crimson Ghost"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Forza Horizon C4D.1" data-price="$39.99 USD"><img src="assets/images/xbox-3.png" alt="Forza Horizon"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Arctic Recon C4D.1" data-price="$35.99 USD"><img src="assets/images/xbox-4.png" alt="Arctic Recon"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Volt Surge C4D.1" data-price="$38.99 USD"><img src="assets/images/xbox-5.png" alt="Volt Surge"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Blackout Ops C4D.1" data-price="$42.99 USD"><img src="assets/images/xbox-6.png" alt="Blackout Ops"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-trending="true" data-title="Military Stealth C4D.1" data-price="$37.99 USD"><img src="assets/images/c4d1-1.png" alt="Military Stealth"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Crimson Ghost C4D.1" data-price="$41.99 USD"><img src="assets/images/c4d1-2.png" alt="Crimson Ghost"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Forza Horizon C4D.1" data-price="$39.99 USD"><img src="assets/images/c4d1-3.png" alt="Forza Horizon"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Arctic Recon C4D.1" data-price="$35.99 USD"><img src="assets/images/c4d1-4.png" alt="Arctic Recon"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Volt Surge C4D.1" data-price="$38.99 USD"><img src="assets/images/c4d1-5.png" alt="Volt Surge"></div>
+                <div class="rd-related-card" data-platform="c4d1" data-title="Blackout Ops C4D.1" data-price="$42.99 USD"><img src="assets/images/c4d1-6.png" alt="Blackout Ops"></div>
 
                 <!-- C4D.4 -->
-                <div class="rd-related-card" data-platform="c4d4" data-trending="true" data-title="Glacier White C4D.4" data-price="$29.99 USD"><img src="assets/images/ps4-1.png" alt="Glacier White"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Urban Camo C4D.4" data-price="$32.99 USD"><img src="assets/images/ps4-2.png" alt="Urban Camo"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Sunset Orange C4D.4" data-price="$27.99 USD"><img src="assets/images/ps4-3.png" alt="Sunset Orange"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Deep Space C4D.4" data-price="$30.99 USD"><img src="assets/images/ps4-4.png" alt="Deep Space"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Ember Red C4D.4" data-price="$28.99 USD"><img src="assets/images/ps4-5.png" alt="Ember Red"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Static Grey C4D.4" data-price="$26.99 USD"><img src="assets/images/ps4-6.png" alt="Static Grey"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-trending="true" data-title="Glacier White C4D.4" data-price="$29.99 USD"><img src="assets/images/c4d4-1.png" alt="Glacier White"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Urban Camo C4D.4" data-price="$32.99 USD"><img src="assets/images/c4d4-2.png" alt="Urban Camo"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Sunset Orange C4D.4" data-price="$27.99 USD"><img src="assets/images/c4d4-3.png" alt="Sunset Orange"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Deep Space C4D.4" data-price="$30.99 USD"><img src="assets/images/c4d4-4.png" alt="Deep Space"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Ember Red C4D.4" data-price="$28.99 USD"><img src="assets/images/c4d4-5.png" alt="Ember Red"></div>
+                <div class="rd-related-card" data-platform="c4d4" data-title="Static Grey C4D.4" data-price="$26.99 USD"><img src="assets/images/c4d4-6.png" alt="Static Grey"></div>
 
                 <!-- C4D.MKB -->
                 <div class="rd-related-card" data-platform="c4dmkb" data-trending="true" data-title="Techno Ghost C4D.MKB" data-price="$19.99 USD"><img src="assets/images/pc-1.png" alt="Techno Ghost"></div>
@@ -129,7 +175,8 @@
 
     <footer class="rd-footer">
         <ul class="rd-footer-links">
-            <li><a href="community.html">Contact</a></li>
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
             <li><a href="legal.html">Legal</a></li>
             <li><a href="about.html">About Us</a></li>
         </ul>
@@ -620,6 +667,104 @@
                     transitionInProgress = false;
                 });
         }
+
+        // ── TEMP DEV: Customizer intro splash ────────────────────────────
+        // Clicking "Try New Customizer" starts loading the real destination
+        // in a hidden iframe right away (customize.html itself, which nests
+        // the actual editor) while the logo plays twice, blurred, over this
+        // page. The nested editor posts "c4d-customize-ready" once its
+        // product data has actually loaded and painted — customize.html
+        // relays that up (see its own message listener). Only when BOTH the
+        // video has looped twice AND that ready signal has arrived do we
+        // fade the splash out and reveal the iframe — so what's revealed is
+        // always a finished page, never one still loading in.
+        (() => {
+            const link = document.getElementById("try-customizer-link");
+            const splash = document.getElementById("customizer-splash");
+            const splashVideo = splash.querySelector("video");
+            const preloadFrame = document.getElementById("customizer-preload");
+            const destination = link.getAttribute("href");
+            let revealed = false;
+            let loopsDone = false;
+            let customizerReady = false;
+
+            // Marks the true starting point (showroom, no overlay) so the
+            // back button has something real to return to — without this,
+            // pushState below adds a second "showroom-looking" entry on top
+            // of one that was never tagged, and Back just rewrites the URL
+            // without ever telling us to hide the revealed iframe again.
+            history.replaceState({ c4dShowroom: true }, "", location.href);
+
+            function tryReveal() {
+                if (revealed || !loopsDone || !customizerReady) return;
+                revealed = true;
+                splash.classList.remove("splash-active");
+                document.body.classList.remove("customizer-loading");
+                preloadFrame.classList.add("revealed");
+                // Reflects the real URL for bookmarking/back — no reload,
+                // the iframe underneath is already fully loaded.
+                history.pushState({ c4dCustomizer: true }, "", destination);
+            }
+
+            // Back/forward never reload this document (pushState above kept
+            // us on the same page) — so returning to showroom has to be done
+            // by hand: hide the iframe again and restore the plain page.
+            window.addEventListener("popstate", (e) => {
+                const wantsCustomizer = !!(e.state && e.state.c4dCustomizer);
+                if (wantsCustomizer) {
+                    // Forward (or back-forward) to the customizer state —
+                    // it's the same already-loaded iframe, just show it
+                    // directly, no readiness gate to satisfy again.
+                    preloadFrame.classList.add("revealed");
+                    revealed = true;
+                } else {
+                    preloadFrame.classList.remove("revealed");
+                    splash.classList.remove("splash-active");
+                    document.body.classList.remove("customizer-loading");
+                    revealed = false;
+                    // A late/duplicate "ready" message (or anything else)
+                    // arriving after this point must NOT be able to silently
+                    // re-trigger tryReveal() — the user explicitly navigated
+                    // away, so both gate conditions have to be earned again.
+                    customizerReady = false;
+                    loopsDone = false;
+                }
+            });
+
+            window.addEventListener("message", (e) => {
+                if (e.data && e.data.type === "c4d-customize-ready") {
+                    customizerReady = true;
+                    tryReveal();
+                }
+            });
+
+            link.addEventListener("click", (e) => {
+                e.preventDefault();
+                splash.classList.add("splash-active");
+                document.body.classList.add("customizer-loading");
+                preloadFrame.src = destination;
+
+                let loopCount = 0;
+                splashVideo.currentTime = 0;
+                splashVideo.play().catch(() => {});
+                splashVideo.addEventListener("ended", function onEnded() {
+                    loopCount++;
+                    if (loopCount < 2) {
+                        splashVideo.currentTime = 0;
+                        splashVideo.play().catch(() => {});
+                        return;
+                    }
+                    splashVideo.removeEventListener("ended", onEnded);
+                    loopsDone = true;
+                    tryReveal();
+                });
+
+                // Safety net — if the ready signal never arrives (dev server
+                // down, network hiccup), don't strand the user behind the
+                // splash forever.
+                setTimeout(() => { customizerReady = true; tryReveal(); }, 8000);
+            });
+        })();
     </script>
 </body>
 </html>

@@ -1,0 +1,11 @@
+{
+  "cleanUrls": false,
+  "headers": [
+    {
+      "source": "/products/**",
+      "headers": [
+        { "key": "Access-Control-Allow-Origin", "value": "*" }
+      ]
+    }
+  ]
+}

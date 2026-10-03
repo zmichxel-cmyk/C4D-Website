@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Customize | Customs4Daez</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
+    <link rel="stylesheet" href="css/redesign-preview.css">
+    <style>
+        /* This page hosts the controller customizer as a normal, in-flow
+           part of the site — same header/footer as every other page, no
+           overlay/modal/new-tab. The customizer itself lives in an iframe
+           sized to fill the space between them. The splash/intro animation
+           plays on showroom.html before navigating here, not on this page. */
+        html, body { height: 100%; margin: 0; }
+        body { display: flex; flex-direction: column; }
+        .customizer-frame-wrap {
+            flex: 1; min-height: 0; background: #0a0a0c;
+            background-image: url('assets/images/customizer%20border.png');
+            background-repeat: repeat; background-size: 560px auto;
+        }
+        .customizer-frame-wrap iframe { width: 100%; height: 100%; border: 0; display: block; background: transparent; }
+
+        /* Arrival reveal — the whole page starts blurred and quickly snaps
+           into focus, instead of fading up from black. Applied to body
+           itself (not an overlay) so it's a real unblur of the actual
+           content, not a layer sitting on top of it. */
+        body {
+            filter: blur(14px);
+            transition: filter 0.3s ease;
+        }
+        body.revealed { filter: blur(0); }
+    </style>
+</head>
+<body>
+
+    <header class="rd-nav">
+        <a href="index.html" class="logo-link">
+            <video class="rd-logo-video" autoplay muted playsinline>
+                <source src="assets/videos/logoanimation.webm" type="video/webm">
+            </video>
+        </a>
+
+        <ul class="rd-nav-links">
+            <li><a href="showroom.html">Showroom</a></li>
+            <li><a href="bundles.html">Bundles</a></li>
+            <li><a href="software.html">Software &amp; Development</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="rd-nav-icons">
+            <a href="#" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="#" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
+        </div>
+    </header>
+
+    <!-- TEMP DEV: iframe src points at the local Vite dev server. Once the
+         customizer is built/deployed, replace this with the real hosted
+         customize.html path (same origin as this site, ideally). The
+         ?product=<slug> this page was opened with (e.g. from a "Customize"
+         link on a real product card) gets forwarded into the iframe so the
+         editor loads that product's actual saved config instead of the
+         generic default. ?productBase=<origin> (also forwarded) tells the
+         customizer where /products/<slug>.json actually lives — only needed
+         locally, where the customizer (:5173) and this site (:4173) are on
+         different origins; in production both are the same domain and this
+         is a no-op. -->
+    <div class="customizer-frame-wrap">
+        <iframe id="customizer-frame" title="Controller Customizer"></iframe>
+    </div>
+
+    <footer class="rd-footer">
+        <ul class="rd-footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="legal.html">Legal</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+
+        <div class="rd-footer-social">
+            <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
+            <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
+        </div>
+    </footer>
+
+    <script>
+        // Forward this page's own ?product=/?productBase= straight into the
+        // iframe's src — see the comment above the iframe for why.
+        (function () {
+            const params = new URLSearchParams(window.location.search);
+            const iframeParams = new URLSearchParams();
+            if (params.has("product")) iframeParams.set("product", params.get("product"));
+            if (params.has("productBase")) iframeParams.set("productBase", params.get("productBase"));
+            const query = iframeParams.toString();
+            document.getElementById("customizer-frame").src =
+                "http://localhost:5173/customize.html" + (query ? "?" + query : "");
+        })();
+
+        // CustomerEditor.tsx posts { type: "c4d-customize-save"/"c4d-customize-ready", ... }
+        // to window.parent (this page). "ready" gets relayed one level further
+        // up — when showroom.html preloads this whole page in a hidden iframe,
+        // that's the only way it finds out the nested editor actually finished
+        // loading, not just that this page's own shell exists. Harmless when
+        // this page is loaded directly (top-level): window.parent === window.
+        window.addEventListener("message", (e) => {
+            if (e.data && e.data.type === "c4d-customize-save") {
+                console.log("[customize page] save payload:", e.data);
+            } else if (e.data && e.data.type === "c4d-customize-ready") {
+                window.parent.postMessage({ type: "c4d-customize-ready" }, "*");
+            }
+        });
+
+        // Trigger the unblur shortly after paint — rAF (rather than adding
+        // the class immediately) guarantees the browser has committed the
+        // initial blurred frame first, so the transition actually runs
+        // instead of possibly getting coalesced into a no-op.
+        requestAnimationFrame(() => {
+            requestAnimationFrame(() => {
+                document.body.classList.add("revealed");
+            });
+        });
+    </script>
+</body>
+</html>

@@ -25,24 +25,29 @@ body {
        so its bounding box doesn't show up as a faint gray box once the
        animation settles on its final frame. */
     background: #111111;
-    display: grid;
-    /* 3 equal-ish columns (not flex space-between) so the middle nav-links
-       group sits at the true horizontal center of the bar, regardless of
-       the logo and icon cluster being different widths. */
-    grid-template-columns: 1fr auto 1fr;
+    display: flex;
     align-items: center;
+    justify-content: space-between;
     padding: 14px 40px;
-    border-bottom: 1px solid var(--border-color);
+    position: relative;
 }
-.rd-nav .logo-link { display: block; justify-self: start; }
+.rd-nav .logo-link { display: block; }
 .rd-logo-video { height: 90px; width: auto; object-fit: contain; display: block; }
 
 .rd-nav-links {
+    /* Absolute + translate(-50%,-50%) centers on the bar's own true
+       midpoint, independent of the logo and icon cluster's widths — the
+       previous "1fr auto 1fr" grid approach was supposed to do this too,
+       but a leftover manual "translateX(-30px)" nudge (a compensation for
+       that grid never quite centering right) was shifting it off-center
+       instead of fixing it. */
     display: flex;
     gap: 36px;
     list-style: none;
-    justify-self: center;
-    transform: translateX(-30px);
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
 }
 .rd-nav-links a {
     color: var(--text-main);
@@ -132,25 +137,19 @@ body {
     letter-spacing: 0.5px;
     padding: 16px 34px;
     text-decoration: none;
-    transition: opacity 0.2s ease;
+    transition: opacity 0.2s ease, transform 0.2s ease;
 }
-.rd-hero-cta:hover { opacity: 0.85; }
+.rd-hero-cta:hover { opacity: 0.85; transform: scale(1.05); }
 
 /* --- Steps grid (replaces product tiles) --- */
 .rd-steps-section {
     background:
-        repeating-linear-gradient(
-            45deg,
-            rgba(255, 51, 68, 0.06) 0px,
-            rgba(255, 51, 68, 0.06) 1px,
-            transparent 1px,
-            transparent 13px,
-            rgba(0, 0, 0, 0.05) 13px,
-            rgba(0, 0, 0, 0.05) 14px,
-            transparent 14px,
-            transparent 27px
-        ),
-        linear-gradient(180deg, #474747 0%, #333333 100%);
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        #1a1210 url("../assets/images/steps-wood.png") center / cover no-repeat;
+    box-shadow:
+        inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
+        inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
+        inset 0 0 70px 12px rgba(0, 0, 0, 0.5);
     color: var(--text-main);
     padding: 60px 40px;
 }
@@ -218,7 +217,6 @@ body {
     justify-content: space-between;
     flex-wrap: wrap;
     gap: 20px;
-    border-top: 1px solid var(--border-color);
 }
 .rd-footer-links {
     display: flex;
@@ -263,6 +261,20 @@ body {
 .rd-page-banner p { color: var(--text-muted); margin-top: 12px; }
 
 /* --- Community page hero + tab strip --- */
+/* Bundles hero: uses assets/images/bundles-hero.jpg once it's added,
+   otherwise falls back to the same gaming-room photo as the homepage. */
+.rd-bundles-hero {
+    background: url('../assets/images/bundles-hero.jpg') center 30% / cover no-repeat,
+        url('../assets/images/gaming-room.png') center 20% / cover no-repeat;
+}
+
+/* Software hero: uses assets/images/software-hero.jpg once it's added,
+   otherwise falls back to the showroom room photo. */
+.rd-software-hero {
+    background: url('../assets/images/software-hero.jpg') center / cover no-repeat,
+        url('../assets/images/showroom-room.png') center / cover no-repeat;
+}
+
 .rd-community-hero {
     background-image: url('../assets/images/community-page.png');
     background-position: center 8%;
@@ -404,18 +416,12 @@ body {
    tab bar's space. */
 main.section-container {
     background:
-        repeating-linear-gradient(
-            45deg,
-            rgba(255, 51, 68, 0.06) 0px,
-            rgba(255, 51, 68, 0.06) 1px,
-            transparent 1px,
-            transparent 13px,
-            rgba(0, 0, 0, 0.05) 13px,
-            rgba(0, 0, 0, 0.05) 14px,
-            transparent 14px,
-            transparent 27px
-        ),
-        linear-gradient(180deg, #474747 0%, #333333 100%);
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        #1a1210 url("../assets/images/steps-wood.png") center / cover no-repeat;
+    box-shadow:
+        inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
+        inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
+        inset 0 0 70px 12px rgba(0, 0, 0, 0.5);
     max-width: none;
     padding: 40px 40px 60px;
 }
@@ -741,18 +747,12 @@ main.section-container {
 /* --- Related products strip --- */
 .rd-related-section {
     background:
-        repeating-linear-gradient(
-            45deg,
-            rgba(255, 51, 68, 0.06) 0px,
-            rgba(255, 51, 68, 0.06) 1px,
-            transparent 1px,
-            transparent 13px,
-            rgba(0, 0, 0, 0.05) 13px,
-            rgba(0, 0, 0, 0.05) 14px,
-            transparent 14px,
-            transparent 27px
-        ),
-        linear-gradient(180deg, #474747 0%, #333333 100%);
+        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
+        #1a1210 url("../assets/images/steps-wood.png") center / cover no-repeat;
+    box-shadow:
+        inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
+        inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
+        inset 0 0 70px 12px rgba(0, 0, 0, 0.5);
     padding: 50px 40px;
 }
 .rd-related-inner { max-width: 1300px; margin: 0 auto; }
@@ -987,3 +987,57 @@ main.section-container {
     .rd-footer { flex-direction: column; text-align: center; }
     .rd-footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
 }
+
+/* --- Info pages: About, FAQ, Contact, Legal --- */
+.rd-info-wrap { max-width: 860px; margin: 0 auto; padding: 60px 20px 90px; }
+.rd-info-wrap h2 {
+    font-size: 1.5rem; font-weight: 900; text-transform: uppercase;
+    margin-top: 44px; margin-bottom: 14px;
+}
+.rd-info-wrap h2:first-of-type { margin-top: 0; }
+.rd-info-wrap h3 { font-size: 1.05rem; font-weight: 700; margin-top: 22px; margin-bottom: 8px; }
+.rd-info-wrap p { color: var(--text-muted); line-height: 1.75; margin-bottom: 14px; }
+.rd-info-wrap ul { color: var(--text-muted); line-height: 1.75; margin: 0 0 14px 20px; }
+.rd-info-wrap li { margin-bottom: 6px; }
+.rd-info-wrap a { color: var(--accent-color); }
+.rd-info-wrap strong { color: var(--text-main); }
+
+.rd-draft-notice {
+    background: rgba(255, 51, 68, 0.08);
+    border: 1px solid var(--accent-color);
+    border-radius: 10px;
+    padding: 16px 20px;
+    margin-bottom: 36px;
+    font-size: 0.85rem;
+    color: var(--text-main);
+    line-height: 1.6;
+}
+.rd-draft-notice strong { color: var(--accent-color); }
+
+.rd-legal-nav { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 40px; }
+.rd-legal-nav a {
+    padding: 8px 16px; border: 1px solid var(--border-color); border-radius: 20px;
+    color: var(--text-muted); text-decoration: none; font-size: 0.78rem;
+    text-transform: uppercase; letter-spacing: 0.5px; transition: all 0.2s ease;
+}
+.rd-legal-nav a:hover { border-color: var(--accent-color); color: var(--text-main); }
+
+.rd-faq-item { border-bottom: 1px solid var(--border-color); padding: 16px 0; }
+.rd-faq-item summary {
+    cursor: pointer; font-weight: 700; color: var(--text-main); list-style: none;
+    display: flex; justify-content: space-between; align-items: center; gap: 16px;
+}
+.rd-faq-item summary::-webkit-details-marker { display: none; }
+.rd-faq-item summary::after { content: "+"; font-size: 1.3rem; color: var(--accent-color); flex-shrink: 0; }
+.rd-faq-item[open] summary::after { content: "\2212"; }
+.rd-faq-item p { margin-top: 10px; margin-bottom: 0; }
+
+.rd-contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 10px; }
+.rd-contact-card {
+    background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
+    border-radius: 10px; padding: 26px 20px; text-align: center;
+}
+.rd-contact-card i { font-size: 1.6rem; color: var(--accent-color); margin-bottom: 12px; display: block; }
+.rd-contact-card a { color: var(--text-main); text-decoration: none; font-weight: 700; }
+.rd-contact-card a:hover { color: var(--accent-color); }
+.rd-contact-card p { font-size: 0.85rem; margin: 6px 0 0; }

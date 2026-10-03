@@ -5,46 +5,75 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>About Us | Customs4Daez</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0/css/all.min.css">
-    <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/redesign-preview.css">
 </head>
 <body>
 
-    <div class="glow-container"></div>
-
-   <div class="side-panel" id="side-panel">
-    <a href="index.html" class="home-icon"><i class="fa-solid fa-house"></i></a>
-    <a href="showroom.html">Showroom</a>
-    <a href="overlays.html">Free Overlays</a>
-    <a href="community.html">Community</a>
-    <a href="about.html">About Us</a>
-    <a href="legal.html">Legal</a>
-</div>
-
-    <header class="main-nav">
+    <header class="rd-nav">
         <a href="index.html" class="logo-link">
-            <div class="logo">
-                <video class="logo-video" autoplay muted playsinline>
-                    <source src="assets/videos/logoanimation.webm" type="video/webm">
-                </video>
-            </div>
+            <video class="rd-logo-video" autoplay muted playsinline>
+                <source src="assets/videos/logoanimation.webm" type="video/webm">
+            </video>
         </a>
 
-        <div class="menu-toggle" id="mobile-menu">
-            <span class="bar"></span>
-            <span class="bar"></span>
-            <span class="bar"></span>
+        <ul class="rd-nav-links">
+            <li><a href="showroom.html">Showroom</a></li>
+            <li><a href="bundles.html">Bundles</a></li>
+            <li><a href="software.html">Software &amp; Development</a></li>
+            <li><a href="community.html">Community</a></li>
+        </ul>
+
+        <div class="rd-nav-icons">
+            <a href="#" aria-label="Search"><i class="fa-solid fa-magnifying-glass"></i></a>
+            <a href="#" aria-label="Cart"><i class="fa-solid fa-cart-shopping"></i></a>
         </div>
     </header>
 
+    <section class="rd-page-banner">
+        <h1>About <span>Us</span></h1>
+        <p>The story behind Customs4Daez.</p>
+    </section>
+
     <main class="section-container">
+        <div class="rd-info-wrap">
 
-        <section class="platform-section">
-            <h2 class="platform-title">About <span class="text-accent">Us</span></h2>
-            <p>The story behind Customs4Daez. More coming soon.</p>
-        </section>
+            <!-- EDIT ME: replace this with your real founding story, in your own words
+                 (who started it, why, what problem it solves for streamers). Keep it
+                 honest and specific — that's what makes an About page work. -->
+            <h2>Who We Are</h2>
+            <p>Customs4Daez was built for streamers and content creators who want their setup to look as sharp as their gameplay. What started as a small side project designing controller overlays has grown into a full catalog of pro-grade overlays, custom controller skins, and an in-browser customizer &mdash; all built to drop straight into OBS or Streamlabs with zero hassle.</p>
 
+            <h2>What We Do</h2>
+            <p>We design digital overlays and controller skins optimized for streaming: clean, low-CPU-impact assets that layer directly into your broadcast software, plus a showroom of pre-made designs and a customizer for building something that's entirely yours.</p>
+
+            <h2>Our Community</h2>
+            <p>Customs4Daez is more than a storefront &mdash; it's a community of streamers who share clips, swap feedback, and help shape what we build next. Check out the <a href="community.html">Community</a> page to get involved, submit a clip, or leave a suggestion.</p>
+
+            <h2>Original Designs</h2>
+            <p>Every design sold through Customs4Daez is our own original work. Customs4Daez is an independent creator brand, not affiliated with or endorsed by any console or platform manufacturer.</p>
+
+            <h2>Get In Touch</h2>
+            <p>Questions, feedback, or a business inquiry? Visit our <a href="contact.html">Contact</a> page &mdash; we'd love to hear from you.</p>
+
+        </div>
     </main>
 
-    <script src="js/main.js"></script>
+    <footer class="rd-footer">
+        <ul class="rd-footer-links">
+            <li><a href="contact.html">Contact</a></li>
+            <li><a href="faq.html">FAQ</a></li>
+            <li><a href="legal.html">Legal</a></li>
+            <li><a href="about.html">About Us</a></li>
+        </ul>
+
+        <div class="rd-footer-social">
+            <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
+            <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
+            <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
+        </div>
+    </footer>
+
 </body>
 </html>
