@@ -96,7 +96,7 @@
             if (params.has("productBase")) iframeParams.set("productBase", params.get("productBase"));
             const query = iframeParams.toString();
             document.getElementById("customizer-frame").src =
-                "http://localhost:5173/customize.html" + (query ? "?" + query : "");
+                "customizer/customize.html" + (query ? "?" + query : "");
         })();
 
         // CustomerEditor.tsx posts { type: "c4d-customize-save"/"c4d-customize-ready", ... }
