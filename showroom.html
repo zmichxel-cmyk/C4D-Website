@@ -87,6 +87,13 @@
         <div class="rd-featured-video" id="featured-video-wrap">
             <canvas class="rd-featured-video-canvas pos-center" id="featured-alpha-canvas-a"></canvas>
             <canvas class="rd-featured-video-canvas pos-right" id="featured-alpha-canvas-b"></canvas>
+            <!-- Third layer, same WebGL/WebCodecs alpha pipeline as the two
+                 above, for products with no per-color variants (so no slide
+                 transition needed) -- e.g. the keyboard. A plain <video> here
+                 can't render its real alpha channel at all (same reason the
+                 controllers don't use one), so this has to go through a GL
+                 layer too, just without the ping-pong pairing. -->
+            <canvas class="rd-featured-video-canvas" id="featured-kb-canvas"></canvas>
         </div>
 
         <div class="rd-featured-info">
@@ -132,38 +139,46 @@
     <section class="rd-related-section">
         <div class="rd-related-inner">
             <h2 class="rd-related-title">Related Products</h2>
-            <div class="rd-related-grid" id="related-grid">
+            <div class="rd-related-grid fixed-cols" id="related-grid">
                 <!-- C4D.5 -->
-                <div class="rd-related-card" data-platform="c4d5" data-trending="true" data-title="Neon Storm C4D.5" data-price="$39.99 USD"><img src="assets/images/c4d5-1.png" alt="Neon Storm"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Carbon Fiber Elite C4D.5" data-price="$34.99 USD"><img src="assets/images/c4d5-2.png" alt="Carbon Fiber Elite"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Cyberpunk Red C4D.5" data-price="$44.99 USD"><img src="assets/images/c4d5-3.png" alt="Cyberpunk Red"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Arctic Frost C4D.5" data-price="$32.99 USD"><img src="assets/images/c4d5-4.png" alt="Arctic Frost"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Toxic Wave C4D.5" data-price="$36.99 USD"><img src="assets/images/c4d5-5.png" alt="Toxic Wave"></div>
-                <div class="rd-related-card" data-platform="c4d5" data-title="Midnight Chrome C4D.5" data-price="$41.99 USD"><img src="assets/images/c4d5-6.png" alt="Midnight Chrome"></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
 
                 <!-- C4D.1 -->
-                <div class="rd-related-card" data-platform="c4d1" data-trending="true" data-title="Military Stealth C4D.1" data-price="$37.99 USD"><img src="assets/images/c4d1-1.png" alt="Military Stealth"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Crimson Ghost C4D.1" data-price="$41.99 USD"><img src="assets/images/c4d1-2.png" alt="Crimson Ghost"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Forza Horizon C4D.1" data-price="$39.99 USD"><img src="assets/images/c4d1-3.png" alt="Forza Horizon"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Arctic Recon C4D.1" data-price="$35.99 USD"><img src="assets/images/c4d1-4.png" alt="Arctic Recon"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Volt Surge C4D.1" data-price="$38.99 USD"><img src="assets/images/c4d1-5.png" alt="Volt Surge"></div>
-                <div class="rd-related-card" data-platform="c4d1" data-title="Blackout Ops C4D.1" data-price="$42.99 USD"><img src="assets/images/c4d1-6.png" alt="Blackout Ops"></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
 
                 <!-- C4D.4 -->
-                <div class="rd-related-card" data-platform="c4d4" data-trending="true" data-title="Glacier White C4D.4" data-price="$29.99 USD"><img src="assets/images/c4d4-1.png" alt="Glacier White"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Urban Camo C4D.4" data-price="$32.99 USD"><img src="assets/images/c4d4-2.png" alt="Urban Camo"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Sunset Orange C4D.4" data-price="$27.99 USD"><img src="assets/images/c4d4-3.png" alt="Sunset Orange"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Deep Space C4D.4" data-price="$30.99 USD"><img src="assets/images/c4d4-4.png" alt="Deep Space"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Ember Red C4D.4" data-price="$28.99 USD"><img src="assets/images/c4d4-5.png" alt="Ember Red"></div>
-                <div class="rd-related-card" data-platform="c4d4" data-title="Static Grey C4D.4" data-price="$26.99 USD"><img src="assets/images/c4d4-6.png" alt="Static Grey"></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
 
                 <!-- C4D.MKB -->
-                <div class="rd-related-card" data-platform="c4dmkb" data-trending="true" data-title="Techno Ghost C4D.MKB" data-price="$19.99 USD"><img src="assets/images/pc-1.png" alt="Techno Ghost"></div>
-                <div class="rd-related-card" data-platform="c4dmkb" data-title="Cyber Punish C4D.MKB" data-price="$21.99 USD"><img src="assets/images/pc-2.png" alt="Cyber Punish"></div>
-                <div class="rd-related-card" data-platform="c4dmkb" data-title="Fractal Reign C4D.MKB" data-price="$18.99 USD"><img src="assets/images/pc-3.png" alt="Fractal Reign"></div>
-                <div class="rd-related-card" data-platform="c4dmkb" data-title="Neon Pulse C4D.MKB" data-price="$20.99 USD"><img src="assets/images/pc-4.png" alt="Neon Pulse"></div>
-                <div class="rd-related-card" data-platform="c4dmkb" data-title="Voidwalker C4D.MKB" data-price="$22.99 USD"><img src="assets/images/pc-5.png" alt="Voidwalker"></div>
-                <div class="rd-related-card" data-platform="c4dmkb" data-title="Static Rebellion C4D.MKB" data-price="$17.99 USD"><img src="assets/images/pc-6.png" alt="Static Rebellion"></div>
+                <div class="rd-related-card rd-related-card--contain" data-platform="c4dmkb" data-trending="true" data-title="Retro Keyboard C4D.MKB" data-price="Coming soon" data-plain-video="assets/videos/retro-keyboard.webm"><span class="rd-related-card__tag">Retro</span><img src="assets/images/retro-keyboard-still.png" alt="Retro Keyboard"></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
 
                 <!-- Free Overlays -->
                 <div class="rd-related-card" data-platform="overlays" data-title="C4D.5 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d5"><img id="overlay-c4d5-img" src="assets/images/c4d5%20thumbnail.png" alt="Free Overlay C4D.5"><span class="rd-overlay-thumb-label">C4D.5</span></div>
@@ -224,7 +239,13 @@
             styleBtnLabel.textContent = currentColorKey ? "Select Style" : "Customize";
             styleDropdown.classList.remove("open");
             updateActiveSwatch();
-            updateFeaturedVideo();
+
+            // Products with their own plain clip (no color variants, ordinary
+            // opaque background -- e.g. the keyboard) skip the alpha pipeline
+            // entirely and just play that clip in the same hero box.
+            const plainVideoSrc = card.dataset.plainVideo || null;
+            updateFeaturedPlainVideo(plainVideoSrc);
+            if (!plainVideoSrc) updateFeaturedVideo();
         }
 
         const OVERLAY_PLATFORM_LABELS = { c4d5: "C4D.5", c4d1: "C4D.1", c4d4: "C4D.4" };
@@ -303,6 +324,11 @@
                 allCards.forEach(c => { c.style.display = isVisibleForPlatform(c, platform) ? "" : "none"; });
                 const visibleCards = allCards.filter(c => isVisibleForPlatform(c, platform));
 
+                // Free Overlays only ever has 3 cards -- let those stay
+                // auto-fit/centered. Every other tab locks to a 4-wide grid
+                // (wrapping to a 2nd row once there are more than 4).
+                relatedGrid.classList.toggle("fixed-cols", platform !== "overlays");
+
                 if (visibleCards.length) selectCard(visibleCards[0]);
 
                 relatedGrid.classList.remove("swapping");
@@ -354,6 +380,28 @@
         };
 
         const featuredVideoWrap = document.getElementById("featured-video-wrap");
+        const kbCanvas = document.getElementById("featured-kb-canvas");
+
+        // Drives the keyboard's clip on its own GL layer (see kbLayer below)
+        // -- shows/hides it and the hero box's "visible" state independently
+        // of the two alpha-transition canvases, and makes sure they never
+        // show at once. Switching INTO this mode must also stop + hide both
+        // of those explicitly: selectCard() skips updateFeaturedVideo()
+        // entirely while this is active, so without this their last frame
+        // would otherwise just keep sitting there rendered underneath.
+        function updateFeaturedPlainVideo(src) {
+            if (!src) {
+                kbLayer.stop();
+                kbCanvas.style.display = "none";
+                videoLayers.forEach(l => { l.canvas.style.display = ""; });
+                return;
+            }
+            videoLayers.forEach(l => { l.stop(); l.canvas.style.display = "none"; });
+            currentVideoSrc = null; // so returning to an alpha product always re-plays cleanly
+            kbCanvas.style.display = "block";
+            kbLayer.play(src, "c4dmkb-default");
+            featuredVideoWrap.classList.add("visible");
+        }
 
         // Keyed by "{platform}-{color}" (e.g. "c4d5-blue") rather than just
         // color, since C4D.5 and C4D.4's clips are framed independently of
@@ -388,6 +436,7 @@
             "c4d4-yellow": DEFAULT_SCALE,
             "c4d4-green": DEFAULT_SCALE,
             "c4d4-purple": DEFAULT_SCALE,
+            "c4dmkb-default": 1.15,
         };
         const FEATURED_VIDEO_OFFSET = {
             "c4d5-blue": { x: 0.015, y: -0.015 },
@@ -414,7 +463,11 @@
 
             function initGL() {
                 if (layer.gl || typeof MediaStreamTrackProcessor === "undefined") return layer.gl;
-                const gl = canvas.getContext("webgl", { alpha: true });
+                // preserveDrawingBuffer so the canvas can be read back (e.g.
+                // exporting a still thumbnail) -- without it the buffer is
+                // cleared right after each composite and toDataURL() on it
+                // comes back blank/wrong.
+                const gl = canvas.getContext("webgl", { alpha: true, preserveDrawingBuffer: true });
                 if (!gl) { console.warn("WebGL not available -- featured video skipped."); return null; }
                 gl.clearColor(0, 0, 0, 0);
 
@@ -585,6 +638,10 @@
             makeVideoLayer(document.getElementById("featured-alpha-canvas-a")),
             makeVideoLayer(document.getElementById("featured-alpha-canvas-b")),
         ];
+        // No slide-transition pairing needed here (nothing to transition
+        // between -- one product, one clip), so this gets its own single
+        // layer instead of joining the videoLayers ping-pong pair.
+        const kbLayer = makeVideoLayer(kbCanvas);
         let frontLayerIndex = 0; // which of videoLayers is currently in "pos-center"
         let currentVideoSrc = null;
 

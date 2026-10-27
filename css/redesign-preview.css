@@ -145,7 +145,7 @@ body {
 .rd-steps-section {
     background:
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        #1a1210 url("../assets/images/steps-wood.png") center / cover no-repeat;
+        #1a1210 url("../assets/images/wood-panel-bg.webp") center top / 100% auto no-repeat;
     box-shadow:
         inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
         inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
@@ -417,7 +417,7 @@ body {
 main.section-container {
     background:
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        #1a1210 url("../assets/images/steps-wood.png") center / cover no-repeat;
+        #1a1210 url("../assets/images/wood-panel-bg.webp") center top / 100% auto no-repeat;
     box-shadow:
         inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
         inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
@@ -748,7 +748,7 @@ main.section-container {
 .rd-related-section {
     background:
         linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        #1a1210 url("../assets/images/steps-wood.png") center / cover no-repeat;
+        #1a1210 url("../assets/images/wood-panel-bg.webp") center top / 100% auto no-repeat;
     box-shadow:
         inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
         inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
@@ -771,12 +771,15 @@ main.section-container {
        would fill the row width and just sit left-aligned with a gap on the
        right. auto-fit + justify-content:center collapses to however many
        columns are actually present and centers that set, at any count. */
-    grid-template-columns: repeat(auto-fit, minmax(160px, 200px));
+    grid-template-columns: repeat(auto-fit, minmax(185px, 230px));
     justify-content: center;
     gap: 16px;
     transition: opacity 0.2s ease, transform 0.2s ease;
 }
 .rd-related-grid.swapping { opacity: 0; transform: translateY(8px); }
+/* Every tab except Free Overlays (3 cards): lock to 4 columns so 6-7 cards
+   wrap to a clean 2nd row instead of auto-fitting as many as fit the width. */
+.rd-related-grid.fixed-cols { grid-template-columns: repeat(4, minmax(185px, 230px)); }
 .rd-related-card {
     background: var(--bg-card);
     border: 1px solid var(--border-color);
@@ -789,7 +792,45 @@ main.section-container {
 .rd-related-card:hover { border-color: var(--accent-color); }
 .rd-related-card.active { border-color: var(--accent-color); }
 
-.rd-related-card img { width: 100%; height: 100%; object-fit: cover; }
+/* Cards with no product uploaded yet -- same hover/active/click behavior
+   as a real card (still selectable, still shows up as the featured item),
+   just a "Coming Soon" label centered where the image would be. */
+.rd-related-card--empty {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rd-related-card--empty span {
+    color: var(--text-muted);
+    font-size: 0.75rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+.rd-related-card img, .rd-related-card video { width: 100%; height: 100%; object-fit: cover; }
+/* Keyboard+mouse product shot is much wider than the card -- contain
+   (letterboxed against the card's own dark background) instead of cover,
+   so nothing gets cropped off either side. */
+.rd-related-card--contain { position: relative; overflow: hidden; }
+.rd-related-card--contain img { object-fit: contain; background: var(--bg-card); transform: scale(1.1); }
+
+/* Small corner tag, e.g. "RETRO" -- distinct from the big centered
+   .rd-overlay-thumb-label used on the Free Overlays tiles. */
+.rd-related-card__tag {
+    position: absolute;
+    top: 8px;
+    left: 8px;
+    background: var(--accent-color);
+    color: #000;
+    font-weight: 800;
+    font-size: 0.65rem;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    padding: 3px 8px;
+    border-radius: 4px;
+    z-index: 2;
+    pointer-events: none;
+}
 /* Overlay thumbnails (the only related-cards with data-color-key) shrink
    down and float centered instead of filling the card edge-to-edge. */
 .rd-related-card[data-color-key] {
