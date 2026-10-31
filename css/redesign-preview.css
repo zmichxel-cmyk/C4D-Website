@@ -144,8 +144,9 @@ body {
 /* --- Steps grid (replaces product tiles) --- */
 .rd-steps-section {
     background:
-        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        #1a1210 url("../assets/images/wood-panel-bg.webp") center top / 100% auto no-repeat;
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        radial-gradient(ellipse 42% 100% at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%),
+        #0a0a0a url("../assets/images/site-bg.jpg") center 2% / cover no-repeat;
     box-shadow:
         inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
         inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
@@ -244,6 +245,12 @@ body {
     transition: opacity 0.2s ease;
 }
 .rd-footer-social a:hover { opacity: 0.85; }
+/* `.rd-info-wrap a { color: var(--accent-color) }` has equal specificity
+   to the rule above and comes later in the cascade, so it was winning and
+   painting these icons the same red as their own circle background --
+   invisible. Re-assert black here, scoped to win on specificity instead
+   of load order (which the next redesign-preview.css edit could flip). */
+.rd-info-wrap .rd-footer-social a { color: #000; }
 
 /* --- Page banner (Showroom, etc.) --- */
 .rd-page-banner {
@@ -414,21 +421,66 @@ body {
    -- only the panel content itself (#tab-panels) is pulled up on top of
    it to overlap the hero photo, so the gray never intrudes up into the
    tab bar's space. */
+/* The background photo lives on a ::before behind the in-flow content
+   (negative z-index, inside main's own stacking context) rather than
+   directly on main itself, so a CSS mask can fade it to transparent --
+   masking main directly would fade its text/content too. The mask is a
+   plain gradient (not baked into the image's pixels) so it scales with
+   whatever rendered height "100% auto" produces, at any width, without
+   drifting out of sync with the image the way a separately-sized CSS
+   gradient layer could. The vignette box-shadow lives on this same
+   pseudo-element so it still composites above the image, not above
+   main's own flat fallback color underneath.
+   The pseudo is capped to a fixed height (not `inset: 0`, which would
+   stretch it to match main's own height) -- some tabs (Community's
+   Connect tab, with its long form + post feed) make main far taller than
+   others, and letting `cover` size against that full height was forcing
+   a massive upscale of the photo, which read as a blurry, zoomed-in
+   crop. Past the capped height, main's own flat color shows instead,
+   which is seamless since the mask already fades the photo to that same
+   color well before the cap. */
 main.section-container {
+    position: relative;
+    z-index: 0;
+    background: #000;
+    max-width: none;
+    padding: 40px 40px 60px;
+}
+main.section-container::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 800px;
+    z-index: -1;
     background:
-        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        #1a1210 url("../assets/images/wood-panel-bg.webp") center top / 100% auto no-repeat;
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        radial-gradient(ellipse 42% 100% at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%),
+        url("../assets/images/site-bg.jpg") center 2% / cover no-repeat;
     box-shadow:
         inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
         inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
         inset 0 0 70px 12px rgba(0, 0, 0, 0.5);
-    max-width: none;
-    padding: 40px 40px 60px;
+    -webkit-mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
+    mask-image: linear-gradient(to bottom, #000 0%, #000 55%, transparent 100%);
 }
 #tab-panels {
     position: relative;
     z-index: 3;
     margin-top: -70px;
+}
+
+/* Community page uses its own background photo instead of the shared
+   site-bg.jpg -- same vignette/mask treatment, just a different image. */
+main.section-container.community-bg::before {
+    background-image:
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        radial-gradient(ellipse 42% 100% at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%),
+        url("../assets/images/clip-tab-bg.jpg");
+    background-position: center 2%;
+    background-size: cover;
+    background-repeat: no-repeat;
 }
 
 /* Drop shadow under the hero photo, separating it from the content below
@@ -451,7 +503,8 @@ main.section-container {
 }
 
 /* --- Clip of the Week --- */
-#clip-of-week { margin-top: -120px; }
+#clip-of-week { margin-top: -5px; }
+.clip-title { margin-top: 55px; }
 /* Moved into .clip-frame by script (it's rendered as a sibling under
    .clip-header by js/community.js) and repositioned onto the frame
    artwork's bottom bar instead of its original spot above the video --
@@ -461,9 +514,9 @@ main.section-container {
 .clip-frame .clip-streamer {
     position: absolute;
     left: 50%;
-    bottom: 0.2%;
+    top: 100%;
     transform: translateX(-50%);
-    margin: 0;
+    margin: 36px 0 0;
     color: #fff;
     font-size: 1.3rem;
     font-weight: 900;
@@ -497,18 +550,22 @@ main.section-container {
     border-radius: 0;
     animation: none;
     background: transparent;
+    margin-top: -45px;
+    overflow: visible;
+    filter: drop-shadow(0 25px 35px rgba(0, 0, 0, 0.75));
+    aspect-ratio: 1.85;
 }
 .clip-frame::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: url('../assets/images/clip%20of%20the%20week.png') 50% 43.48% / 80% 88.5% no-repeat;
+    background: url('../assets/images/clip%20border.png') 50% 103.1% / 81% 93.1% no-repeat;
     pointer-events: none;
     z-index: 1;
     /* drop-shadow (not box-shadow) follows the PNG's actual alpha shape --
        the notched, angled border art, not a plain rectangle -- so the
        shadow hugs the visible artwork instead of framing empty space. */
-    filter: drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
+    filter: contrast(1.18) drop-shadow(0 6px 14px rgba(0, 0, 0, 0.5));
 }
 .clip-frame iframe,
 .clip-frame .clip-placeholder-text,
@@ -519,6 +576,9 @@ main.section-container {
     width: 78.66%;
     height: 78.66%;
 }
+
+.platform-section[data-tab="clip"] { position: relative; }
+.clip-comments-section { margin-top: 85px; }
 
 /* --- Category-coded post/comment cards --- */
 .category-badge.category-lfg { color: #ff8c1a; border-color: #ff8c1a; }
@@ -633,6 +693,23 @@ main.section-container {
     transition: opacity 0.35s ease;
 }
 .rd-featured-video.visible { opacity: 1; }
+/* Watermark for the Free Overlays colored-controller previews -- rough
+   placement for now (centered, roughly a third of the box), to be tuned
+   on size/position/loop timing once confirmed as the right asset. Hard cut
+   (no fade) -- it must never be visible while no controller is on screen
+   mid-swap, so it snaps in/out rather than crossfading over the gap. */
+.rd-overlay-watermark {
+    position: absolute;
+    top: 38%;
+    left: 51.5%;
+    transform: translate(-50%, -50%);
+    width: 36%;
+    height: auto;
+    z-index: 2;
+    pointer-events: none;
+    opacity: 0;
+}
+.rd-overlay-watermark.visible { opacity: 1; }
 
 /* The two canvases ping-pong: whichever is "front" plays pos-center, the
    other sits parked pos-right waiting for its turn -- swapping a color
@@ -747,8 +824,9 @@ main.section-container {
 /* --- Related products strip --- */
 .rd-related-section {
     background:
-        linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)),
-        #1a1210 url("../assets/images/wood-panel-bg.webp") center top / 100% auto no-repeat;
+        linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+        radial-gradient(ellipse 42% 100% at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%),
+        #0a0a0a url("../assets/images/site-bg.jpg") center 2% / cover no-repeat;
     box-shadow:
         inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
         inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
@@ -781,16 +859,42 @@ main.section-container {
    wrap to a clean 2nd row instead of auto-fitting as many as fit the width. */
 .rd-related-grid.fixed-cols { grid-template-columns: repeat(4, minmax(185px, 230px)); }
 .rd-related-card {
+    position: relative;
     background: var(--bg-card);
-    border: 1px solid var(--border-color);
+    border: 1px solid var(--accent-color);
     border-radius: 6px;
     overflow: hidden;
     aspect-ratio: 4 / 3;
     cursor: pointer;
-    transition: border-color 0.2s ease;
+    filter: brightness(0.75);
+    transition: filter 0.25s ease, transform 0.25s ease;
 }
-.rd-related-card:hover { border-color: var(--accent-color); }
-.rd-related-card.active { border-color: var(--accent-color); }
+/* Tile texture on its own layer (not the card's background-image directly)
+   so a contrast/brightness filter can be applied to just the texture --
+   filtering the card itself would also wash out the product photo/tag
+   sitting on top of it. */
+.rd-related-card::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../assets/images/card-tile-bg.png") center / 220px repeat;
+    filter: brightness(1.8) contrast(1.3);
+    z-index: 0;
+}
+.rd-related-card > img, .rd-related-card > video, .rd-related-card--empty span {
+    position: relative;
+    z-index: 1;
+}
+.rd-related-card:hover, .rd-related-card.active {
+    filter: brightness(1);
+    transform: scale(1.05);
+    z-index: 1;
+}
+.rd-related-card:active { transform: scale(0.97); transition-duration: 0.1s; }
+/* The shared card shadow (0 6px 16px, 0.4 alpha) barely reads against a
+   dark/textured page background -- a stronger, more visible drop shadow
+   specific to these cards so they actually lift off the page. */
+.rd-related-card { box-shadow: 0 12px 28px rgba(0, 0, 0, 0.65), 0 4px 10px rgba(0, 0, 0, 0.5); }
 
 /* Cards with no product uploaded yet -- same hover/active/click behavior
    as a real card (still selectable, still shows up as the featured item),
@@ -812,7 +916,7 @@ main.section-container {
    (letterboxed against the card's own dark background) instead of cover,
    so nothing gets cropped off either side. */
 .rd-related-card--contain { position: relative; overflow: hidden; }
-.rd-related-card--contain img { object-fit: contain; background: var(--bg-card); transform: scale(1.1); }
+.rd-related-card--contain img { object-fit: contain; transform: scale(0.85); }
 
 /* Small corner tag, e.g. "RETRO" -- distinct from the big centered
    .rd-overlay-thumb-label used on the Free Overlays tiles. */
@@ -823,10 +927,10 @@ main.section-container {
     background: var(--accent-color);
     color: #000;
     font-weight: 800;
-    font-size: 0.65rem;
+    font-size: 0.9rem;
     text-transform: uppercase;
     letter-spacing: 0.5px;
-    padding: 3px 8px;
+    padding: 4px 10px;
     border-radius: 4px;
     z-index: 2;
     pointer-events: none;
@@ -852,12 +956,12 @@ main.section-container {
 }
 /* Same dark gradient darkening treatment as the hero banners, so the
    platform label below reads clearly over the thumbnail photo. */
-.rd-related-card[data-color-key]::before {
+.rd-related-card[data-color-key]::after {
     content: "";
     position: absolute;
     inset: 0;
-    background: linear-gradient(180deg, rgba(0, 0, 0, 0.4) 0%, rgba(0, 0, 0, 0.8) 100%);
-    z-index: 1;
+    background: linear-gradient(180deg, rgba(0, 0, 0, 0) 55%, rgba(0, 0, 0, 0.55) 100%);
+    z-index: 2;
     pointer-events: none;
 }
 .rd-overlay-thumb-label {
@@ -1074,6 +1178,9 @@ main.section-container {
 .rd-faq-item p { margin-top: 10px; margin-bottom: 0; }
 
 .rd-contact-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 20px; margin-top: 10px; }
+/* Contact page's 4 cards: a fixed 2x2 instead of auto-fit, which was
+   wrapping the 4th card alone onto an unbalanced second row. */
+.rd-contact-grid--2col { grid-template-columns: repeat(2, minmax(220px, 1fr)); max-width: 620px; margin-left: auto; margin-right: auto; }
 .rd-contact-card {
     background: rgba(255, 255, 255, 0.03); border: 1px solid var(--border-color);
     border-radius: 10px; padding: 26px 20px; text-align: center;

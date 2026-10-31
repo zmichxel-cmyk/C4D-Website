@@ -94,6 +94,15 @@
                  controllers don't use one), so this has to go through a GL
                  layer too, just without the ping-pong pairing. -->
             <canvas class="rd-featured-video-canvas" id="featured-kb-canvas"></canvas>
+
+            <!-- Watermark overlay for the Free Overlays controller previews
+                 -- plays on top of the alpha canvases above. No native
+                 `loop` -- looping is driven manually (see the "ended"
+                 listener below) so each pass can fade out, pause, then
+                 fade back in rather than hard-cutting back to frame 0. -->
+            <video class="rd-overlay-watermark" id="overlay-watermark" muted playsinline>
+                <source src="assets/videos/c4dlogoanimation_1.webm" type="video/webm">
+            </video>
         </div>
 
         <div class="rd-featured-info">
@@ -142,7 +151,7 @@
             <div class="rd-related-grid fixed-cols" id="related-grid">
                 <!-- C4D.5 -->
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
-                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d5" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
@@ -152,7 +161,7 @@
 
                 <!-- C4D.1 -->
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
-                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d1" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
@@ -162,7 +171,7 @@
 
                 <!-- C4D.4 -->
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
-                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
@@ -171,8 +180,8 @@
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4d4" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
 
                 <!-- C4D.MKB -->
-                <div class="rd-related-card rd-related-card--contain" data-platform="c4dmkb" data-trending="true" data-title="Retro Keyboard C4D.MKB" data-price="Coming soon" data-plain-video="assets/videos/retro-keyboard.webm"><span class="rd-related-card__tag">Retro</span><img src="assets/images/retro-keyboard-still.png" alt="Retro Keyboard"></div>
-                <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
+                <div class="rd-related-card rd-related-card--contain" data-platform="c4dmkb" data-trending="true" data-title="Retro Keyboard C4D.MKB" data-price="Coming soon" data-plain-video="assets/videos/retro-keyboard.webm"><span class="rd-related-card__tag">Retro</span><img src="assets/images/retro-keyboard-still.webp" alt="Retro Keyboard"></div>
+                <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-trending="true" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
@@ -181,9 +190,9 @@
                 <div class="rd-related-card rd-related-card--empty" data-platform="c4dmkb" data-title="Coming Soon" data-price=""><span>Coming Soon</span></div>
 
                 <!-- Free Overlays -->
-                <div class="rd-related-card" data-platform="overlays" data-title="C4D.5 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d5"><img id="overlay-c4d5-img" src="assets/images/c4d5%20thumbnail.png" alt="Free Overlay C4D.5"><span class="rd-overlay-thumb-label">C4D.5</span></div>
-                <div class="rd-related-card" data-platform="overlays" data-title="C4D.1 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d1"><img id="overlay-c4d1-img" src="assets/images/c4d1%20thumbnail.png" alt="Free Overlay C4D.1"><span class="rd-overlay-thumb-label">C4D.1</span></div>
-                <div class="rd-related-card" data-platform="overlays" data-title="C4D.4 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d4"><img id="overlay-c4d4-img" src="assets/images/c4d4%20thumbnail.png" alt="Free Overlay C4D.4"><span class="rd-overlay-thumb-label">C4D.4</span></div>
+                <div class="rd-related-card" data-platform="overlays" data-title="C4D.5 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d5"><span class="rd-related-card__tag">C4D.5</span><img id="overlay-c4d5-img" src="assets/images/c4d5%20thumbnail.png" alt="Free Overlay C4D.5"></div>
+                <div class="rd-related-card" data-platform="overlays" data-title="C4D.1 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d1"><span class="rd-related-card__tag">C4D.1</span><img id="overlay-c4d1-img" src="assets/images/c4d1%20thumbnail.png" alt="Free Overlay C4D.1"></div>
+                <div class="rd-related-card" data-platform="overlays" data-title="C4D.4 Edition" data-price="Free Watermarked Overlay" data-color-key="c4d4"><span class="rd-related-card__tag">C4D.4</span><img id="overlay-c4d4-img" src="assets/images/c4d4%20thumbnail.png" alt="Free Overlay C4D.4"></div>
             </div>
         </div>
     </section>
@@ -236,6 +245,9 @@
             // Cards default to the "C4D Edition" look (see their data-title/
             // img src above), so the video should match that on first select.
             currentOverlayColor = currentColorKey ? "c4d-edition" : null;
+            // Default look on select is always C4D Edition -- no watermark
+            // until a color is actually picked (see changeOverlayColor).
+            hideWatermark();
             styleBtnLabel.textContent = currentColorKey ? "Select Style" : "Customize";
             styleDropdown.classList.remove("open");
             updateActiveSwatch();
@@ -249,23 +261,37 @@
         }
 
         const OVERLAY_PLATFORM_LABELS = { c4d5: "C4D.5", c4d1: "C4D.1", c4d4: "C4D.4" };
-        const OVERLAY_COLOR_LABELS = { blue: "Blue", green: "Green", red: "Red", purple: "Purple", yellow: "Yellow", "c4d-edition": "Edition" };
+        const OVERLAY_COLOR_LABELS = { blue: "Blue Steel", green: "Toxic Green", red: "Blood Red", purple: "Shadow Purple", yellow: "Volt Yellow", "c4d-edition": "Edition" };
 
         // NOTE: the actual per-color watermarked images at
         // assets/images/overlays/{platform}-{color}.png don't exist yet
         // (same situation as overlays.html's own color swapper) -- drop
         // those files in once they're ready and this will "just work".
+        // Dropdown's own left-to-right order -- lets the slide direction
+        // match which way you'd "physically" pass over the swatches (e.g.
+        // red -> green slides left, since green sits to red's left in the
+        // list), instead of always sliding the same way regardless of which
+        // color was picked.
+        const OVERLAY_COLOR_ORDER = ["c4d-edition", "blue", "green", "red", "purple", "yellow"];
+
         function changeOverlayColor(color) {
             if (!currentColorKey) return;
             // The thumbnail stays on its static platform image (see the
             // card markup above) -- there's no separate PNG per color, the
             // actual color preview is the big alpha video in the hero.
             featuredTitle.textContent = `${OVERLAY_PLATFORM_LABELS[currentColorKey]} ${OVERLAY_COLOR_LABELS[color]}`;
+            const prevIndex = OVERLAY_COLOR_ORDER.indexOf(currentOverlayColor);
+            const nextIndex = OVERLAY_COLOR_ORDER.indexOf(color);
+            const direction = (prevIndex !== -1 && nextIndex !== -1 && nextIndex < prevIndex) ? "left" : "right";
             // Stays open (no closing here) so you can keep flipping through
             // colors without reopening the dropdown each time.
             currentOverlayColor = color;
+            // Watermark rides with whichever clip is currently on screen --
+            // hidden the instant a swap starts (see startFeaturedVideoTransition),
+            // not shown again until the new clip has fully slid into place.
+            hideWatermark();
             updateActiveSwatch();
-            updateFeaturedVideo();
+            updateFeaturedVideo(direction);
         }
 
         function updateActiveSwatch() {
@@ -380,7 +406,95 @@
         };
 
         const featuredVideoWrap = document.getElementById("featured-video-wrap");
+        const overlayWatermark = document.getElementById("overlay-watermark");
         const kbCanvas = document.getElementById("featured-kb-canvas");
+
+        // Every time a controller color swap settles, the watermark should
+        // restart its own clip from frame 0 and wait a beat before it shows
+        // up at all -- nothing is revealed (not even a static first frame)
+        // until that delay has fully elapsed, so cycling through colors
+        // quickly never flashes a stale watermark that's about to be hidden
+        // again by the next swap. A pending reveal is cancelled outright if
+        // another swap starts before it fires.
+        //
+        // Looping itself is driven manually (no native `loop` attribute --
+        // see the "ended" listener below): the clip plays once, holds on
+        // its last frame, fades to transparent, then resets and replays.
+        const WATERMARK_REVEAL_DELAY = 1000; // before the first play after a swap
+        const WATERMARK_HOLD_MS = 2500; // how long the finished clip stays fully visible
+        const WATERMARK_FADE_SECONDS = 1; // fade-to-transparent duration
+        const WATERMARK_REPLAY_MS = 10000; // from clip end until it resets and plays again
+        let watermarkPlayTimer = null;
+        let watermarkFadeTimer = null;
+        let watermarkReplayTimer = null;
+
+        function resetWatermarkStyle() {
+            overlayWatermark.style.transition = "";
+            overlayWatermark.style.opacity = "";
+        }
+        function hideWatermark() {
+            clearTimeout(watermarkPlayTimer);
+            clearTimeout(watermarkFadeTimer);
+            clearTimeout(watermarkReplayTimer);
+            resetWatermarkStyle();
+            overlayWatermark.classList.remove("visible");
+            overlayWatermark.pause();
+        }
+        function showWatermark(show) {
+            clearTimeout(watermarkPlayTimer);
+            clearTimeout(watermarkFadeTimer);
+            clearTimeout(watermarkReplayTimer);
+            resetWatermarkStyle();
+            overlayWatermark.classList.remove("visible");
+            overlayWatermark.pause();
+            if (!show) return;
+            watermarkPlayTimer = setTimeout(() => {
+                const reveal = () => {
+                    overlayWatermark.classList.add("visible");
+                    overlayWatermark.play().catch(() => {});
+                };
+                // Seeking back to frame 0 is async -- revealing before it
+                // actually lands shows whatever stale frame the video was
+                // last sitting on (the previous color's last loop frame),
+                // which is the "tiny flash" right before playback starts.
+                // Wait for the real seek to land first; if it's already at
+                // 0 (nothing to seek), "seeked" never fires, so reveal
+                // immediately in that case instead of waiting forever.
+                if (overlayWatermark.currentTime === 0) {
+                    reveal();
+                } else {
+                    overlayWatermark.addEventListener("seeked", reveal, { once: true });
+                    overlayWatermark.currentTime = 0;
+                }
+            }, WATERMARK_REVEAL_DELAY);
+        }
+        // Manual loop: the clip plays once and stops (no native `loop`).
+        // It holds on its finished last frame for WATERMARK_HOLD_MS, then
+        // fades to transparent over WATERMARK_FADE_SECONDS. WATERMARK_REPLAY_MS
+        // after the clip ended, it seeks back to frame 0 and plays again --
+        // only once the seek has actually landed, so it never reveals a
+        // stale frame. Only ever fires while actually visible/playing
+        // (hideWatermark/showWatermark(false) both pause + clear these
+        // timers, so a swap mid-hold/fade cancels cleanly instead of
+        // fighting it).
+        overlayWatermark.addEventListener("ended", () => {
+            watermarkFadeTimer = setTimeout(() => {
+                overlayWatermark.style.transition = `opacity ${WATERMARK_FADE_SECONDS}s ease-in-out`;
+                overlayWatermark.style.opacity = "0";
+            }, WATERMARK_HOLD_MS);
+            watermarkReplayTimer = setTimeout(() => {
+                const restart = () => {
+                    resetWatermarkStyle();
+                    overlayWatermark.play().catch(() => {});
+                };
+                if (overlayWatermark.currentTime === 0) {
+                    restart();
+                } else {
+                    overlayWatermark.addEventListener("seeked", restart, { once: true });
+                    overlayWatermark.currentTime = 0;
+                }
+            }, WATERMARK_REPLAY_MS);
+        });
 
         // Drives the keyboard's clip on its own GL layer (see kbLayer below)
         // -- shows/hides it and the hero box's "visible" state independently
@@ -451,6 +565,7 @@
             "c4d4-yellow": DEFAULT_OFFSET,
             "c4d4-green": DEFAULT_OFFSET,
             "c4d4-purple": DEFAULT_OFFSET,
+            "c4dmkb-default": { x: -0.12, y: 0 },
         };
 
         // One instance of this per canvas -- each gets its own WebGL
@@ -652,9 +767,9 @@
         // all. Rapid clicks now queue: whichever color was requested most
         // recently plays next, right after the current slide finishes.
         let transitionInProgress = false;
-        let pendingUpdate = null; // { src, key }
+        let pendingUpdate = null; // { src, key, direction }
 
-        function updateFeaturedVideo() {
+        function updateFeaturedVideo(direction = "right") {
             const src = (FEATURED_VIDEO_MAP[currentColorKey] || {})[currentOverlayColor];
             if (!src) {
                 featuredVideoWrap.classList.remove("visible");
@@ -669,30 +784,46 @@
             // per color -- C4D.5 and C4D.4's clips aren't framed the same.
             const key = `${currentColorKey}-${currentOverlayColor}`;
             if (transitionInProgress) {
-                pendingUpdate = { src, key };
+                pendingUpdate = { src, key, direction };
                 return;
             }
-            startFeaturedVideoTransition(src, key);
+            startFeaturedVideoTransition(src, key, direction);
         }
 
-        function startFeaturedVideoTransition(src, key) {
+        function startFeaturedVideoTransition(src, key, direction = "right") {
             currentVideoSrc = src;
             transitionInProgress = true;
 
             const frontLayer = videoLayers[frontLayerIndex];
             const backLayer = videoLayers[1 - frontLayerIndex];
+            // "right": new clip enters from the right, old one exits left
+            // (the original/default direction). "left" mirrors that --
+            // used when the newly picked color sits earlier in the swatch
+            // order than the one currently showing, so the motion matches
+            // which way you "moved" across the dropdown.
+            const incomingPos = direction === "left" ? "pos-left" : "pos-right";
+            const outgoingPos = direction === "left" ? "pos-right" : "pos-left";
+            // Jump the back layer to its parked starting side instantly --
+            // it may have last been parked on the opposite side (if the
+            // previous swap went the other direction), so this has to skip
+            // the transition, not slide there.
+            backLayer.canvas.style.transition = "none";
+            backLayer.canvas.classList.remove("pos-left", "pos-right", "pos-center");
+            backLayer.canvas.classList.add(incomingPos);
+            backLayer.canvas.offsetHeight;
+            backLayer.canvas.style.transition = "";
 
             backLayer.play(src, key)
                 .then(() => {
-                    // Slide simultaneously: the new clip enters from the
-                    // right while the old one exits to the left. "sliding"
-                    // drives the motion-blur keyframes for the duration of
-                    // the move (removed once it's done).
+                    // Slide simultaneously: the new clip enters while the
+                    // old one exits the opposite way. "sliding" drives the
+                    // motion-blur keyframes for the duration of the move
+                    // (removed once it's done).
                     frontLayer.canvas.classList.add("sliding");
                     backLayer.canvas.classList.add("sliding");
                     frontLayer.canvas.classList.remove("pos-center");
-                    frontLayer.canvas.classList.add("pos-left");
-                    backLayer.canvas.classList.remove("pos-right");
+                    frontLayer.canvas.classList.add(outgoingPos);
+                    backLayer.canvas.classList.remove(incomingPos);
                     backLayer.canvas.classList.add("pos-center");
 
                     frontLayerIndex = 1 - frontLayerIndex;
@@ -701,11 +832,12 @@
                         frontLayer.canvas.classList.remove("sliding");
                         backLayer.canvas.classList.remove("sliding");
                         frontLayer.stop();
-                        // Park the old front off-screen right (no transition
-                        // -- instant) so it's ready to be the next "incoming" side.
+                        // Park the old front off-screen on the side it'll
+                        // need to enter from next time (no transition --
+                        // instant), ready to be the next "incoming" side.
                         frontLayer.canvas.style.transition = "none";
-                        frontLayer.canvas.classList.remove("pos-left");
-                        frontLayer.canvas.classList.add("pos-right");
+                        frontLayer.canvas.classList.remove(outgoingPos);
+                        frontLayer.canvas.classList.add(incomingPos);
                         // Force layout so the instant jump is applied before
                         // transitions are re-enabled for its next slide-in.
                         frontLayer.canvas.offsetHeight;
@@ -715,7 +847,15 @@
                         if (pendingUpdate) {
                             const next = pendingUpdate;
                             pendingUpdate = null;
-                            startFeaturedVideoTransition(next.src, next.key);
+                            startFeaturedVideoTransition(next.src, next.key, next.direction);
+                        } else {
+                            // Only once the clip has actually settled into
+                            // place (not mid-queue toward another pending
+                            // color) -- and only for colored variants, never
+                            // the default C4D Edition look. Hard cut (no
+                            // fade) -- it should never be visible while no
+                            // controller is on screen mid-swap.
+                            showWatermark(currentOverlayColor !== "c4d-edition");
                         }
                     }, 720); // slightly longer than the 0.7s CSS transition
                 })
