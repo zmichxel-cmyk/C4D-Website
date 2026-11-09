@@ -17,11 +17,35 @@
             </video>
         </a>
 
+        <button class="rd-nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="rd-nav-backdrop"></div>
+
+
         <ul class="rd-nav-links">
+            <button class="rd-nav-close" aria-label="Close menu"><i class="fa-solid fa-house"></i></button>
             <li><a href="showroom.html">Showroom</a></li>
             <li><a href="bundles.html">Bundles</a></li>
             <li><a href="software.html">Software &amp; Development</a></li>
             <li><a href="community.html">Community</a></li>
+
+            <li class="rd-nav-extra">
+                <ul class="rd-footer-links rd-nav-extra-links">
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="legal.html">Legal</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+                <div class="rd-footer-social">
+                    <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
+                    <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
+                </div>
+            </li>
         </ul>
 
         <div class="rd-nav-icons">
@@ -37,7 +61,7 @@
         <div class="rd-hero-content">
             <h1><span>Join</span> the</h1>
         </div>
-        <p class="rd-community-subtext">Leave a suggestion, connect with other members, or check out this week's featured clip.</p>
+        <p class="rd-community-subtext">Leave a suggestion, connect with other members, or check out this week's <span>featured clip</span>.</p>
 
         <div class="rd-tab-strip">
             <div class="community-tabs" id="community-tabs">
@@ -85,7 +109,7 @@
 
                 <div class="form-group">
                     <label for="comment-text">Suggestion / Comment</label>
-                    <textarea id="comment-text" name="comment" rows="4" maxlength="500" placeholder="What would you like to see more of?" required></textarea>
+                    <textarea id="comment-text" name="comment" rows="2" maxlength="500" placeholder="What would you like to see more of?" required></textarea>
                 </div>
 
                 <!-- Honeypot: hidden from real users, bots tend to fill every field -->
@@ -106,12 +130,18 @@
                 </div>
             </div>
 
-            <div id="comments-list" class="comments-list">
-                <p class="comments-empty" id="comments-loading">Loading comments…</p>
+            <div id="comments-reveal-wrap" class="reveal-wrap reveal-hidden">
+                <div id="comments-list" class="comments-list">
+                    <p class="comments-empty" id="comments-loading">Loading comments…</p>
+                </div>
+                <div class="comments-pagination" id="comments-pagination" style="display:none">
+                    <button type="button" id="comments-prev-page" class="btn-page" aria-label="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span id="comments-page-indicator" class="page-indicator">Page 1</span>
+                    <button type="button" id="comments-next-page" class="btn-page" aria-label="Next page"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
             </div>
-            <div class="load-more-wrap">
-                <button type="button" id="load-more-comments" class="btn-load-more" style="display:none">Load More</button>
-            </div>
+
+            <button type="button" id="comments-reveal-btn" class="btn-reveal">Show Comments</button>
 
         </section>
 
@@ -141,7 +171,7 @@
 
                 <div class="form-group">
                     <label for="post-body">Post</label>
-                    <textarea id="post-body" rows="4" maxlength="1000" placeholder="Say something to the community…" required></textarea>
+                    <textarea id="post-body" rows="2" maxlength="1000" placeholder="Say something to the community…" required></textarea>
                 </div>
 
                 <!-- Honeypot: hidden from real users, bots tend to fill every field -->
@@ -164,12 +194,18 @@
                 </div>
             </div>
 
-            <div id="post-feed" class="comments-list">
-                <p class="comments-empty">Loading posts…</p>
+            <div id="posts-reveal-wrap" class="reveal-wrap reveal-hidden">
+                <div id="post-feed" class="comments-list">
+                    <p class="comments-empty">Loading posts…</p>
+                </div>
+                <div class="comments-pagination" id="posts-pagination" style="display:none">
+                    <button type="button" id="posts-prev-page" class="btn-page" aria-label="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
+                    <span id="posts-page-indicator" class="page-indicator">Page 1</span>
+                    <button type="button" id="posts-next-page" class="btn-page" aria-label="Next page"><i class="fa-solid fa-chevron-right"></i></button>
+                </div>
             </div>
-            <div class="load-more-wrap">
-                <button type="button" id="load-more-posts" class="btn-load-more" style="display:none">Load More</button>
-            </div>
+
+            <button type="button" id="posts-reveal-btn" class="btn-reveal">Show Posts</button>
 
         </section>
 
@@ -206,6 +242,8 @@
     <script src="js/community-utils.js"></script>
     <script src="js/community.js"></script>
     <script src="js/connect.js"></script>
+
+    <script src="js/embers.js"></script>
 
     <script>
         // "Want your clip featured?" checklist -- shown only on the Clip of
@@ -283,36 +321,6 @@
         }).observe(clipOfWeek, { childList: true, subtree: true });
     </script>
 
-    <script>
-        // Scroll-scrubbed reveal for comment/post cards: each card fades in
-        // while sliding in from a side (alternating left/right) as it enters
-        // the viewport on the way down, and mirrors back out on the way back
-        // up -- driven directly by live scroll position every frame, not a
-        // one-time trigger, so it works for cards that load in later
-        // (Supabase fetch) too.
-        const SLIDE_DISTANCE = 70; // px
-
-        function getCardProgress(rect) {
-            const windowH = window.innerHeight;
-            const start = windowH * 0.92;
-            const end = windowH * 0.55;
-            const progress = (start - rect.top) / (start - end);
-            return Math.min(1, Math.max(0, progress));
-        }
-
-        function tickCardReveal() {
-            const cards = document.querySelectorAll(".comment-card, .post-card");
-            cards.forEach((card, i) => {
-                const rect = card.getBoundingClientRect();
-                const progress = getCardProgress(rect);
-                const fromLeft = i % 2 === 0;
-                const offset = (1 - progress) * SLIDE_DISTANCE * (fromLeft ? -1 : 1);
-                card.style.opacity = progress;
-                card.style.transform = `translateX(${offset}px)`;
-            });
-            requestAnimationFrame(tickCardReveal);
-        }
-        requestAnimationFrame(tickCardReveal);
-    </script>
+    <script src="js/nav.js" defer></script>
 </body>
 </html>

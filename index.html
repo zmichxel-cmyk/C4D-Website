@@ -16,11 +16,35 @@
             </video>
         </a>
 
+        <button class="rd-nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="rd-nav-backdrop"></div>
+
+
         <ul class="rd-nav-links">
+            <button class="rd-nav-close" aria-label="Close menu"><i class="fa-solid fa-house"></i></button>
             <li><a href="showroom.html">Showroom</a></li>
             <li><a href="bundles.html">Bundles</a></li>
             <li><a href="software.html">Software &amp; Development</a></li>
             <li><a href="community.html">Community</a></li>
+
+            <li class="rd-nav-extra">
+                <ul class="rd-footer-links rd-nav-extra-links">
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="legal.html">Legal</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+                <div class="rd-footer-social">
+                    <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
+                    <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
+                </div>
+            </li>
         </ul>
 
         <div class="rd-nav-icons">
@@ -33,17 +57,32 @@
         <canvas class="rd-hero-video" id="hero-alpha-canvas"></canvas>
         <div class="rd-hero-content">
             <h1>Pro-Grade Overlays.<br>Engineered for <span>Your Stream</span>.</h1>
-            <p>Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
+            <p class="rd-hero-subtext">Zero high-CPU lag. Pure custom styling. Built exclusively for OBS and Streamlabs browser sources.</p>
             <a href="showroom.html" class="rd-hero-cta">See What's Trending</a>
         </div>
     </section>
 
     <section class="rd-steps-section">
-        <h2 class="rd-steps-heading">Level up your stream in <span>3</span> easy steps</h2>
+        <!-- Mobile-only duplicate of the hero's subtext (see .rd-hero-subtext
+             / .rd-mobile-subtext in redesign-preview.css) -- the hero markup
+             stays one DOM tree for both layouts, so this is a second copy
+             toggled by display, not the same node moved via CSS (it can't
+             be: the two spots are in different parent sections). Lives
+             right on the steps section's own background -- no separate
+             block/div of its own -- and is styled like .rd-steps-heading
+             (bold, uppercase, white + red accent) so it reads as part of
+             the same heading group instead of a distinct element. -->
+        <ul class="rd-mobile-subtext">
+            <li>Low CPU</li>
+            <li>Pure custom styling</li>
+            <li>Exclusively for OBS and Streamlabs</li>
+        </ul>
+
+        <h2 class="rd-steps-heading">Level up your stream<span class="rd-steps-heading-break"> </span>in <span>3</span> easy steps</h2>
 
         <div class="rd-steps-grid">
             <div class="rd-step-card">
-                <img src="assets/images/choosestyle.png" alt="Choose Style">
+                <div class="rd-step-img-wrap"><img src="assets/images/choosestyle.png" alt="Choose Style"></div>
                 <div class="rd-step-label">
                     <span class="num">01</span>
                     <h3>Choose Style</h3>
@@ -52,7 +91,7 @@
             </div>
 
             <div class="rd-step-card">
-                <img src="assets/images/downloadcontroller.png" alt="Download">
+                <div class="rd-step-img-wrap"><img src="assets/images/downloadcontroller.png" alt="Download"></div>
                 <div class="rd-step-label">
                     <span class="num">02</span>
                     <h3>Download</h3>
@@ -61,7 +100,7 @@
             </div>
 
             <div class="rd-step-card">
-                <img src="assets/images/golive.png" alt="Go Live">
+                <div class="rd-step-img-wrap"><img src="assets/images/golive.png" alt="Go Live"></div>
                 <div class="rd-step-label">
                     <span class="num">03</span>
                     <h3>Go Live</h3>
@@ -210,21 +249,31 @@
             const videoAspect = srcVideo.videoWidth / srcVideo.videoHeight;
             await srcVideo.play();
 
-            // Fits the video at its native aspect ratio within the full
-            // canvas ("contain"), anchored to the right edge and vertically
-            // centered -- computed in clip-space (-1 to 1) so it updates
-            // correctly if the canvas gets resized.
+            // Desktop: fits the video at its native aspect ratio within the
+            // full canvas ("contain"), anchored to the right edge and
+            // vertically centered. The mobile canvas is comparatively short
+            // and wide-ish (not actually portrait), but still not wide
+            // enough for "contain" to pick the height-fill branch on its
+            // own -- it was landing on width-fill instead, which let the
+            // video than be shorter than the canvas and leave a visible
+            // flat-cut edge top and bottom (the background showing through
+            // above/below it) instead of blending into the hero's own
+            // edges. Forcing height-fill on mobile guarantees the video's
+            // top/bottom always exactly match the hero box's top/bottom,
+            // whatever height the hero is -- the overflow left/right just
+            // crops silently off-canvas (anchored right), same as desktop.
             function updateQuad() {
+                const mobile = window.innerWidth <= 900;
                 const canvasAspect = canvas.width / canvas.height;
                 let drawWidthNorm, drawHeightNorm;
-                if (canvasAspect > videoAspect) {
+                if (mobile ? true : canvasAspect > videoAspect) {
                     drawHeightNorm = 2; // full clip-space height
                     drawWidthNorm = drawHeightNorm * (videoAspect / canvasAspect);
                 } else {
                     drawWidthNorm = 2; // full clip-space width
                     drawHeightNorm = drawWidthNorm * (canvasAspect / videoAspect);
                 }
-                const rightShift = 0.2; // nudges the video further right (crops slightly off the edge)
+                const rightShift = mobile ? 0.5 : 0.2; // nudges further right (crops slightly off the edge)
                 const right = 1 + rightShift;
                 const left = right - drawWidthNorm;
                 const top = drawHeightNorm / 2;
@@ -265,102 +314,55 @@
     </script>
 
     <script>
-        // Scroll-scrubbed reveal: cards 1 and 3 sit tucked behind card 2
-        // (which sits on top via z-index) and slide out sideways into their
-        // grid slots as you scroll down, then slide back behind card 2 as
-        // you scroll back up -- driven directly by scroll position, not a
-        // one-time trigger.
         const stepCards = [...document.querySelectorAll(".rd-step-card")];
-        const stepsGrid = document.querySelector(".rd-steps-grid");
+        const bulletItems = [...document.querySelectorAll(".rd-mobile-subtext li")];
 
-        // Where the scroll position says the reveal SHOULD be (0-1), computed
-        // fresh from the center card's position every frame.
-        function getTargetProgress() {
-            const windowH = window.innerHeight;
-            const rect = stepCards[1].getBoundingClientRect();
-            const start = windowH * 0.95;
-            const end = windowH * 0.55;
-            const progress = (start - rect.top) / (start - end);
-            return Math.min(1, Math.max(0, progress));
+        // One continuous, looping sequence instead of a scroll-triggered
+        // pulse: the bullets reveal one at a time, then once they're all in,
+        // the step cards pop in one at a time right after -- then everything
+        // resets and replays after a short pause, on a timer rather than
+        // tied to scroll position.
+        const BULLET_STAGGER = 500;
+        const BULLET_START_DELAY = 400;
+        const BULLET_FADE = 800;
+        const CARD_STAGGER = 500;
+        const CARD_FADE = 800;
+        const GLOW_DELAY = 500; // pause after everything's in before the glow pass
+        const GLOW_STAGGER = 900;
+        const GLOW_DURATION = 1200;
+        const LOOP_PAUSE = 8000;
+
+        function runSequence() {
+            bulletItems.forEach(li => li.classList.remove("rd-bullet-visible"));
+            stepCards.forEach(card => {
+                card.classList.remove("rd-card-visible");
+                card.classList.remove("rd-card-glow");
+            });
+
+            bulletItems.forEach((li, i) => {
+                setTimeout(() => li.classList.add("rd-bullet-visible"), BULLET_START_DELAY + i * BULLET_STAGGER);
+            });
+            const bulletsDone = BULLET_START_DELAY + Math.max(0, bulletItems.length - 1) * BULLET_STAGGER + BULLET_FADE;
+
+            stepCards.forEach((card, i) => {
+                setTimeout(() => card.classList.add("rd-card-visible"), bulletsDone + i * CARD_STAGGER);
+            });
+            const cardsDone = bulletsDone + Math.max(0, stepCards.length - 1) * CARD_STAGGER + CARD_FADE;
+
+            // A few seconds after everything's settled in, each card gets a
+            // quick outer glow, in order 1 -> 2 -> 3.
+            stepCards.forEach((card, i) => {
+                const glowStart = cardsDone + GLOW_DELAY + i * GLOW_STAGGER;
+                setTimeout(() => card.classList.add("rd-card-glow"), glowStart);
+                setTimeout(() => card.classList.remove("rd-card-glow"), glowStart + GLOW_DURATION);
+            });
+            const glowDone = cardsDone + GLOW_DELAY + Math.max(0, stepCards.length - 1) * GLOW_STAGGER + GLOW_DURATION;
+
+            setTimeout(runSequence, glowDone + LOOP_PAUSE);
         }
-
-        // Once fully exposed, cards pop in sequence: 1 grows and shrinks
-        // back, then 2, then 3. Resets (and can replay) once you scroll back
-        // out of the fully-revealed state.
-        const PULSE_DURATION_PER_CARD = 900; // ms
-        let pulseStartTime = null;
-        let hasTriggeredPulse = false;
-
-        function getPulseScale(cardIndex, elapsed) {
-            const segStart = cardIndex * PULSE_DURATION_PER_CARD;
-            const segEnd = segStart + PULSE_DURATION_PER_CARD;
-            if (elapsed < segStart || elapsed > segEnd) return 1;
-            const localT = (elapsed - segStart) / PULSE_DURATION_PER_CARD; // 0..1
-            // Raised-cosine bump: zero velocity at both the start and end of
-            // the pulse (unlike plain sin, which snaps into motion instantly),
-            // so the grow/shrink eases in and out smoothly instead of kicking.
-            const growth = (1 - Math.cos(2 * Math.PI * localT)) / 2;
-            return 1 + 0.08 * growth;
-        }
-
-        function applyProgress(progress) {
-            // Measured fresh every frame (cheap) rather than cached, since a
-            // cached value can go stale across viewport-width changes --
-            // translateX doesn't affect offsetWidth, so this is safe to read
-            // regardless of the cards' current transform.
-            const gap = parseFloat(getComputedStyle(stepsGrid).columnGap) || 0;
-            const shiftAmount = stepCards[0].offsetWidth + gap;
-
-            let pulseScales = [1, 1, 1];
-            if (pulseStartTime !== null) {
-                const elapsed = performance.now() - pulseStartTime;
-                if (elapsed <= PULSE_DURATION_PER_CARD * 3) {
-                    pulseScales = [0, 1, 2].map(i => getPulseScale(i, elapsed));
-                } else {
-                    pulseStartTime = null; // sequence finished
-                }
-            }
-
-            // Center card: simple fade + slide up, plus its turn in the pulse.
-            stepCards[1].style.opacity = progress;
-            stepCards[1].style.transform = `translateY(${(1 - progress) * 40}px) scale(${pulseScales[1]})`;
-
-            // Left card: fully hidden behind card 2 at progress 0 (opacity 0,
-            // same position), fades in solid while sliding left into its slot.
-            stepCards[0].style.opacity = progress;
-            stepCards[0].style.transform = `translateX(${(1 - progress) * shiftAmount}px) scale(${pulseScales[0]})`;
-
-            // Right card: mirrored, fades in solid while sliding right.
-            stepCards[2].style.opacity = progress;
-            stepCards[2].style.transform = `translateX(${-(1 - progress) * shiftAmount}px) scale(${pulseScales[2]})`;
-        }
-
-        // Displayed progress eases toward the scroll-driven target every
-        // frame instead of snapping straight to it, so fast/jumpy scrolling
-        // (mouse wheel steps, trackpad flicks) reads as a smooth catch-up
-        // rather than a rigid 1:1 jump.
-        let currentProgress = getTargetProgress();
-        function tick() {
-            const target = getTargetProgress();
-            currentProgress += (target - currentProgress) * 0.12;
-            if (Math.abs(target - currentProgress) < 0.001) currentProgress = target;
-
-            if (currentProgress >= 0.999) {
-                if (!hasTriggeredPulse) {
-                    hasTriggeredPulse = true;
-                    pulseStartTime = performance.now();
-                }
-            } else if (currentProgress < 0.95) {
-                hasTriggeredPulse = false;
-                pulseStartTime = null;
-            }
-
-            applyProgress(currentProgress);
-            requestAnimationFrame(tick);
-        }
-
-        applyProgress(currentProgress);
-        requestAnimationFrame(tick);
+        runSequence();
     </script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/embers.js"></script>
 </body>
 </html>

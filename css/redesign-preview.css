@@ -30,6 +30,7 @@ body {
     justify-content: space-between;
     padding: 14px 40px;
     position: relative;
+    z-index: 60;
 }
 .rd-nav .logo-link { display: block; }
 .rd-logo-video { height: 90px; width: auto; object-fit: contain; display: block; }
@@ -64,9 +65,38 @@ body {
 .rd-nav-icons a { color: var(--text-main); font-size: 1.2rem; transition: color 0.2s ease; }
 .rd-nav-icons a:hover { color: var(--accent-color); }
 
+/* The off-canvas drawer's own close button and its secondary
+   Contact/FAQ/social block are mobile-only -- hidden here so they don't
+   render inline (with default/unstyled browser appearance) in the
+   regular desktop nav bar. */
+.rd-nav-close, .rd-nav-extra { display: none; }
+
+/* Hamburger toggle only exists for the mobile layout (see the max-width:900px
+   block below) -- hidden here so it never shows up on desktop. */
+.rd-nav-toggle {
+    /* Fixed box (not just font-size) so swapping the bars icon for the
+       xmark icon on open/close never changes the button's own rendered
+       width -- that width feeds the grid's "auto" toggle column, and a
+       size change there was shifting the centered logo in the column next
+       to it every time the menu opened or closed. */
+    display: none;
+    width: 28px;
+    height: 28px;
+    align-items: center;
+    justify-content: center;
+    background: none;
+    border: none;
+    color: var(--text-main);
+    font-size: 1.4rem;
+    line-height: 1;
+    padding: 4px;
+    cursor: pointer;
+}
+
 /* --- Hero --- */
 .rd-hero {
     position: relative;
+    z-index: 0;
     min-height: 640px;
     display: flex;
     align-items: center;
@@ -128,6 +158,11 @@ body {
     max-width: 480px;
     margin-bottom: 30px;
 }
+
+/* Mobile-only duplicate of .rd-hero-subtext, repositioned below the hero
+   instead of inside it -- see the max-width:900px block for the swap
+   (this copy hidden; the in-hero one hidden instead). */
+.rd-mobile-subtext { display: none; }
 .rd-hero-cta {
     display: inline-block;
     background: var(--accent-color);
@@ -166,37 +201,69 @@ body {
 .rd-steps-grid {
     display: grid;
     grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-    max-width: 1200px;
+    gap: 20px;
+    max-width: 1020px;
     margin: 0 auto;
 }
 .rd-step-card {
     position: relative;
-    background: #e5e5e5;
+    background: #b5b5b5;
+    border: 1px solid #000;
     overflow: hidden;
     border-radius: 4px;
     display: flex;
     flex-direction: column;
-    /* opacity/transform are driven directly by scroll position in JS below,
-       not a CSS transition -- so the reveal scrubs with the scroll instead
-       of firing once and staying revealed. */
-    will-change: opacity, transform;
+    box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45);
+    /* Starts hidden and pops in once the looping reveal sequence (see the
+       script at the bottom of the page) adds .rd-card-visible to it. */
+    opacity: 0;
+    transform: translateY(20px) scale(0.92);
+    transition: opacity 0.8s ease, transform 0.8s ease;
+}
+.rd-step-card.rd-card-visible {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+.rd-step-card.rd-card-glow {
+    animation: rd-card-glow 1.2s ease;
+}
+@keyframes rd-card-glow {
+    0% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45), 0 0 0 rgba(255, 51, 68, 0); }
+    40% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45), 0 0 30px 8px rgba(255, 51, 68, 0.65); }
+    100% { box-shadow: 0 8px 20px rgba(0, 0, 0, 0.45), 0 0 0 rgba(255, 51, 68, 0); }
 }
 /* Card 2 sits on top so cards 1 and 3 can visually tuck in behind it. */
 .rd-step-card:nth-child(2) { z-index: 2; }
 .rd-step-card:nth-child(1), .rd-step-card:nth-child(3) { z-index: 1; }
+.rd-step-img-wrap {
+    position: relative;
+    overflow: hidden;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.rd-step-img-wrap::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background: url("../assets/images/card-tile-bg.png") center / 160px repeat;
+    filter: brightness(1.8) contrast(1.3);
+    z-index: 0;
+}
 .rd-step-card img {
     display: block;
     width: 55%;
-    height: 200px;
+    height: 165px;
     object-fit: contain;
     object-position: center;
-    margin: 24px auto;
+    margin: 18px auto;
+    position: relative;
+    z-index: 1;
 }
 .rd-step-label {
     background: #000;
     color: #fff;
-    padding: 14px 18px;
+    padding: 11px 16px;
     display: flex;
     align-items: baseline;
     gap: 10px;
@@ -204,8 +271,10 @@ body {
 .rd-step-label .num { color: var(--accent-color); font-weight: 900; font-size: 1.1rem; }
 .rd-step-label h3 { font-size: 1rem; text-transform: uppercase; letter-spacing: 0.5px; }
 .rd-step-card p {
-    padding: 14px 18px 20px;
-    font-size: 0.9rem;
+    background: #8c8c8c;
+    flex: 1;
+    padding: 12px 16px 16px;
+    font-size: 0.88rem;
     color: #444;
 }
 
@@ -291,6 +360,11 @@ body {
     margin-left: 20px;
     margin-top: -250px;
     font-size: 3.3rem;
+    text-shadow:
+        0 2px 4px rgba(0, 0, 0, 0.9),
+        0 6px 12px rgba(0, 0, 0, 0.7),
+        0 14px 28px rgba(0, 0, 0, 0.5),
+        0 26px 48px rgba(0, 0, 0, 0.3);
 }
 
 /* Positioned as a percentage of the hero itself (not the shrink-wrapped
@@ -303,10 +377,19 @@ body {
     left: 18%;
     max-width: 420px;
     margin: 0;
-    color: #e4e4e8;
+    color: var(--text-main);
+    font-weight: 900;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
     font-size: 1.15rem;
+    text-shadow:
+        0 2px 3px rgba(0, 0, 0, 0.9),
+        0 5px 10px rgba(0, 0, 0, 0.7),
+        0 10px 20px rgba(0, 0, 0, 0.5),
+        0 18px 36px rgba(0, 0, 0, 0.3);
     z-index: 1;
 }
+.rd-community-subtext span { color: var(--accent-color); }
 
 /* "Want your clip featured?" checklist -- right side of the hero, shown
    only on the Clip of the Week tab (toggled by the script at the bottom
@@ -446,6 +529,12 @@ main.section-container {
     max-width: none;
     padding: 40px 40px 60px;
 }
+main.section-container.community-bg {
+    padding-bottom: 0;
+}
+main.section-container.community-bg .tab-panel.active {
+    margin-bottom: 0;
+}
 main.section-container::before {
     content: "";
     position: absolute;
@@ -468,7 +557,7 @@ main.section-container::before {
 #tab-panels {
     position: relative;
     z-index: 3;
-    margin-top: -70px;
+    margin-top: -65px;
 }
 
 /* Community page uses its own background photo instead of the shared
@@ -481,6 +570,52 @@ main.section-container.community-bg::before {
     background-position: center 2%;
     background-size: cover;
     background-repeat: no-repeat;
+    transition: transform 0.25s ease, opacity 0.25s ease;
+}
+/* Slides the background in sync with #tab-panels when switching between
+   Suggestions/Connect/Clip (see slideBackground() in community-utils.js) --
+   same left/right + fade treatment as the content itself, just applied to
+   main's own ::before since the pseudo-element can't be targeted directly
+   from JS. */
+main.section-container.community-bg.bg-no-transition::before {
+    transition: none;
+}
+main.section-container.community-bg.bg-out-left::before {
+    transform: translateX(-40px);
+    opacity: 0;
+}
+main.section-container.community-bg.bg-out-right::before {
+    transform: translateX(40px);
+    opacity: 0;
+}
+
+/* Fire embers over the community page's smoke background -- canvas-based
+   particle shower, ported from the real Controller Skin Studio app's fire
+   effect (BodyEffectOverlay.tsx: spawnEmber/the fire update loop), just
+   without its shadowBlur glow. The container's negative top lets embers
+   rise up past main's own box and bleed slightly onto the hero above,
+   matching how the content boxes already overlap it. */
+.rd-embers {
+    position: absolute;
+    top: -260px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    overflow: visible;
+    pointer-events: none;
+    /* Negative so it sits behind every normal (static-positioned) child of
+       its scoped container -- cards, forms, text -- while still painting
+       above that container's own background (also z-index:-1, but ::before
+       is always first in paint order among ties). This doesn't affect
+       whether it renders over the hero above it: that's decided by the
+       scoped container's own position in the page's top-level stacking,
+       which is unrelated to how its children are ordered internally. */
+    z-index: -1;
+}
+.rd-embers canvas {
+    display: block;
+    width: 100%;
+    height: 100%;
 }
 
 /* Drop shadow under the hero photo, separating it from the content below
@@ -577,7 +712,7 @@ main.section-container.community-bg::before {
     height: 78.66%;
 }
 
-.platform-section[data-tab="clip"] { position: relative; }
+.platform-section[data-tab="clip"] { position: relative; margin-top: -60px; }
 .clip-comments-section { margin-top: 85px; }
 
 /* --- Category-coded post/comment cards --- */
@@ -592,11 +727,6 @@ main.section-container.community-bg::before {
 .post-card:has(.category-badge.category-lfg) { border-left-color: #ff8c1a; }
 .post-card:has(.category-badge.category-game_chat) { border-left-color: #ffd21a; }
 .post-card:has(.category-badge.category-general) { border-left-color: #ff3344; }
-
-/* Scroll-in state for .comment-card/.post-card, driven by JS below --
-   opacity/transform are set inline per-frame, not via a CSS transition, so
-   the reveal scrubs with scroll position instead of firing once. */
-.comment-card, .post-card { will-change: opacity, transform; }
 
 /* --- Platform dropdown (top-left of Showroom hero) --- */
 .rd-platform-dropdown {
@@ -1122,15 +1252,272 @@ main.section-container.community-bg::before {
 .rd-see-more.active i { transform: rotate(180deg); }
 
 @media (max-width: 900px) {
-    .rd-nav { display: flex; flex-direction: column; gap: 16px; padding: 16px 20px; }
-    .rd-nav-links { flex-wrap: wrap; justify-content: center; gap: 18px; }
-    .rd-hero-content h1 { font-size: 2.1rem; }
-    .rd-steps-grid { grid-template-columns: 1fr; }
+    /* Mobile-only header: a single row -- hamburger toggle (left), logo
+       (center), cart (right). Search is dropped on mobile (see below) so
+       the right slot is just the cart. The nav links move off the header
+       entirely into a dropdown panel that slides open below it. */
+    .rd-nav {
+        display: grid;
+        grid-template-columns: auto 1fr auto;
+        grid-template-areas: "toggle logo icons";
+        align-items: center;
+        column-gap: 10px;
+        padding: 10px 20px;
+    }
+    .rd-nav .logo-link { grid-area: logo; justify-self: center; }
+    .rd-logo-video { height: 90px; }
+    .rd-nav-toggle {
+        display: flex; grid-area: toggle; justify-self: start; width: 36px; height: 36px;
+        font-size: 1.35rem; position: relative; z-index: 70;
+        visibility: visible;
+        transition: visibility 0s linear 0.3s;
+    }
+    .rd-nav.nav-open .rd-nav-toggle {
+        visibility: hidden;
+        transition: visibility 0s linear 0s;
+    }
+    .rd-nav-icons { grid-area: icons; justify-self: end; gap: 16px; }
+    .rd-nav-icons a { font-size: 1.3rem; }
+    .rd-nav-icons a[aria-label="Search"] { display: none; }
+
+    /* Off-canvas drawer, fixed to the viewport (not just the header) and
+       slid in from the left edge via transform -- translateX instead of
+       the old dropdown's translateY, and fixed/full-height instead of
+       absolute/top:100% so it covers the page like a real drawer rather
+       than just pushing a panel open below the header. */
+    .rd-nav-links {
+        position: fixed;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        width: 78%;
+        max-width: 300px;
+        right: auto;
+        transform: translateX(-100%);
+        flex-direction: column;
+        align-items: flex-start;
+        justify-content: flex-start;
+        background: rgba(30, 30, 34, 0.6);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        gap: 22px;
+        padding: 80px 30px 24px;
+        z-index: 50;
+        opacity: 1;
+        visibility: hidden;
+        pointer-events: none;
+        border-right: 0.5px solid var(--accent-color);
+        box-shadow: 4px 0 24px rgba(0, 0, 0, 0.5);
+        transition: transform 0.3s ease, visibility 0s linear 0.3s;
+    }
+    .rd-nav.nav-open .rd-nav-links {
+        transform: translateX(0);
+        visibility: visible;
+        pointer-events: auto;
+        transition: transform 0.3s ease, visibility 0s linear 0s;
+    }
+    .rd-nav-links a { align-self: flex-start; }
+
+    /* Secondary footer links + socials, pinned to the bottom of the
+       drawer instead of flowing right after the main nav links. */
+    .rd-nav-extra {
+        display: block;
+        margin-top: auto;
+        padding-top: 22px;
+        width: 100%;
+        align-self: flex-start;
+        border-top: 1px solid rgba(255, 255, 255, 0.15);
+    }
+    .rd-nav-extra-links {
+        display: flex;
+        flex-direction: column;
+        gap: 14px;
+        margin: 0 0 18px;
+        padding: 0;
+    }
+    .rd-nav-extra-links a { font-size: 0.75rem; }
+    .rd-footer-social { flex-wrap: wrap; }
+    .rd-nav-extra .rd-footer-social a { width: 32px; height: 32px; font-size: 0.85rem; }
+
+    /* Close ("X") button inside the drawer itself -- a second, explicit
+       way to back out besides re-tapping the hamburger or the backdrop. */
+    .rd-nav-close {
+        display: none;
+        position: absolute;
+        top: 20px;
+        right: 20px;
+        width: 32px;
+        height: 32px;
+        align-items: center;
+        justify-content: center;
+        background: none;
+        border: none;
+        color: var(--text-main);
+        font-size: 1.3rem;
+        cursor: pointer;
+        z-index: 51;
+    }
+    .rd-nav.nav-open .rd-nav-close { display: flex; }
+
+    /* Backdrop behind the drawer: blurs/dims the rest of the page and
+       doubles as a click target to close the menu. Sits above everything
+       else but below the drawer (z-index:50) and toggle (z-index:70). */
+    .rd-nav-backdrop {
+        position: fixed;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.35);
+        backdrop-filter: blur(6px);
+        -webkit-backdrop-filter: blur(6px);
+        z-index: 45;
+        opacity: 0;
+        visibility: hidden;
+        pointer-events: none;
+        transition: opacity 0.3s ease, visibility 0s linear 0.3s;
+    }
+    .rd-nav.nav-open .rd-nav-backdrop {
+        opacity: 1;
+        visibility: visible;
+        pointer-events: auto;
+        transition: opacity 0.3s ease, visibility 0s linear 0s;
+    }
+    /* Compact banner-style hero on mobile -- basically the desktop layout
+       (left-aligned text, controller graphic on the right) just scaled
+       down to fit a short strip instead of a full-bleed section. See the
+       updateQuad() mobile branch in index.html for how the canvas confines
+       the controller to the right-hand portion to match. */
+    .rd-hero { min-height: 260px; }
+    .rd-hero-content {
+        max-width: 60%;
+        padding: 0 20px;
+        text-align: left;
+        margin: 0;
+    }
+    .rd-hero-content h1 { font-size: 1.4rem; margin-bottom: 20px; }
+    .rd-hero-content p.rd-hero-subtext { display: none; }
+    .rd-hero-cta { padding: 10px 20px; font-size: 0.8rem; }
+    .rd-mobile-subtext {
+        display: flex;
+        flex-direction: column;
+        align-items: flex-start;
+        gap: 14px;
+        width: max-content;
+        max-width: calc(100% - 40px);
+        color: var(--text-main);
+        font-weight: 900;
+        text-transform: uppercase;
+        letter-spacing: 0.5px;
+        text-align: left;
+        font-size: 0.85rem;
+        line-height: 1.4;
+        padding: 0;
+        margin: 0 auto 36px;
+        list-style: none;
+    }
+    .rd-mobile-subtext li {
+        position: relative;
+        padding-left: 18px;
+        opacity: 0;
+        transform: translateY(10px);
+        transition: opacity 0.8s ease, transform 0.8s ease;
+    }
+    .rd-mobile-subtext li.rd-bullet-visible { opacity: 1; transform: translateY(0); }
+    .rd-mobile-subtext li::before {
+        content: "\2022";
+        position: absolute;
+        left: 0;
+        color: var(--accent-color);
+    }
+    .rd-steps-section {
+        padding: 52px 20px 36px;
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+            radial-gradient(ellipse 42% 100% at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%),
+            url("../assets/images/c4dmobilebackground.jfif");
+        background-position: center top;
+        background-size: auto 260%, auto 260%, auto 100%;
+        background-repeat: no-repeat, no-repeat, repeat-x;
+        /* Reordered independently of the shared DOM/markup (same markup as
+           desktop): heading first, then the cards right below the hero, then
+           the "Zero high-CPU lag..." subtext last. */
+        display: flex;
+        flex-direction: column;
+    }
+    .rd-steps-heading { order: 1; font-size: 1.2rem; margin-bottom: 52px; }
+    .rd-steps-heading-break { display: block; height: 0; }
+    .rd-mobile-subtext { order: 2; gap: 20px; margin: 0 auto 72px; }
+    .rd-steps-grid { order: 3; grid-template-columns: 1fr; gap: 16px; max-width: 260px; }
+    .rd-step-card img { height: 90px; margin: 12px auto; }
+    .rd-step-label { padding: 8px 12px; }
+    .rd-step-label .num { font-size: 0.9rem; }
+    .rd-step-label h3 { font-size: 0.8rem; }
+    .rd-step-card p { padding: 8px 12px 12px; font-size: 0.74rem; }
+
     .rd-product-grid { grid-template-columns: 1fr; }
     .rd-featured-hero { justify-content: center; padding: 40px 20px; }
     .rd-featured-info { max-width: 100%; padding: 0; }
     .rd-footer { flex-direction: column; text-align: center; }
     .rd-footer-links { flex-wrap: wrap; justify-content: center; gap: 20px; }
+}
+
+/* Desktop-only: replace the wood-panel image behind the steps section with
+   the smoke image. Sized to show the full image uncropped (100% width,
+   auto height) instead of "cover", so the bottom isn't cut off; the image's
+   own transparent top fades into whatever sits above it (the hero) on its
+   own, with no margin/position changes to the section itself. */
+@media (min-width: 901px) {
+    .rd-steps-section {
+        position: relative;
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+            radial-gradient(ellipse 42% 100% at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%),
+            #0a0a0a url("../assets/images/smoke-overlay-test2.jfif") center -120px / 100% auto no-repeat;
+    }
+
+    main.section-container::before {
+        background-image:
+            linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+            radial-gradient(ellipse 42% 100% at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%),
+            url("../assets/images/smoke-overlay-test2.jfif");
+    }
+
+    main.section-container.community-bg::before {
+        height: 100%;
+        background-image: url("../assets/images/c4dbackgroundfaded.png?v=6");
+        background-position: center bottom -255px;
+        background-size: 100% auto;
+        background-repeat: no-repeat;
+        -webkit-mask-image: none;
+        mask-image: none;
+    }
+
+    /* Suggestions and Connect collapse to different heights with their
+       comments/posts hidden (Connect's form has one more field) -- forcing
+       them to match keeps the page (and so the background image, which is
+       sized off main's own height) from changing size when switching
+       between the two. */
+    .tab-panel[data-tab="suggestions"],
+    .tab-panel[data-tab="connect"] {
+        min-height: 534px;
+    }
+
+    .rd-related-section {
+        background:
+            linear-gradient(rgba(0, 0, 0, 0.25), rgba(0, 0, 0, 0.25)),
+            radial-gradient(ellipse 42% 100% at center, rgba(0, 0, 0, 0.45) 0%, rgba(0, 0, 0, 0) 100%),
+            #0a0a0a url("../assets/images/smoke-overlay-test2.jfif") center 25% / cover no-repeat;
+        box-shadow:
+            inset 0 44px 28px -12px rgba(0, 0, 0, 0.95),
+            inset 0 -28px 32px -10px rgba(0, 0, 0, 0.75),
+            inset 0 0 70px 12px rgba(0, 0, 0, 0.5);
+    }
+
+    .rd-tab-strip {
+        bottom: 45px;
+    }
+
+    .rd-tab-strip .tab-btn {
+        font-size: 0.95rem;
+    }
 }
 
 /* --- Info pages: About, FAQ, Contact, Legal --- */

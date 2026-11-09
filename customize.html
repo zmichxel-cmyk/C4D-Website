@@ -41,11 +41,35 @@
             </video>
         </a>
 
+        <button class="rd-nav-toggle" aria-label="Toggle menu" aria-expanded="false">
+            <i class="fa-solid fa-bars"></i>
+        </button>
+
+        <div class="rd-nav-backdrop"></div>
+
+
         <ul class="rd-nav-links">
+            <button class="rd-nav-close" aria-label="Close menu"><i class="fa-solid fa-house"></i></button>
             <li><a href="showroom.html">Showroom</a></li>
             <li><a href="bundles.html">Bundles</a></li>
             <li><a href="software.html">Software &amp; Development</a></li>
             <li><a href="community.html">Community</a></li>
+
+            <li class="rd-nav-extra">
+                <ul class="rd-footer-links rd-nav-extra-links">
+                    <li><a href="contact.html">Contact</a></li>
+                    <li><a href="faq.html">FAQ</a></li>
+                    <li><a href="legal.html">Legal</a></li>
+                    <li><a href="about.html">About Us</a></li>
+                </ul>
+                <div class="rd-footer-social">
+                    <a href="YOUR_FACEBOOK_LINK" target="_blank"><i class="fab fa-facebook"></i></a>
+                    <a href="YOUR_INSTAGRAM_LINK" target="_blank"><i class="fab fa-instagram"></i></a>
+                    <a href="YOUR_TWITCH_LINK" target="_blank"><i class="fab fa-twitch"></i></a>
+                    <a href="YOUR_YOUTUBE_LINK" target="_blank"><i class="fab fa-youtube"></i></a>
+                    <a href="YOUR_KICK_LINK" target="_blank"><i class="fa-solid fa-bolt"></i></a>
+                </div>
+            </li>
         </ul>
 
         <div class="rd-nav-icons">
@@ -123,5 +147,7 @@
             });
         });
     </script>
+    <script src="js/nav.js" defer></script>
+    <script src="js/embers.js"></script>
 </body>
 </html>

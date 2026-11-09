@@ -11,7 +11,11 @@ document.addEventListener("DOMContentLoaded", () => {
         const statusEl = document.getElementById("comment-form-status");
         const starPicker = document.getElementById("star-picker");
         const sortToggle = document.getElementById("sort-toggle");
-        const loadMoreBtn = document.getElementById("load-more-comments");
+        const pagination = document.getElementById("comments-pagination");
+        const prevPageBtn = document.getElementById("comments-prev-page");
+        const nextPageBtn = document.getElementById("comments-next-page");
+        const pageIndicator = document.getElementById("comments-page-indicator");
+        wireRevealButton(document.getElementById("comments-reveal-btn"), document.getElementById("comments-reveal-wrap"), "Comments");
 
         if (!form || !list) return;
 
@@ -21,10 +25,10 @@ document.addEventListener("DOMContentLoaded", () => {
             return;
         }
 
-        const PAGE_SIZE = 10;
+        const PAGE_SIZE = 4;
         let currentSort = "likes"; // "likes" | "newest"
         let submitting = false;
-        let offset = 0;
+        let currentPage = 1;
         const LIKED_KEY = "c4d-liked-comments";
 
         function renderStars(rating) {
@@ -52,21 +56,22 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         }
 
-        function renderComments(comments, append) {
-            if (!append && comments.length === 0) {
-                list.innerHTML = '<p class="comments-empty">No comments yet — be the first to share your thoughts.</p>';
+        function renderComments(comments) {
+            if (comments.length === 0) {
+                list.innerHTML = currentPage === 1
+                    ? '<p class="comments-empty">No comments yet — be the first to share your thoughts.</p>'
+                    : '<p class="comments-empty">No more comments.</p>';
                 return;
             }
             const liked = getLikedSet(LIKED_KEY);
-            const html = comments.map(c => commentCardHtml(c, liked)).join("");
-            if (append) list.insertAdjacentHTML("beforeend", html);
-            else list.innerHTML = html;
+            list.innerHTML = comments.map(c => commentCardHtml(c, liked)).join("");
         }
 
-        // reset=true starts over from the first page (new sort, new submission);
-        // reset=false appends the next page (Load More click).
+        // reset=true starts over at page 1 (new sort, new submission); otherwise
+        // reloads whatever currentPage already is (Prev/Next click).
         async function loadComments(reset = true) {
-            if (reset) offset = 0;
+            if (reset) currentPage = 1;
+            const offset = (currentPage - 1) * PAGE_SIZE;
 
             const { data, error } = await supabase
                 .from("community_comments")
@@ -75,16 +80,26 @@ document.addEventListener("DOMContentLoaded", () => {
                 .range(offset, offset + PAGE_SIZE - 1);
 
             if (error) {
-                if (reset) list.innerHTML = '<p class="comments-empty">Couldn\'t load comments right now.</p>';
+                list.innerHTML = '<p class="comments-empty">Couldn\'t load comments right now.</p>';
                 return;
             }
 
-            renderComments(data, !reset);
-            offset += data.length;
-            loadMoreBtn.style.display = data.length === PAGE_SIZE ? "" : "none";
+            renderComments(data);
+            pagination.style.display = currentPage > 1 || data.length === PAGE_SIZE ? "flex" : "none";
+            pageIndicator.textContent = `Page ${currentPage}`;
+            prevPageBtn.disabled = currentPage === 1;
+            nextPageBtn.disabled = data.length < PAGE_SIZE;
         }
 
-        loadMoreBtn.addEventListener("click", () => loadComments(false));
+        prevPageBtn.addEventListener("click", () => {
+            if (currentPage === 1) return;
+            currentPage -= 1;
+            slideSwap(list, -1, () => loadComments(false));
+        });
+        nextPageBtn.addEventListener("click", () => {
+            currentPage += 1;
+            slideSwap(list, 1, () => loadComments(false));
+        });
 
         starPicker.addEventListener("click", (e) => {
             const btn = e.target.closest(".star-btn");
@@ -188,7 +203,7 @@ document.addEventListener("DOMContentLoaded", () => {
         }
 
         const CLIP_LIKED_KEY = "c4d-liked-clip-comments";
-        let clipCommentsOffset = 0;
+        let clipCurrentPage = 1;
 
         function getYouTubeEmbedUrl(url) {
             const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:watch\?v=|embed\/|shorts\/))([\w-]{11})/);
@@ -205,7 +220,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 : `<a class="btn-primary clip-watch-btn" href="${escapeHtml(clip.url)}" target="_blank" rel="noopener noreferrer">Watch Clip</a>`;
         }
 
-        const CLIP_PAGE_SIZE = 10;
+        const CLIP_PAGE_SIZE = 4;
 
         function clipCommentCardHtml(c, liked) {
             return `
@@ -222,50 +237,68 @@ document.addEventListener("DOMContentLoaded", () => {
             `;
         }
 
-        function renderClipComments(comments, append) {
+        function renderClipComments(comments) {
             const list = container.querySelector("#clip-comments-list");
             if (!list) return;
-            if (!append && comments.length === 0) {
-                list.innerHTML = '<p class="comments-empty">No comments yet — be the first to share your thoughts.</p>';
+            if (comments.length === 0) {
+                list.innerHTML = clipCurrentPage === 1
+                    ? '<p class="comments-empty">No comments yet — be the first to share your thoughts.</p>'
+                    : '<p class="comments-empty">No more comments.</p>';
                 return;
             }
             const liked = getLikedSet(CLIP_LIKED_KEY);
-            const html = comments.map(c => clipCommentCardHtml(c, liked)).join("");
-            if (append) list.insertAdjacentHTML("beforeend", html);
-            else list.innerHTML = html;
+            list.innerHTML = comments.map(c => clipCommentCardHtml(c, liked)).join("");
         }
 
+        // reset=true starts over at page 1 (new clip, new submission); otherwise
+        // reloads whatever clipCurrentPage already is (Prev/Next click).
         async function loadClipComments(clipId, reset = true) {
             const list = container.querySelector("#clip-comments-list");
-            const loadMoreBtn = container.querySelector("#clip-load-more");
-            if (reset) clipCommentsOffset = 0;
+            const pagination = container.querySelector("#clip-comments-pagination");
+            const prevPageBtn = container.querySelector("#clip-prev-page");
+            const nextPageBtn = container.querySelector("#clip-next-page");
+            const pageIndicator = container.querySelector("#clip-page-indicator");
+            if (reset) clipCurrentPage = 1;
+            const offset = (clipCurrentPage - 1) * CLIP_PAGE_SIZE;
 
             const { data, error } = await supabase
                 .from("community_clip_comments")
                 .select("id, name, comment, likes_count, created_at")
                 .eq("clip_id", clipId)
                 .order("created_at", { ascending: false })
-                .range(clipCommentsOffset, clipCommentsOffset + CLIP_PAGE_SIZE - 1);
+                .range(offset, offset + CLIP_PAGE_SIZE - 1);
 
             if (error) {
-                if (reset && list) list.innerHTML = '<p class="comments-empty">Couldn\'t load comments right now.</p>';
+                if (list) list.innerHTML = '<p class="comments-empty">Couldn\'t load comments right now.</p>';
                 return;
             }
-            renderClipComments(data, !reset);
-            clipCommentsOffset += data.length;
-            if (loadMoreBtn) loadMoreBtn.style.display = data.length === CLIP_PAGE_SIZE ? "" : "none";
+            renderClipComments(data);
+            if (pagination) pagination.style.display = clipCurrentPage > 1 || data.length === CLIP_PAGE_SIZE ? "flex" : "none";
+            if (pageIndicator) pageIndicator.textContent = `Page ${clipCurrentPage}`;
+            if (prevPageBtn) prevPageBtn.disabled = clipCurrentPage === 1;
+            if (nextPageBtn) nextPageBtn.disabled = data.length < CLIP_PAGE_SIZE;
         }
 
         function wireClipCommentSection(clipId) {
             const form = container.querySelector("#clip-comment-form");
             const list = container.querySelector("#clip-comments-list");
             const statusEl = container.querySelector("#clip-comment-form-status");
-            const loadMoreBtn = container.querySelector("#clip-load-more");
+            const prevPageBtn = container.querySelector("#clip-prev-page");
+            const nextPageBtn = container.querySelector("#clip-next-page");
+            wireRevealButton(container.querySelector("#clip-comments-reveal-btn"), container.querySelector("#clip-comments-reveal-wrap"), "Comments");
             if (!form || !list) return;
             let submitting = false;
-            clipCommentsOffset = 0;
+            clipCurrentPage = 1;
 
-            loadMoreBtn.addEventListener("click", () => loadClipComments(clipId, false));
+            prevPageBtn.addEventListener("click", () => {
+                if (clipCurrentPage === 1) return;
+                clipCurrentPage -= 1;
+                slideSwap(list, -1, () => loadClipComments(clipId, false));
+            });
+            nextPageBtn.addEventListener("click", () => {
+                clipCurrentPage += 1;
+                slideSwap(list, 1, () => loadClipComments(clipId, false));
+            });
 
             list.addEventListener("click", async (e) => {
                 const btn = e.target.closest(".like-btn");
@@ -360,7 +393,7 @@ document.addEventListener("DOMContentLoaded", () => {
                             </div>
                             <div class="form-group">
                                 <label for="clip-comment-text">Comment</label>
-                                <textarea id="clip-comment-text" rows="3" maxlength="500" placeholder="What did you think of this clip?" required></textarea>
+                                <textarea id="clip-comment-text" rows="2" maxlength="500" placeholder="What did you think of this clip?" required></textarea>
                             </div>
                             <!-- Honeypot: hidden from real users, bots tend to fill every field -->
                             <div class="form-group hp-field" aria-hidden="true">
@@ -375,12 +408,18 @@ document.addEventListener("DOMContentLoaded", () => {
                             <h3>Comments</h3>
                         </div>
 
-                        <div id="clip-comments-list" class="comments-list">
-                            <p class="comments-empty">Loading comments…</p>
+                        <div id="clip-comments-reveal-wrap" class="reveal-wrap reveal-hidden">
+                            <div id="clip-comments-list" class="comments-list">
+                                <p class="comments-empty">Loading comments…</p>
+                            </div>
+                            <div class="comments-pagination" id="clip-comments-pagination" style="display:none">
+                                <button type="button" id="clip-prev-page" class="btn-page" aria-label="Previous page"><i class="fa-solid fa-chevron-left"></i></button>
+                                <span id="clip-page-indicator" class="page-indicator">Page 1</span>
+                                <button type="button" id="clip-next-page" class="btn-page" aria-label="Next page"><i class="fa-solid fa-chevron-right"></i></button>
+                            </div>
                         </div>
-                        <div class="load-more-wrap">
-                            <button type="button" id="clip-load-more" class="btn-load-more" style="display:none">Load More</button>
-                        </div>
+
+                        <button type="button" id="clip-comments-reveal-btn" class="btn-reveal">Show Comments</button>
                     </div>
                 ` : ""}
             `;
