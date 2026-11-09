@@ -1444,8 +1444,8 @@ main.section-container.community-bg.bg-out-right::before {
     }
     .rd-steps-heading { order: 1; font-size: 1.2rem; margin-bottom: 52px; }
     .rd-steps-heading-break { display: block; height: 0; }
-    .rd-mobile-subtext { order: 2; gap: 20px; margin: 0 auto 72px; }
-    .rd-steps-grid { order: 3; grid-template-columns: 1fr; gap: 16px; max-width: 260px; }
+    .rd-steps-grid { order: 2; grid-template-columns: 1fr; gap: 16px; max-width: 260px; }
+    .rd-mobile-subtext { order: 3; gap: 20px; margin: 72px auto 0; }
     .rd-step-card img { height: 90px; margin: 12px auto; }
     .rd-step-label { padding: 8px 12px; }
     .rd-step-label .num { font-size: 0.9rem; }

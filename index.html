@@ -318,15 +318,15 @@
         const bulletItems = [...document.querySelectorAll(".rd-mobile-subtext li")];
 
         // One continuous, looping sequence instead of a scroll-triggered
-        // pulse: the bullets reveal one at a time, then once they're all in,
-        // the step cards pop in one at a time right after -- then everything
-        // resets and replays after a short pause, on a timer rather than
-        // tied to scroll position.
-        const BULLET_STAGGER = 500;
-        const BULLET_START_DELAY = 400;
-        const BULLET_FADE = 800;
+        // pulse: the step cards pop in one at a time first, then once
+        // they're all in, the bullets reveal one at a time right after --
+        // then everything resets and replays after a short pause, on a
+        // timer rather than tied to scroll position.
         const CARD_STAGGER = 500;
+        const CARD_START_DELAY = 400;
         const CARD_FADE = 800;
+        const BULLET_STAGGER = 500;
+        const BULLET_FADE = 800;
         const GLOW_DELAY = 500; // pause after everything's in before the glow pass
         const GLOW_STAGGER = 900;
         const GLOW_DURATION = 1200;
@@ -339,24 +339,24 @@
                 card.classList.remove("rd-card-glow");
             });
 
-            bulletItems.forEach((li, i) => {
-                setTimeout(() => li.classList.add("rd-bullet-visible"), BULLET_START_DELAY + i * BULLET_STAGGER);
-            });
-            const bulletsDone = BULLET_START_DELAY + Math.max(0, bulletItems.length - 1) * BULLET_STAGGER + BULLET_FADE;
-
             stepCards.forEach((card, i) => {
-                setTimeout(() => card.classList.add("rd-card-visible"), bulletsDone + i * CARD_STAGGER);
+                setTimeout(() => card.classList.add("rd-card-visible"), CARD_START_DELAY + i * CARD_STAGGER);
             });
-            const cardsDone = bulletsDone + Math.max(0, stepCards.length - 1) * CARD_STAGGER + CARD_FADE;
+            const cardsDone = CARD_START_DELAY + Math.max(0, stepCards.length - 1) * CARD_STAGGER + CARD_FADE;
+
+            bulletItems.forEach((li, i) => {
+                setTimeout(() => li.classList.add("rd-bullet-visible"), cardsDone + i * BULLET_STAGGER);
+            });
+            const bulletsDone = cardsDone + Math.max(0, bulletItems.length - 1) * BULLET_STAGGER + BULLET_FADE;
 
             // A few seconds after everything's settled in, each card gets a
             // quick outer glow, in order 1 -> 2 -> 3.
             stepCards.forEach((card, i) => {
-                const glowStart = cardsDone + GLOW_DELAY + i * GLOW_STAGGER;
+                const glowStart = bulletsDone + GLOW_DELAY + i * GLOW_STAGGER;
                 setTimeout(() => card.classList.add("rd-card-glow"), glowStart);
                 setTimeout(() => card.classList.remove("rd-card-glow"), glowStart + GLOW_DURATION);
             });
-            const glowDone = cardsDone + GLOW_DELAY + Math.max(0, stepCards.length - 1) * GLOW_STAGGER + GLOW_DURATION;
+            const glowDone = bulletsDone + GLOW_DELAY + Math.max(0, stepCards.length - 1) * GLOW_STAGGER + GLOW_DURATION;
 
             setTimeout(runSequence, glowDone + LOOP_PAUSE);
         }
