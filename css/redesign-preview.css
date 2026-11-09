@@ -21,19 +21,64 @@ body {
 
 /* --- Nav --- */
 .rd-nav {
-    /* Matches the logo video's own frame background (#111, not pure black)
-       so its bounding box doesn't show up as a faint gray box once the
-       animation settles on its final frame. */
-    background: #111111;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 14px 40px;
+    padding: 2px 40px;
     position: relative;
     z-index: 60;
+    /* Clips the ::before blur layer below -- see there for why it's
+       deliberately oversized. */
+    overflow: hidden;
+}
+/* The header's actual glass background/blur lives on this oversized
+   pseudo-element (inset -6px on every side) instead of directly on
+   .rd-nav. backdrop-filter hard-clips its blur exactly at the element's
+   own box edge, which shows up as a visible hairline seam against the
+   hero image right below the header; oversizing this layer and letting
+   .rd-nav's own overflow:hidden crop it back down pushes that hard edge
+   out past the visible header entirely, instead of sitting right on it. */
+.rd-nav::before {
+    content: "";
+    position: absolute;
+    inset: -40px;
+    z-index: -1;
+    background: rgba(20, 20, 24, 0.78);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    /* Forces this onto its own stable GPU compositing layer so it
+       doesn't get left stale/mis-painted when the logo video next to it
+       changes size as its metadata loads and it finishes its one-shot
+       animation -- without this, that resize can leave a visible seam
+       baked into an old cached blur layer that never gets invalidated. */
+    will-change: backdrop-filter;
+    transform: translateZ(0);
+}
+/* Nested backdrop-filter (this header's blur + the drawer's own blur)
+   doesn't compose reliably -- the drawer's background/blur stops
+   rendering and its text becomes unreadable over the page behind it.
+   Drop back to a solid header while the drawer is open to avoid it.
+   Also applied via nav-closing for the drawer's whole close transition
+   (added/removed from JS, see nav.js) -- backdrop-filter on the header,
+   even if it were only re-enabled the instant nav-open is removed (or
+   merely listed in a CSS `transition`), makes the header the containing
+   block for the drawer's position:fixed box, clipping the drawer to the
+   header's own short height instead of the full viewport right as it
+   starts sliding closed. No transition on background/backdrop-filter
+   here on purpose, for the same reason -- it must switch as a hard,
+   un-transitioned rule change. */
+.rd-nav.nav-open::before,
+.rd-nav.nav-closing::before {
+    background: #111111;
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
 }
 .rd-nav .logo-link { display: block; }
-.rd-logo-video { height: 90px; width: auto; object-fit: contain; display: block; }
+/* aspect-ratio reserves the video's final width up front (it's always
+   1920x852) so nothing in the header shifts once its metadata loads --
+   width:auto would otherwise jump from the browser's fallback size to
+   the real one at that moment. */
+.rd-logo-video { height: 90px; width: auto; aspect-ratio: 1920 / 852; object-fit: contain; display: block; }
 
 .rd-nav-links {
     /* Absolute + translate(-50%,-50%) centers on the bar's own true
@@ -51,6 +96,7 @@ body {
     transform: translate(-50%, -50%);
 }
 .rd-nav-links a {
+    position: relative;
     color: var(--text-main);
     text-decoration: none;
     font-weight: 700;
@@ -60,6 +106,25 @@ body {
     transition: color 0.2s ease;
 }
 .rd-nav-links a:hover { color: var(--accent-color); }
+/* Current-page indicator, same idea as the Community tab strip's active
+   underline (.tab-btn.active in style.css) -- set via nav.js comparing
+   each link's href against the current page, not hardcoded per page. An
+   absolutely-positioned ::after (rather than a border/padding) so it adds
+   no box-model height, which would otherwise throw off .rd-nav-links'
+   own translate(-50%,-50%) vertical centering. */
+.rd-nav-links a.active { color: var(--accent-color); }
+.rd-nav-links a::after {
+    content: "";
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: -8px;
+    height: 2px;
+    background: var(--accent-color);
+    opacity: 0;
+    transition: opacity 0.2s ease;
+}
+.rd-nav-links a.active::after { opacity: 1; }
 
 .rd-nav-icons { display: flex; gap: 24px; justify-self: end; }
 .rd-nav-icons a { color: var(--text-main); font-size: 1.2rem; transition: color 0.2s ease; }
@@ -100,6 +165,27 @@ body {
     min-height: 640px;
     display: flex;
     align-items: center;
+    /* No background here -- see ::after. Keeping the hero's own box (and
+       the canvas/content inside it) completely untouched is what avoids
+       shifting or squashing the hero's video canvas. */
+}
+/* Single continuous background layer for the hero AND the strip of it
+   that bleeds up behind the glass header -- deliberately NOT two
+   separately `cover`-scaled copies of the same image (one for the header
+   strip, one for the hero itself), because each would scale the photo
+   against a different box height and their crops would never actually
+   line up, leaving a hard seam exactly at the boundary between them. One
+   layer spanning both, scaled against ITS OWN (taller) box, has no seam
+   to begin with. top/bottom (not a fixed height) so it always matches
+   however tall the hero itself renders. */
+.rd-hero::after {
+    content: "";
+    position: absolute;
+    top: -94px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
     background: url('../assets/images/gaming-room.png') center 20% / cover no-repeat;
 }
 .rd-hero::before {
@@ -337,22 +423,28 @@ body {
 .rd-page-banner p { color: var(--text-muted); margin-top: 12px; }
 
 /* --- Community page hero + tab strip --- */
+/* These hero variants no longer set their own `background` directly --
+   .rd-hero has none (see there for why), and the single continuous
+   ::after layer below is the only background, spanning both the hero
+   itself and the strip that bleeds up behind the glass header. */
+
 /* Bundles hero: uses assets/images/bundles-hero.jpg once it's added,
    otherwise falls back to the same gaming-room photo as the homepage. */
-.rd-bundles-hero {
+.rd-bundles-hero::after {
     background: url('../assets/images/bundles-hero.jpg') center 30% / cover no-repeat,
         url('../assets/images/gaming-room.png') center 20% / cover no-repeat;
 }
 
 /* Software hero: uses assets/images/software-hero.jpg once it's added,
    otherwise falls back to the showroom room photo. */
-.rd-software-hero {
+.rd-software-hero::after {
     background: url('../assets/images/software-hero.jpg') center / cover no-repeat,
         url('../assets/images/showroom-room.png') center / cover no-repeat;
 }
 
-.rd-community-hero {
+.rd-community-hero::after {
     background-image: url('../assets/images/community-page.png');
+    background-size: cover;
     background-position: center 8%;
 }
 
@@ -794,10 +886,23 @@ main.section-container.community-bg.bg-out-right::before {
 /* --- Featured product hero (Showroom) --- */
 .rd-featured-hero {
     position: relative;
+    z-index: 0;
     min-height: 620px;
     display: flex;
     align-items: center;
     justify-content: flex-end;
+}
+/* Single continuous background layer, same reasoning as .rd-hero::after
+   above -- one layer spanning the header-blur strip AND the hero itself,
+   not two separately-scaled copies of the same image. */
+.rd-featured-hero::after {
+    content: "";
+    position: absolute;
+    top: -94px;
+    left: 0;
+    right: 0;
+    bottom: 0;
+    z-index: -1;
     background: url('../assets/images/showroom-room.png') center 30% / cover no-repeat;
 }
 .rd-featured-hero::before {
@@ -1262,7 +1367,7 @@ main.section-container.community-bg.bg-out-right::before {
         grid-template-areas: "toggle logo icons";
         align-items: center;
         column-gap: 10px;
-        padding: 10px 20px;
+        padding: 2px 20px;
     }
     .rd-nav .logo-link { grid-area: logo; justify-self: center; }
     .rd-logo-video { height: 90px; }
@@ -1576,3 +1681,113 @@ main.section-container.community-bg.bg-out-right::before {
 .rd-contact-card a { color: var(--text-main); text-decoration: none; font-weight: 700; }
 .rd-contact-card a:hover { color: var(--accent-color); }
 .rd-contact-card p { font-size: 0.85rem; margin: 6px 0 0; }
+
+/* --- Cart page --- */
+.rd-cart-wrap {
+    max-width: 1000px;
+    margin: 0 auto;
+    padding: 60px 20px 90px;
+    display: grid;
+    grid-template-columns: 1fr 320px;
+    gap: 32px;
+    align-items: start;
+}
+.rd-cart-items { display: flex; flex-direction: column; gap: 18px; }
+.rd-cart-item {
+    display: grid;
+    grid-template-columns: 84px 1fr auto auto auto;
+    grid-template-areas: "img info qty price remove";
+    align-items: center;
+    gap: 18px;
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 16px;
+}
+.rd-cart-item img {
+    grid-area: img;
+    width: 84px;
+    height: 84px;
+    object-fit: cover;
+    border-radius: 6px;
+    background: #111;
+}
+.rd-cart-item-info { grid-area: info; min-width: 0; }
+.rd-cart-item-info h3 {
+    font-size: 1rem;
+    font-weight: 800;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+}
+.rd-cart-item-info p { font-size: 0.8rem; color: var(--text-muted); }
+.rd-cart-item-qty {
+    grid-area: qty;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid var(--border-color);
+    border-radius: 6px;
+    padding: 6px 10px;
+}
+.rd-cart-item-qty button {
+    background: none; border: none; color: var(--text-main);
+    font-size: 1rem; cursor: pointer; line-height: 1; padding: 0 4px;
+}
+.rd-cart-item-qty button:hover { color: var(--accent-color); }
+.rd-cart-item-price { grid-area: price; font-weight: 800; min-width: 70px; text-align: right; }
+.rd-cart-item-remove {
+    grid-area: remove;
+    background: none; border: none; color: var(--text-muted);
+    font-size: 1rem; cursor: pointer; padding: 4px;
+}
+.rd-cart-item-remove:hover { color: var(--accent-color); }
+
+.rd-cart-summary {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid var(--border-color);
+    border-radius: 10px;
+    padding: 24px 22px;
+    position: sticky;
+    top: 20px;
+}
+.rd-cart-summary h2 {
+    font-size: 1.1rem; font-weight: 900; text-transform: uppercase;
+    margin-bottom: 18px;
+}
+.rd-cart-summary-row {
+    display: flex; justify-content: space-between;
+    font-size: 0.9rem; color: var(--text-muted);
+    margin-bottom: 12px;
+}
+.rd-cart-summary-row.rd-cart-total {
+    color: var(--text-main); font-weight: 800; font-size: 1.05rem;
+    border-top: 1px solid var(--border-color);
+    padding-top: 14px; margin-top: 4px;
+}
+.rd-cart-summary .rd-hero-cta {
+    display: block; text-align: center; width: 100%;
+    margin-top: 18px; padding: 14px 20px;
+}
+.rd-cart-empty {
+    text-align: center; padding: 60px 20px;
+    color: var(--text-muted);
+}
+.rd-cart-empty i { font-size: 2.4rem; color: var(--accent-color); margin-bottom: 16px; display: block; }
+.rd-cart-empty .rd-hero-cta { display: inline-block; margin-top: 20px; }
+
+@media (max-width: 900px) {
+    .rd-cart-wrap { grid-template-columns: 1fr; padding: 40px 16px 60px; }
+    .rd-cart-summary { position: static; }
+    .rd-cart-item {
+        grid-template-columns: 64px 1fr auto;
+        grid-template-areas:
+            "img info remove"
+            "img qty price";
+        row-gap: 10px;
+        column-gap: 14px;
+    }
+    .rd-cart-item img { width: 64px; height: 64px; }
+    .rd-cart-item-info h3 { font-size: 0.85rem; }
+    .rd-cart-item-info p { font-size: 0.72rem; }
+    .rd-cart-item-price { text-align: left; min-width: 0; }
+}
